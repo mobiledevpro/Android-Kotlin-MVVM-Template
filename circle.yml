@@ -1,0 +1,65 @@
+#Install android build tools, platforms
+#Supported versions here https://circleci.com/docs/android
+general:
+    artifacts:
+        - /home/ubuntu/dealervideosuite-android/app/build/outputs/apk/
+    branches:
+       only:
+         # for each commit in master branch
+         # - master
+         # and for tags
+         - /v[0-9]+(\.[0-9]+)*/
+
+machine:
+    environment:
+        ANDROID_HOME: /usr/local/android-sdk-linux
+        GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx3584m -XX:+HeapDumpOnOutOfMemoryError"'
+        TEST_FLAGS: "--configure-on-demand -PdisablePreDex"
+
+#Pull any submodules after checkout and clone code from repo
+checkout:
+    post:
+       - git submodule init
+       - git submodule update
+
+#dependencies:
+#    override:
+#       - echo y | android update sdk --no-ui --all --filter tools,platform-tools,build-tools-25.0.2,android-25,extra-google-m2repository,extra-google-google_play_services,extra-android-support
+#       - mkdir "${ANDROID_HOME}/licenses" || true
+#       - echo "8933bad161af4178b1185d1a37fbf41ea5269c55" > "${ANDROID_HOME}/licenses/android-sdk-license"
+#       - ./gradlew dependencies
+
+dependencies:
+    pre:
+       - if [ ! -e /usr/local/android-sdk-linux/build-tools/25.0.2 ]; then echo y | android update sdk --all --no-ui --filter "build-tools-25.0.2"; fi;
+       - if [ ! -e /usr/local/android-sdk-linux/platforms/android-25 ]; then echo y | android update sdk --all --no-ui --filter "android-25"; fi;
+       - if ! $(grep -q "Revision=47.0.0" /usr/local/android-sdk-linux/extras/android/m2repository/source.properties); then echo y | android update sdk --all --no-ui --filter "extra-android-m2repository"; fi;
+    cache_directories:
+       - /usr/local/android-sdk-linux/build-tools/25.0.2
+       - /usr/local/android-sdk-linux/platforms/android-25
+       - /usr/local/android-sdk-linux/extras/android/m2repository
+    override:
+       - mkdir "${ANDROID_HOME}/licenses" || true
+       - echo "8933bad161af4178b1185d1a37fbf41ea5269c55" > "${ANDROID_HOME}/licenses/android-sdk-license"
+
+# Build apk
+compile:
+    override:
+         # assemble depends on flavors names
+         # PdisablePreDex uses for disable
+         - (./gradlew assembleProductionRelease -PdisablePreDex):
+                timeout: 1200
+         - cp -r app/build/outputs $CIRCLE_ARTIFACTS
+
+#run tests
+test:
+    override:
+       - "true"
+
+# Deploy when tests passed and tag is present
+deployment:
+    release:
+        tag: /v[0-9]+(\.[0-9]+)*/
+        commands:
+            - (./build-dropbox-upload.sh):
+                timeout: 360

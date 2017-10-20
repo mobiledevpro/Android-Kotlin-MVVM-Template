@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="false"
+    android:background="@color/colorWindowGreyBackground"
+    android:fitsSystemWindows="true">
+
+    <include layout="@layout/include_base_appbar"/>
+
+    <include layout="@layout/include_base_fragment_container"/>
+
+</android.support.design.widget.CoordinatorLayout>

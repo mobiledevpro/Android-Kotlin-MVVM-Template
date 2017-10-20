@@ -1,0 +1,76 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/colorTextPrimary</item>
+        <item name="android:windowBackground">@color/colorWindowBackground</item>
+
+        <item name="imageButtonStyle">@style/AppTheme.ImageButton</item>
+        <item name="buttonStyle">@style/AppTheme.Button</item>
+        <item name="android:textViewStyle">@style/AppTheme.TextView</item>
+        <item name="editTextStyle">@style/AppTheme.EditText</item>
+        <item name="actionModeStyle">@style/AppTheme.ActionMode</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionModeOverlay">true</item>
+    </style>
+
+    <style name="AppTheme.FullScreen" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!--Pay attention! adjustResize for activity doen't work in full screen mode -->
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="AppTheme.AlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert"/>
+
+    <style name="AppTheme.ActionMode" parent="@style/Widget.AppCompat.ActionMode">
+        <item name="background">@color/colorPrimary</item>
+    </style>
+
+    <!-- TextView common style-->
+    <style name="AppTheme.TextView" parent="AppTheme">
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <!-- Image buttons common style-->
+    <style name="AppTheme.ImageButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:background">@null</item>
+    </style>
+
+    <!-- Buttons common style -->
+    <style name="AppTheme.Button" parent="Widget.AppCompat.Button">
+        <item name="android:minHeight">@dimen/default_view_height</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@drawable/background_button_common</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:minWidth">144dp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <!-- Edit fields common style-->
+    <style name="AppTheme.EditText" parent="Widget.AppCompat.EditText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:textColorHint">@color/colorTextSecondary</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textCursorDrawable">@drawable/background_edittext_cursor</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+
+
+</resources>

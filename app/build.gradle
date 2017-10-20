@@ -1,0 +1,107 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.mobiledevpro.apptemplate"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    dexOptions {
+        maxProcessCount 2
+        javaMaxHeapSize "2g"
+    }
+
+    signingConfigs {
+        //uses for CI
+        config {
+            keyAlias 'here alias value'
+            keyPassword System.getenv("SOME_APP_KEYPWD")
+            storeFile file('here key file name')
+            storePassword System.getenv("SOME_APP_KSTOREPWD")
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        release {
+            debuggable false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+
+    productFlavors {
+        production {
+            applicationId defaultConfig.applicationId
+            versionCode 1
+            versionName "1.0.0"
+        }
+    }
+
+    sourceSets {
+        main {
+            res.srcDirs = [
+                    'src/main/res',
+                    'src/main/res/layouts/activity',
+                    'src/main/res/layouts/fragment',
+                    'src/main/res/layouts/adapter',
+                    'src/main/res/layouts/include',
+                    'src/main/res/layouts/preference'
+            ]
+            java.srcDirs = ['src/main/java']
+        }
+    }
+
+    //generate apk with custom name
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                def fileName = variant.productFlavors[0].applicationId + "-" +
+                        "v" + variant.productFlavors[0].versionName + "_" +
+                        "build" + variant.productFlavors[0].versionCode + "-" +
+                        variant.buildType.name +
+                        ".apk";
+                output.outputFile = new File(outputFile.parent, fileName);
+            }
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    compile "com.android.support:design:$rootProject.supportLibraryVersion"
+
+    compile("com.crashlytics.sdk.android:crashlytics:$rootProject.crashlyticsVersion@aar") {
+        transitive = true;
+    }
+
+    compile "com.jakewharton:butterknife:$butterKnifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
+
+    compile project(":commons")
+}
