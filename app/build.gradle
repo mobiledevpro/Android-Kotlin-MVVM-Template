@@ -104,4 +104,5 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
 
     compile project(":commons")
+    compile project(":data")
 }
