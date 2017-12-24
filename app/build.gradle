@@ -17,7 +17,6 @@ repositories {
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
-    buildToolsVersion rootProject.buildToolsVersion
 
     defaultConfig {
         applicationId "com.mobiledevpro.apptemplate"
@@ -53,6 +52,7 @@ android {
         }
     }
 
+    flavorDimensions "prod"
     productFlavors {
         production {
             applicationId defaultConfig.applicationId
@@ -76,16 +76,15 @@ android {
     }
 
     //generate apk with custom name
-    applicationVariants.all { variant ->
-        variant.outputs.each { output ->
+    android.applicationVariants.all { variant ->
+        variant.outputs.all { output ->
             def outputFile = output.outputFile
             if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                def fileName = variant.productFlavors[0].applicationId + "-" +
+                outputFileName = variant.productFlavors[0].applicationId + "-" +
                         "v" + variant.productFlavors[0].versionName + "_" +
                         "build" + variant.productFlavors[0].versionCode + "-" +
                         variant.buildType.name +
                         ".apk";
-                output.outputFile = new File(outputFile.parent, fileName);
             }
         }
     }
