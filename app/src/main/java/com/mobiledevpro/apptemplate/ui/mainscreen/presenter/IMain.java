@@ -13,12 +13,17 @@ import android.app.Activity;
  * #MobileDevPro
  */
 
-public interface IMainPresenter {
+public interface IMain {
     interface View {
         Activity getActivity();
     }
 
     interface Presenter {
+
+        void bindView(IMain.View view);
+
+        void unbindView();
+
         void onStartView();
 
         void onStopView();

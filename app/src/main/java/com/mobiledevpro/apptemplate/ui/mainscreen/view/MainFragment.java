@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.cdvdev.commons.fragment.BaseFragment;
 import com.mobiledevpro.apptemplate.R;
-import com.mobiledevpro.apptemplate.ui.mainscreen.presenter.IMainPresenter;
+import com.mobiledevpro.apptemplate.ui.mainscreen.presenter.IMain;
 import com.mobiledevpro.apptemplate.ui.mainscreen.presenter.MainPresenter;
 
 /**
@@ -20,9 +20,9 @@ import com.mobiledevpro.apptemplate.ui.mainscreen.presenter.MainPresenter;
  * #MobileDevPro
  */
 
-public class MainFragment extends BaseFragment implements IMainPresenter.View {
+public class MainFragment extends BaseFragment implements IMain.View {
 
-    private IMainPresenter.Presenter mPresenter;
+    private IMain.Presenter mPresenter;
 
     public static MainFragment newInstance() {
 
@@ -45,7 +45,19 @@ public class MainFragment extends BaseFragment implements IMainPresenter.View {
 
     @Override
     protected void initPresenters() {
-        mPresenter = new MainPresenter(this);
+        mPresenter = new MainPresenter();
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mPresenter.bindView(this);
+    }
+
+    @Override
+    public void onDestroyView() {
+        mPresenter.unbindView();
+        super.onDestroyView();
     }
 
     @Override

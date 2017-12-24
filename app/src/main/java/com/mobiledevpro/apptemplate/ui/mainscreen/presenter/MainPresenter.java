@@ -11,12 +11,18 @@ package com.mobiledevpro.apptemplate.ui.mainscreen.presenter;
  * #MobileDevPro
  */
 
-public class MainPresenter implements IMainPresenter.Presenter {
+public class MainPresenter implements IMain.Presenter {
 
-    private IMainPresenter.View mView;
+    private IMain.View mView;
 
-    public MainPresenter(IMainPresenter.View view) {
+    @Override
+    public void bindView(IMain.View view) {
         mView = view;
+    }
+
+    @Override
+    public void unbindView() {
+        mView = null;
     }
 
     @Override
