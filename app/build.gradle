@@ -102,6 +102,8 @@ dependencies {
     compile "com.jakewharton:butterknife:$butterKnifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
 
-    compile project(":commons")
+    //commons-ui
+    compile 'com.github.mobile-dev-pro:commons-ui:1.0.1'
+
     compile project(":data")
 }

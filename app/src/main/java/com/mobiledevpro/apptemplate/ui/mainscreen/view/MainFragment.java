@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.cdvdev.commons.fragment.BaseFragment;
 import com.mobiledevpro.apptemplate.R;
 import com.mobiledevpro.apptemplate.ui.mainscreen.presenter.IMain;
 import com.mobiledevpro.apptemplate.ui.mainscreen.presenter.MainPresenter;
+import com.mobiledevpro.commons.fragment.BaseFragment;
 
 /**
  * Main fragment for main activity
