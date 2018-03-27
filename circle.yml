@@ -31,13 +31,17 @@ checkout:
 
 dependencies:
     pre:
-       - if [ ! -e /usr/local/android-sdk-linux/build-tools/25.0.2 ]; then echo y | android update sdk --all --no-ui --filter "build-tools-25.0.2"; fi;
-       - if [ ! -e /usr/local/android-sdk-linux/platforms/android-25 ]; then echo y | android update sdk --all --no-ui --filter "android-25"; fi;
+       - if [ ! -e /usr/local/android-sdk-linux/build-tools/27.0.3 ]; then echo y | android update sdk --all --no-ui --filter "build-tools-27.0.3"; fi;
+       - if [ ! -e /usr/local/android-sdk-linux/platforms/android-27 ]; then echo y | android update sdk --all --no-ui --filter "android-27"; fi;
        - if ! $(grep -q "Revision=47.0.0" /usr/local/android-sdk-linux/extras/android/m2repository/source.properties); then echo y | android update sdk --all --no-ui --filter "extra-android-m2repository"; fi;
     cache_directories:
-       - /usr/local/android-sdk-linux/build-tools/25.0.2
-       - /usr/local/android-sdk-linux/platforms/android-25
-       - /usr/local/android-sdk-linux/extras/android/m2repository
+        - /usr/local/android-sdk-linux/tools
+        - /usr/local/android-sdk-linux/platform-tools
+        - /usr/local/android-sdk-linux/build-tools
+        - /usr/local/android-sdk-linux/licenses
+        - /usr/local/android-sdk-linux/extras/google/m2repository
+        - /home/ubuntu/.gradle/caches/
+        - /home/ubuntu/.gradle/wrapper/
     override:
        - mkdir "${ANDROID_HOME}/licenses" || true
        - echo "8933bad161af4178b1185d1a37fbf41ea5269c55" > "${ANDROID_HOME}/licenses/android-sdk-license"

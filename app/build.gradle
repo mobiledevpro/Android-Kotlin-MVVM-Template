@@ -91,19 +91,19 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
-    compile "com.android.support:design:$rootProject.supportLibraryVersion"
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
 
-    compile("com.crashlytics.sdk.android:crashlytics:$rootProject.crashlyticsVersion@aar") {
+    implementation("com.crashlytics.sdk.android:crashlytics:$rootProject.crashlyticsVersion@aar") {
         transitive = true;
     }
 
-    compile "com.jakewharton:butterknife:$butterKnifeVersion"
+    implementation "com.jakewharton:butterknife:$butterKnifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
 
     //commons-ui
-    compile 'com.github.mobile-dev-pro:commons-ui:1.0.2'
+    implementation 'com.github.mobile-dev-pro:commons-ui:1.0.5'
 
-    compile project(":data")
+    implementation project(":data")
 }

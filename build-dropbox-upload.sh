@@ -1,7 +1,7 @@
 #! /bin/sh
 
 #put release apk to dropbox
-APK_FILES="./app/build/outputs/apk/*-release.apk"
+APK_FILES=./app/build/outputs/apk/*/*/*-release.apk
 DROPBOX_TOKEN="MS43qTgT_TAAAAAAAAAFkS6Ostvx69pBOjdn32WyXOLVb-wMeQ8x4HDetk4hW5Fa"
 
 for FILE in $APK_FILES
@@ -14,5 +14,5 @@ do
     --header "Authorization: Bearer ${DROPBOX_TOKEN}" \
     --header "Dropbox-API-Arg: {\"path\": \"\/${FILE_NAME}\",\"mode\": \"overwrite\",\"autorename\": true,\"mute\": false}" \
     --header "Content-Type: application/octet-stream" \
-    --data-binary @"./app/build/outputs/apk/"${FILE_NAME}
+    --data-binary @${FILE}
 done
