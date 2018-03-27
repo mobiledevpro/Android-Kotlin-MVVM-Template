@@ -51,7 +51,7 @@ compile:
     override:
          # assemble depends on flavors names
          # PdisablePreDex uses for disable
-         - (./gradlew assembleProductionRelease -PdisablePreDex):
+         - (./gradlew assembleRelease -PdisablePreDex):
                 timeout: 1200
          - cp -r app/build/outputs $CIRCLE_ARTIFACTS
 
