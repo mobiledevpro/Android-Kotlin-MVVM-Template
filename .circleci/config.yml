@@ -6,7 +6,9 @@ jobs:
       - image: circleci/android:api-27-alpha
     environment:
       JVM_OPTS: -Xmx4G
-      CIRCLE_TAG: v[0-9]+(\.[0-9]+)*
+    branches:
+      only:
+        - /v[0-9]+(\.[0-9]+)*/
     steps:
       - checkout
       - restore_cache:
