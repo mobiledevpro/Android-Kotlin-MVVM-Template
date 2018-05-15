@@ -94,6 +94,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
     implementation "com.android.support:design:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:preference-v7:$rootProject.supportLibraryVersion"
 
     implementation("com.crashlytics.sdk.android:crashlytics:$rootProject.crashlyticsVersion@aar") {
         transitive = true;
@@ -103,7 +104,7 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
 
     //commons-ui
-    implementation 'com.github.mobile-dev-pro:commons-ui:1.0.5'
+    implementation 'com.github.mobile-dev-pro:commons-ui:1.0.6'
 
     implementation project(":data")
 }
