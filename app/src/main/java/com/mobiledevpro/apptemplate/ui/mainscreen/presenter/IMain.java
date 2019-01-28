@@ -23,9 +23,5 @@ public interface IMain {
         void bindView(IMain.View view);
 
         void unbindView();
-
-        void onStartView();
-
-        void onStopView();
     }
 }

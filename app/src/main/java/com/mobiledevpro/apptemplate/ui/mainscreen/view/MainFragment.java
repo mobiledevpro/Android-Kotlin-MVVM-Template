@@ -49,27 +49,15 @@ public class MainFragment extends BaseFragment implements IMain.View {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onStart() {
+        super.onStart();
         mPresenter.bindView(this);
     }
 
     @Override
-    public void onDestroyView() {
-        mPresenter.unbindView();
-        super.onDestroyView();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        mPresenter.onStartView();
-    }
-
-    @Override
     public void onStop() {
+        mPresenter.unbindView();
         super.onStop();
-        mPresenter.onStopView();
     }
 
     @Override

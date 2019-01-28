@@ -24,14 +24,4 @@ public class MainPresenter implements IMain.Presenter {
     public void unbindView() {
         mView = null;
     }
-
-    @Override
-    public void onStartView() {
-
-    }
-
-    @Override
-    public void onStopView() {
-
-    }
 }
