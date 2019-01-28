@@ -109,7 +109,7 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
 
     //commons-ui
-    implementation 'com.github.mobile-dev-pro:commons-ui:1.0.7'
+    implementation 'com.github.mobile-dev-pro:commons-ui:1.0.8'
 
     //memory leak detection in debug
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'
