@@ -63,6 +63,18 @@ android {
             applicationId defaultConfig.applicationId
             versionCode 1
             versionName "1.0.0"
+
+            //it's for using the same flavors in modules/libraries
+            matchingFallbacks = ["production"]
+        }
+
+        demo {
+            applicationId defaultConfig.applicationId
+            versionCode 1
+            versionName "1.0.0-demo"
+
+            //it's for using the same flavors in modules/libraries
+            matchingFallbacks = ["demo"]
         }
     }
 
@@ -97,22 +109,25 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:preference-v7:$rootProject.supportLibraryVersion"
 
-    implementation("com.crashlytics.sdk.android:crashlytics:$rootProject.crashlyticsVersion@aar") {
-        transitive = true
-    }
+    implementation deps.appcompat
+    implementation deps.material
+    implementation deps.preference
 
-    implementation "com.jakewharton:butterknife:$butterKnifeVersion"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
+    implementation deps.butterknife
+    annotationProcessor deps.butterknifeCompiler
 
     //commons-ui
-    implementation 'com.github.mobile-dev-pro:commons-ui:1.0.8'
+    implementation deps.commonsUi
+
+    //Firebase
+    implementation deps.firebaseCore
+    implementation deps.firebasePerformance
+    implementation deps.crashlytics
 
     //memory leak detection in debug
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'
+    debugImplementation deps.leakcanaryDebug
+    releaseImplementation deps.leakcanaryRelease
 
     implementation project(":data")
 }

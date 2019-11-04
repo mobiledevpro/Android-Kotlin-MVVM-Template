@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_action_note_create"
+        android:title="Test 1"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_action_note_create1"
+        android:title="Test 2"
+        app:showAsAction="" />
+    <item
+        android:id="@+id/menu_action_note_create2"
+        android:title="Test 3"
+        app:showAsAction="" />
+    <item
+        android:id="@+id/menu_action_note_create3"
+        android:title="Test 4"
+        app:showAsAction="" />
+</menu>

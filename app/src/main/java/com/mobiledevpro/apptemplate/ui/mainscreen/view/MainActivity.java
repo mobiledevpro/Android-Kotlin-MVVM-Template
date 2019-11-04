@@ -1,11 +1,12 @@
 package com.mobiledevpro.apptemplate.ui.mainscreen.view;
 
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.mobiledevpro.apptemplate.R;
 import com.mobiledevpro.apptemplate.helper.FragmentsHelper;
 import com.mobiledevpro.commons.activity.BaseActivity;
+
+import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends BaseActivity {
 

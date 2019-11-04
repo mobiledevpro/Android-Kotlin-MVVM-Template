@@ -1,12 +1,12 @@
 package com.mobiledevpro.apptemplate.helper;
 
-import android.support.annotation.IdRes;
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-
 import com.mobiledevpro.apptemplate.R;
 import com.mobiledevpro.apptemplate.ui.mainscreen.view.MainFragment;
+
+import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 /**
  * Helper class for work with fragments

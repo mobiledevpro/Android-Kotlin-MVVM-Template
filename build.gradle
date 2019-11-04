@@ -6,7 +6,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.android.tools.build:gradle:3.5.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -26,13 +26,30 @@ task clean(type: Delete) {
 }
 
 ext {
-    // sdk and tools
     compileSdkVersion = 28
     minSdkVersion = 19
     targetSdkVersion = 28
 
-    // dependencies versions
-    supportLibraryVersion = '28.0.0'
-    butterKnifeVersion = '8.8.1'
-    crashlyticsVersion = '2.9.5'
+    appCompatVersion = "1.1.0"
+    materialVersion = '1.0.0'
+    commonsUiVersion = '1.0.14'
+    butterKnifeVersion = '10.1.0'
+    leakcanaryVersion = '1.6.1'
+    firebaseCoreVersion = '17.2.0'
+    firebasePerfVersion = '19.0.0'
+    crashlyticsVersion = '2.10.1'
+
+    deps = [
+            "appcompat"          : "androidx.appcompat:appcompat:$appCompatVersion",
+            "preference"         : "androidx.preference:preference:$appCompatVersion",
+            "material"           : "com.google.android.material:material:$materialVersion",
+            "commonsUi"          : "com.github.mobile-dev-pro:commons-ui:$commonsUiVersion",
+            "butterknife"        : "com.jakewharton:butterknife:$butterKnifeVersion",
+            "butterknifeCompiler": "com.jakewharton:butterknife-compiler:$butterKnifeVersion",
+            "leakcanaryDebug"    : "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion",
+            "leakcanaryRelease"  : "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanaryVersion",
+            "firebaseCore"       : "com.google.firebase:firebase-core:$firebaseCoreVersion",
+            "firebasePerformance": "com.google.firebase:firebase-perf:$firebasePerfVersion",
+            "crashlytics"        : "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion"
+    ]
 }

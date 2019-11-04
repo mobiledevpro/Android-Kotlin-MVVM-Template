@@ -1,13 +1,14 @@
 package com.mobiledevpro.apptemplate.ui.mainscreen.view;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.mobiledevpro.apptemplate.R;
 import com.mobiledevpro.apptemplate.ui.mainscreen.presenter.IMain;
 import com.mobiledevpro.apptemplate.ui.mainscreen.presenter.MainPresenter;
 import com.mobiledevpro.commons.fragment.BaseFragment;
+
+import androidx.annotation.Nullable;
 
 /**
  * Main fragment for main activity
@@ -36,6 +37,11 @@ public class MainFragment extends BaseFragment implements IMain.View {
     @Override
     protected int getLayoutResId() {
         return R.layout.fragment_main;
+    }
+
+    @Override
+    protected int getOptionsMenuResId() {
+        return R.menu.menu_question_notes_list;
     }
 
     @Override
