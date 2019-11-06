@@ -1,25 +1,13 @@
-buildscript {
-    repositories {
-        maven { url 'https://maven.fabric.io/public' }
-    }
-
-    dependencies {
-        classpath 'io.fabric.tools:gradle:1.+'
-    }
-}
-
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'io.fabric'
-
-repositories {
-    maven { url 'https://maven.fabric.io/public' }
-}
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.mobiledevpro.apptemplate"
+        applicationId "com.mobiledevpro.apptemplate.new"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         vectorDrawables.useSupportLibrary = true
@@ -114,6 +102,9 @@ dependencies {
     implementation deps.material
     implementation deps.preference
 
+    implementation deps.coreKtx
+    implementation deps.kotlin
+
     implementation deps.butterknife
     annotationProcessor deps.butterknifeCompiler
 
@@ -123,6 +114,7 @@ dependencies {
     //Firebase
     implementation deps.firebaseCore
     implementation deps.firebasePerformance
+    implementation deps.firebaseAnalytics
     implementation deps.crashlytics
 
     //memory leak detection in debug
@@ -131,3 +123,4 @@ dependencies {
 
     implementation project(":data")
 }
+apply plugin: 'com.google.gms.google-services'

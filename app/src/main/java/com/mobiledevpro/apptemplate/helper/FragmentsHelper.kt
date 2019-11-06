@@ -1,30 +1,26 @@
-package com.mobiledevpro.apptemplate.helper;
+package com.mobiledevpro.apptemplate.helper
 
-import com.mobiledevpro.apptemplate.R;
-import com.mobiledevpro.apptemplate.ui.mainscreen.view.MainFragment;
-
-import androidx.annotation.IdRes;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.annotation.IdRes
+import androidx.fragment.app.FragmentManager
+import com.mobiledevpro.apptemplate.R
+import com.mobiledevpro.apptemplate.ui.mainscreen.view.MainFragment
 
 /**
  * Helper class for work with fragments
- * <p>
+ *
+ *
  * Created by Dmitriy V. Chernysh
  * dmitriy.chernysh@gmail.com
- * <p>
- * https://fb.me/mobiledevpro/
- * <p>
+ *
+ *
+ * https://instagr.am/mobiledevpro/
+ *
+ *
  * #MobileDevPro
  */
 
-public class FragmentsHelper {
-    private static final String TAG_FRAGMENT_MAIN = "fragment.main";
-
-
-    private FragmentsHelper() {
-    }
+object FragmentsHelper {
+    private val TAG_FRAGMENT_MAIN = "fragment.main"
 
 
     /**
@@ -32,14 +28,14 @@ public class FragmentsHelper {
      *
      * @param fm FragmentManager
      */
-    public static void showMainFragment(@NonNull FragmentManager fm, @IdRes int containerResId) {
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.setAllowOptimization(false);
+    fun showMainFragment(fm: FragmentManager, @IdRes containerResId: Int) {
+        val ft = fm.beginTransaction()
+        ft.setAllowOptimization(false)
         ft.replace(
                 containerResId,
                 MainFragment.newInstance(),
                 TAG_FRAGMENT_MAIN
-        ).commit();
+        ).commit()
     }
 
     /**
@@ -47,9 +43,11 @@ public class FragmentsHelper {
      *
      * @param fm FragmentManager
      */
-    public static void showMainFragmentWithAnimation(FragmentManager fm, @IdRes int containerResId, boolean addToBackStack) {
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.setAllowOptimization(false);
+    fun showMainFragmentWithAnimation(fm: FragmentManager,
+                                      @IdRes containerResId: Int,
+                                      addToBackStack: Boolean) {
+        val ft = fm.beginTransaction()
+        ft.setAllowOptimization(false)
 
         if (addToBackStack) {
             ft.setCustomAnimations(
@@ -57,21 +55,21 @@ public class FragmentsHelper {
                     R.anim.base_anim_fragment_exit_slide_right,
                     R.anim.base_anim_fragment_pop_enter_slide_right,
                     R.anim.base_anim_fragment_pop_exit_slide_left
-            );
-            ft.addToBackStack(TAG_FRAGMENT_MAIN);
+            )
+            ft.addToBackStack(TAG_FRAGMENT_MAIN)
         } else {
             ft.setCustomAnimations(
                     0,
                     R.anim.base_anim_fragment_exit_slide_right,
                     R.anim.base_anim_fragment_pop_enter_slide_right,
                     0
-            );
+            )
         }
 
         ft.replace(
                 containerResId,
                 MainFragment.newInstance(),
                 TAG_FRAGMENT_MAIN
-        ).commit();
+        ).commit()
     }
 }
