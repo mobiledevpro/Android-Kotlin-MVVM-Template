@@ -108,6 +108,9 @@ dependencies {
     implementation deps.butterknife
     annotationProcessor deps.butterknifeCompiler
 
+    implementation deps.lifecycle
+    annotationProcessor deps.lifecycleCompiler
+
     //commons-ui
     implementation deps.commonsUi
 

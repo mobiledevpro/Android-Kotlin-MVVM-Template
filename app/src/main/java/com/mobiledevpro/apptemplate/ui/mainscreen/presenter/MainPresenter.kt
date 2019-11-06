@@ -1,7 +1,6 @@
 package com.mobiledevpro.apptemplate.ui.mainscreen.presenter
 
-import com.mobiledevpro.apptemplate.App
-import com.mobiledevpro.data.storage.PreferencesHelper
+import com.mobiledevpro.apptemplate.R
 
 /**
  * Presenter for main screen
@@ -14,18 +13,23 @@ import com.mobiledevpro.data.storage.PreferencesHelper
  * #MobileDevPro
  */
 
-class MainPresenter : IMain.Presenter {
+class MainPresenter
+constructor(view: IMain.View) : IMain.Presenter {
+    private var view: IMain.View? = null
 
-    private var mView: IMain.View? = null
-
-    override fun bindView(view: IMain.View) {
-        mView = view
-
-        PreferencesHelper.getInstance(App.appContext)
-                .something = "Test"
+    init {
+        this.view = view
     }
 
-    override fun unbindView() {
-        mView = null
+    override fun onStartView() {
+        showMessage()
+    }
+
+    override fun onStopView() {
+
+    }
+
+    private fun showMessage() {
+        view?.showToast(R.string.app_name)
     }
 }

@@ -53,6 +53,7 @@ ext {
     firebasePerfVersion = '19.0.0'
     crashlyticsVersion = '2.10.1'
     analyticsVersion = '17.2.1'
+    lifecycleVersion = '2.2.0-rc01'
 
     deps = [
             "appcompat"          : "androidx.appcompat:appcompat:$appCompatVersion",
@@ -68,6 +69,10 @@ ext {
             "crashlytics"        : "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion",
             "firebaseAnalytics"  : "com.google.firebase:firebase-analytics:$analyticsVersion",
             "coreKtx"            : "androidx.core:core-ktx:$coreKtxVersion",
-            "kotlin"             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+            "kotlin"             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
+            // ViewModel and LiveData
+            "lifecycle"          : "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
+            "lifecycleCompiler"  : "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
+
     ]
 }

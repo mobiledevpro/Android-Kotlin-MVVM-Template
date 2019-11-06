@@ -1,8 +1,12 @@
 package com.mobiledevpro.apptemplate.ui.mainscreen.presenter
 
+import androidx.annotation.StringRes
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
+
 /**
  * Interface for main screen
- *
  *
  * Created by Dmitriy V. Chernysh
  * dmitriy.chernysh@gmail.com
@@ -14,13 +18,15 @@ package com.mobiledevpro.apptemplate.ui.mainscreen.presenter
 
 interface IMain {
     interface View {
-        //  val activity : Activity
+        fun showToast(@StringRes msg: Int)
     }
 
-    interface Presenter {
+    interface Presenter : LifecycleObserver {
 
-        fun bindView(view: View)
+        @OnLifecycleEvent(Lifecycle.Event.ON_START)
+        fun onStartView()
 
-        fun unbindView()
+        @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+        fun onStopView()
     }
 }

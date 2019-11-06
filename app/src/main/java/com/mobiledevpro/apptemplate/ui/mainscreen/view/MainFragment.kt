@@ -3,6 +3,7 @@ package com.mobiledevpro.apptemplate.ui.mainscreen.view
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import com.crashlytics.android.Crashlytics
 import com.mobiledevpro.apptemplate.R
 import com.mobiledevpro.apptemplate.ui.mainscreen.presenter.IMain
@@ -25,9 +26,7 @@ import com.mobiledevpro.commons.fragment.BaseFragment
 
 class MainFragment : BaseFragment(), IMain.View {
 
-    private var mPresenter: IMain.Presenter? = null
-
-    //override val activity = getActivity() as Activity
+    private var presenter: IMain.Presenter? = null
 
     companion object {
 
@@ -66,17 +65,8 @@ class MainFragment : BaseFragment(), IMain.View {
     }
 
     override fun initPresenters() {
-        mPresenter = MainPresenter()
-    }
-
-    override fun onStart() {
-        super.onStart()
-        mPresenter!!.bindView(this)
-    }
-
-    override fun onStop() {
-        mPresenter!!.unbindView()
-        super.onStop()
+        presenter = MainPresenter(this)
+        lifecycle.addObserver(presenter as IMain.Presenter)
     }
 
     override fun getAppBarTitle(): Int {
@@ -85,6 +75,12 @@ class MainFragment : BaseFragment(), IMain.View {
 
     override fun getHomeAsUpIndicatorIcon(): Int {
         return R.drawable.ic_close_24dp
+    }
+
+    override fun showToast(msg: Int) {
+        Toast.makeText(activity,
+                activity?.resources?.getString(msg),
+                Toast.LENGTH_LONG).show()
     }
 
 }
