@@ -14,12 +14,7 @@ import com.mobiledevpro.apptemplate.R
  */
 
 class MainPresenter
-constructor(view: IMain.View) : IMain.Presenter {
-    private var view: IMain.View? = null
-
-    init {
-        this.view = view
-    }
+constructor(private val view: IMain.View) : IMain.Presenter {
 
     override fun onStartView() {
         showMessage()
@@ -30,6 +25,6 @@ constructor(view: IMain.View) : IMain.Presenter {
     }
 
     private fun showMessage() {
-        view?.showToast(R.string.app_name)
+        view.showToast(R.string.app_name)
     }
 }

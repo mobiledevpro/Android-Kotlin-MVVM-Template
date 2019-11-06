@@ -27,11 +27,10 @@ class App : Application() {
             // You should not init your app in this process.
             return
         }
-        LeakCanary.install(this)
 
-        if (sApp == null) {
-            sApp = this
-        }
+        sApp = this
+
+        LeakCanary.install(this)
 
         val crashlyticsKit = Crashlytics.Builder()
                 //.core(CrashlyticsCore.Builder().disabled(BuildConfig.DEBUG).build())
@@ -41,9 +40,9 @@ class App : Application() {
     }
 
     companion object {
-        private var sApp: App? = null
+        private lateinit var sApp: App
 
         val appContext: Context
-            get() = sApp!!.applicationContext
+            get() = sApp.applicationContext
     }
 }
