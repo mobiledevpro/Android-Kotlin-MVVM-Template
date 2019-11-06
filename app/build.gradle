@@ -89,7 +89,7 @@ android {
                         "v" + variant.productFlavors[0].versionName + "_" +
                         "build" + variant.productFlavors[0].versionCode + "-" +
                         variant.buildType.name +
-                        ".apk";
+                        ".apk"
             }
         }
     }

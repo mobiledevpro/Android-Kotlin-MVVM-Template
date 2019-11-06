@@ -3,7 +3,7 @@ package com.mobiledevpro.apptemplate.ui.mainscreen.view
 import android.view.View
 import androidx.appcompat.widget.Toolbar
 import com.mobiledevpro.apptemplate.R
-import com.mobiledevpro.apptemplate.helper.FragmentsHelper
+import com.mobiledevpro.apptemplate.helper.showMainFragment
 import com.mobiledevpro.commons.activity.BaseActivity
 
 class MainActivity : BaseActivity() {
@@ -23,6 +23,6 @@ class MainActivity : BaseActivity() {
 
     override fun populateView(layoutView: View) {
         //work with view
-        FragmentsHelper.showMainFragment(mFragmentManager, R.id.fragment_container)
+        showMainFragment(mFragmentManager, R.id.fragment_container)
     }
 }

@@ -26,7 +26,7 @@ import com.mobiledevpro.commons.fragment.BaseFragment
 
 class MainFragment : BaseFragment(), IMain.View {
 
-    private var presenter: IMain.Presenter? = null
+    private lateinit var presenter: IMain.Presenter
 
     companion object {
 
@@ -40,17 +40,13 @@ class MainFragment : BaseFragment(), IMain.View {
         }
     }
 
-    override fun getLayoutResId(): Int {
-        return R.layout.fragment_main
-    }
+    override fun getLayoutResId(): Int = R.layout.fragment_main
 
 
-    override fun getOptionsMenuResId(): Int {
-        return R.menu.menu_question_notes_list
-    }
+    override fun getOptionsMenuResId(): Int = R.menu.menu_question_notes_list
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean =
+        when (item.itemId) {
             R.id.menu_action_note_create -> {
                 Crashlytics.logException(Throwable("Tap on menu Test1"))
                 true
@@ -58,29 +54,23 @@ class MainFragment : BaseFragment(), IMain.View {
             else -> super.onOptionsItemSelected(item)
         }
 
-    }
-
-    override fun populateView(layoutView: View, savedInstanceState: Bundle?): View {
-        return layoutView
-    }
+    override fun populateView(layoutView: View, savedInstanceState: Bundle?): View = layoutView
 
     override fun initPresenters() {
         presenter = MainPresenter(this)
-        lifecycle.addObserver(presenter as IMain.Presenter)
+        lifecycle.addObserver(presenter)
     }
 
-    override fun getAppBarTitle(): Int {
-        return R.string.app_name_main
-    }
+    override fun getAppBarTitle(): Int = R.string.app_name_main
 
-    override fun getHomeAsUpIndicatorIcon(): Int {
-        return R.drawable.ic_close_24dp
-    }
+    override fun getHomeAsUpIndicatorIcon(): Int = R.drawable.ic_close_24dp
 
     override fun showToast(msg: Int) {
-        Toast.makeText(activity,
-                activity?.resources?.getString(msg),
-                Toast.LENGTH_LONG).show()
+        Toast.makeText(
+            requireContext(),
+            getString(msg),
+            Toast.LENGTH_LONG
+        ).show()
     }
 
 }
