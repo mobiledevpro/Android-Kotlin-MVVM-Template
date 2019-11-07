@@ -3,6 +3,7 @@ package com.mobiledevpro.apptemplate.ui.mainscreen.presenter
 import androidx.annotation.StringRes
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.OnLifecycleEvent
 
 /**
@@ -28,5 +29,8 @@ interface IMain {
 
         @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
         fun onStopView()
+
+        @OnLifecycleEvent(Lifecycle.Event.ON_ANY)
+        fun onLifecycleEventTest(source: LifecycleOwner, event: Lifecycle.Event)
     }
 }

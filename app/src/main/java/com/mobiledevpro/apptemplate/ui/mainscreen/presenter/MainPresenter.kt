@@ -1,6 +1,11 @@
 package com.mobiledevpro.apptemplate.ui.mainscreen.presenter
 
+import android.os.Handler
+import android.util.Log
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
 import com.mobiledevpro.apptemplate.R
+import com.mobiledevpro.data.LOG_TAG_DEBUG
 
 /**
  * Presenter for main screen
@@ -24,7 +29,15 @@ constructor(private val view: IMain.View) : IMain.Presenter {
 
     }
 
+    override fun onLifecycleEventTest(source: LifecycleOwner, event: Lifecycle.Event) {
+        Log.d(LOG_TAG_DEBUG, "LIFE EVENT: ${event.name}")
+    }
+
     private fun showMessage() {
-        view.showToast(R.string.app_name)
+
+        Handler().postDelayed({
+            view.showToast(R.string.app_name)
+        }, 5000)
+
     }
 }
