@@ -1,10 +1,8 @@
 package com.mobiledevpro.apptemplate.ui.mainscreen.presenter
 
-import android.os.Handler
 import android.util.Log
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
-import com.mobiledevpro.apptemplate.R
 import com.mobiledevpro.data.LOG_TAG_DEBUG
 
 /**
@@ -34,10 +32,10 @@ constructor(private val view: IMain.View) : IMain.Presenter {
     }
 
     private fun showMessage() {
-
+/*
         Handler().postDelayed({
             view.showToast(R.string.app_name)
         }, 5000)
-
+*/
     }
 }

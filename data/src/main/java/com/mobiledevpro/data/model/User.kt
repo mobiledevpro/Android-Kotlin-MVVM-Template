@@ -1,6 +1,6 @@
 package com.mobiledevpro.data.model
 
-class UserData(name: String) {
+class User {
 
     var name: String
         set(name) {

@@ -1,6 +1,6 @@
 package com.mobiledevpro.data.repository.useredit
 
-import com.mobiledevpro.data.model.UserData
+import com.mobiledevpro.data.model.User
 import io.reactivex.Single
 
 /**
@@ -15,7 +15,7 @@ import io.reactivex.Single
  */
 interface IUserEditRepository {
 
-    fun getUser(): Single<UserData>
+    fun getUser(): Single<User>
 
-    fun setUser(user: UserData): Single<Boolean>
+    fun setUser(user: User): Single<Boolean>
 }

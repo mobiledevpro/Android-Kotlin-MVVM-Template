@@ -1,5 +1,8 @@
 package com.mobiledevpro.apptemplate.ui.mainscreen.presenter
 
+import android.util.Log
+import com.mobiledevpro.data.LOG_TAG_DEBUG
+
 /**
  * Presenter for UserView screen
  *
@@ -12,8 +15,10 @@ class UserViewPresenter
 constructor(view: IUserView.View) : IUserView.Presenter {
 
     override fun onStartView() {
+        Log.d(LOG_TAG_DEBUG, "UserViewPresenter START_VIEW")
     }
 
     override fun onStopView() {
+        Log.d(LOG_TAG_DEBUG, "UserViewPresenter STOP_VIEW")
     }
 }

@@ -3,7 +3,7 @@ package com.mobiledevpro.data.repository.useredit
 import android.content.Context
 import android.util.Log
 import com.mobiledevpro.data.LOG_TAG_DEBUG
-import com.mobiledevpro.data.model.UserData
+import com.mobiledevpro.data.model.User
 import com.mobiledevpro.data.storage.PreferencesHelper
 import io.reactivex.Single
 
@@ -20,7 +20,7 @@ import io.reactivex.Single
 class UserEditRepository(private val appContext: Context) : IUserEditRepository {
 
 
-    override fun setUser(user: UserData): Single<Boolean> {
+    override fun setUser(user: User): Single<Boolean> {
         return Single.create { emitter ->
             Log.d(LOG_TAG_DEBUG, "User name: " + user.name)
 
@@ -31,13 +31,12 @@ class UserEditRepository(private val appContext: Context) : IUserEditRepository 
         }
     }
 
-    override fun getUser(): Single<UserData> {
+    override fun getUser(): Single<User> {
         return Single.create { emitter ->
             val userName: String? = PreferencesHelper.getInstance(appContext).something
-
-            emitter.onSuccess(
-                    UserData(userName ?: "")
-            )
+            val user: User = User()
+            user.name = userName ?: ""
+            emitter.onSuccess(user)
         }
     }
 }

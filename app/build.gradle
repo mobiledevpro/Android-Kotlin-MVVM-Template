@@ -112,6 +112,7 @@ dependencies {
     implementation deps.butterknife
     kapt deps.butterknifeCompiler
 
+    //Livedata
     implementation deps.lifecycle
     kapt deps.lifecycleCompiler
 

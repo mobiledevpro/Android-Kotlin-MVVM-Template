@@ -1,6 +1,7 @@
 package com.mobiledevpro.apptemplate.ui.mainscreen.presenter
 
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 
 /**
@@ -13,15 +14,18 @@ import androidx.lifecycle.OnLifecycleEvent
  * #MobileDevPro
  */
 interface IUserEdit {
-    interface View
+    interface View {
+        fun showShortMessage(txt: String)
+    }
 
-    interface Presenter {
+    interface Presenter : LifecycleObserver {
+
         @OnLifecycleEvent(Lifecycle.Event.ON_START)
         fun onStartView()
 
         @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
         fun onStopView()
 
-        fun updateUserName(name: String)
+        fun updateUserName(name: String?)
     }
 }

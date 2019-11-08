@@ -1,7 +1,7 @@
 package com.mobiledevpro.interactor.usereditscreen
 
 import android.content.Context
-import com.mobiledevpro.data.model.UserData
+import com.mobiledevpro.data.model.User
 import com.mobiledevpro.data.repository.useredit.IUserEditRepository
 import com.mobiledevpro.data.repository.useredit.UserEditRepository
 import io.reactivex.Single
@@ -29,7 +29,7 @@ class UserEditInteractor(appContext: Context) : IUserEditInteractor {
 
     override fun updateUser(name: String): Single<Boolean> {
         return repository.getUser()
-                .flatMap { user: UserData ->
+                .flatMap { user: User ->
                     //   user.name = name
                     repository.setUser(user)
                 }
