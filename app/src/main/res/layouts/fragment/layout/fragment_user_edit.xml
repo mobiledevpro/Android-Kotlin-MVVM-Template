@@ -1,30 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:padding="@dimen/activity_horizontal_margin">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="First Fragment"
-        android:textColor="@color/colorTextSecondary"
-        android:textSize="14sp" />
+    <data>
 
-    <EditText
-        android:id="@+id/edt_name"
+        <import type="com.mobiledevpro.apptemplate.helper.TypeConverter" />
+
+        <variable
+            name="userDataModel"
+            type="com.mobiledevpro.apptemplate.uimodel.UserDataViewModel" />
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_centerInParent="true"
-        android:hint="Enter user name" />
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First Fragment"
+            android:textColor="@color/colorTextSecondary"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Enter user name"
+                android:inputType="textCapSentences"
+                android:text="@={userDataModel.userName}" />
 
 
-    <Button
-        android:id="@+id/btn_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Save" />
-</RelativeLayout>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Enter age"
+                android:inputType="number"
+                android:text="@={`` + userDataModel.userAge}" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:text="Save"
+                android:onClick="@{() -> userDataModel.updateUser()}" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

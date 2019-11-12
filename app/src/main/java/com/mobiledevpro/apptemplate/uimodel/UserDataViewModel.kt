@@ -1,7 +1,6 @@
 package com.mobiledevpro.apptemplate.uimodel
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mobiledevpro.data.LOG_TAG_DEBUG
@@ -18,14 +17,14 @@ import com.mobiledevpro.data.LOG_TAG_DEBUG
  */
 class UserDataViewModel : ViewModel() {
 
-    private val _userDataLive = MutableLiveData<String>()
-    private val userDataLive: LiveData<String?>
-        get() = _userDataLive
+    val userName = MutableLiveData<String>()
+    val userAge = MutableLiveData<Int>()
 
     init {
         Log.d(LOG_TAG_DEBUG, "UserDataViewModel created!")
         //init all the data here
-        _userDataLive.value = "John"
+        userName.value = "John"
+        userAge.value = 30
     }
 
     override fun onCleared() {
@@ -33,16 +32,11 @@ class UserDataViewModel : ViewModel() {
         Log.d(LOG_TAG_DEBUG, "UserDataViewModel cleared!")
     }
 
-    fun setUserName(name: String) {
 
-        /*  val user = _userDataLive.value
-          user?.name = name
-          _userDataLive.value = user ?: User()*/
+    fun updateUser() {
+        var name = userName.value
+        var age = userAge.value
 
-        _userDataLive.value = name
-
-        Log.d(LOG_TAG_DEBUG, "UserDataViewModel name: ${name}")
+        //TODO: call interactor and then repo
     }
-
-    fun getUserDataObserver(): LiveData<String?> = userDataLive
 }

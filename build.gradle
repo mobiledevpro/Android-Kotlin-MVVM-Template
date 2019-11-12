@@ -50,7 +50,6 @@ ext {
     appCompatVersion = "1.1.0"
     materialVersion = '1.0.0'
     commonsUiVersion = '1.0.14'
-    butterKnifeVersion = '10.1.0'
     leakcanaryVersion = '1.6.1'
     firebaseCoreVersion = '17.2.0'
     firebasePerfVersion = '19.0.0'
@@ -68,8 +67,6 @@ ext {
             "preference"         : "androidx.preference:preference:$appCompatVersion",
             "material"           : "com.google.android.material:material:$materialVersion",
             "commonsUi"          : "com.github.mobile-dev-pro:commons-ui:$commonsUiVersion",
-            "butterknife"        : "com.jakewharton:butterknife:$butterKnifeVersion",
-            "butterknifeCompiler": "com.jakewharton:butterknife-compiler:$butterKnifeVersion",
             "leakcanaryDebug"    : "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion",
             "leakcanaryRelease"  : "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanaryVersion",
             "firebaseCore"       : "com.google.firebase:firebase-core:$firebaseCoreVersion",

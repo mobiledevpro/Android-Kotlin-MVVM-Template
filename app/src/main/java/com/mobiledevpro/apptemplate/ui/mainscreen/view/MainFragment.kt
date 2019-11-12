@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import butterknife.ButterKnife
 import com.crashlytics.android.Crashlytics
 import com.mobiledevpro.apptemplate.R
 import com.mobiledevpro.apptemplate.helper.showUserEditFragment
@@ -58,7 +57,6 @@ class MainFragment : BaseFragment(), IMain.View {
             }
 
     override fun populateView(layoutView: View, savedInstanceState: Bundle?): View {
-        ButterKnife.bind(this, layoutView)
 
         showUserEditLayout()
         showUserViewLayout()

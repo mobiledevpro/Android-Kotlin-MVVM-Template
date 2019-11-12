@@ -2,14 +2,10 @@ package com.mobiledevpro.apptemplate.ui.mainscreen.view
 
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import butterknife.BindView
-import butterknife.ButterKnife
-import butterknife.Unbinder
+import androidx.lifecycle.ViewModelProvider
 import com.mobiledevpro.apptemplate.R
+import com.mobiledevpro.apptemplate.databinding.FragmentUserViewBinding
 import com.mobiledevpro.apptemplate.ui.mainscreen.presenter.IUserView
 import com.mobiledevpro.apptemplate.ui.mainscreen.presenter.UserViewPresenter
 import com.mobiledevpro.apptemplate.uimodel.UserDataViewModel
@@ -27,13 +23,10 @@ import com.mobiledevpro.commons.fragment.BaseFragment
  */
 class UserViewFragment : BaseFragment(), IUserView.View {
 
-    @BindView(R.id.tv_user_name)
-    lateinit var tvUserName: TextView
-
-    private lateinit var butterKnife: Unbinder
     private lateinit var presenter: IUserView.Presenter
 
-    private lateinit var viewModel: UserDataViewModel
+    private lateinit var userViewModel: UserDataViewModel
+    private lateinit var binding: FragmentUserViewBinding
 
     companion object {
         fun newInstance(): UserViewFragment {
@@ -46,33 +39,23 @@ class UserViewFragment : BaseFragment(), IUserView.View {
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProviders
-                .of(activity as FragmentActivity)
-                .get(UserDataViewModel::class.java)
-    }
-
     override fun getLayoutResId(): Int = R.layout.fragment_user_view
 
     override fun populateView(view: View, bundle: Bundle?): View {
-        butterKnife = ButterKnife.bind(this, view)
-        viewModel.getUserDataObserver().observe(activity as FragmentActivity, Observer {
-            tvUserName.text = it
-        })
-
+        binding = FragmentUserViewBinding.bind(view)
+                .apply {
+                    userDataModel = userViewModel
+                }
+        binding.lifecycleOwner = viewLifecycleOwner
         return view
     }
 
     override fun initPresenters() {
+        userViewModel = ViewModelProvider(activity as FragmentActivity)
+                .get(UserDataViewModel::class.java)
+
         presenter = UserViewPresenter(this)
         lifecycle.addObserver(presenter)
     }
-
-    override fun onDestroy() {
-        butterKnife.unbind()
-        super.onDestroy()
-    }
-
 
 }

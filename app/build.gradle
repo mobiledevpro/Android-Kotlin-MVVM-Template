@@ -95,6 +95,10 @@ android {
             }
         }
     }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -108,9 +112,6 @@ dependencies {
 
     implementation deps.coreKtx
     implementation deps.kotlin
-
-    implementation deps.butterknife
-    kapt deps.butterknifeCompiler
 
     //Livedata
     implementation deps.lifecycle
