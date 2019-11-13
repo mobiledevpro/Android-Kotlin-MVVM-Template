@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import com.mobiledevpro.apptemplate.R
+import com.mobiledevpro.apptemplate.ViewModelFactory
 import com.mobiledevpro.apptemplate.databinding.FragmentUserEditBinding
 import com.mobiledevpro.apptemplate.ui.mainscreen.presenter.IUserEdit
 import com.mobiledevpro.apptemplate.ui.mainscreen.presenter.UserEditPresenter
@@ -52,7 +53,10 @@ class UserEditFragment : BaseFragment(), IUserEdit.View {
     }
 
     override fun initPresenters() {
-        userViewModel = ViewModelProvider(activity as FragmentActivity)
+        val app = requireNotNull(activity).application
+        val viewModelFactory = ViewModelFactory(app)
+
+        userViewModel = ViewModelProvider(activity as FragmentActivity, viewModelFactory)
                 .get(UserDataViewModel::class.java)
 
         presenter = UserEditPresenter(this)

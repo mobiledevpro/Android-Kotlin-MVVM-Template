@@ -1,10 +1,15 @@
 package com.mobiledevpro.data.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "user")
 class User {
 
-    var name: String
-        set(name) {
-            this.name = name
-        }
-        get() = this.name
+    @PrimaryKey
+    var id: Int = 0
+
+    var name: String = ""
+
+    var age: Int = 0
 }

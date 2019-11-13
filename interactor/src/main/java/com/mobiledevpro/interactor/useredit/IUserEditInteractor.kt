@@ -1,11 +1,11 @@
-package com.mobiledevpro.data.repository.useredit
+package com.mobiledevpro.interactor.useredit
 
 import com.mobiledevpro.data.model.User
 import io.reactivex.Observable
 import io.reactivex.Single
 
 /**
- * Repository for UserEdit screen
+ * Interactor for UserEdit screen
  *
  *
  * Created by Dmitriy Chernysh on 11/7/19.
@@ -14,11 +14,12 @@ import io.reactivex.Single
  * https://instagr.am/mobiledevpro
  * #MobileDevPro
  */
-interface IUserEditRepository {
+interface IUserEditInteractor {
 
-    //fun getUserLiveData(): LiveData<User>
+    //  fun getUserData() : LiveData<User>
 
     fun getUserObservable(): Observable<User>
 
-    fun setUser(user: User): Single<Boolean>
+    fun updateUser(name: String,
+                   age: Int): Single<Boolean>
 }

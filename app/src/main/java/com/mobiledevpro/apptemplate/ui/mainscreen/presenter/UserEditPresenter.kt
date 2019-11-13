@@ -3,8 +3,8 @@ package com.mobiledevpro.apptemplate.ui.mainscreen.presenter
 import android.util.Log
 import com.mobiledevpro.apptemplate.App
 import com.mobiledevpro.data.LOG_TAG_DEBUG
-import com.mobiledevpro.interactor.usereditscreen.IUserEditInteractor
-import com.mobiledevpro.interactor.usereditscreen.UserEditInteractor
+import com.mobiledevpro.interactor.useredit.IUserEditInteractor
+import com.mobiledevpro.interactor.useredit.UserEditInteractor
 
 /**
  * Presenter for UserEdit screen

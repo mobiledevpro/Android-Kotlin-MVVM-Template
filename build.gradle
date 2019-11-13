@@ -60,6 +60,7 @@ ext {
     rxAndroidVersion = '2.0.2'
     rxKotlinVersion = '2.4.0'
     multidexVersion = '2.0.1'
+    roomDatabaseVersion = '2.2.1'
 
     deps = [
             "multidex"           : "androidx.multidex:multidex:$multidexVersion",
@@ -80,6 +81,12 @@ ext {
             "lifecycleCompiler"  : "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion",
             //Rx
             "rxAndroid"          : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
-            "rxKotlin"           : "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
+            "rxKotlin"           : "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion",
+            //Room
+            "room"               : "androidx.room:room-runtime:$roomDatabaseVersion",
+            "roomKtx"            : "androidx.room:room-ktx:$roomDatabaseVersion",
+            "roomCompiler"       : "androidx.room:room-compiler:$roomDatabaseVersion",
+            "roomRx"             : "androidx.room:room-rxjava2:$roomDatabaseVersion"
+
     ]
 }
