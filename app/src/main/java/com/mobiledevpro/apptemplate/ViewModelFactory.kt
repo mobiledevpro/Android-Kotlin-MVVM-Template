@@ -3,7 +3,7 @@ package com.mobiledevpro.apptemplate
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.mobiledevpro.apptemplate.uimodel.UserDataViewModel
+import com.mobiledevpro.apptemplate.ui.mainscreen.viewmodel.UserDataViewModel
 
 /**
  * Factory for View Models

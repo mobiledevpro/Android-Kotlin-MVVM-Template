@@ -5,10 +5,9 @@ import android.view.View
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import com.mobiledevpro.apptemplate.R
+import com.mobiledevpro.apptemplate.ViewModelFactory
 import com.mobiledevpro.apptemplate.databinding.FragmentUserViewBinding
-import com.mobiledevpro.apptemplate.ui.mainscreen.presenter.IUserView
-import com.mobiledevpro.apptemplate.ui.mainscreen.presenter.UserViewPresenter
-import com.mobiledevpro.apptemplate.uimodel.UserDataViewModel
+import com.mobiledevpro.apptemplate.ui.mainscreen.viewmodel.UserDataViewModel
 import com.mobiledevpro.commons.fragment.BaseFragment
 
 /**
@@ -21,9 +20,7 @@ import com.mobiledevpro.commons.fragment.BaseFragment
  * https://instagr.am/mobiledevpro
  * #MobileDevPro
  */
-class UserViewFragment : BaseFragment(), IUserView.View {
-
-    private lateinit var presenter: IUserView.Presenter
+class UserViewFragment : BaseFragment() {
 
     private lateinit var userViewModel: UserDataViewModel
     private lateinit var binding: FragmentUserViewBinding
@@ -51,11 +48,13 @@ class UserViewFragment : BaseFragment(), IUserView.View {
     }
 
     override fun initPresenters() {
-        userViewModel = ViewModelProvider(activity as FragmentActivity)
-                .get(UserDataViewModel::class.java)
+        //init view model instead of presenter
+        val app = requireNotNull(activity).application
+        val viewModelFactory = ViewModelFactory(app)
 
-        presenter = UserViewPresenter(this)
-        lifecycle.addObserver(presenter)
+        //init ViewModel for this fragment
+        userViewModel = ViewModelProvider(activity as FragmentActivity, viewModelFactory)
+                .get(UserDataViewModel::class.java)
     }
 
 }

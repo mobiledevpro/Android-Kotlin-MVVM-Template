@@ -1,7 +1,6 @@
 package com.mobiledevpro.apptemplate
 
 import android.app.Application
-import android.content.Context
 import com.crashlytics.android.Crashlytics
 import com.crashlytics.android.core.CrashlyticsCore
 import com.squareup.leakcanary.LeakCanary
@@ -28,8 +27,6 @@ class App : Application() {
             return
         }
 
-        sApp = this
-
         LeakCanary.install(this)
 
         val crashlyticsKit = Crashlytics.Builder()
@@ -37,12 +34,5 @@ class App : Application() {
                 .core(CrashlyticsCore.Builder().build())
                 .build()
         Fabric.with(this, crashlyticsKit)
-    }
-
-    companion object {
-        private lateinit var sApp: App
-
-        val appContext: Context
-            get() = sApp.applicationContext
     }
 }

@@ -1,4 +1,4 @@
-package com.mobiledevpro.apptemplate.uimodel
+package com.mobiledevpro.apptemplate.ui.mainscreen.viewmodel
 
 import android.app.Application
 import android.util.Log
@@ -30,6 +30,9 @@ class UserDataViewModel(app: Application) : AndroidViewModel(app) {
     private var interactor: IUserEditInteractor
     private var subscriptions = CompositeDisposable()
 
+    /**
+     * LifeCycle-aware
+     */
     init {
         Log.d(LOG_TAG_DEBUG, "UserDataViewModel created!")
         //init all the data here
@@ -45,6 +48,9 @@ class UserDataViewModel(app: Application) : AndroidViewModel(app) {
 
     }
 
+    /**
+     * LifeCycle-aware
+     */
     override fun onCleared() {
         super.onCleared()
         subscriptions.dispose()
@@ -53,6 +59,9 @@ class UserDataViewModel(app: Application) : AndroidViewModel(app) {
     }
 
 
+    /**
+     * It calls for xml
+     */
     fun updateUser() {
         val disposable: Disposable =
                 interactor.updateUser(userName.value ?: "", userAge.value?.toInt() ?: 0)

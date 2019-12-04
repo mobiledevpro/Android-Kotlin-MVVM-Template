@@ -24,7 +24,7 @@ android {
     }
 
     publishNonDefault true
-    flavorDimensions "dim"
+    flavorDimensions "default"
     productFlavors {
         production {
         }

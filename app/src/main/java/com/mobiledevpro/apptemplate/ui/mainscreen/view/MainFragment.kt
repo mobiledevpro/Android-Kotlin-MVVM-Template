@@ -3,13 +3,10 @@ package com.mobiledevpro.apptemplate.ui.mainscreen.view
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import com.crashlytics.android.Crashlytics
 import com.mobiledevpro.apptemplate.R
 import com.mobiledevpro.apptemplate.helper.showUserEditFragment
 import com.mobiledevpro.apptemplate.helper.showUserViewFragment
-import com.mobiledevpro.apptemplate.ui.mainscreen.presenter.IMain
-import com.mobiledevpro.apptemplate.ui.mainscreen.presenter.MainPresenter
 import com.mobiledevpro.commons.fragment.BaseFragment
 
 /**
@@ -26,9 +23,7 @@ import com.mobiledevpro.commons.fragment.BaseFragment
  * #MobileDevPro
  */
 
-class MainFragment : BaseFragment(), IMain.View {
-
-    private lateinit var presenter: IMain.Presenter
+class MainFragment : BaseFragment() {
 
     companion object {
 
@@ -65,25 +60,15 @@ class MainFragment : BaseFragment(), IMain.View {
     }
 
     override fun initPresenters() {
-        presenter = MainPresenter(this)
-        lifecycle.addObserver(presenter)
+        //do nothing
     }
 
     override fun getAppBarTitle(): Int = R.string.app_name_main
 
     override fun getHomeAsUpIndicatorIcon(): Int = R.drawable.ic_close_24dp
 
-    override fun showToast(msg: Int) {
-        Toast.makeText(
-                requireContext(),
-                getString(msg),
-                Toast.LENGTH_LONG
-        ).show()
-    }
-
     private fun showUserEditLayout() {
         showUserEditFragment(childFragmentManager, R.id.fragment_container_one)
-
     }
 
 

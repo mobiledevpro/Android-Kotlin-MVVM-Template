@@ -2,15 +2,12 @@ package com.mobiledevpro.apptemplate.ui.mainscreen.view
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import com.mobiledevpro.apptemplate.R
 import com.mobiledevpro.apptemplate.ViewModelFactory
 import com.mobiledevpro.apptemplate.databinding.FragmentUserEditBinding
-import com.mobiledevpro.apptemplate.ui.mainscreen.presenter.IUserEdit
-import com.mobiledevpro.apptemplate.ui.mainscreen.presenter.UserEditPresenter
-import com.mobiledevpro.apptemplate.uimodel.UserDataViewModel
+import com.mobiledevpro.apptemplate.ui.mainscreen.viewmodel.UserDataViewModel
 import com.mobiledevpro.commons.fragment.BaseFragment
 
 /**
@@ -23,9 +20,7 @@ import com.mobiledevpro.commons.fragment.BaseFragment
  * https://instagr.am/mobiledevpro
  * #MobileDevPro
  */
-class UserEditFragment : BaseFragment(), IUserEdit.View {
-
-    private lateinit var presenter: IUserEdit.Presenter
+class UserEditFragment : BaseFragment() {
 
     private lateinit var userViewModel: UserDataViewModel
     private lateinit var binding: FragmentUserEditBinding
@@ -44,6 +39,7 @@ class UserEditFragment : BaseFragment(), IUserEdit.View {
     override fun getLayoutResId(): Int = R.layout.fragment_user_edit
 
     override fun populateView(view: View, bundle: Bundle?): View {
+        //databinding
         binding = FragmentUserEditBinding.bind(view)
                 .apply {
                     userDataModel = userViewModel
@@ -53,17 +49,12 @@ class UserEditFragment : BaseFragment(), IUserEdit.View {
     }
 
     override fun initPresenters() {
+        //init view model instead of presenter
         val app = requireNotNull(activity).application
         val viewModelFactory = ViewModelFactory(app)
 
+        //init ViewModel for this fragment
         userViewModel = ViewModelProvider(activity as FragmentActivity, viewModelFactory)
                 .get(UserDataViewModel::class.java)
-
-        presenter = UserEditPresenter(this)
-        lifecycle.addObserver(presenter)
-    }
-
-    override fun showShortMessage(txt: String) {
-        Toast.makeText(activity, txt, Toast.LENGTH_SHORT).show()
     }
 }

@@ -47,9 +47,10 @@ android {
         }
     }
 
-    flavorDimensions "dim"
+    flavorDimensions "default"
     productFlavors {
         production {
+            dimension "default"
             applicationId defaultConfig.applicationId
             versionCode 1
             versionName "1.0.0"
@@ -59,6 +60,7 @@ android {
         }
 /*
         demo {
+            dimension "default"
             applicationId defaultConfig.applicationId
             versionCode 1
             versionName "1.0.0-demo"
