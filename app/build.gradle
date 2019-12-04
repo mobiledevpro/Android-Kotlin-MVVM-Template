@@ -47,7 +47,7 @@ android {
         }
     }
 
-    flavorDimensions "prod"
+    flavorDimensions "dim"
     productFlavors {
         production {
             applicationId defaultConfig.applicationId
@@ -57,7 +57,7 @@ android {
             //it's for using the same flavors in modules/libraries
             matchingFallbacks = ["production"]
         }
-
+/*
         demo {
             applicationId defaultConfig.applicationId
             versionCode 1
@@ -65,7 +65,7 @@ android {
 
             //it's for using the same flavors in modules/libraries
             matchingFallbacks = ["demo"]
-        }
+        }*/
     }
 
     sourceSets {
@@ -82,7 +82,7 @@ android {
         }
     }
 
-    //generate apk with custom name
+    //set custom name to apk file
     android.applicationVariants.all { variant ->
         variant.outputs.all { output ->
             def outputFile = output.outputFile
