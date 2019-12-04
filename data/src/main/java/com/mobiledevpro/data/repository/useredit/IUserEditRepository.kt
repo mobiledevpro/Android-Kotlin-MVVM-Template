@@ -16,7 +16,7 @@ import io.reactivex.Single
  */
 interface IUserEditRepository {
 
-    //fun getUserLiveData(): LiveData<User>
+    fun getUser(): Single<User>
 
     fun getUserObservable(): Observable<User>
 

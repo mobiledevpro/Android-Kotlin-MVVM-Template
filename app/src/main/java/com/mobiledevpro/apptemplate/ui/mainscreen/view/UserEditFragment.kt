@@ -2,8 +2,13 @@ package com.mobiledevpro.apptemplate.ui.mainscreen.view
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.mobiledevpro.apptemplate.Event
 import com.mobiledevpro.apptemplate.R
 import com.mobiledevpro.apptemplate.ViewModelFactory
 import com.mobiledevpro.apptemplate.databinding.FragmentUserEditBinding
@@ -56,5 +61,29 @@ class UserEditFragment : BaseFragment() {
         //init ViewModel for this fragment
         userViewModel = ViewModelProvider(activity as FragmentActivity, viewModelFactory)
                 .get(UserDataViewModel::class.java)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        //observe toast messages
+        setupToastMessages(this,
+                userViewModel.showToastEvent,
+                Toast.LENGTH_SHORT)
+    }
+
+    /**
+     * Observe on toast messages
+     */
+    private fun setupToastMessages(lifecycleOwner: LifecycleOwner,
+                                   toastEvent: LiveData<Event<String>>,
+                                   timeLength: Int) {
+
+        toastEvent.observe(lifecycleOwner, Observer {
+            it.getContentIfNotHandled()?.let {
+                Toast.makeText(context, it, timeLength).show()
+            }
+        })
+
     }
 }

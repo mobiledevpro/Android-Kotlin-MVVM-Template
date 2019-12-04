@@ -16,8 +16,6 @@ import io.reactivex.Single
  */
 interface IUserEditInteractor {
 
-    //  fun getUserData() : LiveData<User>
-
     fun getUserObservable(): Observable<User>
 
     fun updateUser(name: String,

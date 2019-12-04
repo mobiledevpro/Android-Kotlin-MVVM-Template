@@ -3,9 +3,10 @@ package com.mobiledevpro.apptemplate.ui.mainscreen.viewmodel
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.mobiledevpro.apptemplate.Event
 import com.mobiledevpro.data.LOG_TAG_DEBUG
-import com.mobiledevpro.data.LOG_TAG_ERROR
 import com.mobiledevpro.interactor.useredit.IUserEditInteractor
 import com.mobiledevpro.interactor.useredit.UserEditInteractor
 import io.reactivex.disposables.CompositeDisposable
@@ -27,6 +28,9 @@ class UserDataViewModel(app: Application) : AndroidViewModel(app) {
     val userName = MutableLiveData<String>()
     val userAge = MutableLiveData<String>()
 
+    private val _showToastEvent = MutableLiveData<Event<String>>()
+    val showToastEvent: LiveData<Event<String>> = _showToastEvent
+
     private var interactor: IUserEditInteractor
     private var subscriptions = CompositeDisposable()
 
@@ -39,6 +43,7 @@ class UserDataViewModel(app: Application) : AndroidViewModel(app) {
 
         interactor = UserEditInteractor(app)
 
+        //observe DB changes
         val dispos: Disposable = interactor.getUserObservable()
                 .subscribeBy { user ->
                     userName.value = user.name
@@ -67,12 +72,18 @@ class UserDataViewModel(app: Application) : AndroidViewModel(app) {
                 interactor.updateUser(userName.value ?: "", userAge.value?.toInt() ?: 0)
                         .subscribeBy(
                                 onSuccess = {
-                                    Log.d(LOG_TAG_ERROR, "Saved!")
+                                    Log.d(LOG_TAG_DEBUG, "Saved!")
+                                    showToastMessage("Saved!")
                                 },
                                 onError = {
-                                    Log.e(LOG_TAG_ERROR, it.localizedMessage)
+                                    Log.e(LOG_TAG_DEBUG, it.localizedMessage ?: "Something wrong")
+                                    showToastMessage("Error: " + it.localizedMessage)
                                 })
         subscriptions.add(disposable)
 
+    }
+
+    private fun showToastMessage(message: String) {
+        _showToastEvent.value = Event(message)
     }
 }

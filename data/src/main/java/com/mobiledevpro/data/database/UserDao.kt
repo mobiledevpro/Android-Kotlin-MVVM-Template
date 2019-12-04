@@ -22,8 +22,8 @@ interface UserDao {
     fun getUserLive(id: Int): LiveData<User>
 
     @Query("SELECT * FROM user WHERE id = :id")
-    fun getUserObservable(id: Int): Single<User>
+    fun getUserSingle(id: Int): Single<User>
 
     @Query("SELECT * FROM user WHERE id = :id")
-    fun getUserObservable2(id: Int): Observable<User>
+    fun getUserObservable(id: Int): Observable<User>
 }

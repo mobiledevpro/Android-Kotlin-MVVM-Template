@@ -25,10 +25,23 @@ class UserEditRepository(private val appContext: Context) : IUserEditRepository 
 
         }
     */
+
+    override fun getUser(): Single<User> {
+        return AppDatabase.getInstance(appContext)
+                .userDao
+                .getUserSingle(0)
+                .onErrorReturn {
+                    User()
+                }
+    }
+
     override fun getUserObservable(): Observable<User> {
         return AppDatabase.getInstance(appContext)
                 .userDao
-                .getUserObservable2(0)
+                .getUserObservable(0)
+                .onErrorReturn {
+                    User()
+                }
     }
 
     override fun setUser(user: User): Single<Boolean> {

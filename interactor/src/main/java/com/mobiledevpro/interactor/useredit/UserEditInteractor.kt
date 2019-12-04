@@ -28,8 +28,7 @@ class UserEditInteractor(appContext: Context) : IUserEditInteractor {
     }
 
     override fun updateUser(name: String, age: Int): Single<Boolean> {
-        return repository.getUserObservable()
-                .firstOrError()
+        return repository.getUser()
                 .flatMap { user ->
                     user.name = name
                     user.age = age
@@ -39,9 +38,6 @@ class UserEditInteractor(appContext: Context) : IUserEditInteractor {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
     }
-
-    // override fun getUserData(): LiveData<User> =
-    //        repository.getUserLiveData()
 
     override fun getUserObservable(): Observable<User> {
         return repository.getUserObservable()
