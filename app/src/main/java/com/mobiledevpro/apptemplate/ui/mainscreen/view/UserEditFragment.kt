@@ -80,8 +80,8 @@ class UserEditFragment : BaseFragment() {
                                    timeLength: Int) {
 
         toastEvent.observe(lifecycleOwner, Observer {
-            it.getContentIfNotHandled()?.let {
-                Toast.makeText(context, it, timeLength).show()
+            it.getContentIfNotHandled()?.let { txt ->
+                Toast.makeText(context, txt, timeLength).show()
             }
         })
 

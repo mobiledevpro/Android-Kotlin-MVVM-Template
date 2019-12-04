@@ -28,6 +28,9 @@ class UserDataViewModel(app: Application) : AndroidViewModel(app) {
     val userName = MutableLiveData<String>()
     val userAge = MutableLiveData<String>()
 
+    val cachedUserName = MutableLiveData<String>()
+    val cachedUserAge = MutableLiveData<String>()
+
     private val _showToastEvent = MutableLiveData<Event<String>>()
     val showToastEvent: LiveData<Event<String>> = _showToastEvent
 
@@ -48,6 +51,10 @@ class UserDataViewModel(app: Application) : AndroidViewModel(app) {
                 .subscribeBy { user ->
                     userName.value = user.name
                     userAge.value = if (user.age > 0) user.age.toString() else ""
+
+                    cachedUserName.value = userName.value
+                    cachedUserAge.value = userName.value
+
                 }
         subscriptions.add(dispos)
 

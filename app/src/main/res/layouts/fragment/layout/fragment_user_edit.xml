@@ -47,8 +47,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
-                android:text="Update"
-                android:onClick="@{() -> userDataModel.updateUser()}" />
+                android:enabled="@{!userDataModel.userName.equals(userDataModel.cachedUserName) || userDataModel.userAge.equals(userDataModel.cachedUserAge)}"
+                android:onClick="@{() -> userDataModel.updateUser()}"
+                android:text="Update" />
 
         </LinearLayout>
     </RelativeLayout>
