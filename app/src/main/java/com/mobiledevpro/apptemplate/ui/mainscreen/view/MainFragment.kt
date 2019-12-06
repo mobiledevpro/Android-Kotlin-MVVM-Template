@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.crashlytics.android.Crashlytics
 import com.mobiledevpro.apptemplate.R
 import com.mobiledevpro.apptemplate.ViewModelFactory
 import com.mobiledevpro.apptemplate.databinding.FragmentMainBinding
+import com.mobiledevpro.apptemplate.helper.showEditUserFragment
 import com.mobiledevpro.apptemplate.ui.mainscreen.viewmodel.MainViewModel
 import com.mobiledevpro.commons.fragment.BaseFragment
 
@@ -51,6 +53,16 @@ class MainFragment : BaseFragment() {
                     mainViewModel = viewModel
                 }
         binding.lifecycleOwner = viewLifecycleOwner
+
+
+        viewModel.onClickEditUser.observe(viewLifecycleOwner, Observer {
+            it.getContentIfNotHandled()?.let { b ->
+                if (b)
+                //go to Edit User fragment
+                    showEditUserFragment(view)
+            }
+        })
+
         return binding.root
     }
 
@@ -67,4 +79,5 @@ class MainFragment : BaseFragment() {
     override fun getAppBarTitle() = R.string.app_name_main
 
     override fun getHomeAsUpIndicatorIcon() = R.drawable.ic_close_24dp
+
 }

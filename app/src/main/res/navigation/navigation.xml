@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.mobiledevpro.apptemplate.ui.mainscreen.view.MainFragment"
+        android:label="MainFragment">
+        <action
+            android:id="@+id/action_user_edit"
+            app:destination="@id/userEditFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/userEditFragment"
+        android:name="com.mobiledevpro.apptemplate.ui.mainscreen.view.UserEditFragment"
+        android:label="UserEditFragment">
+        <action
+            android:id="@+id/action_user_view"
+            app:destination="@id/userViewFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/userViewFragment"
+        android:name="com.mobiledevpro.apptemplate.ui.mainscreen.view.UserViewFragment"
+        android:label="UserViewFragment" />
+</navigation>

@@ -2,6 +2,9 @@ package com.mobiledevpro.apptemplate.ui.mainscreen.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.mobiledevpro.apptemplate.Event
 
 /**
  * ViewModel for main fragment
@@ -13,8 +16,11 @@ import androidx.lifecycle.AndroidViewModel
  */
 class MainViewModel(app: Application) : AndroidViewModel(app) {
 
+    private val _onClickEditUser = MutableLiveData<Event<Boolean>>()
+    val onClickEditUser: LiveData<Event<Boolean>> = _onClickEditUser
 
-    fun editUser() {
 
+    fun onClickEditUser() {
+        _onClickEditUser.value = Event(true)
     }
 }
