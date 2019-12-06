@@ -49,16 +49,7 @@ class UserDataViewModel(app: Application) : AndroidViewModel(app) {
         interactor = UserEditInteractor(app)
 
         //observe user data changes
-        val dispos: Disposable = interactor.getUserObservable()
-                .subscribeBy { user ->
-                    userName.value = user.name
-                    userAge.value = if (user.age > 0) user.age.toString() else ""
-
-                    _cachedUserName.value = userName.value
-                    _cachedUserAge.value = userAge.value
-                }
-        subscriptions.add(dispos)
-
+        observeUserData()
     }
 
     /**
@@ -73,7 +64,7 @@ class UserDataViewModel(app: Application) : AndroidViewModel(app) {
 
 
     /**
-     * It calls for xml
+     * It calls from xml layout
      */
     fun updateUser() {
         val disposable: Disposable =
@@ -91,6 +82,9 @@ class UserDataViewModel(app: Application) : AndroidViewModel(app) {
 
     }
 
+    /**
+     * It calls from xml layout
+     */
     fun isUpdateButtonEnabled(): LiveData<Boolean> {
         val isEnabled = MediatorLiveData<Boolean>()
 
@@ -113,5 +107,17 @@ class UserDataViewModel(app: Application) : AndroidViewModel(app) {
 
     private fun showToastMessage(message: String) {
         _showToastEvent.value = Event(message)
+    }
+
+    private fun observeUserData() {
+        val dispos: Disposable = interactor.getUserObservable()
+                .subscribeBy { user ->
+                    userName.value = user.name
+                    userAge.value = if (user.age > 0) user.age.toString() else ""
+
+                    _cachedUserName.value = userName.value
+                    _cachedUserAge.value = userAge.value
+                }
+        subscriptions.add(dispos)
     }
 }

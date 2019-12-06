@@ -36,7 +36,7 @@ class UserViewFragment : BaseFragment() {
         }
     }
 
-    override fun getLayoutResId(): Int = R.layout.fragment_user_view
+    override fun getLayoutResId() = R.layout.fragment_user_view
 
     override fun populateView(view: View, bundle: Bundle?): View {
         binding = FragmentUserViewBinding.bind(view)

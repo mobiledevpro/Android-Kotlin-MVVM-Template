@@ -41,7 +41,7 @@ class UserEditFragment : BaseFragment() {
         }
     }
 
-    override fun getLayoutResId(): Int = R.layout.fragment_user_edit
+    override fun getLayoutResId() = R.layout.fragment_user_edit
 
     override fun populateView(view: View, bundle: Bundle?): View {
         //databinding
