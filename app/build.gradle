@@ -115,6 +115,10 @@ dependencies {
     implementation deps.coreKtx
     implementation deps.kotlin
 
+    //Navigation
+    implementation deps.navigationFragment
+    implementation deps.navigationUi
+
     //Livedata
     implementation deps.lifecycle
     kapt deps.lifecycleCompiler
@@ -130,7 +134,6 @@ dependencies {
 
     //memory leak detection in debug
     debugImplementation deps.leakcanaryDebug
-    releaseImplementation deps.leakcanaryRelease
 
     //Rx
     implementation deps.rxAndroid
