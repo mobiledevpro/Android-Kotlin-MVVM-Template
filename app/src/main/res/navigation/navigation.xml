@@ -10,7 +10,11 @@
         android:label="MainFragment">
         <action
             android:id="@+id/action_user_edit"
-            app:destination="@id/userEditFragment" />
+            app:destination="@id/userEditFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -20,6 +24,10 @@
         <action
             android:id="@+id/action_user_view"
             app:destination="@id/userViewFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@+id/userEditFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -27,5 +35,12 @@
     <fragment
         android:id="@+id/userViewFragment"
         android:name="com.mobiledevpro.apptemplate.ui.mainscreen.view.UserViewFragment"
-        android:label="UserViewFragment"></fragment>
+        android:label="UserViewFragment">
+        <action
+            android:id="@+id/action_user_view_go_back"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 </navigation>
