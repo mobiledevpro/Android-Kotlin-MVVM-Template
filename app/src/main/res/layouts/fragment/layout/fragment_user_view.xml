@@ -14,17 +14,10 @@
         android:background="#10000000"
         android:padding="@dimen/activity_horizontal_margin">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Second Fragment"
-            android:textColor="@color/colorTextSecondary"
-            android:textSize="14sp" />
-
         <LinearLayout
-            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:orientation="vertical">
 
             <TextView

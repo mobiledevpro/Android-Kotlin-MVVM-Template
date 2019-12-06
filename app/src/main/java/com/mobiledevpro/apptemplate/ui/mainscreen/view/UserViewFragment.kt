@@ -25,17 +25,6 @@ class UserViewFragment : BaseFragment() {
     private lateinit var userViewModel: UserDataViewModel
     private lateinit var binding: FragmentUserViewBinding
 
-    companion object {
-        fun newInstance(): UserViewFragment {
-
-            val args = Bundle()
-
-            val fragment = UserViewFragment()
-            fragment.arguments = args
-            return fragment
-        }
-    }
-
     override fun getLayoutResId() = R.layout.fragment_user_view
 
     override fun populateView(view: View, bundle: Bundle?): View {

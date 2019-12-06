@@ -33,6 +33,9 @@ class UserDataViewModel(app: Application) : AndroidViewModel(app) {
     val userName = MutableLiveData<String>()
     val userAge = MutableLiveData<String>()
 
+    private val _navigateToUserView = MutableLiveData<Event<Boolean>>()
+    val navigateToUserView: LiveData<Event<Boolean>> = _navigateToUserView
+
     private val _showToastEvent = MutableLiveData<Event<String>>()
     val showToastEvent: LiveData<Event<String>> = _showToastEvent
 
@@ -66,17 +69,19 @@ class UserDataViewModel(app: Application) : AndroidViewModel(app) {
     /**
      * It calls from xml layout
      */
-    fun updateUser() {
+    fun onClickUpdateUser() {
         val disposable: Disposable =
                 interactor.updateUser(userName.value ?: "", userAge.value?.toInt() ?: 0)
                         .subscribeBy(
                                 onSuccess = {
                                     Log.d(LOG_TAG_DEBUG, "Saved!")
                                     showToastMessage("Saved!")
+                                    _navigateToUserView.value = Event(true)
                                 },
                                 onError = {
                                     Log.e(LOG_TAG_DEBUG, it.localizedMessage ?: "Something wrong")
                                     showToastMessage("Error: " + it.localizedMessage)
+
                                 })
         subscriptions.add(disposable)
 

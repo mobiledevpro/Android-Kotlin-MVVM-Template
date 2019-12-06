@@ -16,11 +16,11 @@ import com.mobiledevpro.apptemplate.Event
  */
 class MainViewModel(app: Application) : AndroidViewModel(app) {
 
-    private val _onClickEditUser = MutableLiveData<Event<Boolean>>()
-    val onClickEditUser: LiveData<Event<Boolean>> = _onClickEditUser
+    private val _editUserButton = MutableLiveData<Event<Boolean>>()
+    val editUserButton: LiveData<Event<Boolean>> = _editUserButton
 
 
     fun onClickEditUser() {
-        _onClickEditUser.value = Event(true)
+        _editUserButton.value = Event(true)
     }
 }

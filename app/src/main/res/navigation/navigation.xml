@@ -19,11 +19,13 @@
         android:label="UserEditFragment">
         <action
             android:id="@+id/action_user_view"
-            app:destination="@id/userViewFragment" />
+            app:destination="@id/userViewFragment"
+            app:popUpTo="@+id/userEditFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
         android:id="@+id/userViewFragment"
         android:name="com.mobiledevpro.apptemplate.ui.mainscreen.view.UserViewFragment"
-        android:label="UserViewFragment" />
+        android:label="UserViewFragment"></fragment>
 </navigation>

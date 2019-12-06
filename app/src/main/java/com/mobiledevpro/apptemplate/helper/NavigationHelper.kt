@@ -17,3 +17,9 @@ fun showEditUserFragment(view: View) {
     view.findNavController()
             .navigate(R.id.action_user_edit)
 }
+
+
+fun showViewUserFragment(view: View) {
+    view.findNavController()
+            .navigate(R.id.action_user_view)
+}

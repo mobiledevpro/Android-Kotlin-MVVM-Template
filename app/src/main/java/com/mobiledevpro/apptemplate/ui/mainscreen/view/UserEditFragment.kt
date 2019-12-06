@@ -4,14 +4,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.mobiledevpro.apptemplate.Event
 import com.mobiledevpro.apptemplate.R
 import com.mobiledevpro.apptemplate.ViewModelFactory
 import com.mobiledevpro.apptemplate.databinding.FragmentUserEditBinding
+import com.mobiledevpro.apptemplate.helper.showViewUserFragment
 import com.mobiledevpro.apptemplate.ui.mainscreen.viewmodel.UserDataViewModel
 import com.mobiledevpro.commons.fragment.BaseFragment
 
@@ -39,6 +37,9 @@ class UserEditFragment : BaseFragment() {
                     userDataModel = userViewModel
                 }
         binding.lifecycleOwner = viewLifecycleOwner
+
+        observeEvents(view)
+
         return binding.root
     }
 
@@ -52,27 +53,21 @@ class UserEditFragment : BaseFragment() {
                 .get(UserDataViewModel::class.java)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        //observe toast messages
-        setupToastMessages(this,
-                userViewModel.showToastEvent,
-                Toast.LENGTH_SHORT)
-    }
-
-    /**
-     * Observe on toast messages
-     */
-    private fun setupToastMessages(lifecycleOwner: LifecycleOwner,
-                                   toastEvent: LiveData<Event<String>>,
-                                   timeLength: Int) {
-
-        toastEvent.observe(lifecycleOwner, Observer {
+    private fun observeEvents(view: View) {
+        //show toasts
+        userViewModel.showToastEvent.observe(viewLifecycleOwner, Observer {
             it.getContentIfNotHandled()?.let { txt ->
-                Toast.makeText(context, txt, timeLength).show()
+                Toast.makeText(context, txt, Toast.LENGTH_SHORT).show()
             }
         })
 
+        //navigate to user view fragment
+        userViewModel.navigateToUserView.observe(viewLifecycleOwner, Observer {
+            it.getContentIfNotHandled()?.let { b ->
+                if (b)
+                    showViewUserFragment(view)
+            }
+        })
     }
+
 }

@@ -41,7 +41,7 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:enabled="@{userDataModel.isUpdateButtonEnabled()}"
-            android:onClick="@{() -> userDataModel.updateUser()}"
+            android:onClick="@{() -> userDataModel.onClickUpdateUser()}"
             android:text="Update" />
 
     </RelativeLayout>
