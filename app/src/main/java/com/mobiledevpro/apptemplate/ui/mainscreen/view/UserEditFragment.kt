@@ -30,17 +30,6 @@ class UserEditFragment : BaseFragment() {
     private lateinit var userViewModel: UserDataViewModel
     private lateinit var binding: FragmentUserEditBinding
 
-    companion object {
-        fun newInstance(): UserEditFragment {
-
-            val args = Bundle()
-
-            val fragment = UserEditFragment()
-            fragment.arguments = args
-            return fragment
-        }
-    }
-
     override fun getLayoutResId() = R.layout.fragment_user_edit
 
     override fun populateView(view: View, bundle: Bundle?): View {
