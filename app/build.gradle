@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'io.fabric'
 
 android {
@@ -11,6 +12,7 @@ android {
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
     }
 
     dexOptions {
@@ -45,9 +47,10 @@ android {
         }
     }
 
-    flavorDimensions "prod"
+    flavorDimensions "default"
     productFlavors {
         production {
+            dimension "default"
             applicationId defaultConfig.applicationId
             versionCode 1
             versionName "1.0.0"
@@ -55,15 +58,16 @@ android {
             //it's for using the same flavors in modules/libraries
             matchingFallbacks = ["production"]
         }
-
+/*
         demo {
+            dimension "default"
             applicationId defaultConfig.applicationId
             versionCode 1
             versionName "1.0.0-demo"
 
             //it's for using the same flavors in modules/libraries
             matchingFallbacks = ["demo"]
-        }
+        }*/
     }
 
     sourceSets {
@@ -80,7 +84,7 @@ android {
         }
     }
 
-    //generate apk with custom name
+    //set custom name to apk file
     android.applicationVariants.all { variant ->
         variant.outputs.all { output ->
             def outputFile = output.outputFile
@@ -93,6 +97,10 @@ android {
             }
         }
     }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -102,14 +110,14 @@ dependencies {
     implementation deps.material
     implementation deps.preference
 
+    implementation deps.multidex
+
     implementation deps.coreKtx
     implementation deps.kotlin
 
-    implementation deps.butterknife
-    annotationProcessor deps.butterknifeCompiler
-
+    //Livedata
     implementation deps.lifecycle
-    annotationProcessor deps.lifecycleCompiler
+    kapt deps.lifecycleCompiler
 
     //commons-ui
     implementation deps.commonsUi
@@ -124,6 +132,11 @@ dependencies {
     debugImplementation deps.leakcanaryDebug
     releaseImplementation deps.leakcanaryRelease
 
+    //Rx
+    implementation deps.rxAndroid
+    implementation deps.rxKotlin
+
+    implementation project(":interactor")
     implementation project(":data")
 }
 apply plugin: 'com.google.gms.google-services'

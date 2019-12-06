@@ -1,6 +1,8 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    ext.kotlin_version = '1.3.50'
+
     ext.kotlinVersion = '1.3.50'
     ext.gradleVersion = '3.5.2'
     ext.playServicesVersion = '4.3.2'
@@ -21,6 +23,7 @@ buildscript {
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -38,30 +41,33 @@ task clean(type: Delete) {
 }
 
 ext {
-    compileSdkVersion = 28
+    compileSdkVersion = 29
     minSdkVersion = 19
-    targetSdkVersion = 28
+    targetSdkVersion = 29
 
     coreKtxVersion = '1.1.0'
 
     appCompatVersion = "1.1.0"
     materialVersion = '1.0.0'
     commonsUiVersion = '1.0.14'
-    butterKnifeVersion = '10.1.0'
     leakcanaryVersion = '1.6.1'
     firebaseCoreVersion = '17.2.0'
     firebasePerfVersion = '19.0.0'
     crashlyticsVersion = '2.10.1'
     analyticsVersion = '17.2.1'
     lifecycleVersion = '2.2.0-rc01'
+    rxJavaVersion = '2.2.9'
+    rxAndroidVersion = '2.0.2'
+    rxKotlinVersion = '2.4.0'
+    multidexVersion = '2.0.1'
+    roomDatabaseVersion = '2.2.1'
 
     deps = [
+            "multidex"           : "androidx.multidex:multidex:$multidexVersion",
             "appcompat"          : "androidx.appcompat:appcompat:$appCompatVersion",
             "preference"         : "androidx.preference:preference:$appCompatVersion",
             "material"           : "com.google.android.material:material:$materialVersion",
             "commonsUi"          : "com.github.mobile-dev-pro:commons-ui:$commonsUiVersion",
-            "butterknife"        : "com.jakewharton:butterknife:$butterKnifeVersion",
-            "butterknifeCompiler": "com.jakewharton:butterknife-compiler:$butterKnifeVersion",
             "leakcanaryDebug"    : "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion",
             "leakcanaryRelease"  : "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanaryVersion",
             "firebaseCore"       : "com.google.firebase:firebase-core:$firebaseCoreVersion",
@@ -72,7 +78,15 @@ ext {
             "kotlin"             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
             // ViewModel and LiveData
             "lifecycle"          : "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
-            "lifecycleCompiler"  : "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
+            "lifecycleCompiler"  : "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion",
+            //Rx
+            "rxAndroid"          : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
+            "rxKotlin"           : "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion",
+            //Room
+            "room"               : "androidx.room:room-runtime:$roomDatabaseVersion",
+            "roomKtx"            : "androidx.room:room-ktx:$roomDatabaseVersion",
+            "roomCompiler"       : "androidx.room:room-compiler:$roomDatabaseVersion",
+            "roomRx"             : "androidx.room:room-rxjava2:$roomDatabaseVersion"
 
     ]
 }

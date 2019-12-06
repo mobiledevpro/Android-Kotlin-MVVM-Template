@@ -23,7 +23,6 @@ android {
         }
     }
 
-
     publishNonDefault true
     flavorDimensions "default"
     productFlavors {
@@ -38,12 +37,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    //Rx
     implementation deps.rxAndroid
     implementation deps.rxKotlin
 
-    //Room
-    implementation deps.room
-    implementation deps.roomRx
-    implementation deps.roomKtx
-    kapt deps.roomCompiler
+    implementation project(":data")
 }

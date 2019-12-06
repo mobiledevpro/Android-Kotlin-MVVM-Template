@@ -4,6 +4,8 @@ import androidx.annotation.IdRes
 import androidx.fragment.app.FragmentManager
 import com.mobiledevpro.apptemplate.R
 import com.mobiledevpro.apptemplate.ui.mainscreen.view.MainFragment
+import com.mobiledevpro.apptemplate.ui.mainscreen.view.UserEditFragment
+import com.mobiledevpro.apptemplate.ui.mainscreen.view.UserViewFragment
 
 /**
  * Helper class for work with fragments
@@ -20,13 +22,10 @@ import com.mobiledevpro.apptemplate.ui.mainscreen.view.MainFragment
  */
 
 private const val TAG_FRAGMENT_MAIN = "fragment.main"
+private const val TAG_FRAGMENT_USER_EDIT = "fragment.user.edit"
+private const val TAG_FRAGMENT_USER_VIEW = "fragment.user.view"
 
 
-/**
- * Show Video Form Type chooser dialog
- *
- * @param fm FragmentManager
- */
 fun showMainFragment(fm: FragmentManager, @IdRes containerResId: Int) {
     val ft = fm.beginTransaction()
     ft.setAllowOptimization(false)
@@ -34,6 +33,26 @@ fun showMainFragment(fm: FragmentManager, @IdRes containerResId: Int) {
         containerResId,
         MainFragment.newInstance(),
         TAG_FRAGMENT_MAIN
+    ).commit()
+}
+
+fun showUserEditFragment(fm: FragmentManager, @IdRes containerResId: Int) {
+    val ft = fm.beginTransaction()
+    ft.setAllowOptimization(false)
+    ft.replace(
+            containerResId,
+            UserEditFragment.newInstance(),
+            TAG_FRAGMENT_USER_EDIT
+    ).commit()
+}
+
+fun showUserViewFragment(fm: FragmentManager, @IdRes containerResId: Int) {
+    val ft = fm.beginTransaction()
+    ft.setAllowOptimization(false)
+    ft.replace(
+            containerResId,
+            UserViewFragment.newInstance(),
+            TAG_FRAGMENT_USER_VIEW
     ).commit()
 }
 
