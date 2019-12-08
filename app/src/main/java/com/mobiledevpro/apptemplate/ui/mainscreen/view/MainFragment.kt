@@ -31,7 +31,6 @@ import com.mobiledevpro.commons.fragment.BaseFragment
 class MainFragment : BaseFragment() {
 
     private lateinit var viewModel: MainViewModel
-    private lateinit var binding: FragmentMainBinding
 
     override fun getLayoutResId() = R.layout.fragment_main
 
@@ -48,7 +47,7 @@ class MainFragment : BaseFragment() {
 
     override fun populateView(view: View, savedInstanceState: Bundle?): View {
         //databinding
-        binding = FragmentMainBinding.bind(view)
+        val binding = FragmentMainBinding.bind(view)
                 .apply {
                     mainViewModel = viewModel
                 }
@@ -59,7 +58,7 @@ class MainFragment : BaseFragment() {
             it.getContentIfNotHandled()?.let { b ->
                 if (b)
                 //go to Edit User fragment
-                    showEditUserFragment(view)
+                    view.showEditUserFragment()
             }
         })
 
@@ -68,7 +67,7 @@ class MainFragment : BaseFragment() {
 
     override fun initPresenters() {
         //init view model instead of presenter
-        val app = requireNotNull(activity).application
+        val app = requireActivity().application
         val viewModelFactory = ViewModelFactory(app)
 
         //init ViewModel for this fragment

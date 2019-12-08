@@ -26,13 +26,12 @@ import com.mobiledevpro.commons.fragment.BaseFragment
 class UserEditFragment : BaseFragment() {
 
     private lateinit var userViewModel: UserDataViewModel
-    private lateinit var binding: FragmentUserEditBinding
 
     override fun getLayoutResId() = R.layout.fragment_user_edit
 
     override fun populateView(view: View, bundle: Bundle?): View {
         //databinding
-        binding = FragmentUserEditBinding.bind(view)
+        val binding = FragmentUserEditBinding.bind(view)
                 .apply {
                     userDataModel = userViewModel
                 }
@@ -45,7 +44,7 @@ class UserEditFragment : BaseFragment() {
 
     override fun initPresenters() {
         //init view model instead of presenter
-        val app = requireNotNull(activity).application
+        val app = requireActivity().application
         val viewModelFactory = ViewModelFactory(app)
 
         //init ViewModel for this fragment
@@ -65,7 +64,7 @@ class UserEditFragment : BaseFragment() {
         userViewModel.navigateToUserView.observe(viewLifecycleOwner, Observer {
             it.getContentIfNotHandled()?.let { b ->
                 if (b)
-                    showViewUserFragment(view)
+                    view.showViewUserFragment()
             }
         })
     }

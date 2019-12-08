@@ -13,13 +13,13 @@ import com.mobiledevpro.apptemplate.R
  * #MobileDevPro
  */
 
-fun showEditUserFragment(view: View) {
-    view.findNavController()
+fun View.showEditUserFragment() {
+    this.findNavController()
             .navigate(R.id.action_user_edit)
 }
 
 
-fun showViewUserFragment(view: View) {
-    view.findNavController()
+fun View.showViewUserFragment() {
+    this.findNavController()
             .navigate(R.id.action_user_view)
 }
