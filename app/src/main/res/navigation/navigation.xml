@@ -9,7 +9,7 @@
         android:name="com.mobiledevpro.apptemplate.ui.mainscreen.view.MainFragment"
         android:label="MainFragment">
         <action
-            android:id="@+id/action_user_edit"
+            android:id="@+id/actionUserEdit"
             app:destination="@id/userEditFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -22,7 +22,7 @@
         android:name="com.mobiledevpro.apptemplate.ui.mainscreen.view.UserEditFragment"
         android:label="UserEditFragment">
         <action
-            android:id="@+id/action_user_view"
+            android:id="@+id/actionUserView"
             app:destination="@id/userViewFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -37,7 +37,7 @@
         android:name="com.mobiledevpro.apptemplate.ui.mainscreen.view.UserViewFragment"
         android:label="UserViewFragment">
         <action
-            android:id="@+id/action_user_view_go_back"
+            android:id="@+id/actionUserViewGoBack"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"

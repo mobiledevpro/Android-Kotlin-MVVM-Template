@@ -15,11 +15,11 @@ import com.mobiledevpro.apptemplate.R
 
 fun View.showEditUserFragment() {
     this.findNavController()
-            .navigate(R.id.action_user_edit)
+            .navigate(R.id.actionUserEdit)
 }
 
 
 fun View.showViewUserFragment() {
     this.findNavController()
-            .navigate(R.id.action_user_view)
+            .navigate(R.id.actionUserView)
 }
