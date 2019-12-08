@@ -29,6 +29,10 @@ class UserEditFragment : BaseFragment() {
 
     override fun getLayoutResId() = R.layout.fragment_user_edit
 
+    override fun getAppBarTitleString() = "Edit User"
+
+    override fun getHomeAsUpIndicatorIcon() = R.drawable.ic_arrow_back_white_24dp
+
     override fun populateView(view: View, bundle: Bundle?): View {
         //databinding
         val binding = FragmentUserEditBinding.bind(view)

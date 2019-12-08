@@ -34,7 +34,11 @@ class MainFragment : BaseFragment() {
 
     override fun getLayoutResId() = R.layout.fragment_main
 
+    override fun getAppBarTitle() = R.string.app_name_main
+
     override fun getOptionsMenuResId() = R.menu.menu_main_fragment
+
+    override fun getHomeAsUpIndicatorIcon() = R.drawable.ic_close_24dp
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
             when (item.itemId) {
@@ -74,9 +78,5 @@ class MainFragment : BaseFragment() {
         viewModel = ViewModelProvider(activity as FragmentActivity, viewModelFactory)
                 .get(MainViewModel::class.java)
     }
-
-    override fun getAppBarTitle() = R.string.app_name_main
-
-    override fun getHomeAsUpIndicatorIcon() = R.drawable.ic_close_24dp
 
 }

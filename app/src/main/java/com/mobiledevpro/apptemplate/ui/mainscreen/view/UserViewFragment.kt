@@ -26,6 +26,10 @@ class UserViewFragment : BaseFragment() {
 
     override fun getLayoutResId() = R.layout.fragment_user_view
 
+    override fun getAppBarTitleString() = "User"
+
+    override fun getHomeAsUpIndicatorIcon() = R.drawable.ic_arrow_back_white_24dp
+
     override fun populateView(view: View, bundle: Bundle?): View {
         val binding = FragmentUserViewBinding.bind(view)
                 .apply {
