@@ -146,5 +146,6 @@ dependencies {
 
     implementation project(":interactor")
     implementation project(":data")
+    implementation project(":data-database")
 }
 apply plugin: 'com.google.gms.google-services'

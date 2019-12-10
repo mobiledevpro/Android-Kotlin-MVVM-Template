@@ -1,0 +1,18 @@
+apply from: "$rootDir/common-android-library.gradle"
+
+
+android.defaultConfig.javaCompileOptions {
+    annotationProcessorOptions {
+        arguments = [
+                "room.schemaLocation"  : "$projectDir/schemas".toString(),
+                "room.expandProjection": "true"]
+    }
+}
+
+dependencies {
+    //Room
+    implementation deps.room
+    implementation deps.roomRx
+    implementation deps.roomKtx
+    kapt deps.roomCompiler
+}

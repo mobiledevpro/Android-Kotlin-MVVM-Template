@@ -1,6 +1,6 @@
 package com.mobiledevpro.data.repository.useredit
 
-import com.mobiledevpro.data.model.User
+import com.mobiledevpro.database.model.User
 import io.reactivex.Observable
 import io.reactivex.Single
 

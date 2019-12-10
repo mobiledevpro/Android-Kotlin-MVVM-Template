@@ -1,8 +1,9 @@
 package com.mobiledevpro.data.repository.useredit
 
 import android.content.Context
-import com.mobiledevpro.data.database.AppDatabase
-import com.mobiledevpro.data.model.User
+import com.mobiledevpro.database.DatabaseHelper
+import com.mobiledevpro.database.IDatabaseHelper
+import com.mobiledevpro.database.model.User
 import io.reactivex.Observable
 import io.reactivex.Single
 
@@ -17,42 +18,24 @@ import io.reactivex.Single
  * #MobileDevPro
  */
 class UserEditRepository(private val appContext: Context) : IUserEditRepository {
-    /*
-        override fun getUserLiveData(): LiveData<User> {
-            return AppDatabase.getInstance(appContext)
-                    .userDao
-                    .getUserLive(0)
-
-        }
-    */
+    private var databaseHelper: IDatabaseHelper = DatabaseHelper.getInstance(appContext)
 
     override fun getUser(): Single<User> {
-        return AppDatabase.getInstance(appContext)
-                .userDao
-                .getUserSingle(0)
+        return databaseHelper.getUser(0)
                 .onErrorReturn {
                     User()
                 }
     }
 
     override fun getUserObservable(): Observable<User> {
-        return AppDatabase.getInstance(appContext)
-                .userDao
-                .getUserObservable(0)
+        return databaseHelper.getUserUpdatesObservable()
                 .onErrorReturn {
                     User()
                 }
     }
 
     override fun setUser(user: User): Single<Boolean> {
-        return Single.create { emitter ->
-
-            AppDatabase.getInstance(appContext)
-                    .userDao
-                    .insert(user)
-
-            emitter.onSuccess(true)
-        }
+        return databaseHelper.updateUser(user)
     }
 }
 
