@@ -14,43 +14,35 @@
         android:background="#FFFFFF"
         android:padding="@dimen/activity_horizontal_margin">
 
-        <TextView
+        <EditText
+            android:id="@+id/edt_name"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_centerInParent="true"
+            android:hint="Enter user name"
+            android:inputType="textCapSentences"
+            android:text="@={userDataModel.userName}" />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_below="@+id/edt_name"
+            android:hint="Enter age"
+            android:inputType="number"
+            android:text="@={userDataModel.userAge}" />
+
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="First Fragment"
-            android:textColor="@color/colorTextSecondary"
-            android:textSize="14sp" />
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:enabled="@{userDataModel.isUpdateButtonEnabled()}"
+            android:onClick="@{() -> userDataModel.onClickUpdateUser()}"
+            android:text="Update" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:orientation="vertical">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:hint="Enter user name"
-                android:inputType="textCapSentences"
-                android:text="@={userDataModel.userName}" />
-
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:hint="Enter age"
-                android:inputType="number"
-                android:text="@={userDataModel.userAge}" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="16dp"
-                android:enabled="@{userDataModel.isUpdateButtonEnabled()}"
-                android:onClick="@{() -> userDataModel.updateUser()}"
-                android:text="Update" />
-
-        </LinearLayout>
     </RelativeLayout>
 </layout>

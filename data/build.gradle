@@ -1,39 +1,4 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-
-android {
-    compileSdkVersion rootProject.compileSdkVersion
-
-    defaultConfig {
-        minSdkVersion rootProject.minSdkVersion
-        targetSdkVersion rootProject.targetSdkVersion
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
-
-    publishNonDefault true
-    flavorDimensions "default"
-    productFlavors {
-        production {
-        }
-
-        demo {
-        }
-    }
-}
+apply from: "$rootDir/common-android-library.gradle"
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -41,9 +6,5 @@ dependencies {
     implementation deps.rxAndroid
     implementation deps.rxKotlin
 
-    //Room
-    implementation deps.room
-    implementation deps.roomRx
-    implementation deps.roomKtx
-    kapt deps.roomCompiler
+    implementation project(":data-database")
 }

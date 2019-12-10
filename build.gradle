@@ -1,11 +1,12 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-buildscript {
-    ext.kotlin_version = '1.3.50'
+buildscript { 
+    ext.kotlin_version = '1.3.61'
 
-    ext.kotlinVersion = '1.3.50'
-    ext.gradleVersion = '3.5.2'
-    ext.playServicesVersion = '4.3.2'
+    ext.kotlinVersion = '1.3.61'
+    ext.gradleVersion = '3.5.3'
+    ext.playServicesVersion = '4.3.3'
+    ext.navigationSafeArgsVersion = '1.0.0-alpha01'
 
     repositories {
         google()
@@ -17,14 +18,11 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:$gradleVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:$navigationSafeArgsVersion"
 
         classpath "com.google.gms:google-services:$playServicesVersion"
         classpath 'io.fabric.tools:gradle:1.31.2'
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" }
 }
 
 allprojects {
@@ -49,27 +47,29 @@ ext {
 
     appCompatVersion = "1.1.0"
     materialVersion = '1.0.0'
+    navigationVersion = '2.1.0'
     commonsUiVersion = '1.0.14'
-    leakcanaryVersion = '1.6.1'
-    firebaseCoreVersion = '17.2.0'
-    firebasePerfVersion = '19.0.0'
+    leakcanaryVersion = '2.0'
+    firebaseCoreVersion = '17.2.1'
+    firebasePerfVersion = '19.0.2'
     crashlyticsVersion = '2.10.1'
     analyticsVersion = '17.2.1'
-    lifecycleVersion = '2.2.0-rc01'
+    lifecycleVersion = '2.2.0-rc03'
     rxJavaVersion = '2.2.9'
-    rxAndroidVersion = '2.0.2'
+    rxAndroidVersion = '2.1.1'
     rxKotlinVersion = '2.4.0'
     multidexVersion = '2.0.1'
-    roomDatabaseVersion = '2.2.1'
+    roomDatabaseVersion = '2.2.2'
 
     deps = [
             "multidex"           : "androidx.multidex:multidex:$multidexVersion",
             "appcompat"          : "androidx.appcompat:appcompat:$appCompatVersion",
             "preference"         : "androidx.preference:preference:$appCompatVersion",
             "material"           : "com.google.android.material:material:$materialVersion",
+            "navigationFragment" : "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
+            "navigationUi"       : "androidx.navigation:navigation-ui-ktx:$navigationVersion",
             "commonsUi"          : "com.github.mobile-dev-pro:commons-ui:$commonsUiVersion",
             "leakcanaryDebug"    : "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion",
-            "leakcanaryRelease"  : "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanaryVersion",
             "firebaseCore"       : "com.google.firebase:firebase-core:$firebaseCoreVersion",
             "firebasePerformance": "com.google.firebase:firebase-perf:$firebasePerfVersion",
             "crashlytics"        : "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion",

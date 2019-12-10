@@ -11,7 +11,6 @@ import com.mobiledevpro.data.LOG_TAG_DEBUG
 import com.mobiledevpro.interactor.useredit.IUserEditInteractor
 import com.mobiledevpro.interactor.useredit.UserEditInteractor
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.subscribeBy
 
 
@@ -32,6 +31,9 @@ class UserDataViewModel(app: Application) : AndroidViewModel(app) {
 
     val userName = MutableLiveData<String>()
     val userAge = MutableLiveData<String>()
+
+    private val _navigateToUserView = MutableLiveData<Event<Boolean>>()
+    val navigateToUserView: LiveData<Event<Boolean>> = _navigateToUserView
 
     private val _showToastEvent = MutableLiveData<Event<String>>()
     val showToastEvent: LiveData<Event<String>> = _showToastEvent
@@ -66,20 +68,24 @@ class UserDataViewModel(app: Application) : AndroidViewModel(app) {
     /**
      * It calls from xml layout
      */
-    fun updateUser() {
-        val disposable: Disposable =
-                interactor.updateUser(userName.value ?: "", userAge.value?.toInt() ?: 0)
+    fun onClickUpdateUser() {
+        val userName = userName.value ?: ""
+        val userAge = userAge.value?.toInt() ?: 0
+
+        subscriptions.add(
+                interactor.updateUser(userName, userAge)
                         .subscribeBy(
-                                onSuccess = {
-                                    Log.d(LOG_TAG_DEBUG, "Saved!")
-                                    showToastMessage("Saved!")
-                                },
-                                onError = {
+                                {
                                     Log.e(LOG_TAG_DEBUG, it.localizedMessage ?: "Something wrong")
                                     showToastMessage("Error: " + it.localizedMessage)
-                                })
-        subscriptions.add(disposable)
 
+                                },
+                                {
+                                    Log.d(LOG_TAG_DEBUG, "Saved!")
+                                    showToastMessage("Saved!")
+                                    _navigateToUserView.value = Event(true)
+                                })
+        )
     }
 
     /**
@@ -110,14 +116,14 @@ class UserDataViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     private fun observeUserData() {
-        val dispos: Disposable = interactor.getUserObservable()
-                .subscribeBy { user ->
-                    userName.value = user.name
-                    userAge.value = if (user.age > 0) user.age.toString() else ""
+        subscriptions.add(
+                interactor.getUserObservable()
+                        .subscribeBy { user ->
+                            userName.value = user.name
+                            userAge.value = if (user.age > 0) user.age.toString() else ""
 
-                    _cachedUserName.value = userName.value
-                    _cachedUserAge.value = userAge.value
-                }
-        subscriptions.add(dispos)
+                            _cachedUserName.value = userName.value
+                            _cachedUserAge.value = userAge.value
+                        })
     }
 }

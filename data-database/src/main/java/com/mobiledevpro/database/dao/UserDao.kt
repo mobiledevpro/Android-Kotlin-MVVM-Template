@@ -1,11 +1,11 @@
-package com.mobiledevpro.data.database
+package com.mobiledevpro.database.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.mobiledevpro.data.model.User
+import com.mobiledevpro.database.model.User
 import io.reactivex.Observable
 import io.reactivex.Single
 

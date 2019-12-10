@@ -1,4 +1,4 @@
-package com.mobiledevpro.data.model
+package com.mobiledevpro.database.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

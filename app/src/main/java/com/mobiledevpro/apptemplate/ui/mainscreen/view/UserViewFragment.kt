@@ -23,23 +23,15 @@ import com.mobiledevpro.commons.fragment.BaseFragment
 class UserViewFragment : BaseFragment() {
 
     private lateinit var userViewModel: UserDataViewModel
-    private lateinit var binding: FragmentUserViewBinding
-
-    companion object {
-        fun newInstance(): UserViewFragment {
-
-            val args = Bundle()
-
-            val fragment = UserViewFragment()
-            fragment.arguments = args
-            return fragment
-        }
-    }
 
     override fun getLayoutResId() = R.layout.fragment_user_view
 
+    override fun getAppBarTitleString() = "User"
+
+    override fun getHomeAsUpIndicatorIcon() = R.drawable.ic_arrow_back_white_24dp
+
     override fun populateView(view: View, bundle: Bundle?): View {
-        binding = FragmentUserViewBinding.bind(view)
+        val binding = FragmentUserViewBinding.bind(view)
                 .apply {
                     userDataModel = userViewModel
                 }
@@ -49,7 +41,7 @@ class UserViewFragment : BaseFragment() {
 
     override fun initPresenters() {
         //init view model instead of presenter
-        val app = requireNotNull(activity).application
+        val app = requireActivity().application
         val viewModelFactory = ViewModelFactory(app)
 
         //init ViewModel for this fragment

@@ -3,10 +3,15 @@ package com.mobiledevpro.apptemplate.ui.mainscreen.view
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.crashlytics.android.Crashlytics
 import com.mobiledevpro.apptemplate.R
-import com.mobiledevpro.apptemplate.helper.showUserEditFragment
-import com.mobiledevpro.apptemplate.helper.showUserViewFragment
+import com.mobiledevpro.apptemplate.ViewModelFactory
+import com.mobiledevpro.apptemplate.databinding.FragmentMainBinding
+import com.mobiledevpro.apptemplate.helper.showEditUserFragment
+import com.mobiledevpro.apptemplate.ui.mainscreen.viewmodel.MainViewModel
 import com.mobiledevpro.commons.fragment.BaseFragment
 
 /**
@@ -25,22 +30,15 @@ import com.mobiledevpro.commons.fragment.BaseFragment
 
 class MainFragment : BaseFragment() {
 
-    companion object {
+    private lateinit var viewModel: MainViewModel
 
-        fun newInstance(): MainFragment {
+    override fun getLayoutResId() = R.layout.fragment_main
 
-            val args = Bundle()
+    override fun getAppBarTitle() = R.string.app_name_main
 
-            val fragment = MainFragment()
-            fragment.arguments = args
-            return fragment
-        }
-    }
+    override fun getOptionsMenuResId() = R.menu.menu_main_fragment
 
-    override fun getLayoutResId(): Int = R.layout.fragment_main
-
-
-    override fun getOptionsMenuResId(): Int = R.menu.menu_question_notes_list
+    override fun getHomeAsUpIndicatorIcon() = R.drawable.ic_close_24dp
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
             when (item.itemId) {
@@ -51,28 +49,34 @@ class MainFragment : BaseFragment() {
                 else -> super.onOptionsItemSelected(item)
             }
 
-    override fun populateView(layoutView: View, savedInstanceState: Bundle?): View {
+    override fun populateView(view: View, savedInstanceState: Bundle?): View {
+        //databinding
+        val binding = FragmentMainBinding.bind(view)
+                .apply {
+                    mainViewModel = viewModel
+                }
+        binding.lifecycleOwner = viewLifecycleOwner
 
-        showUserEditLayout()
-        showUserViewLayout()
 
-        return layoutView
+        viewModel.editUserButton.observe(viewLifecycleOwner, Observer {
+            it.getContentIfNotHandled()?.let { b ->
+                if (b)
+                //go to Edit User fragment
+                    view.showEditUserFragment()
+            }
+        })
+
+        return binding.root
     }
 
     override fun initPresenters() {
-        //do nothing
+        //init view model instead of presenter
+        val app = requireActivity().application
+        val viewModelFactory = ViewModelFactory(app)
+
+        //init ViewModel for this fragment
+        viewModel = ViewModelProvider(activity as FragmentActivity, viewModelFactory)
+                .get(MainViewModel::class.java)
     }
 
-    override fun getAppBarTitle(): Int = R.string.app_name_main
-
-    override fun getHomeAsUpIndicatorIcon(): Int = R.drawable.ic_close_24dp
-
-    private fun showUserEditLayout() {
-        showUserEditFragment(childFragmentManager, R.id.fragment_container_one)
-    }
-
-
-    private fun showUserViewLayout() {
-        showUserViewFragment(childFragmentManager, R.id.fragment_container_two)
-    }
 }

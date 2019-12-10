@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'io.fabric'
+apply plugin: 'androidx.navigation.safeargs'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -101,6 +102,10 @@ android {
     dataBinding {
         enabled = true
     }
+
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
@@ -114,6 +119,10 @@ dependencies {
 
     implementation deps.coreKtx
     implementation deps.kotlin
+
+    //Navigation
+    implementation deps.navigationFragment
+    implementation deps.navigationUi
 
     //Livedata
     implementation deps.lifecycle
@@ -130,7 +139,6 @@ dependencies {
 
     //memory leak detection in debug
     debugImplementation deps.leakcanaryDebug
-    releaseImplementation deps.leakcanaryRelease
 
     //Rx
     implementation deps.rxAndroid
@@ -138,5 +146,6 @@ dependencies {
 
     implementation project(":interactor")
     implementation project(":data")
+    implementation project(":data-database")
 }
 apply plugin: 'com.google.gms.google-services'
