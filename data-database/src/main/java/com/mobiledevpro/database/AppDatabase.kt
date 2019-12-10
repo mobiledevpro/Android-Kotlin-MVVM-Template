@@ -20,8 +20,8 @@ import com.mobiledevpro.database.model.User
         entities = [
             User::class
         ],
-        version = 1,
-        exportSchema = false
+        version = BuildConfig.RoomDatabaseVersion,
+        exportSchema = true
 )
 
 abstract class AppDatabase : RoomDatabase() {
