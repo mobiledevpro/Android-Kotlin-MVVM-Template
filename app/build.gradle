@@ -102,6 +102,10 @@ android {
     dataBinding {
         enabled = true
     }
+
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
