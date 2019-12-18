@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -28,7 +28,7 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
-    <style name="AppTheme.AlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <style name="AppTheme.AlertDialog" parent="Theme.MaterialComponents.Light.Dialog.Alert">
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
@@ -37,7 +37,7 @@
     </style>
 
     <!-- TextView common style-->
-    <style name="AppTheme.TextView" parent="AppTheme">
+    <style name="AppTheme.TextView" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">16sp</item>
         <item name="android:padding">4dp</item>
         <item name="android:textColor">@color/colorTextPrimary</item>
@@ -50,7 +50,7 @@
     </style>
 
     <!-- Buttons common style -->
-    <style name="AppTheme.Button" parent="Widget.AppCompat.Button">
+    <style name="AppTheme.Button" parent="Widget.MaterialComponents.Button">
         <item name="android:minHeight">@dimen/default_view_height</item>
         <item name="android:paddingLeft">16dp</item>
         <item name="android:paddingRight">16dp</item>

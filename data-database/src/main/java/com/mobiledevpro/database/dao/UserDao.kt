@@ -1,6 +1,5 @@
 package com.mobiledevpro.database.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -10,16 +9,10 @@ import io.reactivex.Observable
 import io.reactivex.Single
 
 @Dao
-interface UserDao {
+internal interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(user: User)
-
-    @Query("SELECT * FROM user")
-    fun getAllUsers(): LiveData<List<User>>
-
-    @Query("SELECT * FROM user WHERE id = :id")
-    fun getUserLive(id: Int): LiveData<User>
 
     @Query("SELECT * FROM user WHERE id = :id")
     fun getUserSingle(id: Int): Single<User>

@@ -1,7 +1,6 @@
 package com.mobiledevpro.interactor.useredit
 
 import android.content.Context
-import com.mobiledevpro.data.repository.useredit.IUserEditRepository
 import com.mobiledevpro.data.repository.useredit.UserEditRepository
 import com.mobiledevpro.database.model.User
 import io.reactivex.Observable
@@ -21,11 +20,7 @@ import io.reactivex.schedulers.Schedulers
  */
 class UserEditInteractor(appContext: Context) : IUserEditInteractor {
 
-    private val repository: IUserEditRepository
-
-    init {
-        repository = UserEditRepository(appContext)
-    }
+    private val repository = UserEditRepository(appContext)
 
     override fun updateUser(name: String, age: Int): Single<Boolean> {
         return repository.getUser()

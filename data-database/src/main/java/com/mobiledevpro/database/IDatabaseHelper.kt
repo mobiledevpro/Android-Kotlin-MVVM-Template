@@ -12,7 +12,7 @@ import io.reactivex.Single
  * https://instagr.am/mobiledevpro
  * #MobileDevPro
  */
-public interface IDatabaseHelper {
+interface IDatabaseHelper {
     fun getUser(userId: Int): Single<User>
 
     fun getUserUpdatesObservable(): Observable<User>

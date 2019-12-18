@@ -1,4 +1,4 @@
-package com.mobiledevpro.apptemplate.ui.mainscreen.view
+package com.mobiledevpro.apptemplate.ui.userviewscreen.view
 
 import android.os.Bundle
 import android.view.View
@@ -8,6 +8,8 @@ import com.mobiledevpro.apptemplate.R
 import com.mobiledevpro.apptemplate.ViewModelFactory
 import com.mobiledevpro.apptemplate.databinding.FragmentUserViewBinding
 import com.mobiledevpro.apptemplate.ui.mainscreen.viewmodel.UserDataViewModel
+import com.mobiledevpro.apptemplate.ui.userviewscreen.presenter.IUserViewPresenter
+import com.mobiledevpro.apptemplate.ui.userviewscreen.presenter.UserViewPresenter
 import com.mobiledevpro.commons.fragment.BaseFragment
 
 /**
@@ -23,10 +25,11 @@ import com.mobiledevpro.commons.fragment.BaseFragment
 class UserViewFragment : BaseFragment() {
 
     private lateinit var userViewModel: UserDataViewModel
+    private lateinit var presenter: IUserViewPresenter
 
     override fun getLayoutResId() = R.layout.fragment_user_view
 
-    override fun getAppBarTitleString() = "User"
+    override fun getAppBarTitle() = R.string.appbar_title_edit_view
 
     override fun getHomeAsUpIndicatorIcon() = R.drawable.ic_arrow_back_white_24dp
 
@@ -47,6 +50,11 @@ class UserViewFragment : BaseFragment() {
         //init ViewModel for this fragment
         userViewModel = ViewModelProvider(activity as FragmentActivity, viewModelFactory)
                 .get(UserDataViewModel::class.java)
+
+        //init presenter
+        presenter = UserViewPresenter(userViewModel)
+        //add lifecycle observer to presenter
+        lifecycle.addObserver(presenter)
     }
 
 }

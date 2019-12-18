@@ -2,7 +2,6 @@ package com.mobiledevpro.data.repository.useredit
 
 import android.content.Context
 import com.mobiledevpro.database.DatabaseHelper
-import com.mobiledevpro.database.IDatabaseHelper
 import com.mobiledevpro.database.model.User
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -17,8 +16,9 @@ import io.reactivex.Single
  * https://instagr.am/mobiledevpro
  * #MobileDevPro
  */
-class UserEditRepository(private val appContext: Context) : IUserEditRepository {
-    private var databaseHelper: IDatabaseHelper = DatabaseHelper.getInstance(appContext)
+class UserEditRepository(appContext: Context) : IUserEditRepository {
+
+    private var databaseHelper = DatabaseHelper.getInstance(appContext)
 
     override fun getUser(): Single<User> {
         return databaseHelper.getUser(0)

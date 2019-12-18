@@ -24,8 +24,8 @@ import com.mobiledevpro.database.model.User
         exportSchema = true
 )
 
-abstract class AppDatabase : RoomDatabase() {
-    abstract val userDao: UserDao
+internal abstract class AppDatabase : RoomDatabase() {
+    internal abstract val userDao: UserDao
 
     companion object {
         @Volatile

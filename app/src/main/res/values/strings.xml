@@ -2,4 +2,6 @@
     <string name="app_name">App Template</string>
 
     <string name="app_name_main">Main Screen</string>
+    <string name="appbar_title_edit_user">Edit User</string>
+    <string name="appbar_title_edit_view">User</string>
 </resources>

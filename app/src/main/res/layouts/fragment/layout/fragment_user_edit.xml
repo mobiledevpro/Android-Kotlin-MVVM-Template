@@ -2,7 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
         <variable
             name="userDataModel"
             type="com.mobiledevpro.apptemplate.ui.mainscreen.viewmodel.UserDataViewModel" />
@@ -14,23 +13,35 @@
         android:background="#FFFFFF"
         android:padding="@dimen/activity_horizontal_margin">
 
-        <EditText
-            android:id="@+id/edt_name"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_edt_name"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_centerInParent="true"
-            android:hint="Enter user name"
-            android:inputType="textCapSentences"
-            android:text="@={userDataModel.userName}" />
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:layout_centerInParent="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_view_height"
+                android:hint="Enter user name"
+                android:inputType="textCapSentences"
+                android:text="@={userDataModel.userName}" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_below="@+id/layout_edt_name"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_below="@+id/edt_name"
-            android:hint="Enter age"
-            android:inputType="number"
-            android:text="@={userDataModel.userAge}" />
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_view_height"
+                android:hint="Enter age"
+                android:inputType="number"
+                android:text="@={userDataModel.userAge}" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:layout_width="wrap_content"
