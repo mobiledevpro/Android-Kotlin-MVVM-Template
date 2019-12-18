@@ -2,7 +2,10 @@ package com.mobiledevpro.apptemplate.ui.mainscreen.viewmodel
 
 import android.app.Application
 import android.util.Log
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import com.mobiledevpro.apptemplate.Event
 import com.mobiledevpro.data.LOG_TAG_DEBUG
 import com.mobiledevpro.database.model.User
@@ -18,7 +21,7 @@ import com.mobiledevpro.database.model.User
  * https://instagr.am/mobiledevpro
  * #MobileDevPro
  */
-class UserDataViewModel(app: Application) : AndroidViewModel(app), LifecycleObserver {
+class UserDataViewModel(app: Application) : AndroidViewModel(app) {
 
     private val _cachedUserData = MutableLiveData<User>()
 
