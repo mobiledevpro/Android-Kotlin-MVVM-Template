@@ -57,12 +57,11 @@ class UserDataViewModel(app: Application) : AndroidViewModel(app) {
      * It calls from xml layout
      */
     fun onClickUpdateUser() {
-        val user = _cachedUserData.value
-        user?.name = userName.value ?: ""
-        user?.age = if (userAge.value.isNullOrEmpty()) 0 else userAge.value?.toInt() ?: 0
+        val user = _cachedUserData.value ?: User()
+        user.name = userName.value ?: ""
+        user.age = if (userAge.value.isNullOrEmpty()) 0 else userAge.value?.toInt() ?: 0
 
-        if (user != null)
-            _onSaveUserData.value = Event(user)
+        _onSaveUserData.value = Event(user)
     }
 
     /**

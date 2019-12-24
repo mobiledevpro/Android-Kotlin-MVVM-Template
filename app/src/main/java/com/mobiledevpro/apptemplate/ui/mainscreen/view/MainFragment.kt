@@ -6,7 +6,6 @@ import android.view.View
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.crashlytics.android.Crashlytics
 import com.mobiledevpro.apptemplate.R
 import com.mobiledevpro.apptemplate.ViewModelFactory
 import com.mobiledevpro.apptemplate.databinding.FragmentMainBinding
@@ -42,9 +41,8 @@ class MainFragment : BaseFragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
             when (item.itemId) {
-                R.id.menu_action_note_create -> {
-                    Crashlytics.logException(Throwable("Tap on menu Test1"))
-                    true
+                R.id.menu_action_crash -> {
+                    throw RuntimeException("Test crash")
                 }
                 else -> super.onOptionsItemSelected(item)
             }

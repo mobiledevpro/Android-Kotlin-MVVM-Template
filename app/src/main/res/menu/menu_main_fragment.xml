@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/menu_action_note_create"
+        android:id="@+id/menu_action_crash"
         android:title="Test Crash"
         app:showAsAction="always" />
 </menu>
