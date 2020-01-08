@@ -28,6 +28,11 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
+    <!-- The splash theme. To set the background to screen -->
+    <style name="AppTheme.Splash" parent="AppTheme.FullScreen">
+        <item name="android:windowBackground">@drawable/background_splash</item>
+    </style>
+
     <style name="AppTheme.AlertDialog" parent="Theme.MaterialComponents.Light.Dialog.Alert">
         <item name="colorAccent">@color/colorAccent</item>
     </style>
@@ -72,6 +77,10 @@
         <item name="android:textCursorDrawable">@drawable/background_edittext_cursor</item>
         <item name="android:fontFamily">sans-serif</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>
