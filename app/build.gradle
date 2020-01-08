@@ -74,12 +74,12 @@ android {
     sourceSets {
         main {
             res.srcDirs = [
-                    'src/main/res',
                     'src/main/res/layouts/activity',
                     'src/main/res/layouts/fragment',
                     'src/main/res/layouts/adapter',
                     'src/main/res/layouts/include',
-                    'src/main/res/layouts/preference'
+                    'src/main/res/layouts/preference',
+                    'src/main/res' //it should be the last item here (it affects on output directory in Assets Studio)
             ]
             java.srcDirs = ['src/main/java']
         }
@@ -114,6 +114,7 @@ dependencies {
     implementation deps.appcompat
     implementation deps.material
     implementation deps.preference
+    implementation deps.constraintLayout
 
     implementation deps.multidex
 
@@ -143,6 +144,10 @@ dependencies {
     //Rx
     implementation deps.rxAndroid
     implementation deps.rxKotlin
+
+    //Glide
+    implementation deps.glide
+    kapt deps.glideCompiler
 
     implementation project(":interactor")
     implementation project(":data")
