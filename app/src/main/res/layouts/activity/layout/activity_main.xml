@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="false"
-    android:background="@color/colorWindowGreyBackground"
-    android:fitsSystemWindows="true">
+    android:background="@color/colorWindowGreyBackground">
 
     <include layout="@layout/include_base_appbar" />
 
@@ -17,5 +16,13 @@
         app:defaultNavHost="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:navGraph="@navigation/navigation" />
+
+    <TextView
+        android:id="@+id/tv_above_navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:gravity="center"
+        android:text="This view displays above Navigation Bar using Window Insets" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
