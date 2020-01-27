@@ -31,6 +31,7 @@
     <!-- The splash theme. To set the background to screen -->
     <style name="AppTheme.Splash" parent="AppTheme.FullScreen">
         <item name="android:windowBackground">@drawable/background_splash</item>
+        <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
     <style name="AppTheme.AlertDialog" parent="Theme.MaterialComponents.Light.Dialog.Alert">

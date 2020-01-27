@@ -6,6 +6,7 @@ import com.mobiledevpro.data.LOG_TAG_DEBUG
 import com.mobiledevpro.database.model.User
 import com.mobiledevpro.interactor.useredit.UserEditInteractor
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 
 /**
@@ -36,27 +37,26 @@ internal class UserEditPresenter(private val viewModel: UserDataViewModel) : IUs
     }
 
     override fun saveUserData(user: User) {
-        subscriptions.add(
-                interactor.updateUser(user.name, user.age)
-                        .subscribeBy(
-                                {
-                                    Log.e(LOG_TAG_DEBUG, it.localizedMessage ?: "Something wrong")
-                                    viewModel.showToastMessage("Error: " + it.localizedMessage)
+        interactor.updateUser(user.name, user.age)
+                .subscribeBy(
+                        {
+                            Log.e(LOG_TAG_DEBUG, it.localizedMessage ?: "Something wrong")
+                            viewModel.showToastMessage("Error: " + it.localizedMessage)
 
-                                },
-                                {
-                                    Log.d(LOG_TAG_DEBUG, "Saved!")
-                                    viewModel.showToastMessage("Saved!")
-                                    viewModel.navigateToUserViewScreen()
-                                })
-        )
+                        },
+                        {
+                            Log.d(LOG_TAG_DEBUG, "Saved!")
+                            viewModel.showToastMessage("Saved!")
+                            viewModel.navigateToUserViewScreen()
+                        })
+                .addTo(subscriptions)
     }
 
     private fun observeUserData() {
-        subscriptions.add(
-                interactor.getUserObservable()
-                        .subscribeBy { user ->
-                            viewModel.setUserData(user)
-                        })
+        interactor.getUserObservable()
+                .subscribeBy { user ->
+                    viewModel.setUserData(user)
+                }
+                .addTo(subscriptions)
     }
 }

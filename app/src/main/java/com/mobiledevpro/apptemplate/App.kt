@@ -22,8 +22,8 @@ class App : Application() {
         super.onCreate()
 
         val crashlyticsKit = Crashlytics.Builder()
-                //.core(CrashlyticsCore.Builder().disabled(BuildConfig.DEBUG).build())
-                .core(CrashlyticsCore.Builder().build())
+                .core(CrashlyticsCore.Builder().disabled(BuildConfig.DEBUG).build())
+                //.core(CrashlyticsCore.Builder().build())
                 .build()
         Fabric.with(this, crashlyticsKit)
     }

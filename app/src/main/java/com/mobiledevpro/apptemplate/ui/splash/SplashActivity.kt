@@ -3,7 +3,10 @@ package com.mobiledevpro.apptemplate.ui.splash
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.updatePadding
 import com.mobiledevpro.apptemplate.BuildConfig
 import com.mobiledevpro.apptemplate.R
 import com.mobiledevpro.apptemplate.ui.mainscreen.view.MainActivity
@@ -24,6 +27,8 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        applyWindowInsets(findViewById(android.R.id.content))
+
         tv_app_version.text =
                 String.format(resources.getString(R.string.app_version), BuildConfig.VERSION_NAME)
 
@@ -36,6 +41,16 @@ class SplashActivity : AppCompatActivity() {
 
     }
 
+    private fun applyWindowInsets(view: View) {
+        //Use Window Insets to set top and bottom paddings to our activity
+        ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
+            v.updatePadding(
+                    bottom = insets.systemWindowInsetBottom,
+                    top = insets.systemWindowInsetTop
+            )
+            insets
+        }
+    }
 
     private class SplashRunnable(activity: AppCompatActivity, val startScreenCode: Int) : Runnable {
         private val mActivityReference: WeakReference<AppCompatActivity?> = WeakReference(activity)
