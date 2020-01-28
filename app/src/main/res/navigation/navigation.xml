@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.mobiledevpro.apptemplate.ui.mainscreen.view.MainFragment"
+        android:name="com.mobiledevpro.app.ui.mainscreen.view.MainFragment"
         android:label="MainFragment">
         <action
             android:id="@+id/actionUserEdit"
@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/userEditFragment"
-        android:name="com.mobiledevpro.apptemplate.ui.usereditscreen.view.UserEditFragment"
+        android:name="com.mobiledevpro.app.ui.usereditscreen.view.UserEditFragment"
         android:label="UserEditFragment">
         <action
             android:id="@+id/actionUserView"
@@ -34,7 +34,7 @@
 
     <fragment
         android:id="@+id/userViewFragment"
-        android:name="com.mobiledevpro.apptemplate.ui.userviewscreen.view.UserViewFragment"
+        android:name="com.mobiledevpro.app.ui.userviewscreen.view.UserViewFragment"
         android:label="UserViewFragment">
         <action
             android:id="@+id/actionUserViewGoBack"

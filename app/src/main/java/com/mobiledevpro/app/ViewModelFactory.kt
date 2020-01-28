@@ -1,17 +1,18 @@
-package com.mobiledevpro.apptemplate
+package com.mobiledevpro.app
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.mobiledevpro.apptemplate.ui.mainscreen.viewmodel.MainViewModel
-import com.mobiledevpro.apptemplate.ui.mainscreen.viewmodel.UserDataViewModel
+import com.mobiledevpro.app.ui.mainscreen.viewmodel.MainViewModel
+import com.mobiledevpro.app.ui.mainscreen.viewmodel.UserDataViewModel
 
 /**
  * Factory for View Models
  *
  * Created by Dmitriy Chernysh on 11/12/19.
  *
- * https://instagr.am/mobiledevpro
+ * http://androiddev.pro
+ *
  * #MobileDevPro
  */
 class ViewModelFactory(private val app: Application) : ViewModelProvider.Factory {

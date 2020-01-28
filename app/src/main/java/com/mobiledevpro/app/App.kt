@@ -1,4 +1,4 @@
-package com.mobiledevpro.apptemplate
+package com.mobiledevpro.app
 
 import android.app.Application
 import com.crashlytics.android.Crashlytics
@@ -8,10 +8,11 @@ import io.fabric.sdk.android.Fabric
 /**
  * Main application class
  *
- * Created by Dmitriy V. Chernysh
- * dmitriy.chernysh@gmail.com
+ * Created by Dmitriy Chernysh
  *
- * https://instagr.am/mobiledevpro/
+ *
+ * http://androiddev.pro
+ *
  *
  * #MobileDevPro
  */

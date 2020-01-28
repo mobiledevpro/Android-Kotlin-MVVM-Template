@@ -1,4 +1,4 @@
-package com.mobiledevpro.apptemplate.ui.mainscreen.view
+package com.mobiledevpro.app.ui.mainscreen.view
 
 import android.os.Bundle
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.WindowManager
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.updatePadding
-import com.mobiledevpro.apptemplate.R
+import com.mobiledevpro.app.R
 import com.mobiledevpro.commons.activity.BaseActivity
 
 class MainActivity : BaseActivity() {

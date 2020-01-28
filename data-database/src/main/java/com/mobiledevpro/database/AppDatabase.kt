@@ -12,7 +12,8 @@ import com.mobiledevpro.database.model.User
  *
  * Created by Dmitriy Chernysh on 11/12/19.
  *
- * https://instagr.am/mobiledevpro
+ * http://androiddev.pro
+ *
  * #MobileDevPro
  */
 

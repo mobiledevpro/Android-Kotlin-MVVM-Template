@@ -10,10 +10,10 @@ import io.reactivex.Single
  * Repository for UserEdit screen
  *
  *
- * Created by Dmitriy V. Chernysh on 11/7/19.
+ * Created by Dmitriy Chernysh
  *
+ * http://androiddev.pro
  *
- * https://instagr.am/mobiledevpro
  * #MobileDevPro
  */
 class UserEditRepository(appContext: Context) : IUserEditRepository {

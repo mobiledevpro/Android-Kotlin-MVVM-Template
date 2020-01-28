@@ -4,7 +4,7 @@
     <data>
         <variable
             name="userDataModel"
-            type="com.mobiledevpro.apptemplate.ui.mainscreen.viewmodel.UserDataViewModel" />
+            type="com.mobiledevpro.app.ui.mainscreen.viewmodel.UserDataViewModel" />
     </data>
 
     <RelativeLayout

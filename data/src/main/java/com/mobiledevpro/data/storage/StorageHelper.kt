@@ -9,11 +9,9 @@ import java.io.File
  * Storage Helper
  *
  *
- * Created by Dmitriy V. Chernysh on 14.10.16.
- * dmitriy.chernysh@gmail.com
+ * Created by Dmitriy Chernysh
  *
- *
- * www.mobile-dev.pro
+ * http://androiddev.pro
  */
 
 class StorageHelper

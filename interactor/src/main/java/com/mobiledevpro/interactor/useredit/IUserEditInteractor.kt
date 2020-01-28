@@ -8,10 +8,10 @@ import io.reactivex.Single
  * Interactor for UserEdit screen
  *
  *
- * Created by Dmitriy Chernysh on 11/7/19.
+ * Created by Dmitriy Chernysh
  *
+ * http://androiddev.pro
  *
- * https://instagr.am/mobiledevpro
  * #MobileDevPro
  */
 interface IUserEditInteractor {

@@ -1,15 +1,16 @@
-package com.mobiledevpro.apptemplate.helper
+package com.mobiledevpro.app.helper
 
 import android.view.View
 import androidx.navigation.findNavController
-import com.mobiledevpro.apptemplate.R
+import com.mobiledevpro.app.R
 
 /**
  * Navigation Helper
  *
- * Created by Dmitriy Chernysh on 12/7/19.
+ * Created by Dmitriy Chernysh
  *
- * https://instagr.am/mobiledevpro
+ * http://androiddev.pro
+ *
  * #MobileDevPro
  */
 

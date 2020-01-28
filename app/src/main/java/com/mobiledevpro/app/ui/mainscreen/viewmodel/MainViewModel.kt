@@ -1,17 +1,18 @@
-package com.mobiledevpro.apptemplate.ui.mainscreen.viewmodel
+package com.mobiledevpro.app.ui.mainscreen.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.mobiledevpro.apptemplate.Event
+import com.mobiledevpro.app.Event
 
 /**
  * ViewModel for main fragment
  *
- * Created by Dmitriy Chernysh on 12/6/19.
+ * Created by Dmitriy Chernysh
  *
- * https://instagr.am/mobiledevpro
+ * http://androiddev.pro
+ *
  * #MobileDevPro
  */
 class MainViewModel(app: Application) : AndroidViewModel(app) {

@@ -1,7 +1,7 @@
-package com.mobiledevpro.apptemplate.ui.usereditscreen.presenter
+package com.mobiledevpro.app.ui.usereditscreen.presenter
 
 import android.util.Log
-import com.mobiledevpro.apptemplate.ui.mainscreen.viewmodel.UserDataViewModel
+import com.mobiledevpro.app.ui.mainscreen.viewmodel.UserDataViewModel
 import com.mobiledevpro.data.LOG_TAG_DEBUG
 import com.mobiledevpro.database.model.User
 import com.mobiledevpro.interactor.useredit.UserEditInteractor
@@ -12,9 +12,10 @@ import io.reactivex.rxkotlin.subscribeBy
 /**
  * Class for ...
  *
- * Created by Dmitriy Chernysh on 12/17/19.
+ * Created by Dmitriy Chernysh
  *
- * https://instagr.am/mobiledevpro
+ * http://androiddev.pro
+ *
  * #MobileDevPro
  */
 

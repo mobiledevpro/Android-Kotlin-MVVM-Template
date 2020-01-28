@@ -1,4 +1,4 @@
-package com.mobiledevpro.apptemplate.ui.mainscreen.viewmodel
+package com.mobiledevpro.app.ui.mainscreen.viewmodel
 
 import android.app.Application
 import android.util.Log
@@ -6,7 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
-import com.mobiledevpro.apptemplate.Event
+import com.mobiledevpro.app.Event
 import com.mobiledevpro.data.LOG_TAG_DEBUG
 import com.mobiledevpro.database.model.User
 
@@ -15,10 +15,10 @@ import com.mobiledevpro.database.model.User
  * ViewModel for user data
  *
  *
- * Created by Dmitriy Chernysh on 11/8/19.
+ * Created by Dmitriy Chernysh
  *
+ * http://androiddev.pro
  *
- * https://instagr.am/mobiledevpro
  * #MobileDevPro
  */
 class UserDataViewModel(app: Application) : AndroidViewModel(app) {

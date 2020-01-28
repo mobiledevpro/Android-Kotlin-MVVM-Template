@@ -7,9 +7,10 @@ import io.reactivex.Single
 /**
  * Database Helper
  *
- * Created by Dmitriy Chernysh on 12/10/19.
+ * Created by Dmitriy Chernysh
  *
- * https://instagr.am/mobiledevpro
+ * http://androiddev.pro
+ *
  * #MobileDevPro
  */
 interface IDatabaseHelper {

@@ -1,25 +1,24 @@
-package com.mobiledevpro.apptemplate.ui.userviewscreen.view
+package com.mobiledevpro.app.ui.userviewscreen.view
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
-import com.mobiledevpro.apptemplate.R
-import com.mobiledevpro.apptemplate.ViewModelFactory
-import com.mobiledevpro.apptemplate.databinding.FragmentUserViewBinding
-import com.mobiledevpro.apptemplate.ui.mainscreen.viewmodel.UserDataViewModel
-import com.mobiledevpro.apptemplate.ui.userviewscreen.presenter.IUserViewPresenter
-import com.mobiledevpro.apptemplate.ui.userviewscreen.presenter.UserViewPresenter
+import com.mobiledevpro.app.R
+import com.mobiledevpro.app.ViewModelFactory
+import com.mobiledevpro.app.databinding.FragmentUserViewBinding
+import com.mobiledevpro.app.ui.mainscreen.viewmodel.UserDataViewModel
+import com.mobiledevpro.app.ui.userviewscreen.presenter.IUserViewPresenter
+import com.mobiledevpro.app.ui.userviewscreen.presenter.UserViewPresenter
 import com.mobiledevpro.commons.fragment.BaseFragment
 
 /**
  * Fragment for UserView screen
  *
+ * Created by Dmitriy Chernysh
  *
- * Created by Dmitriy Chernysh on 11/7/19.
+ * http://androiddev.pro
  *
- *
- * https://instagr.am/mobiledevpro
  * #MobileDevPro
  */
 class UserViewFragment : BaseFragment() {

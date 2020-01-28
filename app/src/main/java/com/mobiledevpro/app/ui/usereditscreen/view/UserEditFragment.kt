@@ -1,4 +1,4 @@
-package com.mobiledevpro.apptemplate.ui.usereditscreen.view
+package com.mobiledevpro.app.ui.usereditscreen.view
 
 import android.os.Bundle
 import android.view.View
@@ -6,23 +6,22 @@ import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.mobiledevpro.apptemplate.R
-import com.mobiledevpro.apptemplate.ViewModelFactory
-import com.mobiledevpro.apptemplate.databinding.FragmentUserEditBinding
-import com.mobiledevpro.apptemplate.helper.showViewUserFragment
-import com.mobiledevpro.apptemplate.ui.mainscreen.viewmodel.UserDataViewModel
-import com.mobiledevpro.apptemplate.ui.usereditscreen.presenter.IUserEditPresenter
-import com.mobiledevpro.apptemplate.ui.usereditscreen.presenter.UserEditPresenter
+import com.mobiledevpro.app.R
+import com.mobiledevpro.app.ViewModelFactory
+import com.mobiledevpro.app.databinding.FragmentUserEditBinding
+import com.mobiledevpro.app.helper.showViewUserFragment
+import com.mobiledevpro.app.ui.mainscreen.viewmodel.UserDataViewModel
+import com.mobiledevpro.app.ui.usereditscreen.presenter.IUserEditPresenter
+import com.mobiledevpro.app.ui.usereditscreen.presenter.UserEditPresenter
 import com.mobiledevpro.commons.fragment.BaseFragment
 
 /**
  * Fragment for UserEdit screen
  *
+ * Created by Dmitriy Chernysh
  *
- * Created by Dmitriy Chernysh on 11/7/19.
+ * http://androiddev.pro
  *
- *
- * https://instagr.am/mobiledevpro
  * #MobileDevPro
  */
 class UserEditFragment : BaseFragment() {

@@ -1,4 +1,4 @@
-package com.mobiledevpro.apptemplate.ui.splash
+package com.mobiledevpro.app.ui.splash
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,9 +7,9 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.updatePadding
-import com.mobiledevpro.apptemplate.BuildConfig
-import com.mobiledevpro.apptemplate.R
-import com.mobiledevpro.apptemplate.ui.mainscreen.view.MainActivity
+import com.mobiledevpro.app.BuildConfig
+import com.mobiledevpro.app.R
+import com.mobiledevpro.app.ui.mainscreen.view.MainActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 import java.lang.ref.WeakReference
 

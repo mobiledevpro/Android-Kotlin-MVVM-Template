@@ -1,13 +1,14 @@
-package com.mobiledevpro.apptemplate.ui.userviewscreen.presenter
+package com.mobiledevpro.app.ui.userviewscreen.presenter
 
-import com.mobiledevpro.apptemplate.ui.mainscreen.viewmodel.UserDataViewModel
+import com.mobiledevpro.app.ui.mainscreen.viewmodel.UserDataViewModel
 
 /**
  * Presenter for User view screen
  *
- * Created by Dmitriy Chernysh on 12/18/19.
+ * Created by Dmitriy Chernysh
  *
- * https://instagr.am/mobiledevpro
+ * http://androiddev.pro
+ *
  * #MobileDevPro
  */
 class UserViewPresenter(private val viewModel: UserDataViewModel) : IUserViewPresenter {

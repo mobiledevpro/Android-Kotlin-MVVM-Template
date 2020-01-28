@@ -7,11 +7,9 @@ import android.content.SharedPreferences
  * Preferences Helper
  *
  *
- * Created by Dmitriy V. Chernysh on 25.01.17.
- * dmitriy.chernysh@gmail.com
+ * Created by Dmitriy Chernysh
  *
- *
- * www.mobile-dev.pro
+ * http://androiddev.pro
  */
 
 class PreferencesHelper

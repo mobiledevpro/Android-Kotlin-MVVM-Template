@@ -5,7 +5,7 @@
 
         <variable
             name="mainViewModel"
-            type="com.mobiledevpro.apptemplate.ui.mainscreen.viewmodel.MainViewModel" />
+            type="com.mobiledevpro.app.ui.mainscreen.viewmodel.MainViewModel" />
     </data>
 
     <FrameLayout

@@ -1,4 +1,4 @@
-package com.mobiledevpro.apptemplate.helper
+package com.mobiledevpro.app.helper
 
 import androidx.databinding.InverseMethod
 
@@ -6,10 +6,11 @@ import androidx.databinding.InverseMethod
  * Converter helper for data binding
  *
  *
- * Created by Dmitriy Chernysh on 11/12/19.
+ * Created by Dmitriy Chernysh
  *
  *
- * https://instagr.am/mobiledevpro
+ * http://androiddev.pro
+ *
  * #MobileDevPro
  */
 

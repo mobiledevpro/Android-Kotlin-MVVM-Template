@@ -1,4 +1,4 @@
-package com.mobiledevpro.apptemplate.ui.mainscreen.view
+package com.mobiledevpro.app.ui.mainscreen.view
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -6,23 +6,20 @@ import android.view.View
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.mobiledevpro.apptemplate.R
-import com.mobiledevpro.apptemplate.ViewModelFactory
-import com.mobiledevpro.apptemplate.databinding.FragmentMainBinding
-import com.mobiledevpro.apptemplate.helper.showEditUserFragment
-import com.mobiledevpro.apptemplate.ui.mainscreen.viewmodel.MainViewModel
+import com.mobiledevpro.app.R
+import com.mobiledevpro.app.ViewModelFactory
+import com.mobiledevpro.app.databinding.FragmentMainBinding
+import com.mobiledevpro.app.helper.showEditUserFragment
+import com.mobiledevpro.app.ui.mainscreen.viewmodel.MainViewModel
 import com.mobiledevpro.commons.fragment.BaseFragment
 
 /**
  * Main fragment for main activity
  *
  *
- * Created by Dmitriy V. Chernysh
- * dmitriy.chernysh@gmail.com
+ * Created by Dmitriy Chernysh
  *
- *
- * https://instagr.am/mobiledevpro/
- *
+ * http://androiddev.pro/
  *
  * #MobileDevPro
  */

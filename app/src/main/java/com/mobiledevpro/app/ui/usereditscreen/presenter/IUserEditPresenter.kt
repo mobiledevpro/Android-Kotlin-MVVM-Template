@@ -1,4 +1,4 @@
-package com.mobiledevpro.apptemplate.ui.usereditscreen.presenter
+package com.mobiledevpro.app.ui.usereditscreen.presenter
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
@@ -8,9 +8,10 @@ import com.mobiledevpro.database.model.User
 /**
  * Presenter for User edit screen
  *
- * Created by Dmitriy Chernysh on 12/18/19.
+ * Created by Dmitriy Chernysh
  *
- * https://instagr.am/mobiledevpro
+ * http://androiddev.pro
+ *
  * #MobileDevPro
  */
 internal interface IUserEditPresenter : LifecycleObserver {
