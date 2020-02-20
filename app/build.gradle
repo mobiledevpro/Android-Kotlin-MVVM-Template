@@ -2,8 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'io.fabric'
 apply plugin: 'androidx.navigation.safeargs'
+apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -39,6 +39,10 @@ android {
     buildTypes {
         debug {
             debuggable true
+            firebaseCrashlytics {
+                // False -  don't need crash reporting for debug build.
+                mappingFileUploadEnabled false
+            }
         }
         release {
             debuggable false

@@ -6,13 +6,11 @@ buildscript {
     ext.gradleVersion = '3.5.3'
     ext.playServicesVersion = '4.3.3'
     ext.navigationSafeArgsVersion = '1.0.0-alpha01'
+    ext.crashlyticsPluginVersion = '2.0.0-beta02'
 
     repositories {
         google()
         jcenter()
-        maven {
-            url 'https://maven.fabric.io/public'
-        }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$gradleVersion"
@@ -20,7 +18,7 @@ buildscript {
         classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:$navigationSafeArgsVersion"
 
         classpath "com.google.gms:google-services:$playServicesVersion"
-        classpath 'io.fabric.tools:gradle:1.31.2'
+        classpath "com.google.firebase:firebase-crashlytics-gradle:$crashlyticsPluginVersion"
     }
 }
 
@@ -52,7 +50,7 @@ ext {
     leakcanaryVersion = '2.1'
     firebaseCoreVersion = '17.2.2'
     firebasePerfVersion = '19.0.5'
-    crashlyticsVersion = '2.10.1'
+    crashlyticsVersion = '17.0.0-beta01'
     analyticsVersion = '17.2.2'
     lifecycleVersion = '2.2.0'
     rxJavaVersion = '2.2.9'
@@ -63,6 +61,7 @@ ext {
     glideVersion = '4.11.0'
     retrofitVersion = '2.3.0'
     okhttpLoggingInterceptorVersion = '4.2.2'
+    koinVersion = '2.0.1'
 
     deps = [
             "multidex"                : "androidx.multidex:multidex:$multidexVersion",
@@ -76,7 +75,7 @@ ext {
             "leakcanaryDebug"         : "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion",
             "firebaseCore"            : "com.google.firebase:firebase-core:$firebaseCoreVersion",
             "firebasePerformance"     : "com.google.firebase:firebase-perf:$firebasePerfVersion",
-            "crashlytics"             : "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion",
+            "crashlytics"             : "com.google.firebase:firebase-crashlytics:$crashlyticsVersion",
             "firebaseAnalytics"       : "com.google.firebase:firebase-analytics:$analyticsVersion",
             "coreKtx"                 : "androidx.core:core-ktx:$coreKtxVersion",
             "kotlin"                  : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
@@ -84,6 +83,10 @@ ext {
             // ViewModel and LiveData
             "lifecycle"               : "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
             "lifecycleCompiler"       : "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion",
+
+            //DI, Koin
+            "koin"             : "org.koin:koin-core:$koinVersion",
+            "koinViewModel"             : "org.koin:koin-android-viewmodel:$koinVersion",
 
             //Rx
             "rxAndroid"               : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
