@@ -24,8 +24,8 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initToolbar() {
-        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
-        setSupportActionBar(toolbar)
+        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar?
+        toolbar?.let { setSupportActionBar(it) }
     }
 
     override fun initPresenters() {

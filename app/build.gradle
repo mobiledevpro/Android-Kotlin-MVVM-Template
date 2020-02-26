@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'androidx.navigation.safeargs'
 apply plugin: 'com.google.firebase.crashlytics'
 
 android {
@@ -34,6 +33,10 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
     buildTypes {
@@ -103,13 +106,9 @@ android {
         }
     }
 
-    dataBinding {
-        enabled = true
-    }
+    dataBinding.enabled = true
 
-    kapt {
-        correctErrorTypes = true
-    }
+    kapt.correctErrorTypes = true
 }
 
 dependencies {
@@ -123,7 +122,6 @@ dependencies {
     implementation deps.multidex
 
     implementation deps.coreKtx
-    implementation deps.kotlin
 
     //Navigation
     implementation deps.navigationFragment
