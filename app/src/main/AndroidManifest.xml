@@ -23,7 +23,7 @@
         </activity>
         <activity
             android:name="com.mobiledevpro.app.ui.mainscreen.view.MainActivity"
-            android:configChanges="keyboard|orientation|screenSize|screenLayout|keyboardHidden"
+            android:configChanges="keyboard|screenSize|screenLayout|keyboardHidden"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
