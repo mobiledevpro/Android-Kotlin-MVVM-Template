@@ -45,8 +45,10 @@ class SplashActivity : AppCompatActivity() {
         //Use Window Insets to set top and bottom paddings to our activity
         ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
             v.updatePadding(
-                    bottom = insets.systemWindowInsetBottom,
-                    top = insets.systemWindowInsetTop
+                    left = insets.systemWindowInsetLeft,
+                    top = insets.systemWindowInsetTop,
+                    right = insets.systemWindowInsetRight,
+                    bottom = insets.systemWindowInsetBottom
             )
             insets
         }

@@ -24,8 +24,8 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initToolbar() {
-        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
-        setSupportActionBar(toolbar)
+        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar?
+        toolbar?.let { setSupportActionBar(it) }
     }
 
     override fun initPresenters() {
@@ -41,8 +41,10 @@ class MainActivity : BaseActivity() {
         //Use Window Insets to set top and bottom paddings to our activity
         ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
             v.updatePadding(
-                    bottom = insets.systemWindowInsetBottom,
-                    top = insets.systemWindowInsetTop
+                    left = insets.systemWindowInsetLeft,
+                    top = insets.systemWindowInsetTop,
+                    right = insets.systemWindowInsetRight,
+                    bottom = insets.systemWindowInsetBottom
             )
             insets
         }

@@ -2,8 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'io.fabric'
-apply plugin: 'androidx.navigation.safeargs'
+apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -36,9 +35,17 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
     buildTypes {
         debug {
             debuggable true
+            firebaseCrashlytics {
+                // False -  don't need crash reporting for debug build.
+                mappingFileUploadEnabled false
+            }
         }
         release {
             debuggable false
@@ -99,13 +106,9 @@ android {
         }
     }
 
-    dataBinding {
-        enabled = true
-    }
+    dataBinding.enabled = true
 
-    kapt {
-        correctErrorTypes = true
-    }
+    kapt.correctErrorTypes = true
 }
 
 dependencies {
@@ -119,7 +122,6 @@ dependencies {
     implementation deps.multidex
 
     implementation deps.coreKtx
-    implementation deps.kotlin
 
     //Navigation
     implementation deps.navigationFragment
