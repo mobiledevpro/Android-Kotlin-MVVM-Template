@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.mobiledevpro.app.ui.mainscreen.viewmodel.MainViewModel
 import com.mobiledevpro.app.ui.mainscreen.viewmodel.UserDataViewModel
-import com.mobiledevpro.data.repository.useredit.UserEditRepositoryImpl
-import com.mobiledevpro.domain.useredit.UserEditInteractorImpl
+import com.mobiledevpro.data.repository.userdata.UserDataRepositoryImpl
+import com.mobiledevpro.domain.userdata.UserDataInteractorImpl
 
 /**
  * Factory for View Models
@@ -23,7 +23,7 @@ class ViewModelFactory(private val app: Application) : ViewModelProvider.Factory
                 when {
                     isAssignableFrom(UserDataViewModel::class.java) ->
                         UserDataViewModel(
-                                UserEditInteractorImpl(UserEditRepositoryImpl(app))
+                                UserDataInteractorImpl(UserDataRepositoryImpl(app))
                         )
                     isAssignableFrom(MainViewModel::class.java) ->
                         MainViewModel(app)

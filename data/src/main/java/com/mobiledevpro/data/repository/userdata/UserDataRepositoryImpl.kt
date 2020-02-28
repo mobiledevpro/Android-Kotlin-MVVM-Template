@@ -1,10 +1,10 @@
-package com.mobiledevpro.data.repository.useredit
+package com.mobiledevpro.data.repository.userdata
 
 import android.content.Context
 import com.mobiledevpro.data.toEntity
 import com.mobiledevpro.data.toUser
 import com.mobiledevpro.domain.model.User
-import com.mobiledevpro.domain.useredit.UserEditRepository
+import com.mobiledevpro.domain.userdata.UserDataRepository
 import com.mobiledevpro.local.DatabaseHelper
 import com.mobiledevpro.local.model.UserEntity
 import io.reactivex.Observable
@@ -20,7 +20,7 @@ import io.reactivex.Single
  *
  * #MobileDevPro
  */
-class UserEditRepositoryImpl(appContext: Context) : UserEditRepository {
+class UserDataRepositoryImpl(appContext: Context) : UserDataRepository {
 
     private var databaseHelper = DatabaseHelper.getInstance(appContext)
 

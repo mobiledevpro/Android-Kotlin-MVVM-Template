@@ -1,4 +1,4 @@
-package com.mobiledevpro.domain.useredit
+package com.mobiledevpro.domain.userdata
 
 import com.mobiledevpro.domain.model.User
 import io.reactivex.Observable
@@ -16,7 +16,7 @@ import io.reactivex.Single
  *
  * #MobileDevPro
  */
-interface UserEditRepository {
+interface UserDataRepository {
 
     fun getUser(): Single<User>
 

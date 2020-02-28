@@ -5,7 +5,7 @@ import androidx.lifecycle.*
 import com.mobiledevpro.app.Event
 import com.mobiledevpro.data.LOG_TAG_DEBUG
 import com.mobiledevpro.domain.model.User
-import com.mobiledevpro.domain.useredit.UserEditInteractor
+import com.mobiledevpro.domain.userdata.UserDataInteractor
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
@@ -21,7 +21,7 @@ import io.reactivex.rxkotlin.subscribeBy
  *
  * #MobileDevPro
  */
-class UserDataViewModel(private val interactor: UserEditInteractor) : ViewModel(), LifecycleObserver {
+class UserDataViewModel(private val interactor: UserDataInteractor) : ViewModel(), LifecycleObserver {
 
     private var subscriptions = CompositeDisposable()
 

@@ -1,4 +1,4 @@
-package com.mobiledevpro.domain.useredit
+package com.mobiledevpro.domain.userdata
 
 import com.mobiledevpro.domain.model.User
 import io.reactivex.Observable
@@ -16,21 +16,21 @@ import io.reactivex.schedulers.Schedulers
  *
  * #MobileDevPro
  */
-class UserEditInteractorImpl(private val userEditRepository: UserEditRepository) : UserEditInteractor {
+class UserDataInteractorImpl(private val userDataRepository: UserDataRepository) : UserDataInteractor {
 
     override fun updateUserData(name: String?, age: Int): Single<Boolean> =
-            userEditRepository.getUser()
+            userDataRepository.getUser()
                     .flatMap { user ->
                         user.name = name
                         user.age = age
 
-                        return@flatMap userEditRepository.setUser(user)
+                        return@flatMap userDataRepository.setUser(user)
                     }
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeOn(Schedulers.io())
 
     override fun observeUserData(): Observable<User> =
-            userEditRepository.getUserObservable()
+            userDataRepository.getUserObservable()
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeOn(Schedulers.io())
 
