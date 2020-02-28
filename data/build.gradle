@@ -6,5 +6,5 @@ dependencies {
     implementation deps.rxAndroid
     implementation deps.rxKotlin
 
-    implementation project(":data-database")
+    implementation project(":data-local")
 }

@@ -1,8 +1,8 @@
 package com.mobiledevpro.data.repository.useredit
 
 import android.content.Context
-import com.mobiledevpro.database.DatabaseHelper
-import com.mobiledevpro.database.model.User
+import com.mobiledevpro.local.DatabaseHelper
+import com.mobiledevpro.local.model.User
 import io.reactivex.Observable
 import io.reactivex.Single
 

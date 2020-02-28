@@ -3,8 +3,8 @@ package com.mobiledevpro.app.ui.usereditscreen.presenter
 import android.util.Log
 import com.mobiledevpro.app.ui.mainscreen.viewmodel.UserDataViewModel
 import com.mobiledevpro.data.LOG_TAG_DEBUG
-import com.mobiledevpro.database.model.User
-import com.mobiledevpro.interactor.useredit.UserEditInteractor
+import com.mobiledevpro.domain.useredit.UserEditInteractor
+import com.mobiledevpro.local.model.User
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy

@@ -1,8 +1,8 @@
-package com.mobiledevpro.interactor.useredit
+package com.mobiledevpro.domain.useredit
 
 import android.content.Context
 import com.mobiledevpro.data.repository.useredit.UserEditRepository
-import com.mobiledevpro.database.model.User
+import com.mobiledevpro.local.model.User
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers

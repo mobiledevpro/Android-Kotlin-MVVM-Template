@@ -1,6 +1,6 @@
-package com.mobiledevpro.database
+package com.mobiledevpro.local
 
-import com.mobiledevpro.database.model.User
+import com.mobiledevpro.local.model.User
 import io.reactivex.Observable
 import io.reactivex.Single
 

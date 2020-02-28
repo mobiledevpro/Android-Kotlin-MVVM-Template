@@ -151,8 +151,8 @@ dependencies {
     implementation deps.glide
     kapt deps.glideCompiler
 
-    implementation project(":interactor")
+    implementation project(":domain")
     implementation project(":data")
-    implementation project(":data-database")
+    implementation project(":data-local")
 }
 apply plugin: 'com.google.gms.google-services'
