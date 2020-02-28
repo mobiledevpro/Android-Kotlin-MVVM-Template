@@ -120,8 +120,10 @@ dependencies {
     implementation deps.constraintLayout
 
     implementation deps.multidex
-
     implementation deps.coreKtx
+
+    //DI
+    implementation deps.koinViewModel
 
     //Navigation
     implementation deps.navigationFragment

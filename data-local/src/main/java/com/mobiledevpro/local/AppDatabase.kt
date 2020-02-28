@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.mobiledevpro.local.dao.UserDao
-import com.mobiledevpro.local.model.User
+import com.mobiledevpro.local.model.UserEntity
 
 /**
  * Room Database
@@ -19,7 +19,7 @@ import com.mobiledevpro.local.model.User
 
 @Database(
         entities = [
-            User::class
+            UserEntity::class
         ],
         version = BuildConfig.RoomDatabaseVersion,
         exportSchema = true

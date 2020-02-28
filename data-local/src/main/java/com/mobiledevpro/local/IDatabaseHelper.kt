@@ -1,6 +1,6 @@
 package com.mobiledevpro.local
 
-import com.mobiledevpro.local.model.User
+import com.mobiledevpro.local.model.UserEntity
 import io.reactivex.Observable
 import io.reactivex.Single
 
@@ -14,9 +14,9 @@ import io.reactivex.Single
  * #MobileDevPro
  */
 interface IDatabaseHelper {
-    fun getUser(userId: Int): Single<User>
+    fun getUser(userId: Int): Single<UserEntity>
 
-    fun getUserUpdatesObservable(): Observable<User>
+    fun getUserUpdatesObservable(): Observable<UserEntity>
 
-    fun updateUser(user: User): Single<Boolean>
+    fun updateUser(userEntity: UserEntity): Single<Boolean>
 }

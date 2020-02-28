@@ -3,14 +3,15 @@ package com.mobiledevpro.app.ui.usereditscreen.presenter
 import android.util.Log
 import com.mobiledevpro.app.ui.mainscreen.viewmodel.UserDataViewModel
 import com.mobiledevpro.data.LOG_TAG_DEBUG
-import com.mobiledevpro.domain.useredit.UserEditInteractor
-import com.mobiledevpro.local.model.User
+import com.mobiledevpro.data.repository.useredit.UserEditRepositoryImpl
+import com.mobiledevpro.domain.model.User
+import com.mobiledevpro.domain.useredit.UserEditInteractorImpl
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 
 /**
- * Class for ...
+ * Presenter for edit user screen
  *
  * Created by Dmitriy Chernysh
  *
@@ -21,7 +22,7 @@ import io.reactivex.rxkotlin.subscribeBy
 
 internal class UserEditPresenter(private val viewModel: UserDataViewModel) : IUserEditPresenter {
 
-    private val interactor = UserEditInteractor(viewModel.getApplication())
+    private val interactor = UserEditInteractorImpl(UserEditRepositoryImpl(viewModel.getApplication()))
     private var subscriptions = CompositeDisposable()
 
     override fun onStart() {

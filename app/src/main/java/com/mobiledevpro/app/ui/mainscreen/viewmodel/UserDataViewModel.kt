@@ -8,7 +8,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.mobiledevpro.app.Event
 import com.mobiledevpro.data.LOG_TAG_DEBUG
-import com.mobiledevpro.local.model.User
+import com.mobiledevpro.domain.model.User
 
 
 /**

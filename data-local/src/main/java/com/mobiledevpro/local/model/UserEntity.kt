@@ -4,12 +4,12 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "user")
-class User {
+data class UserEntity(
 
-    @PrimaryKey
-    var id: Int = 0
+        @PrimaryKey
+        var id: Int = 0,
 
-    var name: String = ""
+        var name: String = "",
 
-    var age: Int = 0
-}
+        var age: Int = 0
+)

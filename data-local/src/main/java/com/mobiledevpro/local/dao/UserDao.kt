@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.mobiledevpro.local.model.User
+import com.mobiledevpro.local.model.UserEntity
 import io.reactivex.Observable
 import io.reactivex.Single
 
@@ -12,11 +12,11 @@ import io.reactivex.Single
 internal interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(user: User)
+    fun insert(userEntity: UserEntity)
 
     @Query("SELECT * FROM user WHERE id = :id")
-    fun getUserSingle(id: Int): Single<User>
+    fun getUserSingle(id: Int): Single<UserEntity>
 
     @Query("SELECT * FROM user WHERE id = :id")
-    fun getUserObservable(id: Int): Observable<User>
+    fun getUserObservable(id: Int): Observable<UserEntity>
 }
