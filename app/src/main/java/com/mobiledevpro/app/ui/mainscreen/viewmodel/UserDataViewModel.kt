@@ -1,14 +1,14 @@
 package com.mobiledevpro.app.ui.mainscreen.viewmodel
 
-import android.app.Application
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.*
 import com.mobiledevpro.app.Event
 import com.mobiledevpro.data.LOG_TAG_DEBUG
 import com.mobiledevpro.domain.model.User
+import com.mobiledevpro.domain.useredit.UserEditInteractor
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
+import io.reactivex.rxkotlin.subscribeBy
 
 
 /**
@@ -21,36 +21,41 @@ import com.mobiledevpro.domain.model.User
  *
  * #MobileDevPro
  */
-class UserDataViewModel(app: Application) : AndroidViewModel(app) {
+class UserDataViewModel(private val interactor: UserEditInteractor) : ViewModel(), LifecycleObserver {
+
+    private var subscriptions = CompositeDisposable()
 
     private val _cachedUserData = MutableLiveData<User>()
 
-    //uses in two-way databinding
+    private val _navigateToUserView = MutableLiveData<Event<Boolean>>()
+    private val _showToastEvent = MutableLiveData<Event<String>>()
+
+    //these two fields uses two-way databinding
     val userName = MutableLiveData<String>()
     val userAge = MutableLiveData<String>()
 
-    private val _navigateToUserView = MutableLiveData<Event<Boolean>>()
     val navigateToUserView: LiveData<Event<Boolean>> = _navigateToUserView
-
-    private val _showToastEvent = MutableLiveData<Event<String>>()
     val showToastEvent: LiveData<Event<String>> = _showToastEvent
 
-    private val _onSaveUserData = MutableLiveData<Event<User>>()
-    val onSaveUserData: LiveData<Event<User>> = _onSaveUserData
-
-    /**
-     * LifeCycle-aware
-     */
     init {
         Log.d(LOG_TAG_DEBUG, "UserDataViewModel created!")
+        //do nothing
     }
 
-    /**
-     * LifeCycle-aware
-     */
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    fun onStartView() {
+        observeUserData()
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    fun onStopView() {
+        subscriptions.dispose()
+    }
+
     override fun onCleared() {
         super.onCleared()
         Log.d(LOG_TAG_DEBUG, "UserDataViewModel cleared!")
+        //do nothing
     }
 
     /**
@@ -61,7 +66,7 @@ class UserDataViewModel(app: Application) : AndroidViewModel(app) {
         user.name = userName.value ?: ""
         user.age = if (userAge.value.isNullOrEmpty()) 0 else userAge.value?.toInt() ?: 0
 
-        _onSaveUserData.value = Event(user)
+        updateUserData(user)
     }
 
     /**
@@ -82,13 +87,6 @@ class UserDataViewModel(app: Application) : AndroidViewModel(app) {
 
     }
 
-    fun setUserData(user: User) {
-        _cachedUserData.value = user
-
-        userName.value = user.name
-        userAge.value = user.age.toString()
-    }
-
     fun showToastMessage(message: String) {
         _showToastEvent.value = Event(message)
     }
@@ -103,4 +101,36 @@ class UserDataViewModel(app: Application) : AndroidViewModel(app) {
         return (userName.value != cachedUser?.name) ||
                 (userAge.value != cachedUser?.age.toString())
     }
+
+
+    private fun observeUserData() {
+        interactor.observeUserData()
+                .subscribeBy { user ->
+                    _cachedUserData.value = user
+                    userName.value = user.name
+                    userAge.value = user.age.toString()
+                }
+                .addTo(subscriber())
+    }
+
+    private fun updateUserData(user: User) {
+        interactor.updateUserData(user.name, user.age)
+                .subscribeBy(
+                        {
+                            Log.e(LOG_TAG_DEBUG, it.localizedMessage ?: "Something wrong")
+                            showToastMessage("Error: " + it.localizedMessage)
+
+                        },
+                        {
+                            Log.d(LOG_TAG_DEBUG, "Saved!")
+                            showToastMessage("Saved!")
+                            navigateToUserViewScreen()
+                        })
+                .addTo(subscriber())
+    }
+
+    private fun subscriber(): CompositeDisposable =
+            if (!subscriptions.isDisposed) subscriptions else CompositeDisposable()
+
+
 }

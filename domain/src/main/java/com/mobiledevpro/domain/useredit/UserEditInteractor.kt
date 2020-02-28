@@ -16,8 +16,8 @@ import io.reactivex.Single
  */
 interface UserEditInteractor {
 
-    fun getUserObservable(): Observable<User>
+    fun observeUserData(): Observable<User>
 
-    fun updateUser(name: String?,
-                   age: Int): Single<Boolean>
+    fun updateUserData(name: String?,
+                       age: Int): Single<Boolean>
 }

@@ -8,8 +8,6 @@ import com.mobiledevpro.app.R
 import com.mobiledevpro.app.ViewModelFactory
 import com.mobiledevpro.app.databinding.FragmentUserViewBinding
 import com.mobiledevpro.app.ui.mainscreen.viewmodel.UserDataViewModel
-import com.mobiledevpro.app.ui.userviewscreen.presenter.IUserViewPresenter
-import com.mobiledevpro.app.ui.userviewscreen.presenter.UserViewPresenter
 import com.mobiledevpro.commons.fragment.BaseFragment
 
 /**
@@ -24,7 +22,6 @@ import com.mobiledevpro.commons.fragment.BaseFragment
 class UserViewFragment : BaseFragment() {
 
     private lateinit var userViewModel: UserDataViewModel
-    private lateinit var presenter: IUserViewPresenter
 
     override fun getLayoutResId() = R.layout.fragment_user_view
 
@@ -50,10 +47,8 @@ class UserViewFragment : BaseFragment() {
         userViewModel = ViewModelProvider(activity as FragmentActivity, viewModelFactory)
                 .get(UserDataViewModel::class.java)
 
-        //init presenter
-        presenter = UserViewPresenter(userViewModel)
         //add lifecycle observer to presenter
-        lifecycle.addObserver(presenter)
+        lifecycle.addObserver(userViewModel)
     }
 
 }

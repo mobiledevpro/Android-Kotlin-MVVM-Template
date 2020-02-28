@@ -18,7 +18,7 @@ import io.reactivex.schedulers.Schedulers
  */
 class UserEditInteractorImpl(private val userEditRepository: UserEditRepository) : UserEditInteractor {
 
-    override fun updateUser(name: String?, age: Int): Single<Boolean> =
+    override fun updateUserData(name: String?, age: Int): Single<Boolean> =
             userEditRepository.getUser()
                     .flatMap { user ->
                         user.name = name
@@ -29,7 +29,7 @@ class UserEditInteractorImpl(private val userEditRepository: UserEditRepository)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeOn(Schedulers.io())
 
-    override fun getUserObservable(): Observable<User> =
+    override fun observeUserData(): Observable<User> =
             userEditRepository.getUserObservable()
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeOn(Schedulers.io())
