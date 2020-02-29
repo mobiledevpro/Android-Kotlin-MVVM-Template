@@ -87,6 +87,10 @@ ext {
             "koinScope"               : "org.koin:koin-androidx-scope:$koinVersion",
             "koinViewModel"           : "org.koin:koin-androidx-viewmodel:$koinVersion",
 
+            //DI, Koin
+            "koin"                    : "org.koin:koin-core:$koinVersion",
+            "koinViewModel"           : "org.koin:koin-android-viewmodel:$koinVersion",
+
             //Rx
             "rxAndroid"               : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
             "rxKotlin"                : "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion",
