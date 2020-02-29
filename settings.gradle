@@ -1,1 +1,1 @@
-include ':app', ':data', ':interactor', ':data-database'
+include ':app', ':data', ':domain', ':data-local'

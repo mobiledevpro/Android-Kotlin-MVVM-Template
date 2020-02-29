@@ -3,17 +3,13 @@ package com.mobiledevpro.app.ui.usereditscreen.view
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.mobiledevpro.app.R
-import com.mobiledevpro.app.ViewModelFactory
 import com.mobiledevpro.app.databinding.FragmentUserEditBinding
 import com.mobiledevpro.app.helper.showViewUserFragment
 import com.mobiledevpro.app.ui.mainscreen.viewmodel.UserDataViewModel
-import com.mobiledevpro.app.ui.usereditscreen.presenter.IUserEditPresenter
-import com.mobiledevpro.app.ui.usereditscreen.presenter.UserEditPresenter
 import com.mobiledevpro.commons.fragment.BaseFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * Fragment for UserEdit screen
@@ -26,8 +22,8 @@ import com.mobiledevpro.commons.fragment.BaseFragment
  */
 class UserEditFragment : BaseFragment() {
 
-    private lateinit var userViewModel: UserDataViewModel
-    private lateinit var presenter: IUserEditPresenter
+    //init ViewModel using Koin
+    private val userViewModel: UserDataViewModel by viewModel()
 
     override fun getLayoutResId() = R.layout.fragment_user_edit
 
@@ -49,17 +45,8 @@ class UserEditFragment : BaseFragment() {
     }
 
     override fun initPresenters() {
-        val app = requireActivity().application
-        val viewModelFactory = ViewModelFactory(app)
-
-        //init ViewModel for this fragment
-        userViewModel = ViewModelProvider(activity as FragmentActivity, viewModelFactory)
-                .get(UserDataViewModel::class.java)
-
-        //init presenter
-        presenter = UserEditPresenter(userViewModel)
-        //add lifecycle observer to presenter
-        lifecycle.addObserver(presenter)
+        //add lifecycle observer to viewmodel
+        lifecycle.addObserver(userViewModel)
     }
 
     private fun observeEvents(view: View) {
@@ -75,12 +62,6 @@ class UserEditFragment : BaseFragment() {
             it.getContentIfNotHandled()?.let { b ->
                 if (b)
                     view.showViewUserFragment()
-            }
-        })
-
-        userViewModel.onSaveUserData.observe(viewLifecycleOwner, Observer {
-            it.getContentIfNotHandled()?.let { user ->
-                presenter.saveUserData(user)
             }
         })
     }

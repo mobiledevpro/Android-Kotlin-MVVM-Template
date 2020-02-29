@@ -3,9 +3,7 @@ apply from: "$rootDir/common-android-library.gradle"
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    //Rx
     implementation deps.rxAndroid
     implementation deps.rxKotlin
-
-    implementation project(':domain')
-    implementation project(":data-local")
 }

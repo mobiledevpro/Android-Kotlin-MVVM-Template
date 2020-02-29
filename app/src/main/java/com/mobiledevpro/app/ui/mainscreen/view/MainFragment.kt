@@ -3,15 +3,14 @@ package com.mobiledevpro.app.ui.mainscreen.view
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.mobiledevpro.app.R
-import com.mobiledevpro.app.ViewModelFactory
 import com.mobiledevpro.app.databinding.FragmentMainBinding
 import com.mobiledevpro.app.helper.showEditUserFragment
 import com.mobiledevpro.app.ui.mainscreen.viewmodel.MainViewModel
 import com.mobiledevpro.commons.fragment.BaseFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 /**
  * Main fragment for main activity
@@ -26,7 +25,7 @@ import com.mobiledevpro.commons.fragment.BaseFragment
 
 class MainFragment : BaseFragment() {
 
-    private lateinit var viewModel: MainViewModel
+    private val viewModel: MainViewModel by viewModel()
 
     override fun getLayoutResId() = R.layout.fragment_main
 
@@ -65,13 +64,7 @@ class MainFragment : BaseFragment() {
     }
 
     override fun initPresenters() {
-        //init view model instead of presenter
-        val app = requireActivity().application
-        val viewModelFactory = ViewModelFactory(app)
-
-        //init ViewModel for this fragment
-        viewModel = ViewModelProvider(activity as FragmentActivity, viewModelFactory)
-                .get(MainViewModel::class.java)
+        //do nothing
     }
 
 }
