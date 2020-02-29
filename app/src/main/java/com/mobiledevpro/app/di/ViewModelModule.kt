@@ -17,10 +17,13 @@ import org.koin.dsl.module
  * http://androiddev.pro
  *
  */
-val viewModelModule = module {
+val mainModule = module {
+    viewModel { MainViewModel() }
+}
+
+val userEditModule = module {
     single<UserDataRepository> { UserDataRepositoryImpl(get()) }
     single<UserDataInteractor> { UserDataInteractorImpl(get()) }
 
-    viewModel { MainViewModel() }
     viewModel { UserDataViewModel(get()) }
 }

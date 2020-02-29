@@ -1,7 +1,8 @@
 package com.mobiledevpro.app
 
 import android.app.Application
-import com.mobiledevpro.app.di.viewModelModule
+import com.mobiledevpro.app.di.mainModule
+import com.mobiledevpro.app.di.userEditModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -28,5 +29,5 @@ class App : Application() {
         }
     }
 
-    private fun getModules() = viewModelModule
+    private fun getModules() = listOf(mainModule, userEditModule)
 }
