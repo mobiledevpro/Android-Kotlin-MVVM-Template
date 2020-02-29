@@ -81,10 +81,10 @@ ext {
             // ViewModel and LiveData
             "lifecycle"               : "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
             "lifecycleCompiler"       : "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion",
-          //  "lifecycleReactive"       : "androidx.lifecycle:lifecycle-reactivestreams:$lifecycleVersion",
+            //  "lifecycleReactive"       : "androidx.lifecycle:lifecycle-reactivestreams:$lifecycleVersion",
 
             //DI, Koin
-            "koin"                    : "org.koin:koin-androidx-scope:$koinVersion",
+            "koinScope"               : "org.koin:koin-androidx-scope:$koinVersion",
             "koinViewModel"           : "org.koin:koin-androidx-viewmodel:$koinVersion",
 
             //Rx

@@ -123,6 +123,7 @@ dependencies {
     implementation deps.coreKtx
 
     //DI
+    implementation deps.koinScope
     implementation deps.koinViewModel
 
     //Navigation
