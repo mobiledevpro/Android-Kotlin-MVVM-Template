@@ -1,4 +1,4 @@
-package com.mobiledevpro.data.storage
+package com.mobiledevpro.local.storage
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -12,21 +12,11 @@ import android.content.SharedPreferences
  * http://androiddev.pro
  */
 
-class PreferencesHelper
-private constructor(appContext: Context) {
+class PreferencesHelperImpl(appContext: Context) : PreferencesHelper {
 
     companion object {
         const val KEY_PREFS_FILE_MAIN = "app.main.preferences"
         const val KEY_SOMETHING = "something"
-
-        private var sHelper: PreferencesHelper? = null
-
-        fun getInstance(appContext: Context): PreferencesHelper {
-            if (sHelper == null) {
-                sHelper = PreferencesHelper(appContext)
-            }
-            return sHelper as PreferencesHelper
-        }
     }
 
     private val mMainPrefs: SharedPreferences

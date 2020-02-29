@@ -1,4 +1,4 @@
-package com.mobiledevpro.data.storage
+package com.mobiledevpro.local.storage
 
 import android.content.Context
 import android.os.Environment
@@ -14,10 +14,20 @@ import java.io.File
  * http://androiddev.pro
  */
 
-class StorageHelper
-private constructor(appContext: Context) {
+class StorageHelperImpl(appContext: Context) : StorageHelper {
 
     private var mDefaultAppFolder: File? = null
+
+    init {
+        val externalAppFolderPath = getExtAppFolder(appContext)
+        mDefaultAppFolder = if (externalAppFolderPath != null) {
+            externalAppFolderPath
+        } else {
+            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)
+        }
+        createAppFolder()
+    }
+
 
     /**
      * Check SD card is available for read and write
@@ -36,17 +46,6 @@ private constructor(appContext: Context) {
                 false
             }
         }
-
-    private fun initAppFolder(appContext: Context) {
-        val externalAppFolderPath = getExtAppFolder(appContext)
-        if (externalAppFolderPath != null) {
-            mDefaultAppFolder = externalAppFolderPath
-        } else {
-            mDefaultAppFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)
-        }
-
-        createAppFolder()
-    }
 
     /**
      * Create folder for the app
@@ -77,7 +76,7 @@ private constructor(appContext: Context) {
      * @param fileUrl File url
      * @return True -  file is removed
      */
-    fun removeFile(fileUrl: String): Boolean {
+    override fun removeFile(fileUrl: String): Boolean {
         val file = File(fileUrl)
         return if (file.exists()) {
             file.delete()
@@ -90,7 +89,7 @@ private constructor(appContext: Context) {
      * @param file File
      * @return True - file is removed
      */
-    fun removeFile(file: File): Boolean {
+    override fun removeFile(file: File): Boolean {
         if (isExternalStorageAvailable) {
             if (file.exists()) {
                 return file.delete()
@@ -153,19 +152,6 @@ private constructor(appContext: Context) {
             return null
         }
 
-    }
-
-    companion object {
-        private var sStorageHelper: StorageHelper? = null
-
-        operator fun get(appContext: Context): StorageHelper {
-            if (sStorageHelper == null) {
-                sStorageHelper = StorageHelper(appContext)
-            }
-            sStorageHelper!!.initAppFolder(appContext)
-
-            return sStorageHelper as StorageHelper
-        }
     }
 
 }

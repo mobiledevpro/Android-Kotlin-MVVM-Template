@@ -1,11 +1,12 @@
-package com.mobiledevpro.local
+package com.mobiledevpro.local.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.mobiledevpro.local.dao.UserDao
-import com.mobiledevpro.local.model.UserEntity
+import com.mobiledevpro.local.BuildConfig
+import com.mobiledevpro.local.database.dao.UserDao
+import com.mobiledevpro.local.database.model.UserEntity
 
 /**
  * Room Database

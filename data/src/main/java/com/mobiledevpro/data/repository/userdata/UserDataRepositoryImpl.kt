@@ -1,12 +1,11 @@
 package com.mobiledevpro.data.repository.userdata
 
-import android.content.Context
 import com.mobiledevpro.data.toEntity
 import com.mobiledevpro.data.toUser
 import com.mobiledevpro.domain.model.User
 import com.mobiledevpro.domain.userdata.UserDataRepository
-import com.mobiledevpro.local.DatabaseHelper
-import com.mobiledevpro.local.model.UserEntity
+import com.mobiledevpro.local.database.DatabaseHelper
+import com.mobiledevpro.local.database.model.UserEntity
 import io.reactivex.Observable
 import io.reactivex.Single
 
@@ -20,9 +19,7 @@ import io.reactivex.Single
  *
  * #MobileDevPro
  */
-class UserDataRepositoryImpl(appContext: Context) : UserDataRepository {
-
-    private var databaseHelper = DatabaseHelper.getInstance(appContext)
+class UserDataRepositoryImpl(private val databaseHelper: DatabaseHelper) : UserDataRepository {
 
     override fun getUser(): Single<User> =
             databaseHelper.getUser(0)

@@ -1,7 +1,7 @@
 package com.mobiledevpro.data
 
 import com.mobiledevpro.domain.model.User
-import com.mobiledevpro.local.model.UserEntity
+import com.mobiledevpro.local.database.model.UserEntity
 
 /**
  * Extensions for mapping data level models to domain level models and vise versa

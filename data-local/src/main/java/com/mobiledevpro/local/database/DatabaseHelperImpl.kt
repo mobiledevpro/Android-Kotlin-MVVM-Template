@@ -1,7 +1,7 @@
-package com.mobiledevpro.local
+package com.mobiledevpro.local.database
 
 import android.content.Context
-import com.mobiledevpro.local.model.UserEntity
+import com.mobiledevpro.local.database.model.UserEntity
 import io.reactivex.Observable
 import io.reactivex.Single
 
@@ -14,7 +14,7 @@ import io.reactivex.Single
  *
  * #MobileDevPro
  */
-class DatabaseHelper(private val appContext: Context) : IDatabaseHelper {
+class DatabaseHelperImpl(private val appContext: Context) : DatabaseHelper {
 
     override fun getUser(userId: Int): Single<UserEntity> {
         return AppDatabase.getInstance(appContext)
@@ -36,23 +36,6 @@ class DatabaseHelper(private val appContext: Context) : IDatabaseHelper {
                     .insert(userEntity)
 
             emitter.onSuccess(true)
-        }
-    }
-
-    companion object {
-        @Volatile
-        private var INSTANCE: DatabaseHelper? = null
-
-        fun getInstance(context: Context): DatabaseHelper {
-            synchronized(this) {
-                var instance = INSTANCE
-
-                if (instance == null) {
-                    instance = DatabaseHelper(context)
-                    INSTANCE = instance
-                }
-                return instance
-            }
         }
     }
 }
