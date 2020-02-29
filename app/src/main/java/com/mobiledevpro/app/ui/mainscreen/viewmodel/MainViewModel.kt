@@ -1,9 +1,8 @@
 package com.mobiledevpro.app.ui.mainscreen.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.mobiledevpro.app.Event
 
 /**
@@ -15,7 +14,7 @@ import com.mobiledevpro.app.Event
  *
  * #MobileDevPro
  */
-class MainViewModel(app: Application) : AndroidViewModel(app) {
+class MainViewModel : ViewModel() {
 
     private val _editUserButton = MutableLiveData<Event<Boolean>>()
     val editUserButton: LiveData<Event<Boolean>> = _editUserButton

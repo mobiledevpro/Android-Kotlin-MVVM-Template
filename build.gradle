@@ -59,7 +59,7 @@ ext {
     glideVersion = '4.11.0'
     retrofitVersion = '2.3.0'
     okhttpLoggingInterceptorVersion = '4.2.2'
-    koinVersion = '2.0.1'
+    koinVersion = '2.1.1'
 
     deps = [
             "multidex"                : "androidx.multidex:multidex:$multidexVersion",
@@ -81,10 +81,11 @@ ext {
             // ViewModel and LiveData
             "lifecycle"               : "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
             "lifecycleCompiler"       : "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion",
+          //  "lifecycleReactive"       : "androidx.lifecycle:lifecycle-reactivestreams:$lifecycleVersion",
 
             //DI, Koin
-            "koin"                    : "org.koin:koin-core:$koinVersion",
-            "koinViewModel"           : "org.koin:koin-android-viewmodel:$koinVersion",
+            "koin"                    : "org.koin:koin-androidx-scope:$koinVersion",
+            "koinViewModel"           : "org.koin:koin-androidx-viewmodel:$koinVersion",
 
             //Rx
             "rxAndroid"               : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",

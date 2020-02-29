@@ -2,13 +2,11 @@ package com.mobiledevpro.app.ui.userviewscreen.view
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.ViewModelProvider
 import com.mobiledevpro.app.R
-import com.mobiledevpro.app.ViewModelFactory
 import com.mobiledevpro.app.databinding.FragmentUserViewBinding
 import com.mobiledevpro.app.ui.mainscreen.viewmodel.UserDataViewModel
 import com.mobiledevpro.commons.fragment.BaseFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * Fragment for UserView screen
@@ -21,7 +19,7 @@ import com.mobiledevpro.commons.fragment.BaseFragment
  */
 class UserViewFragment : BaseFragment() {
 
-    private lateinit var userViewModel: UserDataViewModel
+    private val userViewModel: UserDataViewModel by viewModel()
 
     override fun getLayoutResId() = R.layout.fragment_user_view
 
@@ -39,14 +37,6 @@ class UserViewFragment : BaseFragment() {
     }
 
     override fun initPresenters() {
-        //init view model instead of presenter
-        val app = requireActivity().application
-        val viewModelFactory = ViewModelFactory(app)
-
-        //init ViewModel for this fragment
-        userViewModel = ViewModelProvider(activity as FragmentActivity, viewModelFactory)
-                .get(UserDataViewModel::class.java)
-
         //add lifecycle observer to presenter
         lifecycle.addObserver(userViewModel)
     }
