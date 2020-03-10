@@ -3,10 +3,10 @@ package com.mobiledevpro.app.ui.mainscreen.viewmodel
 import android.util.Log
 import androidx.lifecycle.*
 import com.mobiledevpro.app.Event
+import com.mobiledevpro.app.ui.BaseViewModel
 import com.mobiledevpro.data.LOG_TAG_DEBUG
 import com.mobiledevpro.domain.model.User
 import com.mobiledevpro.domain.userdata.UserDataInteractor
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 
@@ -21,9 +21,7 @@ import io.reactivex.rxkotlin.subscribeBy
  *
  * #MobileDevPro
  */
-class UserDataViewModel(private val interactor: UserDataInteractor) : ViewModel(), LifecycleObserver {
-
-    private var subscriptions = CompositeDisposable()
+class UserDataViewModel(private val interactor: UserDataInteractor) : BaseViewModel(), LifecycleObserver {
 
     private val _cachedUserData = MutableLiveData<User>()
 
@@ -49,13 +47,7 @@ class UserDataViewModel(private val interactor: UserDataInteractor) : ViewModel(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     fun onStopView() {
-        subscriptions.dispose()
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        Log.d(LOG_TAG_DEBUG, "UserDataViewModel cleared!")
-        //do nothing
+        clearSubscriptions()
     }
 
     /**
@@ -110,7 +102,7 @@ class UserDataViewModel(private val interactor: UserDataInteractor) : ViewModel(
                     userName.value = user.name
                     userAge.value = user.age.toString()
                 }
-                .addTo(subscriber())
+                .addTo(getSubscriber())
     }
 
     private fun updateUserData(user: User) {
@@ -126,11 +118,6 @@ class UserDataViewModel(private val interactor: UserDataInteractor) : ViewModel(
                             showToastMessage("Saved!")
                             navigateToUserViewScreen()
                         })
-                .addTo(subscriber())
+                .addTo(getSubscriber())
     }
-
-    private fun subscriber(): CompositeDisposable =
-            if (!subscriptions.isDisposed) subscriptions else CompositeDisposable()
-
-
 }
