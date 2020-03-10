@@ -1,18 +1,13 @@
 package com.mobiledevpro.local.database.dao
 
 import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.mobiledevpro.local.database.model.UserEntity
 import io.reactivex.Observable
 import io.reactivex.Single
 
 @Dao
-internal interface UserDao {
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(userEntity: UserEntity)
+internal interface UserDao : BaseDao<UserEntity> {
 
     @Query("SELECT * FROM user WHERE id = :id")
     fun getUserSingle(id: Int): Single<UserEntity>
