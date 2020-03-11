@@ -13,18 +13,19 @@ import io.reactivex.disposables.CompositeDisposable
  */
 abstract class BaseViewModel : ViewModel() {
 
-    private var subscriptions: CompositeDisposable = CompositeDisposable()
+    private var disposable: CompositeDisposable = CompositeDisposable()
 
-    fun getSubscriber(): CompositeDisposable {
-        if (subscriptions.isDisposed) subscriptions = CompositeDisposable()
-        return subscriptions
-    }
+    val subscriptions: CompositeDisposable
+        get() {
+            if (disposable.isDisposed) disposable = CompositeDisposable()
+            return disposable
+        }
 
     fun clearSubscriptions() {
-        subscriptions.dispose()
+        disposable.dispose()
     }
 
     override fun onCleared() {
-        subscriptions.dispose()
+        disposable.dispose()
     }
 }

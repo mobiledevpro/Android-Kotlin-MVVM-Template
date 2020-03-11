@@ -102,7 +102,7 @@ class UserDataViewModel(private val interactor: UserDataInteractor) : BaseViewMo
                     userName.value = user.name
                     userAge.value = user.age.toString()
                 }
-                .addTo(getSubscriber())
+                .addTo(subscriptions)
     }
 
     private fun updateUserData(user: User) {
@@ -118,6 +118,6 @@ class UserDataViewModel(private val interactor: UserDataInteractor) : BaseViewMo
                             showToastMessage("Saved!")
                             navigateToUserViewScreen()
                         })
-                .addTo(getSubscriber())
+                .addTo(subscriptions)
     }
 }
