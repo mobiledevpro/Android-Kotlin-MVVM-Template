@@ -1,4 +1,4 @@
 # AppTemplate
 App template: MVVM + Clear Architecture. Kotlin, LiveData, Navigation Fragments, Databinding, Rx, Room, Crashlytics, Circle CI config, commons classes for UI
 
-[![Youtube Video](https://img.youtube.com/vi/GSLxv8ZGwLE/0.jpg)](https://www.youtube.com/watch?v=GSLxv8ZGwLE)
+![architecture](https://user-images.githubusercontent.com/5750211/78999938-56aeff80-7b54-11ea-86bf-da4e52a5ccfe.png)
