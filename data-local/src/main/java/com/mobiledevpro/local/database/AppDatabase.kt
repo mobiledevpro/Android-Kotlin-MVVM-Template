@@ -19,11 +19,11 @@ import com.mobiledevpro.local.database.model.UserEntity
  */
 
 @Database(
-        entities = [
-            UserEntity::class
-        ],
-        version = BuildConfig.RoomDatabaseVersion,
-        exportSchema = true
+    entities = [
+        UserEntity::class
+    ],
+    version = BuildConfig.RoomDatabaseVersion,
+    exportSchema = true
 )
 
 internal abstract class AppDatabase : RoomDatabase() {
@@ -39,11 +39,11 @@ internal abstract class AppDatabase : RoomDatabase() {
 
                 if (instance == null) {
                     instance = Room.databaseBuilder(
-                            context.applicationContext,
-                            AppDatabase::class.java,
-                            "app_database")
-                            .fallbackToDestructiveMigration()
-                            .build()
+                        context.applicationContext,
+                        AppDatabase::class.java,
+                        BuildConfig.RoomDatabaseName)
+                        .fallbackToDestructiveMigration()
+                        .build()
                     INSTANCE = instance
                 }
                 return instance

@@ -12,10 +12,12 @@ android.defaultConfig.javaCompileOptions {
 android.productFlavors{
     productFlavors {
         production {
+            buildConfigField "String", "RoomDatabaseName", "\"app_database\""
             buildConfigField "int", "RoomDatabaseVersion", "1"
         }
 
         demo {
+            buildConfigField "String", "RoomDatabaseName", "\"app_demo_database\""
             buildConfigField "int", "RoomDatabaseVersion", "1"
         }
     }

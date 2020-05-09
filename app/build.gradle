@@ -63,19 +63,19 @@ android {
             versionCode 1
             versionName "1.0.0"
 
-            //it's for using the same flavors in modules/libraries
+            //it allows to use the same flavor in android modules/libraries
             matchingFallbacks = ["production"]
         }
-/*
+
         demo {
             dimension "default"
-            applicationId defaultConfig.applicationId
+            applicationId defaultConfig.applicationId + ".demo"
             versionCode 1
             versionName "1.0.0-demo"
 
-            //it's for using the same flavors in modules/libraries
+            //it allows to use the same flavor in android modules/libraries
             matchingFallbacks = ["demo"]
-        }*/
+        }
     }
 
     sourceSets {
@@ -93,7 +93,7 @@ android {
     }
 
     //set custom name to apk file
-    android.applicationVariants.all { variant ->
+    applicationVariants.all { variant ->
         variant.outputs.all { output ->
             def outputFile = output.outputFile
             if (outputFile != null && outputFile.name.endsWith('.apk')) {
