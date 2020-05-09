@@ -1,42 +1,65 @@
-version: 2
+version: 2.1
 jobs:
   build:
     working_directory: ~/code
     docker:
-      - image: circleci/android:api-27-alpha
+      - image: circleci/android:api-29
     environment:
-      JVM_OPTS: -Xmx4G
-    branches:
-      only:
-        - /v[0-9]+(\.[0-9]+)*/
+      JAVA_TOOL_OPTIONS: "-Xmx4096m"
+      GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2 -Dkotlin.incremental=false -Dkotlin.compiler.execution.strategy=in-process"
+      TERM: dumb
+    #  branches:
+    #    only:
+    #      - /v[0-9]+(\.[0-9]+)*/
+    #      - master
     steps:
+      - run:
+          name: Update SDK
+          command: |
+            yes | sdkmanager --licenses || true
+            sdkmanager "platform-tools" "platforms;android-29"
       - checkout
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
-         name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
-         command: sudo chmod +x ./gradlew
+          name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
+          command: sudo chmod +x ./gradlew
       - run:
           name: Download Dependencies
-          command: ./gradlew androidDependencies
+          command: ./gradlew dependencies
       - save_cache:
           paths:
-            - ~/.gradle
+            - ~/.gradle/caches
+            - ~/.gradle/wrapper
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
           name: Run Tests
-          command: ./gradlew lint test
-      - store_artifacts:
-          path: app/build/reports
-          destination: reports
-      - store_test_results:
-          path: app/build/test-results
+          command: ./gradlew testRelease
       - run:
-          name: Initial build
+          name: Save test results (html page, see Artifacts)
+          command: |
+            mkdir -p test-results/html/
+            find . -type d -regex ".*/*reports/tests" -exec cp -avr {} test-results/html/ \;
+          when: always
+      - run:
+          name: Save test results (xml results, see Tests)
+          command: |
+            mkdir -p test-results/xml/
+            find . -type f -regex ".*/*test-results/.*xml" -exec cp {} test-results/xml/ \;
+          when: always
+      - store_test_results:
+          path: test-results
+      - store_artifacts:
+          path: test-results
+          destination: reports/
+
+      - run:
+          name: Assemble release build
           command: ./gradlew clean assembleRelease --no-daemon --stacktrace
       - store_artifacts:
           path: app/build/outputs/apk/
           destination: apks/
+
       - deploy:
           name: Deploy to Dropbox
           command: ./build-dropbox-upload.sh
