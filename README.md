@@ -16,6 +16,7 @@ MVVM + [Clean Architecture](https://user-images.githubusercontent.com/5750211/78
 * [Material Components](https://github.com/material-components/material-components-android)
 * [Firebase Crashlytics](https://firebase.google.com/docs/crashlytics)
 * [Leak Canary](https://square.github.io/leakcanary/)
+* [Circle CI | Continuous Integration](https://circleci.com/gh/mobile-dev-pro/AppTemplate)
 
 ## License:
 
