@@ -1,5 +1,6 @@
 # AppTemplate
-App Template. 
+
+[![CircleCI](https://circleci.com/gh/mobile-dev-pro/AppTemplate.svg?style=svg)](https://circleci.com/gh/mobile-dev-pro/AppTemplate)
 
 MVVM + [Clean Architecture](https://user-images.githubusercontent.com/5750211/78999938-56aeff80-7b54-11ea-86bf-da4e52a5ccfe.png)
 
