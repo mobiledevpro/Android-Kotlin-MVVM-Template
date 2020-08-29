@@ -52,7 +52,7 @@ class MainFragment : BaseFragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
 
-        viewModel.editUserButton.observe(viewLifecycleOwner, Observer {
+        viewModel.editUserButton.observe(viewLifecycleOwner, {
             it.getContentIfNotHandled()?.let { b ->
                 if (b)
                 //go to Edit User fragment

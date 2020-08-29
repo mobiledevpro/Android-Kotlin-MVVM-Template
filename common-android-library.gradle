@@ -10,6 +10,8 @@ android {
     defaultConfig {
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
+        versionCode rootProject.appVersionCode
+        versionName rootProject.appVersionName
     }
 
     compileOptions {
@@ -21,6 +23,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/kotlin']
         }
     }
 

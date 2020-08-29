@@ -51,14 +51,14 @@ class UserEditFragment : BaseFragment() {
 
     private fun observeEvents(view: View) {
         //show toasts
-        userViewModel.showToastEvent.observe(viewLifecycleOwner, Observer {
+        userViewModel.showToastEvent.observe(viewLifecycleOwner, {
             it.getContentIfNotHandled()?.let { txt ->
                 Toast.makeText(context, txt, Toast.LENGTH_SHORT).show()
             }
         })
 
         //navigate to user view fragment
-        userViewModel.navigateToUserView.observe(viewLifecycleOwner, Observer {
+        userViewModel.navigateToUserView.observe(viewLifecycleOwner, {
             it.getContentIfNotHandled()?.let { b ->
                 if (b)
                     view.showViewUserFragment()

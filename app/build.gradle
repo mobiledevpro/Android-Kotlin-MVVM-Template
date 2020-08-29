@@ -60,8 +60,8 @@ android {
         production {
             dimension "default"
             applicationId defaultConfig.applicationId
-            versionCode 1
-            versionName "1.0.0"
+            versionCode rootProject.appVersionCode
+            versionName rootProject.appVersionName
 
             //it allows to use the same flavor in android modules/libraries
             matchingFallbacks = ["production"]
@@ -88,7 +88,7 @@ android {
                     'src/main/res/layouts/preference',
                     'src/main/res' //it should be the last item here (it affects on output directory in Assets Studio)
             ]
-            java.srcDirs = ['src/main/java']
+            java.srcDirs = ['src/main/kotlin']
         }
     }
 
