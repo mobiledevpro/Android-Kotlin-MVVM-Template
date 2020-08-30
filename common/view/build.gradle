@@ -1,0 +1,9 @@
+apply from: "$rootDir/common-android-library.gradle"
+
+dependencies {
+
+    implementation deps.kotlin
+    implementation deps.coreKtx
+    implementation deps.appcompat
+    implementation deps.material
+}

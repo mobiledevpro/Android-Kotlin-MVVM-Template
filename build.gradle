@@ -37,9 +37,9 @@ ext {
     appVersionName = "1.0.0"
     appVersionCode = 1
 
-    compileSdkVersion = 29
+    compileSdkVersion = 30
     minSdkVersion = 21
-    targetSdkVersion = 29
+    targetSdkVersion = 30
 
     coreKtxVersion = '1.3.1'
 

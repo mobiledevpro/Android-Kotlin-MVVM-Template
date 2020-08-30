@@ -4,7 +4,7 @@
     <data>
 
         <variable
-            name="mainViewModel"
+            name="model"
             type="com.mobiledevpro.app.ui.mainscreen.viewmodel.MainViewModel" />
     </data>
 
@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:onClick="@{() -> mainViewModel.onClickEditUser()}"
+            android:onClick="@{() -> model.onClickEditUser()}"
             android:text="Edit User" />
     </FrameLayout>
 </layout>

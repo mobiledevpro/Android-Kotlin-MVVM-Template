@@ -2,8 +2,8 @@ package com.mobiledevpro.app.ui.mainscreen.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.*
-import com.mobiledevpro.app.Event
-import com.mobiledevpro.app.ui.BaseViewModel
+import com.mobiledevpro.common.ui.livedata.Event
+import com.mobiledevpro.common.ui.base.BaseViewModel
 import com.mobiledevpro.data.LOG_TAG_DEBUG
 import com.mobiledevpro.domain.model.User
 import com.mobiledevpro.domain.userdata.UserDataInteractor

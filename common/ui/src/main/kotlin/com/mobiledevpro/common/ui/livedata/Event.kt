@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mobiledevpro.app
+package com.mobiledevpro.common.ui.livedata
 
 import androidx.lifecycle.Observer
 

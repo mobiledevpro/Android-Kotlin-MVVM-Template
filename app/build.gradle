@@ -106,7 +106,7 @@ android {
         }
     }
 
-    dataBinding.enabled = true
+    buildFeatures.dataBinding = true
 
     kapt.correctErrorTypes = true
 }
@@ -114,6 +114,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation deps.kotlin
     implementation deps.appcompat
     implementation deps.material
     implementation deps.preference
@@ -154,6 +155,8 @@ dependencies {
     implementation deps.glide
     kapt deps.glideCompiler
 
+
+    implementation project(":common:ui")
     implementation project(":domain")
     implementation project(":data")
     implementation project(":data-local")

@@ -1,1 +1,3 @@
+include ':common:view'
+include ':common:ui'
 include ':app', ':data', ':domain', ':data-local'

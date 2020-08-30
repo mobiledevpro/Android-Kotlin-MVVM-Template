@@ -1,0 +1,16 @@
+apply from: "$rootDir/common-android-library.gradle"
+
+android.buildFeatures.dataBinding = true
+
+dependencies {
+
+    implementation deps.kotlin
+    implementation deps.coreKtx
+    implementation deps.appcompat
+    implementation deps.material
+
+    //Rx
+    implementation deps.rxAndroid
+
+
+}
