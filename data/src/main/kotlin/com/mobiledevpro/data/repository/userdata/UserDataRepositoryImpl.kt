@@ -1,13 +1,14 @@
 package com.mobiledevpro.data.repository.userdata
 
-import com.mobiledevpro.data.toEntity
-import com.mobiledevpro.data.toUser
-import com.mobiledevpro.domain.model.User
-import com.mobiledevpro.domain.userdata.UserDataRepository
-import com.mobiledevpro.local.database.DatabaseHelper
+import com.mobiledevpro.data.mapper.toEntity
+import com.mobiledevpro.data.mapper.toUser
+import com.mobiledevpro.data.model.UserData
+import com.mobiledevpro.local.database.DatabaseHelperImpl
 import com.mobiledevpro.local.database.model.UserEntity
 import io.reactivex.Observable
 import io.reactivex.Single
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Repository for UserEdit screen
@@ -19,22 +20,25 @@ import io.reactivex.Single
  *
  * #MobileDevPro
  */
-class UserDataRepositoryImpl(private val databaseHelper: DatabaseHelper) : UserDataRepository {
+@Singleton
+class UserDataRepositoryImpl @Inject constructor(
+    private val databaseHelper: DatabaseHelperImpl
+)  {
 
-    override fun getUser(): Single<User> =
-            databaseHelper.getUser(0)
-                    .onErrorReturn { UserEntity() }
-                    .map(UserEntity::toUser)
+    fun getUser(): Single<UserData> =
+        databaseHelper.getUser(0)
+            .onErrorReturn { UserEntity() }
+            .map(UserEntity::toUser)
 
-    override fun getUserObservable(): Observable<User> =
-            databaseHelper.getUserUpdatesObservable()
-                    .onErrorReturn { UserEntity() }
-                    .map(UserEntity::toUser)
+    fun getUserObservable(): Observable<UserData> =
+        databaseHelper.getUserUpdatesObservable()
+            .onErrorReturn { UserEntity() }
+            .map(UserEntity::toUser)
 
-    override fun setUser(user: User): Single<Boolean> =
-            Single.just(user)
-                    .map(User::toEntity)
-                    .flatMap(databaseHelper::updateUser)
+    fun setUser(user: UserData): Single<Boolean> =
+        Single.just(user)
+            .map(UserData::toEntity)
+            .flatMap(databaseHelper::updateUser)
 
 }
 

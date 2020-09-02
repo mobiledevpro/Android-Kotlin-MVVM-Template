@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="userDataModel"
-            type="com.mobiledevpro.app.ui.mainscreen.viewmodel.UserDataViewModel" />
+            name="model"
+            type="com.mobiledevpro.app.ui.usereditscreen.viewmodel.UserEditViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,7 +28,7 @@
                 android:layout_height="@dimen/default_view_height"
                 android:hint="Enter user name"
                 android:inputType="textCapSentences"
-                android:text="@={userDataModel.userName}" />
+                android:text="@={model.userName}" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -44,7 +44,7 @@
                 android:layout_height="@dimen/default_view_height"
                 android:hint="Enter age"
                 android:inputType="number"
-                android:text="@={userDataModel.userAge}" />
+                android:text="@={model.userAge}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -52,8 +52,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_vertical_margin"
-            android:enabled="@{userDataModel.isUpdateButtonEnabled()}"
-            android:onClick="@{() -> userDataModel.onClickUpdateUser()}"
+            android:enabled="@{model.isUpdateButtonEnabled()}"
+            android:onClick="@{() -> model.onClickUpdateUser()}"
             android:text="Update"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

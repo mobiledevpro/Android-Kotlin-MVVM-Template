@@ -42,15 +42,15 @@ abstract class BaseActivity(
     @LayoutRes
     private val layoutId: Int,
     @AnimRes
-    private val openEnterAnimation: Int = 0,
+    private val openEnterAnimation: Int,
     @AnimRes
-    private val openExitAnimation: Int = 0,
+    private val openExitAnimation: Int,
     @AnimRes
-    private val closeEnterAnimation: Int = 0,
+    private val closeEnterAnimation: Int,
     @AnimRes
-    private val closeExitAnimation: Int = 0,
-    private val isAdjustFontScaleToNormal: Boolean = false,
-    private val windowFlags: List<Int> = emptyList()
+    private val closeExitAnimation: Int,
+    private val isAdjustFontScaleToNormal: Boolean,
+    private val windowFlags: List<Int>
 ) : AppCompatActivity(), BaseActivityInterface {
     init {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)

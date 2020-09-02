@@ -32,16 +32,16 @@ import androidx.fragment.app.Fragment
 abstract class BaseFragment<B : ViewDataBinding>(
     @LayoutRes
     private val layoutId: Int,
-    private val appBarTitle: Any = 0,
-    private val appBarSubTitle: Any = 0,
+    private val appBarTitle: Any,
+    private val appBarSubTitle: Any,
     @DrawableRes
-    private val homeIconId: Int = 0,
+    private val homeIconId: Int,
     @MenuRes
-    private val optionsMenuId: Int = 0,
+    private val optionsMenuId: Int,
     @ColorRes
-    val statusBarColor: Int = 0,
+    val statusBarColor: Int,
     @ColorRes
-    val appBarColor: Int = 0
+    val appBarColor: Int
 ) : Fragment() {
 
     lateinit var viewBinding: B

@@ -1,6 +1,7 @@
 package com.mobiledevpro.domain.userdata
 
 import com.mobiledevpro.domain.model.User
+import dagger.Binds
 import io.reactivex.Observable
 import io.reactivex.Single
 
@@ -14,6 +15,7 @@ import io.reactivex.Single
  *
  * #MobileDevPro
  */
+
 interface UserDataInteractor {
 
     fun observeUserData(): Observable<User>

@@ -1,9 +1,7 @@
 package com.mobiledevpro.app
 
-import android.app.Application
-import com.mobiledevpro.app.di.*
-import org.koin.android.ext.koin.androidContext
-import org.koin.core.context.startKoin
+import androidx.multidex.MultiDexApplication
+import dagger.hilt.android.HiltAndroidApp
 
 /**
  * Main application class
@@ -11,27 +9,11 @@ import org.koin.core.context.startKoin
  * Created by Dmitriy Chernysh
  *
  *
- * http://androiddev.pro
+ * http://mobile-dev.pro
  *
  *
  * #MobileDevPro
  */
 
-class App : Application() {
-
-    override fun onCreate() {
-        super.onCreate()
-        startKoin {
-            androidContext(this@App)
-            modules(getModules())
-        }
-    }
-
-    private fun getModules() = listOf(
-            uiModule,
-            domainModule,
-            dataModule,
-            dataLocalModule,
-            dataRemoteModule
-    )
-}
+@HiltAndroidApp
+class App : MultiDexApplication()

@@ -14,7 +14,13 @@ import java.lang.ref.WeakReference
 
 
 class SplashActivity : BaseActivity(
-    layoutId = R.layout.activity_splash
+    layoutId = R.layout.activity_splash,
+    openExitAnimation = 0,
+    openEnterAnimation = 0,
+    closeExitAnimation = 0,
+    closeEnterAnimation = 0,
+    windowFlags = emptyList(),
+    isAdjustFontScaleToNormal = false
 ) {
 
     companion object {

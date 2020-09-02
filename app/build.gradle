@@ -2,7 +2,9 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'com.google.firebase.crashlytics'
+
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -124,8 +126,10 @@ dependencies {
     implementation deps.coreKtx
 
     //DI
-    implementation deps.koinScope
-    implementation deps.koinViewModel
+    implementation deps.hilt
+    kapt deps.hiltCompiler
+    implementation deps.hiltXViewModel
+    kapt deps.hiltXCompiler
 
     //Navigation
     implementation deps.navigationFragment

@@ -1,6 +1,6 @@
-package com.mobiledevpro.domain.userdata
+package com.mobiledevpro.data.repository.userdata
 
-import com.mobiledevpro.domain.model.User
+import com.mobiledevpro.data.model.UserData
 import io.reactivex.Observable
 import io.reactivex.Single
 
@@ -18,9 +18,9 @@ import io.reactivex.Single
  */
 interface UserDataRepository {
 
-    fun getUser(): Single<User>
+    fun getUser(): Single<UserData>
 
-    fun getUserObservable(): Observable<User>
+    fun getUserObservable(): Observable<UserData>
 
-    fun setUser(user: User): Single<Boolean>
+    fun setUser(user: UserData): Single<Boolean>
 }

@@ -1,6 +1,6 @@
-package com.mobiledevpro.data
+package com.mobiledevpro.data.mapper
 
-import com.mobiledevpro.domain.model.User
+import com.mobiledevpro.data.model.UserData
 import com.mobiledevpro.local.database.model.UserEntity
 
 /**
@@ -12,13 +12,13 @@ import com.mobiledevpro.local.database.model.UserEntity
  *
  */
 
-fun UserEntity.toUser(): User = User(
+fun UserEntity.toUser(): UserData = UserData(
         id = id,
         name = name,
         age = age
 )
 
-fun User.toEntity(): UserEntity = UserEntity(
+fun UserData.toEntity(): UserEntity = UserEntity(
         id = id,
         name = name ?: "",
         age = age

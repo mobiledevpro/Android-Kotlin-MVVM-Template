@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="userDataModel"
-            type="com.mobiledevpro.app.ui.mainscreen.viewmodel.UserDataViewModel" />
+            name="model"
+            type="com.mobiledevpro.app.ui.userviewscreen.viewmodel.UserDataViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@{userDataModel.userName}"
+            android:text="@{model.cachedUserData.name}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@{`` + userDataModel.userAge}"
+            android:text="@{`` + model.cachedUserData.age}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_name" />

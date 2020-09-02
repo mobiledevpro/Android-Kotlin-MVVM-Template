@@ -1,10 +1,11 @@
 package com.mobiledevpro.app.ui.userviewscreen.view
 
+import androidx.fragment.app.viewModels
 import com.mobiledevpro.app.R
 import com.mobiledevpro.app.databinding.FragmentUserViewBinding
-import com.mobiledevpro.app.ui.mainscreen.viewmodel.UserDataViewModel
+import com.mobiledevpro.app.ui.userviewscreen.viewmodel.UserDataViewModel
 import com.mobiledevpro.common.ui.base.BaseFragment
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 
 /**
@@ -16,17 +17,22 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  *
  * #MobileDevPro
  */
+@AndroidEntryPoint
 class UserViewFragment : BaseFragment<FragmentUserViewBinding>(
     layoutId = R.layout.fragment_user_view,
     appBarTitle = R.string.appbar_title_edit_view,
-    homeIconId = R.drawable.ic_arrow_back_white_24dp
+    homeIconId = R.drawable.ic_arrow_back_white_24dp,
+    appBarColor = 0,
+    appBarSubTitle = 0,
+    statusBarColor = 0,
+    optionsMenuId = 0
 ) {
 
-    private val userViewModel: UserDataViewModel by viewModel()
+    private val viewModel: UserDataViewModel by viewModels()
 
     override fun onInitDataBinding() {
-        viewBinding.userDataModel = userViewModel
-        lifecycle.addObserver(userViewModel)
+        viewBinding.model = viewModel
+        lifecycle.addObserver(viewModel)
     }
 
     override fun observeLifecycleEvents() {

@@ -2,8 +2,11 @@ package com.mobiledevpro.local.database
 
 import android.content.Context
 import com.mobiledevpro.local.database.model.UserEntity
+import dagger.hilt.android.qualifiers.ApplicationContext
 import io.reactivex.Observable
 import io.reactivex.Single
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Database Helper
@@ -14,26 +17,29 @@ import io.reactivex.Single
  *
  * #MobileDevPro
  */
-class DatabaseHelperImpl(private val appContext: Context) : DatabaseHelper {
+@Singleton
+class DatabaseHelperImpl @Inject constructor(
+    @ApplicationContext private val appContext: Context
+)  {
 
-    override fun getUser(userId: Int): Single<UserEntity> {
+    fun getUser(userId: Int): Single<UserEntity> {
         return AppDatabase.getInstance(appContext)
-                .userDao
-                .getUserSingle(userId)
+            .userDao
+            .getUserSingle(userId)
     }
 
-    override fun getUserUpdatesObservable(): Observable<UserEntity> {
+    fun getUserUpdatesObservable(): Observable<UserEntity> {
         return AppDatabase.getInstance(appContext)
-                .userDao
-                .getUserObservable(0)
+            .userDao
+            .getUserObservable(0)
     }
 
-    override fun updateUser(userEntity: UserEntity): Single<Boolean> {
+    fun updateUser(userEntity: UserEntity): Single<Boolean> {
         return Single.create { emitter ->
 
             AppDatabase.getInstance(appContext)
-                    .userDao
-                    .insert(userEntity)
+                .userDao
+                .insert(userEntity)
 
             emitter.onSuccess(true)
         }

@@ -6,6 +6,7 @@ buildscript {
     ext.gradleVersion = '4.1.0-rc01'
     ext.playServicesVersion = '4.3.3'
     ext.crashlyticsPluginVersion = '2.0.0-beta04'
+    ext.hiltVersion = '2.28.3-alpha'
 
     repositories {
         google()
@@ -17,6 +18,7 @@ buildscript {
 
         classpath "com.google.gms:google-services:$playServicesVersion"
         classpath "com.google.firebase:firebase-crashlytics-gradle:$crashlyticsPluginVersion"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
     }
 }
 
@@ -85,9 +87,11 @@ ext {
             "lifecycleCompiler"       : "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion",
             //  "lifecycleReactive"       : "androidx.lifecycle:lifecycle-reactivestreams:$lifecycleVersion",
 
-            //DI, Koin
-            "koinScope"               : "org.koin:koin-androidx-scope:$koinVersion",
-            "koinViewModel"           : "org.koin:koin-androidx-viewmodel:$koinVersion",
+            //DI, Hilt
+            "hilt"                    : "com.google.dagger:hilt-android:$hiltVersion",
+            "hiltCompiler"            : "com.google.dagger:hilt-android-compiler:$hiltVersion",
+            "hiltXCompiler"           : "androidx.hilt:hilt-compiler:1.0.0-alpha01",
+            "hiltXViewModel"          : "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha01",
 
             //Rx
             "rxAndroid"               : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
