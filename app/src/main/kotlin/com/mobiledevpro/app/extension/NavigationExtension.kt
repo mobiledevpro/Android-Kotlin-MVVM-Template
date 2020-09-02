@@ -1,4 +1,4 @@
-package com.mobiledevpro.app.helper
+package com.mobiledevpro.app.extension
 
 import android.view.View
 import androidx.navigation.findNavController
@@ -9,7 +9,7 @@ import com.mobiledevpro.app.R
  *
  * Created by Dmitriy Chernysh
  *
- * http://androiddev.pro
+ * http://mobile-dev.pro
  *
  * #MobileDevPro
  */

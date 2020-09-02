@@ -3,7 +3,7 @@ package com.mobiledevpro.app.ui.usereditscreen.view
 import android.widget.Toast
 import com.mobiledevpro.app.R
 import com.mobiledevpro.app.databinding.FragmentUserEditBinding
-import com.mobiledevpro.app.helper.showViewUserFragment
+import com.mobiledevpro.app.extension.showViewUserFragment
 import com.mobiledevpro.app.ui.mainscreen.viewmodel.UserDataViewModel
 import com.mobiledevpro.common.ui.base.BaseFragment
 import com.mobiledevpro.common.ui.extension.observe

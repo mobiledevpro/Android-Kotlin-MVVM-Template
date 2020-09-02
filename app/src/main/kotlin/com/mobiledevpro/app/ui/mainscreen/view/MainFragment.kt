@@ -4,7 +4,7 @@ package com.mobiledevpro.app.ui.mainscreen.view
 import android.view.MenuItem
 import com.mobiledevpro.app.R
 import com.mobiledevpro.app.databinding.FragmentMainBinding
-import com.mobiledevpro.app.helper.showEditUserFragment
+import com.mobiledevpro.app.extension.showEditUserFragment
 import com.mobiledevpro.app.ui.mainscreen.viewmodel.MainViewModel
 import com.mobiledevpro.common.ui.base.BaseFragment
 import com.mobiledevpro.common.ui.extension.observe
