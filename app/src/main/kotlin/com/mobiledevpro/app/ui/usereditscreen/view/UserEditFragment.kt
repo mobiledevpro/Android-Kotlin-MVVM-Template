@@ -6,8 +6,8 @@ import com.mobiledevpro.app.R
 import com.mobiledevpro.app.databinding.FragmentUserEditBinding
 import com.mobiledevpro.app.extension.showViewUserFragment
 import com.mobiledevpro.app.ui.usereditscreen.viewmodel.UserEditViewModel
-import com.mobiledevpro.app.ui.userviewscreen.viewmodel.UserDataViewModel
 import com.mobiledevpro.common.ui.base.BaseFragment
+import com.mobiledevpro.common.ui.base.FragmentSettings
 import com.mobiledevpro.common.ui.extension.observe
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,14 +21,12 @@ import dagger.hilt.android.AndroidEntryPoint
  * #MobileDevPro
  */
 @AndroidEntryPoint
-class UserEditFragment() : BaseFragment<FragmentUserEditBinding>(
+class UserEditFragment : BaseFragment<FragmentUserEditBinding>(
     layoutId = R.layout.fragment_user_edit,
-    homeIconId = R.drawable.ic_arrow_back_white_24dp,
-    appBarTitle = R.string.appbar_title_edit_user,
-    optionsMenuId = 0,
-    appBarColor = 0,
-    appBarSubTitle = 0,
-    statusBarColor = 0
+    FragmentSettings(
+        homeIconId = R.drawable.ic_arrow_back_white_24dp,
+        appBarTitle = R.string.appbar_title_edit_user
+    )
 ) {
 
     private val viewModel: UserEditViewModel by viewModels()

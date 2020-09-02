@@ -21,10 +21,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.*
 import android.view.inputmethod.InputMethodManager
-import androidx.annotation.ColorRes
-import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
-import androidx.annotation.MenuRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -32,24 +29,14 @@ import androidx.fragment.app.Fragment
 abstract class BaseFragment<B : ViewDataBinding>(
     @LayoutRes
     private val layoutId: Int,
-    private val appBarTitle: Any,
-    private val appBarSubTitle: Any,
-    @DrawableRes
-    private val homeIconId: Int,
-    @MenuRes
-    private val optionsMenuId: Int,
-    @ColorRes
-    val statusBarColor: Int,
-    @ColorRes
-    val appBarColor: Int
+    private val settings: FragmentSettings
 ) : Fragment() {
 
     lateinit var viewBinding: B
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        retainInstance = true
-        setHasOptionsMenu(optionsMenuId != 0)
+        setHasOptionsMenu(settings.optionsMenuId != 0)
     }
 
     /**
@@ -93,8 +80,8 @@ abstract class BaseFragment<B : ViewDataBinding>(
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         //Menu items are doubling after fragment has been re-created. Need to execute clear()
         menu.clear()
-        if (optionsMenuId != 0) {
-            inflater.inflate(optionsMenuId, menu)
+        if (settings.optionsMenuId != 0) {
+            inflater.inflate(settings.optionsMenuId, menu)
         }
         super.onCreateOptionsMenu(menu, inflater)
     }
@@ -102,46 +89,46 @@ abstract class BaseFragment<B : ViewDataBinding>(
     private fun applyResources() {
         (requireActivity() is BaseActivityInterface).apply {
             if (!this) {
-                if (statusBarColor != 0)
+                if (settings.statusBarColor != 0)
                     throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set StatusBar color")
-                if (appBarColor != 0)
+                if (settings.appBarColor != 0)
                     throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set AppBar color")
-                if (appBarTitle as Int != 0 || (appBarTitle as String).isEmpty())
+                if (settings.appBarTitle as Int != 0 || (settings.appBarTitle as String).isEmpty())
                     throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set AppBar title")
-                if (appBarSubTitle as Int != 0 || (appBarSubTitle as String).isEmpty())
+                if (settings.appBarSubTitle as Int != 0 || (settings.appBarSubTitle as String).isEmpty())
                     throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set AppBar sub-title")
-                if (homeIconId != 0)
+                if (settings.homeIconId != 0)
                     throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set home indicator icon")
             }
 
             (requireActivity() as BaseActivityInterface).apply {
                 //apply title
                 setAppBarTitle(
-                    when (appBarTitle) {
-                        is Int -> if (appBarTitle != 0) resources.getString(appBarTitle) else ""
-                        is String -> if (appBarTitle.isNotEmpty()) appBarTitle else ""
+                    when (settings.appBarTitle) {
+                        is Int -> if (settings.appBarTitle != 0) resources.getString(settings.appBarTitle) else ""
+                        is String -> if (settings.appBarTitle.isNotEmpty()) settings.appBarTitle else ""
                         else -> ""
                     }
                 )
 
                 //apply sub-title
                 setAppBarSubTitle(
-                    when (appBarSubTitle) {
-                        is Int -> if (appBarSubTitle != 0) resources.getString(appBarSubTitle) else ""
-                        is String -> if (appBarSubTitle.isNotEmpty()) appBarSubTitle else ""
+                    when (settings.appBarSubTitle) {
+                        is Int -> if (settings.appBarSubTitle != 0) resources.getString(settings.appBarSubTitle) else ""
+                        is String -> if (settings.appBarSubTitle.isNotEmpty()) settings.appBarSubTitle else ""
                         else -> ""
                     }
                 )
 
                 //apply color to appbar
-                if (appBarColor != 0)
-                    setAppBarColor(appBarColor)
+                if (settings.appBarColor != 0)
+                    setAppBarColor(settings.appBarColor)
                 //apply color to status bar
-                if (statusBarColor != 0)
-                    setStatusBarColor(statusBarColor)
-                if (homeIconId != 0)
+                if (settings.statusBarColor != 0)
+                    setStatusBarColor(settings.statusBarColor)
+                if (settings.homeIconId != 0)
                 //apply home icon
-                    setHomeAsUpIndicatorIcon(homeIconId)
+                    setHomeAsUpIndicatorIcon(settings.homeIconId)
 
             }
         }

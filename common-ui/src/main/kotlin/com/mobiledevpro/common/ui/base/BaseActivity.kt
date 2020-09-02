@@ -26,7 +26,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import androidx.annotation.AnimRes
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
@@ -41,16 +40,7 @@ import com.mobiledevpro.common.ui.extension.getColorCompatible
 abstract class BaseActivity(
     @LayoutRes
     private val layoutId: Int,
-    @AnimRes
-    private val openEnterAnimation: Int,
-    @AnimRes
-    private val openExitAnimation: Int,
-    @AnimRes
-    private val closeEnterAnimation: Int,
-    @AnimRes
-    private val closeExitAnimation: Int,
-    private val isAdjustFontScaleToNormal: Boolean,
-    private val windowFlags: List<Int>
+    private val settings: ActivitySettings
 ) : AppCompatActivity(), BaseActivityInterface {
     init {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
@@ -62,19 +52,19 @@ abstract class BaseActivity(
     abstract fun initViews(layoutView: View)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        if (isAdjustFontScaleToNormal)
+        if (settings.isAdjustFontScaleToNormal)
             adjustFontScaleToNormal(resources.configuration)
 
         //window feature flags
-        windowFlags.forEach {
+        settings.windowFlags.forEach {
             window.addFlags(it)
         }
 
         super.onCreate(savedInstanceState)
 
         //set start activity animation
-        if (openEnterAnimation != 0 || openExitAnimation != 0)
-            overridePendingTransition(openEnterAnimation, openExitAnimation)
+        if (settings.openEnterAnimation != 0 || settings.openExitAnimation != 0)
+            overridePendingTransition(settings.openEnterAnimation, settings.openExitAnimation)
 
         setContentView(layoutId)
         initToolbar()
@@ -98,8 +88,8 @@ abstract class BaseActivity(
     override fun finish() {
         super.finish()
         //finish activity animation
-        if (closeEnterAnimation != 0 || closeExitAnimation != 0)
-            overridePendingTransition(closeEnterAnimation, closeExitAnimation)
+        if (settings.closeEnterAnimation != 0 || settings.closeExitAnimation != 0)
+            overridePendingTransition(settings.closeEnterAnimation, settings.closeExitAnimation)
     }
 
     override fun setAppBarTitle(titleString: String) {

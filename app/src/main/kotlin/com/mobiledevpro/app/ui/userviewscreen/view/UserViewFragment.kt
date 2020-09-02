@@ -5,6 +5,7 @@ import com.mobiledevpro.app.R
 import com.mobiledevpro.app.databinding.FragmentUserViewBinding
 import com.mobiledevpro.app.ui.userviewscreen.viewmodel.UserDataViewModel
 import com.mobiledevpro.common.ui.base.BaseFragment
+import com.mobiledevpro.common.ui.base.FragmentSettings
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -20,12 +21,10 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class UserViewFragment : BaseFragment<FragmentUserViewBinding>(
     layoutId = R.layout.fragment_user_view,
-    appBarTitle = R.string.appbar_title_edit_view,
-    homeIconId = R.drawable.ic_arrow_back_white_24dp,
-    appBarColor = 0,
-    appBarSubTitle = 0,
-    statusBarColor = 0,
-    optionsMenuId = 0
+    FragmentSettings(
+        appBarTitle = R.string.appbar_title_edit_view,
+        homeIconId = R.drawable.ic_arrow_back_white_24dp
+    )
 ) {
 
     private val viewModel: UserDataViewModel by viewModels()

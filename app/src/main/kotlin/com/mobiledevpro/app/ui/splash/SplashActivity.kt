@@ -9,18 +9,14 @@ import com.mobiledevpro.app.BuildConfig
 import com.mobiledevpro.app.R
 import com.mobiledevpro.app.ui.mainscreen.view.MainActivity
 import com.mobiledevpro.common.ui.base.BaseActivity
+import com.mobiledevpro.common.ui.base.ActivitySettings
 import kotlinx.android.synthetic.main.activity_splash.*
 import java.lang.ref.WeakReference
 
 
 class SplashActivity : BaseActivity(
     layoutId = R.layout.activity_splash,
-    openExitAnimation = 0,
-    openEnterAnimation = 0,
-    closeExitAnimation = 0,
-    closeEnterAnimation = 0,
-    windowFlags = emptyList(),
-    isAdjustFontScaleToNormal = false
+    ActivitySettings()
 ) {
 
     companion object {
