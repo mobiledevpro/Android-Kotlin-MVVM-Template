@@ -1,64 +1,52 @@
 package com.mobiledevpro.app.ui.splash
 
 import android.content.Intent
-import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.updatePadding
 import com.mobiledevpro.app.BuildConfig
 import com.mobiledevpro.app.R
 import com.mobiledevpro.app.ui.mainscreen.view.MainActivity
+import com.mobiledevpro.common.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 import java.lang.ref.WeakReference
 
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity(
+    layoutId = R.layout.activity_splash
+) {
 
     companion object {
         private const val START_MAIN_SCREEN = 1
         private const val SPLASH_DISPLAY_TIME = 1500L //in milliseconds
     }
 
-    private val mStartNextActivityHandler = Handler()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
-
-        applyWindowInsets(findViewById(android.R.id.content))
-
-        tv_app_version.text =
-                String.format(resources.getString(R.string.app_version), BuildConfig.VERSION_NAME)
+    private val handlerOpenNextScreen = Handler(Looper.getMainLooper())
 
 
-        //start login or main screen (depends on the app logic)
-        mStartNextActivityHandler.postDelayed(
-                SplashRunnable(this, START_MAIN_SCREEN),
-                SPLASH_DISPLAY_TIME
-        )
-
+    override fun initToolbar() {
+        //no need in this activity
     }
 
-    private fun applyWindowInsets(view: View) {
-        //Use Window Insets to set top and bottom paddings to our activity
-        ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
-            v.updatePadding(
-                    left = insets.systemWindowInsetLeft,
-                    top = insets.systemWindowInsetTop,
-                    right = insets.systemWindowInsetRight,
-                    bottom = insets.systemWindowInsetBottom
-            )
-            insets
-        }
+    override fun initViews(layoutView: View) {
+        tv_app_version?.text =
+            String.format(
+                resources.getString(R.string.app_version),
+                BuildConfig.VERSION_NAME)
+
+        //start login or main screen (depends on the app logic)
+        handlerOpenNextScreen.postDelayed(
+            SplashRunnable(this, START_MAIN_SCREEN),
+            SPLASH_DISPLAY_TIME
+        )
     }
 
     private class SplashRunnable(activity: AppCompatActivity, val startScreenCode: Int) : Runnable {
-        private val mActivityReference: WeakReference<AppCompatActivity?> = WeakReference(activity)
+        private val activityReference: WeakReference<AppCompatActivity?> = WeakReference(activity)
         override fun run() {
-            if (mActivityReference.get() != null) {
-                val activity = mActivityReference.get()
+            if (activityReference.get() != null) {
+                val activity = activityReference.get()
 
                 val intent: Intent = if (startScreenCode == START_MAIN_SCREEN) {
                     Intent(activity, MainActivity::class.java)

@@ -48,7 +48,6 @@ ext {
     constraintLayoutVersion = '2.0.1'
     navigationVersion = '2.3.0'
     preferenceVersion = '1.1.1'
-    commonsUiVersion = '1.1.2'
     leakcanaryVersion = '2.4'
     firebaseCoreVersion = '17.5.0'
     firebasePerfVersion = '19.0.8'
@@ -73,7 +72,6 @@ ext {
             "constraintLayout"        : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
             "navigationFragment"      : "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
             "navigationUi"            : "androidx.navigation:navigation-ui-ktx:$navigationVersion",
-            "commonsUi"               : "com.github.mobile-dev-pro:commons-ui:$commonsUiVersion",
             "leakcanaryDebug"         : "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion",
             "firebaseCore"            : "com.google.firebase:firebase-core:$firebaseCoreVersion",
             "firebasePerformance"     : "com.google.firebase:firebase-perf:$firebasePerfVersion",

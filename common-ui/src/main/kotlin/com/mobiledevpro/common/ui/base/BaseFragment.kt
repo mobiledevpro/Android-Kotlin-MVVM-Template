@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 http://mobile-dev.pro
+ * Copyright 2020 http://mobile-dev.pro
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,32 +16,35 @@
 
 package com.mobiledevpro.common.ui.base
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.view.*
+import android.view.inputmethod.InputMethodManager
+import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.annotation.MenuRes
-import androidx.annotation.StringRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 
 abstract class BaseFragment<B : ViewDataBinding>(
     @LayoutRes
     private val layoutId: Int,
-    @StringRes
-    private val appBarTitleId: Int = 0,
-    @StringRes
-    private val appBarSubTitleId: Int = 0,
+    private val appBarTitle: Any = 0,
+    private val appBarSubTitle: Any = 0,
     @DrawableRes
     private val homeIconId: Int = 0,
     @MenuRes
-    private val optionsMenuId: Int = 0
+    private val optionsMenuId: Int = 0,
+    @ColorRes
+    val statusBarColor: Int = 0,
+    @ColorRes
+    val appBarColor: Int = 0
 ) : Fragment() {
 
     lateinit var viewBinding: B
-    //lateinit var viewModel: VM
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,20 +59,6 @@ abstract class BaseFragment<B : ViewDataBinding>(
 
     abstract fun observeLifecycleEvents()
 
-    /**
-     * Called to have the fragment instantiate its user interface view.
-     *
-     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
-     * @param container If non-null, this is the parent view that the fragment's UI should be
-     * attached to. The fragment should not add the view itself, but this can be used to generate
-     * the LayoutParams of the view.
-     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous
-     * saved state as given here.
-     *
-     * @return Return the View for the fragment's UI, or null.
-     *
-     * @see Fragment.onCreateView
-     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -80,23 +69,29 @@ abstract class BaseFragment<B : ViewDataBinding>(
         return viewBinding.root
     }
 
-
-    /**
-     * Called to have the fragment instantiate its user interface view.
-     *
-     * @param view The view returned by onCreateView(LayoutInflater, ViewGroup, Bundle)}.
-     * @param savedInstanceState If non-null, this fragment is being re-constructed
-     * from a previous saved state as given here.
-     * @see Fragment.onViewCreated
-     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         onInitDataBinding()
         observeLifecycleEvents()
+        applyResources()
+    }
+
+    override fun onStop() {
+        val activity: Activity? = requireActivity()
+
+        //hide keyboard if it was shown
+        val inputManager = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+
+        inputManager?.let {
+            val view = activity?.currentFocus
+            it.hideSoftInputFromWindow(view?.windowToken, InputMethodManager.RESULT_UNCHANGED_SHOWN)
+        }
+
+        super.onStop()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        //Menu items are doubling after fragment has been re-created. Need to call clear()
+        //Menu items are doubling after fragment has been re-created. Need to execute clear()
         menu.clear()
         if (optionsMenuId != 0) {
             inflater.inflate(optionsMenuId, menu)
@@ -104,4 +99,52 @@ abstract class BaseFragment<B : ViewDataBinding>(
         super.onCreateOptionsMenu(menu, inflater)
     }
 
+    private fun applyResources() {
+        (requireActivity() is BaseActivityInterface).apply {
+            if (!this) {
+                if (statusBarColor != 0)
+                    throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set StatusBar color")
+                if (appBarColor != 0)
+                    throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set AppBar color")
+                if (appBarTitle as Int != 0 || (appBarTitle as String).isEmpty())
+                    throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set AppBar title")
+                if (appBarSubTitle as Int != 0 || (appBarSubTitle as String).isEmpty())
+                    throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set AppBar sub-title")
+                if (homeIconId != 0)
+                    throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set home indicator icon")
+            }
+
+            (requireActivity() as BaseActivityInterface).apply {
+                //apply title
+                setAppBarTitle(
+                    when (appBarTitle) {
+                        is Int -> if (appBarTitle != 0) resources.getString(appBarTitle) else ""
+                        is String -> if (appBarTitle.isNotEmpty()) appBarTitle else ""
+                        else -> ""
+                    }
+                )
+
+                //apply sub-title
+                setAppBarSubTitle(
+                    when (appBarSubTitle) {
+                        is Int -> if (appBarSubTitle != 0) resources.getString(appBarSubTitle) else ""
+                        is String -> if (appBarSubTitle.isNotEmpty()) appBarSubTitle else ""
+                        else -> ""
+                    }
+                )
+
+                //apply color to appbar
+                if (appBarColor != 0)
+                    setAppBarColor(appBarColor)
+                //apply color to status bar
+                if (statusBarColor != 0)
+                    setStatusBarColor(statusBarColor)
+                if (homeIconId != 0)
+                //apply home icon
+                    setHomeAsUpIndicatorIcon(homeIconId)
+
+            }
+        }
+
+    }
 }

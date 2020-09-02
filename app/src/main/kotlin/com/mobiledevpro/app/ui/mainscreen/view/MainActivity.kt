@@ -21,7 +21,7 @@ class MainActivity : BaseActivity(
     }
 
     override fun initViews(layoutView: View) {
-        //no need here
+        //do something: as example, init bottom navigation.
     }
 
 }

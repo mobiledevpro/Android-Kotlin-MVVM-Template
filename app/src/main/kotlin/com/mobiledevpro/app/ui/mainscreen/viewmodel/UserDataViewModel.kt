@@ -21,7 +21,7 @@ import io.reactivex.rxkotlin.subscribeBy
  *
  * #MobileDevPro
  */
-class UserDataViewModel(private val interactor: UserDataInteractor) : BaseViewModel(), LifecycleObserver {
+class UserDataViewModel(private val interactor: UserDataInteractor) : BaseViewModel() {
 
     private val _cachedUserData = MutableLiveData<User>()
 
@@ -35,10 +35,6 @@ class UserDataViewModel(private val interactor: UserDataInteractor) : BaseViewMo
     val navigateToUserView: LiveData<Event<Boolean>> = _navigateToUserView
     val showToastEvent: LiveData<Event<String>> = _showToastEvent
 
-    init {
-        Log.d(LOG_TAG_DEBUG, "UserDataViewModel created!")
-        //do nothing
-    }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun onStartView() {

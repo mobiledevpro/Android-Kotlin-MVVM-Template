@@ -135,9 +135,6 @@ dependencies {
     implementation deps.lifecycle
     kapt deps.lifecycleCompiler
 
-    //commons-ui
-    implementation deps.commonsUi
-
     //Firebase
     implementation deps.firebaseCore
     implementation deps.firebasePerformance

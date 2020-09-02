@@ -16,6 +16,7 @@
 
 package com.mobiledevpro.common.ui.base
 
+import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable
 
@@ -25,7 +26,7 @@ import io.reactivex.disposables.CompositeDisposable
  * http://mobile-dev.pro
  *
  */
-abstract class BaseViewModel : ViewModel() {
+abstract class BaseViewModel : ViewModel(), LifecycleObserver {
 
     private var disposable: CompositeDisposable = CompositeDisposable()
 
