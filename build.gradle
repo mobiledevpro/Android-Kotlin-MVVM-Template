@@ -19,6 +19,9 @@ buildscript {
         classpath "com.google.gms:google-services:$playServicesVersion"
         classpath "com.google.firebase:firebase-crashlytics-gradle:$crashlyticsPluginVersion"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
+
+        //uses to publish 'common-ui' module
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
     }
 }
 
