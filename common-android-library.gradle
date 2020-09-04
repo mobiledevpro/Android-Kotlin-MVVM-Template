@@ -43,7 +43,7 @@ android {
             dimension "default"
         }
 
-        demo {
+        dev {
             dimension "default"
         }
     }

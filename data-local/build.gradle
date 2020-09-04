@@ -16,7 +16,7 @@ android.productFlavors{
             buildConfigField "int", "RoomDatabaseVersion", "1"
         }
 
-        demo {
+        dev {
             buildConfigField "String", "RoomDatabaseName", "\"app_demo_database\""
             buildConfigField "int", "RoomDatabaseVersion", "1"
         }

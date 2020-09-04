@@ -69,14 +69,17 @@ android {
             matchingFallbacks = ["production"]
         }
 
-        demo {
+        dev {
             dimension "default"
-            applicationId defaultConfig.applicationId + ".demo"
+            applicationId defaultConfig.applicationId + ".dev"
             versionCode 1
-            versionName "1.0.0-demo"
+            versionName "1.0.0-dev"
 
             //it allows to use the same flavor in android modules/libraries
-            matchingFallbacks = ["demo"]
+            matchingFallbacks = ["dev"]
+
+            //use this flavor by default
+            getIsDefault().set(true)
         }
     }
 
@@ -125,8 +128,9 @@ dependencies {
     implementation deps.multidex
     implementation deps.coreKtx
 
-    //common
-    implementation deps.commonUI
+    //common UI lib
+    productionImplementation deps.commonUI //<-- use published library
+    devImplementation project(":common-ui") //<-- use local module
 
     //DI
     implementation deps.hilt
@@ -159,8 +163,6 @@ dependencies {
     implementation deps.glide
     kapt deps.glideCompiler
 
-
-    implementation project(":common-ui")
     implementation project(":domain")
     implementation project(":data")
     implementation project(":data-local")

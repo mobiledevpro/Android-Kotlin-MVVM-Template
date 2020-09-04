@@ -1,6 +1,7 @@
 # AppTemplate
 
-[![CircleCI](https://circleci.com/gh/mobiledevpro/AppTemplate.svg?style=svg)](https://circleci.com/gh/mobile-dev-pro/AppTemplate)
+[![CircleCI](https://circleci.com/gh/mobiledevpro/Android-Kotlin-MVVM-Template.svg?style=svg)](https://circleci.com/gh/mobiledevpro/Android-Kotlin-MVVM-Template
+)
 
 MVVM + [Clean Architecture](https://user-images.githubusercontent.com/5750211/78999938-56aeff80-7b54-11ea-86bf-da4e52a5ccfe.png)
 
@@ -17,6 +18,8 @@ MVVM + [Clean Architecture](https://user-images.githubusercontent.com/5750211/78
 * [Firebase Crashlytics](https://firebase.google.com/docs/crashlytics)
 * [Leak Canary](https://square.github.io/leakcanary/)
 * [Circle CI | Continuous Integration](https://circleci.com/gh/mobile-dev-pro/AppTemplate)
+
+[![](https://jitpack.io/v/mobile-dev-pro/commons-ui.svg)](https://jitpack.io/#mobile-dev-pro/commons-ui) Common UI library.
 
 ## License:
 

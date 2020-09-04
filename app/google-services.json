@@ -37,9 +37,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:978007496687:android:f1108b4a6a159a8cf4c81a",
+        "mobilesdk_app_id": "1:978007496687:android:311950bebdb86742f4c81a",
         "android_client_info": {
-          "package_name": "com.mobiledevpro.apptemplate.new.demo"
+          "package_name": "com.mobiledevpro.apptemplate.new.dev"
         }
       },
       "oauth_client": [
