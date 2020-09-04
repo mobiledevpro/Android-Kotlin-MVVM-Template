@@ -1,0 +1,53 @@
+apply from: "$rootDir/common-android-library.gradle"
+
+apply plugin: 'com.github.dcendents.android-maven'
+group = 'com.github.mobiledevpro.android-kotlin-mvvm-template'
+version = rootProject.commonUiVersion
+//read more about publishing to JitPack.io https://github.com/jitpack-io/multi-flavor-lib-demo
+
+
+
+android.buildFeatures.dataBinding = true
+
+android.defaultPublishConfig "productionRelease"
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.javaDirectories
+}
+
+artifacts {
+    archives sourcesJar
+}
+
+dependencies {
+
+    implementation deps.kotlin
+    implementation deps.coreKtx
+    implementation deps.appcompat
+    implementation deps.material
+
+    //Rx
+    implementation deps.rxAndroid
+
+}
+
+
+if (android.productFlavors.size() > 0) {
+    android.libraryVariants.all { variant ->
+        if (variant.name.toLowerCase().contains("debug")) {
+            return
+        }
+
+        def bundleTask = tasks["bundle${variant.name.capitalize()}Aar"]
+
+        artifacts {
+            archives(bundleTask.archivePath) {
+                classifier variant.flavorName
+                builtBy bundleTask
+                name = project.path
+            }
+        }
+
+    }
+}

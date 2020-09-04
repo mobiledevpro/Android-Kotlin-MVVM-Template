@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 
 android {
@@ -10,11 +11,17 @@ android {
     defaultConfig {
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
+        versionCode rootProject.appVersionCode
+        versionName rootProject.appVersionName
     }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 
     buildTypes {
@@ -24,13 +31,26 @@ android {
         }
     }
 
-    publishNonDefault true
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/kotlin']
+        }
+    }
+
     flavorDimensions "default"
     productFlavors {
         production {
+            dimension "default"
         }
 
         demo {
+            dimension "default"
         }
     }
+}
+
+dependencies {
+    //DI
+    implementation deps.hilt
+    kapt deps.hiltCompiler
 }

@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/fragment_main">
 
     <fragment
-        android:id="@+id/mainFragment"
+        android:id="@+id/fragment_main"
         android:name="com.mobiledevpro.app.ui.mainscreen.view.MainFragment"
+        tools:layout="@layout/fragment_main"
         android:label="MainFragment">
         <action
-            android:id="@+id/actionUserEdit"
+            android:id="@+id/action_to_user_edit"
             app:destination="@id/userEditFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -20,10 +22,11 @@
     <fragment
         android:id="@+id/userEditFragment"
         android:name="com.mobiledevpro.app.ui.usereditscreen.view.UserEditFragment"
-        android:label="UserEditFragment">
+        android:label="UserEditFragment"
+        tools:layout="@layout/fragment_user_edit">
         <action
-            android:id="@+id/actionUserView"
-            app:destination="@id/userViewFragment"
+            android:id="@+id/action_to_user_view"
+            app:destination="@id/fragment_user_view"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -33,11 +36,12 @@
     </fragment>
 
     <fragment
-        android:id="@+id/userViewFragment"
+        android:id="@+id/fragment_user_view"
         android:name="com.mobiledevpro.app.ui.userviewscreen.view.UserViewFragment"
-        android:label="UserViewFragment">
+        android:label="UserViewFragment"
+        tools:layout="@layout/fragment_user_view">
         <action
-            android:id="@+id/actionUserViewGoBack"
+            android:id="@+id/action_user_view_to_back"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"

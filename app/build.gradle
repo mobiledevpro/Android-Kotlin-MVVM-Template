@@ -2,7 +2,9 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'com.google.firebase.crashlytics'
+
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -60,8 +62,8 @@ android {
         production {
             dimension "default"
             applicationId defaultConfig.applicationId
-            versionCode 1
-            versionName "1.0.0"
+            versionCode rootProject.appVersionCode
+            versionName rootProject.appVersionName
 
             //it allows to use the same flavor in android modules/libraries
             matchingFallbacks = ["production"]
@@ -88,7 +90,7 @@ android {
                     'src/main/res/layouts/preference',
                     'src/main/res' //it should be the last item here (it affects on output directory in Assets Studio)
             ]
-            java.srcDirs = ['src/main/java']
+            java.srcDirs = ['src/main/kotlin']
         }
     }
 
@@ -106,7 +108,7 @@ android {
         }
     }
 
-    dataBinding.enabled = true
+    buildFeatures.dataBinding = true
 
     kapt.correctErrorTypes = true
 }
@@ -114,6 +116,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation deps.kotlin
     implementation deps.appcompat
     implementation deps.material
     implementation deps.preference
@@ -122,9 +125,14 @@ dependencies {
     implementation deps.multidex
     implementation deps.coreKtx
 
+    //common
+    implementation deps.commonUI
+
     //DI
-    implementation deps.koinScope
-    implementation deps.koinViewModel
+    implementation deps.hilt
+    kapt deps.hiltCompiler
+    implementation deps.hiltXViewModel
+    kapt deps.hiltXCompiler
 
     //Navigation
     implementation deps.navigationFragment
@@ -133,9 +141,6 @@ dependencies {
     //Livedata
     implementation deps.lifecycle
     kapt deps.lifecycleCompiler
-
-    //commons-ui
-    implementation deps.commonsUi
 
     //Firebase
     implementation deps.firebaseCore
@@ -154,6 +159,8 @@ dependencies {
     implementation deps.glide
     kapt deps.glideCompiler
 
+
+    implementation project(":common-ui")
     implementation project(":domain")
     implementation project(":data")
     implementation project(":data-local")
