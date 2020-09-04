@@ -1,6 +1,6 @@
 apply from: "$rootDir/common-android-library.gradle"
 apply plugin: 'com.github.dcendents.android-maven'
-group = 'com.github.mobiledevpro.common-ui'
+group = 'com.github.mobiledevpro'
 
 
 android.buildFeatures.dataBinding = true
