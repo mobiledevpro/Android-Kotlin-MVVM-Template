@@ -125,6 +125,9 @@ dependencies {
     implementation deps.multidex
     implementation deps.coreKtx
 
+    //common
+    implementation deps.commonUI
+
     //DI
     implementation deps.hilt
     kapt deps.hiltCompiler

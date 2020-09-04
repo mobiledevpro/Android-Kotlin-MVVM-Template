@@ -42,7 +42,7 @@ ext {
     appVersionName = "1.0.0"
     appVersionCode = 1
 
-    commonUiVersion = '0.1.2'
+    commonUiVersion = '1.0.0'
 
     compileSdkVersion = 30
     minSdkVersion = 21
@@ -86,6 +86,9 @@ ext {
             "firebaseAnalytics"       : "com.google.firebase:firebase-analytics:$analyticsVersion",
             "coreKtx"                 : "androidx.core:core-ktx:$coreKtxVersion",
             "kotlin"                  : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
+
+            //common
+            "commonUI"                : "com.github.mobiledevpro:android-kotlin-mvvm-template:$commonUiVersion",
 
             // ViewModel and LiveData
             "lifecycle"               : "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
