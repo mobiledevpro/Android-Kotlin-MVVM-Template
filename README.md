@@ -1,14 +1,18 @@
-# AppTemplate
+# Android | Kotlin | MVVM + Clean Architecture | App Template
 
-[![CircleCI](https://circleci.com/gh/mobiledevpro/Android-Kotlin-MVVM-Template.svg?style=svg)](https://circleci.com/gh/mobiledevpro/Android-Kotlin-MVVM-Template
+[![CircleCI](https://circleci.com/gh/mobiledevpro/Android-Kotlin-MVVM-Template.svg?style=shield)](https://circleci.com/gh/mobiledevpro/Android-Kotlin-MVVM-Template
 )
+[![Kotlin Version](https://img.shields.io/badge/kotlin-1.4.0-blue.svg)](http://kotlinlang.org/)
+[![Gradle](https://img.shields.io/badge/gradle-6.5-blue.svg)](https://lv.binarybabel.org/catalog/gradle/latest)
+[![API](https://img.shields.io/badge/API-21%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=21)
+[![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
-MVVM + [Clean Architecture](https://user-images.githubusercontent.com/5750211/78999938-56aeff80-7b54-11ea-86bf-da4e52a5ccfe.png)
-
+## Under the hood:
+* [Clean Architecture](https://user-images.githubusercontent.com/5750211/78999938-56aeff80-7b54-11ea-86bf-da4e52a5ccfe.png)
+* [Kotlin](https://developer.android.com/kotlin)
 * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
 * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
 * [Data Binding](https://developer.android.com/topic/libraries/data-binding)
-* [Kotlin](https://developer.android.com/kotlin)
 * [RxKotlin](https://github.com/ReactiveX/RxKotlin)
 * [Koin](https://insert-koin.io/)
 * [Navigation Components](https://developer.android.com/guide/navigation/)
@@ -19,7 +23,23 @@ MVVM + [Clean Architecture](https://user-images.githubusercontent.com/5750211/78
 * [Leak Canary](https://square.github.io/leakcanary/)
 * [Circle CI | Continuous Integration](https://circleci.com/gh/mobile-dev-pro/AppTemplate)
 
-[![](https://jitpack.io/v/mobile-dev-pro/commons-ui.svg)](https://jitpack.io/#mobile-dev-pro/commons-ui) Common UI library.
+[![](https://jitpack.io/v/mobile-dev-pro/commons-ui.svg)](https://jitpack.io/#mobile-dev-pro/commons-ui) [Common UI library](https://github.com/mobiledevpro/Android-Kotlin-MVVM-Template/tree/master/common-ui)
+  
+    
+      
+
+### Authors:
+
+<a href="https://www.instagram.com/mobiledevpro/" target="_blank">
+  <img src="https://s.gravatar.com/avatar/72c649d298a8f0f088fd0850e19b9147?s=400" width="70" align="left">
+</a>
+
+**Dmitriy Chernysh**
+
+[![Web](https://img.shields.io/badge/-web-grey?logo=appveyor)](http://mobile-dev.pro/)
+[![Instagram](https://img.shields.io/badge/-instagram-grey?logo=instagram)](https://www.instagram.com/mobiledevpro/)
+[![Linkedin](https://img.shields.io/badge/-linkedin-grey?logo=linkedin)](https://www.linkedin.com/in/dmitriychernysh/)
+
 
 ## License:
 
