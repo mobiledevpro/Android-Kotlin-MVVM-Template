@@ -1,9 +1,15 @@
 apply from: "$rootDir/common-android-library.gradle"
+
 apply plugin: 'com.github.dcendents.android-maven'
-group = 'com.github.mobiledevpro'
+group = 'com.github.mobiledevpro.android-kotlin-mvvm-template'
+version = '0.1.0'
+//read more about publishing to JitPack.io https://github.com/jitpack-io/multi-flavor-lib-demo
+
 
 
 android.buildFeatures.dataBinding = true
+
+android.defaultPublishConfig "productionRelease"
 
 dependencies {
 

@@ -37,13 +37,14 @@ android {
         }
     }
 
-    publishNonDefault true
     flavorDimensions "default"
     productFlavors {
         production {
+            dimension "default"
         }
 
         demo {
+            dimension "default"
         }
     }
 }
