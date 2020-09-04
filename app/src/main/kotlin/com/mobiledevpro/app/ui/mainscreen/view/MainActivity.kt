@@ -4,11 +4,9 @@ import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.widget.Toolbar
 import com.mobiledevpro.app.R
-import com.mobiledevpro.common.ui.base.BaseActivity
 import com.mobiledevpro.common.ui.base.ActivitySettings
-import dagger.hilt.android.AndroidEntryPoint
+import com.mobiledevpro.common.ui.base.BaseActivity
 
-@AndroidEntryPoint
 class MainActivity : BaseActivity(
     layoutId = R.layout.activity_main,
     ActivitySettings(

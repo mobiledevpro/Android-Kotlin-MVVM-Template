@@ -1,6 +1,5 @@
 package com.mobiledevpro.app.ui.mainscreen.viewmodel
 
-import androidx.hilt.lifecycle.ViewModelInject
 import com.mobiledevpro.common.ui.base.BaseViewModel
 import com.mobiledevpro.common.ui.livedata.SingleLiveData
 
@@ -14,7 +13,7 @@ import com.mobiledevpro.common.ui.livedata.SingleLiveData
  * #MobileDevPro
  */
 
-class MainViewModel @ViewModelInject constructor() : BaseViewModel() {
+class MainViewModel : BaseViewModel() {
 
     val editUserButton = SingleLiveData<Boolean>()
 

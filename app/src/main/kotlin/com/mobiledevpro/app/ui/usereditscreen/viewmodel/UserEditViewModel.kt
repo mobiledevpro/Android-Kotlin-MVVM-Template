@@ -1,14 +1,14 @@
 package com.mobiledevpro.app.ui.usereditscreen.viewmodel
 
 import android.util.Log
-import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import com.mobiledevpro.common.ui.base.BaseViewModel
 import com.mobiledevpro.common.ui.livedata.Event
 import com.mobiledevpro.data.LOG_TAG_DEBUG
 import com.mobiledevpro.domain.model.User
 import com.mobiledevpro.domain.userdata.UserDataInteractor
-import com.mobiledevpro.domain.userdata.UserDataInteractorImpl
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 
@@ -21,8 +21,8 @@ import io.reactivex.rxkotlin.subscribeBy
  *
  */
 
-class UserEditViewModel @ViewModelInject constructor(
-    private val interactor: UserDataInteractorImpl
+class UserEditViewModel constructor(
+    private val interactor: UserDataInteractor
 ) : BaseViewModel() {
 
     private val _cachedUserData = MutableLiveData<User>()

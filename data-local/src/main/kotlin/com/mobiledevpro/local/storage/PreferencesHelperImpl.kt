@@ -12,7 +12,7 @@ import android.content.SharedPreferences
  * http://androiddev.pro
  */
 
-class PreferencesHelperImpl(appContext: Context) : PreferencesHelper {
+class PreferencesHelperImpl(private val appContext: Context) : PreferencesHelper {
 
     companion object {
         const val KEY_PREFS_FILE_MAIN = "app.main.preferences"

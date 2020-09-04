@@ -1,7 +1,6 @@
 package com.mobiledevpro.app.ui.usereditscreen.view
 
 import android.widget.Toast
-import androidx.fragment.app.viewModels
 import com.mobiledevpro.app.R
 import com.mobiledevpro.app.databinding.FragmentUserEditBinding
 import com.mobiledevpro.app.extension.showViewUserFragment
@@ -9,7 +8,7 @@ import com.mobiledevpro.app.ui.usereditscreen.viewmodel.UserEditViewModel
 import com.mobiledevpro.common.ui.base.BaseFragment
 import com.mobiledevpro.common.ui.base.FragmentSettings
 import com.mobiledevpro.common.ui.extension.observe
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * Fragment for UserEdit screen
@@ -20,7 +19,6 @@ import dagger.hilt.android.AndroidEntryPoint
  *
  * #MobileDevPro
  */
-@AndroidEntryPoint
 class UserEditFragment : BaseFragment<FragmentUserEditBinding>(
     layoutId = R.layout.fragment_user_edit,
     FragmentSettings(
@@ -29,7 +27,7 @@ class UserEditFragment : BaseFragment<FragmentUserEditBinding>(
     )
 ) {
 
-    private val viewModel: UserEditViewModel by viewModels()
+    private val viewModel: UserEditViewModel by viewModel()
 
     override fun onInitDataBinding() {
         viewBinding.model = viewModel

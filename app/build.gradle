@@ -2,8 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'koin'
 
 
 android {
@@ -15,6 +15,8 @@ android {
         targetSdkVersion rootProject.targetSdkVersion
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     dexOptions {
@@ -114,6 +116,10 @@ android {
     buildFeatures.dataBinding = true
 
     kapt.correctErrorTypes = true
+
+    testOptions {
+        unitTests.includeAndroidResources = true
+    }
 }
 
 dependencies {
@@ -133,10 +139,8 @@ dependencies {
     devImplementation project(":common-ui") //<-- use local module
 
     //DI
-    implementation deps.hilt
-    kapt deps.hiltCompiler
-    implementation deps.hiltXViewModel
-    kapt deps.hiltXCompiler
+    implementation deps.koinScope
+    implementation deps.koinViewModel
 
     //Navigation
     implementation deps.navigationFragment
@@ -166,5 +170,13 @@ dependencies {
     implementation project(":domain")
     implementation project(":data")
     implementation project(":data-local")
+
+
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation deps.jUnitExt
+    androidTestImplementation deps.testRunner
+    androidTestImplementation deps.espressoCore
+    testImplementation 'org.mockito:mockito-core:2.23.0'
+    testImplementation deps.koinTest
 }
 apply plugin: 'com.google.gms.google-services'

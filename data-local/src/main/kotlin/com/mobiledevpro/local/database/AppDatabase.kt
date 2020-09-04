@@ -39,7 +39,7 @@ internal abstract class AppDatabase : RoomDatabase() {
 
                 if (instance == null) {
                     instance = Room.databaseBuilder(
-                        context.applicationContext,
+                        context,
                         AppDatabase::class.java,
                         BuildConfig.RoomDatabaseName)
                         .fallbackToDestructiveMigration()

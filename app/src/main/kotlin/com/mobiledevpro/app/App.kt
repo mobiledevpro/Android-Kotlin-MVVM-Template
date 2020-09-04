@@ -1,7 +1,9 @@
 package com.mobiledevpro.app
 
-import androidx.multidex.MultiDexApplication
-import dagger.hilt.android.HiltAndroidApp
+import android.app.Application
+import com.mobiledevpro.app.di.*
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
 /**
  * Main application class
@@ -15,5 +17,12 @@ import dagger.hilt.android.HiltAndroidApp
  * #MobileDevPro
  */
 
-@HiltAndroidApp
-class App : MultiDexApplication()
+class App : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        startKoin {
+            androidContext(this@App)
+            modules(getModules())
+        }
+    }
+}

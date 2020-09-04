@@ -6,7 +6,7 @@ import com.mobiledevpro.app.databinding.FragmentUserViewBinding
 import com.mobiledevpro.app.ui.userviewscreen.viewmodel.UserDataViewModel
 import com.mobiledevpro.common.ui.base.BaseFragment
 import com.mobiledevpro.common.ui.base.FragmentSettings
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 /**
@@ -18,7 +18,6 @@ import dagger.hilt.android.AndroidEntryPoint
  *
  * #MobileDevPro
  */
-@AndroidEntryPoint
 class UserViewFragment : BaseFragment<FragmentUserViewBinding>(
     layoutId = R.layout.fragment_user_view,
     FragmentSettings(
@@ -27,7 +26,7 @@ class UserViewFragment : BaseFragment<FragmentUserViewBinding>(
     )
 ) {
 
-    private val viewModel: UserDataViewModel by viewModels()
+    private val viewModel: UserDataViewModel by viewModel()
 
     override fun onInitDataBinding() {
         viewBinding.model = viewModel

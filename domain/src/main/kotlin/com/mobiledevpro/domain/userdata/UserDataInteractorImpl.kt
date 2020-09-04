@@ -1,5 +1,6 @@
 package com.mobiledevpro.domain.userdata
 
+import com.mobiledevpro.data.repository.userdata.UserDataRepository
 import com.mobiledevpro.data.repository.userdata.UserDataRepositoryImpl
 import com.mobiledevpro.domain.mapper.toData
 import com.mobiledevpro.domain.mapper.toDomain
@@ -8,8 +9,6 @@ import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * Interactor for UserEdit screen
@@ -22,12 +21,11 @@ import javax.inject.Singleton
  * #MobileDevPro
  */
 
-@Singleton
-class UserDataInteractorImpl @Inject constructor(
-    private val userDataRepository: UserDataRepositoryImpl
-)  {
+class UserDataInteractorImpl constructor(
+    private val userDataRepository: UserDataRepository
+) : UserDataInteractor {
 
-    fun updateUserData(name: String?, age: Int): Single<Boolean> =
+    override fun updateUserData(name: String?, age: Int): Single<Boolean> =
         userDataRepository.getUser()
             .map { it.toDomain() }
             .map { user ->
@@ -42,7 +40,7 @@ class UserDataInteractorImpl @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
 
-    fun observeUserData(): Observable<User> =
+    override fun observeUserData(): Observable<User> =
         userDataRepository.getUserObservable()
             .map { it.toDomain() }
             .observeOn(AndroidSchedulers.mainThread())

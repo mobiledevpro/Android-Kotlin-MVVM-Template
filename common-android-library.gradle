@@ -2,7 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
 
 
 android {
@@ -47,10 +46,4 @@ android {
             dimension "default"
         }
     }
-}
-
-dependencies {
-    //DI
-    implementation deps.hilt
-    kapt deps.hiltCompiler
 }
