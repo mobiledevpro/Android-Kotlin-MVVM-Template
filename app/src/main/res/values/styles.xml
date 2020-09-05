@@ -11,7 +11,9 @@
         <item name="materialButtonStyle">@style/AppTheme.Button</item>
         <item name="android:textViewStyle">@style/AppTheme.TextView</item>
         <item name="editTextStyle">@style/AppTheme.EditText</item>
+        <item name="textInputStyle">@style/AppTheme.TextInput</item>
         <item name="actionModeStyle">@style/AppTheme.ActionMode</item>
+
     </style>
 
     <style name="AppTheme.NoActionBar" parent="AppTheme">
@@ -70,6 +72,16 @@
 
     <!-- Edit fields common style-->
     <style name="AppTheme.EditText" parent="Widget.AppCompat.EditText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:textColorHint">@color/colorTextSecondary</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textCursorDrawable">@drawable/background_edittext_cursor</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="AppTheme.TextInput" parent="Widget.Design.TextInputLayout">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/colorTextPrimary</item>
         <item name="android:textColorHint">@color/colorTextSecondary</item>
