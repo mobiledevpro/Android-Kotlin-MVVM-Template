@@ -12,6 +12,8 @@ android {
         targetSdkVersion rootProject.targetSdkVersion
         versionCode rootProject.appVersionCode
         versionName rootProject.appVersionName
+
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     compileOptions {
@@ -24,8 +26,11 @@ android {
     }
 
     buildTypes {
+        debug {
+            debuggable true
+        }
         release {
-            minifyEnabled false
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

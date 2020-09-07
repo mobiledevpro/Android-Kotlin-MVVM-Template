@@ -6,7 +6,6 @@ version = rootProject.commonUiVersion
 //read more about publishing to JitPack.io https://github.com/jitpack-io/multi-flavor-lib-demo
 
 
-
 android.buildFeatures.dataBinding = true
 
 android.defaultPublishConfig "productionRelease"
