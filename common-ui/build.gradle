@@ -2,7 +2,7 @@ apply from: "$rootDir/common-android-library.gradle"
 
 apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.mobiledevpro.android-kotlin-mvvm-template'
-version = rootProject.commonUiVersion
+version = rootProject.versions.commonUi
 //read more about publishing to JitPack.io https://github.com/jitpack-io/multi-flavor-lib-demo
 
 
@@ -21,7 +21,6 @@ artifacts {
 
 dependencies {
 
-    implementation deps.kotlin
     implementation deps.coreKtx
     implementation deps.appcompat
     implementation deps.material

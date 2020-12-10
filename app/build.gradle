@@ -3,8 +3,10 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
     id 'com.google.firebase.crashlytics'
-    id 'koin'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.firebase-perf'
 }
 
 android {
@@ -18,6 +20,9 @@ android {
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        //custom naming for App Bundle builds
+        archivesBaseName = "${applicationId}-v${versionName}-build${versionCode}"
     }
 
     dexOptions {
@@ -75,8 +80,8 @@ android {
         dev {
             dimension "default"
             applicationId defaultConfig.applicationId + ".dev"
-            versionCode 1
-            versionName "1.0.0-dev"
+            versionCode rootProject.appVersionCode
+            versionName rootProject.appVersionName + "-dev"
 
             //it allows to use the same flavor in android modules/libraries
             matchingFallbacks = ["dev"]
@@ -100,20 +105,6 @@ android {
         }
     }
 
-    //set custom name to apk file
-    applicationVariants.all { variant ->
-        variant.outputs.all { output ->
-            def outputFile = output.outputFile
-            if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                outputFileName = variant.productFlavors[0].applicationId + "-" +
-                        "v" + variant.productFlavors[0].versionName + "_" +
-                        "build" + variant.productFlavors[0].versionCode + "-" +
-                        variant.buildType.name +
-                        ".apk"
-            }
-        }
-    }
-
     buildFeatures.dataBinding = true
 
     kapt.correctErrorTypes = true
@@ -126,13 +117,11 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation deps.kotlin
     implementation deps.appcompat
     implementation deps.material
     implementation deps.preference
     implementation deps.constraintLayout
 
-    implementation deps.multidex
     implementation deps.coreKtx
 
     //common UI lib
@@ -173,11 +162,11 @@ dependencies {
     implementation project(":data-local")
 
 
-    testImplementation 'junit:junit:4.13'
+    testImplementation deps.jUnit
     androidTestImplementation deps.jUnitExt
     androidTestImplementation deps.testRunner
     androidTestImplementation deps.espressoCore
-    testImplementation 'org.mockito:mockito-core:2.23.0'
+    testImplementation deps.mockito
     testImplementation deps.koinTest
 }
-apply plugin: 'com.google.gms.google-services'
+

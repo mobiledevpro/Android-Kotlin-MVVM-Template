@@ -2,11 +2,12 @@
 
 buildscript {
 
-    ext.kotlinVersion = '1.4.0'
-    ext.gradleVersion = '4.1.0-rc01'
-    ext.playServicesVersion = '4.3.3'
+    ext.kotlinVersion = '1.4.20'
+    ext.gradleVersion = '4.1.1'
+    ext.playServicesVersion = '4.3.4'
     ext.crashlyticsPluginVersion = '2.0.0-beta04'
     ext.koinVersion = '2.1.1'
+    ext.navigationVersion = '2.3.0'
 
     repositories {
         google()
@@ -15,10 +16,11 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:$gradleVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-
         classpath "com.google.gms:google-services:$playServicesVersion"
         classpath "com.google.firebase:firebase-crashlytics-gradle:$crashlyticsPluginVersion"
+        classpath 'com.google.firebase:perf-plugin:1.3.4'
         classpath "org.koin:koin-gradle-plugin:$koinVersion"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
 
         //uses to publish 'common-ui' module to JitPack
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
@@ -42,90 +44,94 @@ ext {
     appVersionName = "1.0.0"
     appVersionCode = 1
 
-    commonUiVersion = '1.0.0'
-
     compileSdkVersion = 30
     minSdkVersion = 21
     targetSdkVersion = 30
 
-    coreKtxVersion = '1.3.1'
-
-    appCompatVersion = '1.2.0'
-    materialVersion = '1.2.0' //version 1.1.0 breaks styles for TextInputLayout and buttons
-    constraintLayoutVersion = '2.0.1'
-    navigationVersion = '2.3.0'
-    preferenceVersion = '1.1.1'
-    leakcanaryVersion = '2.4'
-    firebaseCoreVersion = '17.5.0'
-    firebasePerfVersion = '19.0.8'
-    crashlyticsVersion = '17.2.1'
-    analyticsVersion = '17.5.0'
-    lifecycleVersion = '2.2.0'
-    rxJavaVersion = '2.2.9'
-    rxAndroidVersion = '2.1.1'
-    rxKotlinVersion = '2.4.0'
-    multidexVersion = '2.0.1'
-    roomDatabaseVersion = '2.2.4'
-    glideVersion = '4.11.0'
-    retrofitVersion = '2.3.0'
-    okhttpLoggingInterceptorVersion = '4.2.2'
-
-    jUnitExtVersion = '1.1.1'
-    testRunnerVersion = '1.2.0'
-    espressoCoreVersion = '3.3.0'
+    versions = [
+            "appcompat"       : "1.2.0",
+            "preference"      : "1.1.1",
+            "material"        : "1.2.1",
+            "constraintLayout": "2.0.4",
+            "coreKtx"         : "1.3.2",
+            "commonUi"        : "1.0.0",
+            "lifecycle"       : "2.2.0",
+            "firebase"        : [
+                    "core"       : "18.0.0",
+                    "performance": "19.0.10",
+                    "crashlytics": "17.3.0",
+                    "analytics"  : "18.0.0"
+            ],
+            "rx"              : [
+                    "android": "2.1.1",
+                    "kotlin" : "2.4.0"
+            ],
+            "room"            : "2.2.4",
+            "glide"           : "4.11.0",
+            "retrofit"        : "2.3.0",
+            "okhttp"          : "4.2.2",
+            "jUnitExt"        : "1.1.2",
+            "jUnit"           : "4.13.1",
+            "testRunner"      : "1.3.0",
+            "espressoCore"    : "3.3.0",
+            "mockito"         : "3.6.28",
+            "leakcanary"      : "2.5"
+    ]
 
     deps = [
-            "multidex"                : "androidx.multidex:multidex:$multidexVersion",
-            "appcompat"               : "androidx.appcompat:appcompat:$appCompatVersion",
-            "preference"              : "androidx.preference:preference:$preferenceVersion",
-            "material"                : "com.google.android.material:material:$materialVersion",
-            "constraintLayout"        : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+            "appcompat"               : "androidx.appcompat:appcompat:$versions.appcompat",
+            "preference"              : "androidx.preference:preference:$versions.preference",
+            "material"                : "com.google.android.material:material:$versions.material",
+            "constraintLayout"        : "androidx.constraintlayout:constraintlayout:$versions.constraintLayout",
             "navigationFragment"      : "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
             "navigationUi"            : "androidx.navigation:navigation-ui-ktx:$navigationVersion",
-            "leakcanaryDebug"         : "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion",
-            "firebaseCore"            : "com.google.firebase:firebase-core:$firebaseCoreVersion",
-            "firebasePerformance"     : "com.google.firebase:firebase-perf:$firebasePerfVersion",
-            "crashlytics"             : "com.google.firebase:firebase-crashlytics:$crashlyticsVersion",
-            "firebaseAnalytics"       : "com.google.firebase:firebase-analytics:$analyticsVersion",
-            "coreKtx"                 : "androidx.core:core-ktx:$coreKtxVersion",
-            "kotlin"                  : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
+            "navigationDynamic"       : "androidx.navigation:navigation-dynamic-features-fragment:$navigationVersion",
+            "coreKtx"                 : "androidx.core:core-ktx:$versions.coreKtx",
+
+            //Firebase
+            "firebaseCore"            : "com.google.firebase:firebase-core:$versions.firebase.core",
+            "firebasePerformance"     : "com.google.firebase:firebase-perf:$versions.firebase.performance",
+            "crashlytics"             : "com.google.firebase:firebase-crashlytics:$versions.firebase.crashlytics",
+            "firebaseAnalytics"       : "com.google.firebase:firebase-analytics:$versions.firebase.analytics",
 
             //common
-            "commonUI"                : "com.github.mobiledevpro:android-kotlin-mvvm-template:$commonUiVersion",
+            "commonUI"                : "com.github.mobiledevpro:android-kotlin-mvvm-template:$versions.commonUi",
 
             // ViewModel and LiveData
-            "lifecycle"               : "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
-            "lifecycleCompiler"       : "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion",
-            //  "lifecycleReactive"       : "androidx.lifecycle:lifecycle-reactivestreams:$lifecycleVersion",
+            "lifecycle"               : "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle",
+            "lifecycleCompiler"       : "androidx.lifecycle:lifecycle-compiler:$versions.lifecycle",
 
             //DI, Koin
             "koinScope"               : "org.koin:koin-androidx-scope:$koinVersion",
             "koinViewModel"           : "org.koin:koin-androidx-viewmodel:$koinVersion",
 
             //Rx
-            "rxAndroid"               : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
-            "rxKotlin"                : "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion",
+            "rxAndroid"               : "io.reactivex.rxjava2:rxandroid:$versions.rx.android",
+            "rxKotlin"                : "io.reactivex.rxjava2:rxkotlin:$versions.rx.kotlin",
 
             //Room
-            "room"                    : "androidx.room:room-runtime:$roomDatabaseVersion",
-            "roomKtx"                 : "androidx.room:room-ktx:$roomDatabaseVersion",
-            "roomCompiler"            : "androidx.room:room-compiler:$roomDatabaseVersion",
-            "roomRx"                  : "androidx.room:room-rxjava2:$roomDatabaseVersion",
+            "room"                    : "androidx.room:room-runtime:$versions.room",
+            "roomKtx"                 : "androidx.room:room-ktx:$versions.room",
+            "roomCompiler"            : "androidx.room:room-compiler:$versions.room",
+            "roomRx"                  : "androidx.room:room-rxjava2:$versions.room",
 
             //UI libs
-            "glide"                   : "com.github.bumptech.glide:glide:$glideVersion",
-            "glideCompiler"           : "com.github.bumptech.glide:compiler:$glideVersion",
+            "glide"                   : "com.github.bumptech.glide:glide:$versions.glide",
+            "glideCompiler"           : "com.github.bumptech.glide:compiler:$versions.glide",
 
             //Network
-            "retrofit"                : "com.squareup.retrofit2:retrofit:$retrofitVersion",
-            "retrofitGsonConverter"   : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
-            "retrofitRx"              : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
-            "okhttpLoggingInterceptor": "com.squareup.okhttp3:logging-interceptor:$okhttpLoggingInterceptorVersion",
+            "retrofit"                : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+            "retrofitGsonConverter"   : "com.squareup.retrofit2:converter-gson:$versions.retrofit",
+            "retrofitRx"              : "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit",
+            "okhttpLoggingInterceptor": "com.squareup.okhttp3:logging-interceptor:$versions.okhttp",
 
             //testing
-            "testRunner"              : "androidx.test:runner:$testRunnerVersion",
-            "jUnitExt"                : "androidx.test.ext:junit:$jUnitExtVersion",
-            "espressoCore"            : "androidx.test.espresso:espresso-core:$espressoCoreVersion",
+            "leakcanaryDebug"         : "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary",
+            "testRunner"              : "androidx.test:runner:$versions.testRunner",
+            "jUnitExt"                : "androidx.test.ext:junit:$versions.jUnitExt",
+            "jUnit"                   : "junit:junit:$versions.jUnit",
+            "espressoCore"            : "androidx.test.espresso:espresso-core:$versions.espressoCore",
+            "mockito"                 : "org.mockito:mockito-core:$versions.mockito",
             "koinTest"                : "org.koin:koin-test:$koinVersion"
     ]
 }
