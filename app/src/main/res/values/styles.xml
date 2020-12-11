@@ -5,7 +5,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorPrimary">@color/colorTextPrimary</item>
-        <item name="android:windowBackground">@color/colorWindowBackground</item>
+        <item name="android:windowBackground">@drawable/background_window</item>
 
         <item name="imageButtonStyle">@style/AppTheme.ImageButton</item>
         <item name="materialButtonStyle">@style/AppTheme.Button</item>
@@ -20,6 +20,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
     <style name="AppTheme.FullScreen" parent="AppTheme">
@@ -28,12 +29,6 @@
         <!--Pay attention! adjustResize for activity doen't work in full screen mode -->
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
-    </style>
-
-    <!-- The splash theme. To set the background to screen -->
-    <style name="AppTheme.Splash" parent="AppTheme.FullScreen">
-        <item name="android:windowBackground">@drawable/background_splash</item>
-        <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
     <style name="AppTheme.AlertDialog" parent="Theme.MaterialComponents.Light.Dialog.Alert">

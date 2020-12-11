@@ -7,8 +7,8 @@
     <!-- App logo -->
     <item>
         <bitmap
-            android:src="@drawable/ic_splash_logo"
-            android:gravity="center"></bitmap>
+            android:src="@mipmap/ic_launcher_foreground"
+            android:gravity="center"/>
     </item>
 
 </layer-list>

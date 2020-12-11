@@ -13,12 +13,12 @@ import com.mobiledevpro.common.ui.livedata.SingleLiveData
  * #MobileDevPro
  */
 
-class MainViewModel : BaseViewModel() {
-
+class ChatPublicViewModel : BaseViewModel() {
+/*
     val editUserButton = SingleLiveData<Boolean>()
 
 
     fun onClickEditUser() {
         editUserButton.postValue(true)
-    }
+    }*/
 }

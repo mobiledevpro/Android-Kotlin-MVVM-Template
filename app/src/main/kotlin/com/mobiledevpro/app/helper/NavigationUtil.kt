@@ -1,4 +1,4 @@
-package com.mobiledevpro.app.extension
+package com.mobiledevpro.app.helper
 
 import android.view.View
 import androidx.navigation.findNavController
@@ -14,6 +14,7 @@ import com.mobiledevpro.app.R
  * #MobileDevPro
  */
 
+/*
 fun View.showEditUserFragment() {
     this.findNavController()
             .navigate(R.id.action_to_user_edit)
@@ -24,3 +25,4 @@ fun View.showViewUserFragment() {
     this.findNavController()
             .navigate(R.id.action_to_user_view)
 }
+*/

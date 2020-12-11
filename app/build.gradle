@@ -4,8 +4,8 @@ plugins {
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
-    id 'com.google.firebase.crashlytics'
     id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
     id 'com.google.firebase.firebase-perf'
 }
 
@@ -17,7 +17,7 @@ android {
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         vectorDrawables.useSupportLibrary = true
-        multiDexEnabled true
+        multiDexEnabled false
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -156,6 +156,9 @@ dependencies {
     //Glide
     implementation deps.glide
     kapt deps.glideCompiler
+
+    //Lottie animation
+    implementation deps.lottie
 
     implementation project(":domain")
     implementation project(":data")

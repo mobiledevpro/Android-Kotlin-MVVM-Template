@@ -6,4 +6,6 @@
 
     <dimen name="default_view_margin">4dp</dimen>
     <dimen name="default_view_height">48dp</dimen>
+
+    <dimen name="layout_corner_radius">32dp</dimen>
 </resources>

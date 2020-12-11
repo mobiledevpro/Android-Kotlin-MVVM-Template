@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="ic_launcher_background">#FFFFFF</color>
+    <color name="ic_launcher_background">#1C2E46</color>
 
-    <color name="colorPrimary">#2196F3</color>
-    <color name="colorPrimaryDark">#1976D2</color>
-    <color name="colorPrimaryLight">#BBDEFB</color>
-    <color name="colorAccent">#FFC107</color>
+    <color name="colorPrimary">#1C2E46</color>
+    <color name="colorPrimaryDark">#1C2E46</color>
+    <color name="colorPrimaryLight">#2D5872</color>
+    <color name="colorAccent">#12B0BE</color>
 
     <color name="colorTextPrimary">#212121</color>
     <color name="colorTextSecondary">#757575</color>
 
     <color name="colorDivider">#BDBDBD</color>
-    <color name="colorWindowBackground">#fffafafa</color>
-    <color name="colorWindowGreyBackground">#EDEDED</color>
+    <color name="colorWindowBackground">@color/colorPrimary</color>
+    <color name="colorWindowGreyBackground">#E5E5E5</color>
     <color name="colorStateDisabled">#D3D1D3</color>
 
     <color name="colorBlackTransparent">#70000000</color>
