@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/mobiledevpro/Android-Kotlin-MVVM-Template.svg?style=shield)](https://circleci.com/gh/mobiledevpro/Android-Kotlin-MVVM-Template
 )
-[![Kotlin Version](https://img.shields.io/badge/kotlin-1.4.0-blue.svg)](http://kotlinlang.org/)
+[![Kotlin Version](https://img.shields.io/badge/kotlin-1.4.20-blue.svg)](http://kotlinlang.org/)
 [![Gradle](https://img.shields.io/badge/gradle-6.5-blue.svg)](https://lv.binarybabel.org/catalog/gradle/latest)
 [![API](https://img.shields.io/badge/API-21%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=21)
 [![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)](http://www.apache.org/licenses/LICENSE-2.0)
@@ -23,7 +23,7 @@
 * [Leak Canary](https://square.github.io/leakcanary/)
 * [Circle CI | Continuous Integration](https://circleci.com/gh/mobile-dev-pro/AppTemplate)
 
-[![](https://jitpack.io/v/mobile-dev-pro/commons-ui.svg)](https://jitpack.io/#mobile-dev-pro/commons-ui) [Common UI library](https://github.com/mobiledevpro/Android-Kotlin-MVVM-Template/tree/master/common-ui)
+[![](https://jitpack.io/v/mobiledevpro/android-kotlin-mvvm-template.svg)](https://jitpack.io/#mobiledevpro/android-kotlin-mvvm-template) [Common UI library](https://github.com/mobiledevpro/Android-Kotlin-MVVM-Template/tree/master/common-ui)
   
     
       
