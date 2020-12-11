@@ -25,6 +25,10 @@ dependencies {
     implementation deps.appcompat
     implementation deps.material
 
+    //Livedata
+    implementation deps.lifecycle
+    kapt deps.lifecycleCompiler
+
     //Rx
     implementation deps.rxAndroid
 

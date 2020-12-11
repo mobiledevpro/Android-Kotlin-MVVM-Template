@@ -99,6 +99,8 @@ abstract class BaseFragment<B : ViewDataBinding>(
                     throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set AppBar sub-title")
                 if (settings.homeIconId != 0)
                     throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set home indicator icon")
+                if (settings.appBarTitleColor != 0)
+                    throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set AppBar Title color")
             }
 
             (requireActivity() as BaseActivityInterface).apply {
@@ -123,9 +125,15 @@ abstract class BaseFragment<B : ViewDataBinding>(
                 //apply color to appbar
                 if (settings.appBarColor != 0)
                     setAppBarColor(settings.appBarColor)
+
                 //apply color to status bar
                 if (settings.statusBarColor != 0)
                     setStatusBarColor(settings.statusBarColor)
+
+                //apply color to appbar title
+                if (settings.appBarTitleColor != 0)
+                    setAppBarTitleColor(settings.appBarTitleColor)
+
                 if (settings.homeIconId != 0)
                 //apply home icon
                     setHomeAsUpIndicatorIcon(settings.homeIconId)

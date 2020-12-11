@@ -6,20 +6,16 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
         android:theme="@style/CommonAppTheme.AppBarOverlay">
 
-
         <androidx.appcompat.widget.Toolbar
-            app:title="Test"
-            android:gravity="center"
             android:id="@+id/toolbar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:minHeight="?attr/actionBarSize"
             app:popupTheme="@style/CommonAppTheme.PopupOverlay"
-            app:titleTextAppearance="@style/CommonAppTheme.ToolbarTitle" />
+            app:titleTextAppearance="@style/CommonAppTheme.ToolbarTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:background="?attr/colorPrimary" />
 
     </com.google.android.material.appbar.AppBarLayout>
 </merge>

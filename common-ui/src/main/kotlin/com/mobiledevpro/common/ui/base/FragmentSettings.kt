@@ -22,5 +22,7 @@ data class FragmentSettings(
     @ColorRes
     val statusBarColor: Int = 0,
     @ColorRes
-    val appBarColor: Int = 0
+    val appBarColor: Int = 0,
+    @ColorRes
+    val appBarTitleColor: Int = 0
 )

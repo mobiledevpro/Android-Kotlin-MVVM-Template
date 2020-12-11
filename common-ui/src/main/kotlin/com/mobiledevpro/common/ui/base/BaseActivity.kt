@@ -30,6 +30,7 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.updatePadding
 import com.mobiledevpro.common.ui.R
@@ -109,7 +110,7 @@ abstract class BaseActivity(
                     view.minimumHeight = 0
             }
 
-            setSubtitle(subTitleString)
+            subtitle = subTitleString
         }
     }
 
@@ -124,6 +125,16 @@ abstract class BaseActivity(
                     getColorCompatible(colorResId)
                 )
             )
+        }
+    }
+
+    override fun setAppBarTitleColor(colorResId: Int) {
+        actionBar?.also {
+            findViewById<Toolbar>(R.id.toolbar)?.apply {
+                this.setTitleTextColor(
+                    getColorCompatible(colorResId)
+                )
+            }
         }
     }
 

@@ -28,5 +28,7 @@ interface BaseActivityInterface {
 
     fun setAppBarColor(@ColorRes colorResId: Int)
 
+    fun setAppBarTitleColor(@ColorRes colorResId: Int)
+
     fun setHomeAsUpIndicatorIcon(@DrawableRes drawable: Int)
 }
