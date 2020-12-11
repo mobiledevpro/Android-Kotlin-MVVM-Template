@@ -79,13 +79,6 @@ abstract class BaseActivity(
         applyWindowInsets(findViewById(android.R.id.content))
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return if (item.itemId == android.R.id.home) {
-            onBackPressed()
-            true
-        } else super.onOptionsItemSelected(item)
-    }
-
     override fun finish() {
         super.finish()
         //finish activity animation

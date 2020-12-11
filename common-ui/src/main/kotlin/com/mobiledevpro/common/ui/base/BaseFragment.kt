@@ -86,6 +86,14 @@ abstract class BaseFragment<B : ViewDataBinding>(
         super.onCreateOptionsMenu(menu, inflater)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return if (item.itemId == android.R.id.home && settings.homeIconBackPressEnabled) {
+            requireActivity().onBackPressed()
+            true
+        } else super.onOptionsItemSelected(item)
+    }
+
+
     private fun applyResources() {
         (requireActivity() is BaseActivityInterface).apply {
             if (!this) {

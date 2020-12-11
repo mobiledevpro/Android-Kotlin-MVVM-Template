@@ -24,5 +24,6 @@ data class FragmentSettings(
     @ColorRes
     val appBarColor: Int = 0,
     @ColorRes
-    val appBarTitleColor: Int = 0
+    val appBarTitleColor: Int = 0,
+    val homeIconBackPressEnabled : Boolean = true
 )
