@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:dist="http://schemas.android.com/apk/distribution"
+    package="com.mobiledevpro.chat.main">
+
+    <dist:module
+        dist:instant="false"
+        dist:title="@string/app_title_chat_public">
+        <dist:delivery>
+            <dist:install-time />
+        </dist:delivery>
+        <dist:fusing dist:include="false" />
+    </dist:module>
+</manifest>

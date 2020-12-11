@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Chat App Template</string>
+    <string name="app_name">Chat Template</string>
 
     <string name="app_title_chat_public">Public Chat</string>
     <string name="app_version">v%s</string>

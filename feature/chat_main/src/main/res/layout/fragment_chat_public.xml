@@ -6,7 +6,7 @@
 
         <variable
             name="model"
-            type="com.mobiledevpro.app.ui.mainscreen.viewmodel.ChatPublicViewModel" />
+            type="com.mobiledevpro.chat.main.view.ChatPublicViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -49,19 +49,20 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <EditText
+                style="@style/AppTheme.EditText.Chat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autofillHints="@null"
                 android:hint="@string/hint_chat_message"
-                style="@style/AppTheme.EditText.Chat"
-                android:autofillHints="@null" />
+                android:inputType="textMultiLine|text" />
 
             <ImageButton
                 style="@style/AppTheme.ImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_send_white_24dp"
+                android:layout_gravity="center_vertical|end"
                 android:contentDescription="@null"
-                android:layout_gravity="center_vertical|end"/>
+                app:srcCompat="@drawable/ic_send_white_24dp" />
         </FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

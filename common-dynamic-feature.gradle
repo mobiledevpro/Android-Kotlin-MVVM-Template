@@ -1,7 +1,7 @@
-apply plugin: 'com.android.library'
+apply plugin: 'com.android.dynamic-feature'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -9,8 +9,11 @@ android {
     defaultConfig {
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
-        versionCode rootProject.appVersionCode
+
         versionName rootProject.appVersionName
+        versionCode rootProject.appVersionCode
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -30,13 +33,13 @@ android {
         }
         release {
             debuggable false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
     sourceSets {
         main {
-            java.srcDirs = ['src/main/kotlin']
+            res.srcDirs = ['src/main/res']
+            java.srcDirs = ['src/main/java', 'src/main/kotlin']
         }
     }
 
@@ -45,9 +48,15 @@ android {
         production {
             dimension "default"
         }
-
         dev {
             dimension "default"
         }
     }
+
+    buildFeatures.dataBinding = true
+    buildFeatures.viewBinding = true
+}
+
+dependencies {
+    implementation project(":app")
 }

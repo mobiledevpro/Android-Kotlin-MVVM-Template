@@ -1,40 +1,47 @@
-package com.mobiledevpro.app.ui.mainscreen.view
+package com.mobiledevpro.chat.main.view
 
 import android.view.MenuItem
 import android.widget.Toast
-import com.mobiledevpro.app.R
-import com.mobiledevpro.app.databinding.FragmentChatPublicBinding
-import com.mobiledevpro.app.ui.mainscreen.viewmodel.ChatPublicViewModel
+import com.mobiledevpro.chat.main.R
+import com.mobiledevpro.chat.main.databinding.FragmentChatPublicBinding
+import com.mobiledevpro.chat.main.di.featureChatMainModule
 import com.mobiledevpro.common.ui.base.BaseFragment
 import com.mobiledevpro.common.ui.base.FragmentSettings
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.scope.lifecycleScope
+import org.koin.androidx.viewmodel.scope.getViewModel
+import org.koin.core.context.loadKoinModules
+import com.mobiledevpro.app.R as RApp
 
 
 /**
  * Main fragment for main activity
  *
  *
- * Created by Dmitriy Chernysh
- *
- * #MobileDevPro
+ * www.mobile-dev.pro
  */
 
 class ChatPublicFragment : BaseFragment<FragmentChatPublicBinding>(
     layoutId = R.layout.fragment_chat_public,
     FragmentSettings(
-        statusBarColor = R.color.colorWindowGreyBackground,
-        appBarColor = R.color.colorWindowGreyBackground,
-        appBarTitle = R.string.app_title_chat_public,
-        appBarTitleColor = R.color.colorTextPrimary,
-        homeIconId = R.drawable.ic_list_dark_24dp,
+        statusBarColor = RApp.color.colorWindowGreyBackground,
+        appBarColor = RApp.color.colorWindowGreyBackground,
+        appBarTitle = RApp.string.app_title_chat_public,
+        appBarTitleColor = RApp.color.colorTextPrimary,
+        homeIconId = RApp.drawable.ic_list_dark_24dp,
         optionsMenuId = R.menu.menu_chat_public,
         homeIconBackPressEnabled = false
     )
 ) {
 
-    private val viewModel: ChatPublicViewModel by viewModel()
+    init {
+        loadKoinModules(featureChatMainModule)
+    }
+
+    private lateinit var viewModel: ChatPublicViewModel
 
     override fun onInitDataBinding() {
+        viewModel = lifecycleScope.getViewModel(this)
+
         viewBinding.model = viewModel
         //add lifecycle observer to viewmodel
         lifecycle.addObserver(viewModel)

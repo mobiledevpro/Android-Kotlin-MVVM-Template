@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-android-extensions'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
     id 'com.google.gms.google-services'
@@ -106,64 +105,66 @@ android {
     }
 
     buildFeatures.dataBinding = true
+    buildFeatures.viewBinding = true
 
     kapt.correctErrorTypes = true
 
     testOptions {
         unitTests.includeAndroidResources = true
     }
+
+    dynamicFeatures = [':feature:chat_main']
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation deps.appcompat
-    implementation deps.material
-    implementation deps.preference
-    implementation deps.constraintLayout
+    api deps.appcompat
+    api deps.material
+    api deps.preference
+    api deps.constraintLayout
 
-    implementation deps.coreKtx
+    api deps.coreKtx
+    api deps.playCore
 
     //common UI lib
-    productionImplementation deps.commonUI //<-- use published library
-    devImplementation project(":common-ui") //<-- use local module
+    productionApi deps.commonUI //<-- use a published library from jitpack.io
+    devApi project(":common-ui") //<-- use local module
 
     //DI
-    implementation deps.koinScope
-    implementation deps.koinViewModel
+    api deps.koinScope
+    api deps.koinViewModel
 
     //Navigation
-    implementation deps.navigationFragment
-    implementation deps.navigationUi
+    api deps.navigationFragment
+    api deps.navigationUi
+    implementation deps.navigationDynamic
 
     //Livedata
-    implementation deps.lifecycle
+    api deps.lifecycle
     kapt deps.lifecycleCompiler
 
     //Firebase
-    implementation deps.firebaseCore
-    implementation deps.firebasePerformance
-    implementation deps.firebaseAnalytics
-    implementation deps.crashlytics
+    api deps.firebaseCore
+    api deps.firebasePerformance
+    api deps.firebaseAnalytics
+    api deps.crashlytics
 
     //memory leak detection in debug
-    debugImplementation deps.leakcanaryDebug
+    debugApi deps.leakcanaryDebug
 
     //Rx
-    implementation deps.rxAndroid
-    implementation deps.rxKotlin
+    api deps.rxAndroid
+    api deps.rxKotlin
 
     //Glide
-    implementation deps.glide
+    api deps.glide
     kapt deps.glideCompiler
 
     //Lottie animation
-    implementation deps.lottie
+    api deps.lottie
 
-    implementation project(":domain")
-    implementation project(":data")
-    implementation project(":data-local")
-
+    api project(":data")
 
     testImplementation deps.jUnit
     androidTestImplementation deps.jUnitExt

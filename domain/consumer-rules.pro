@@ -1,1 +1,0 @@
-# Rules for this library
