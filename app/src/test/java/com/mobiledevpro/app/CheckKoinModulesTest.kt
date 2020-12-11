@@ -1,9 +1,6 @@
 package com.mobiledevpro.app
 
 import android.content.Context
-import com.mobiledevpro.app.di.dataLocalModule
-import com.mobiledevpro.app.di.dataModule
-import com.mobiledevpro.app.di.domainModule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.koin.android.ext.koin.androidContext
@@ -22,7 +19,7 @@ class CheckKoinModulesTest : KoinTest {
     fun checkAllModules() = checkModules {
 
         androidContext(mockContext)
-        modules(listOf(domainModule, dataModule, dataLocalModule))
+      //  modules(listOf(dataLocalModule))
 
     }
 }

@@ -50,9 +50,4 @@ class MainActivity : BaseActivity(
             )
         }
     }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return super.onOptionsItemSelected(item)
-    }
-
 }
