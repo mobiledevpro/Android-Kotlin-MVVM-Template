@@ -77,7 +77,7 @@ jobs:
       - <<: *update_cache
       - run:
           name: Run Tests
-          command: ./gradlew testProductionDebug
+          command: ./gradlew testDevDebug
       - run:
           name: Save test results (html page, see Artifacts)
           command: |
