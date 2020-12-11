@@ -23,14 +23,6 @@
         <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
-    <style name="AppTheme.FullScreen" parent="AppTheme">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <!--Pay attention! adjustResize for activity doen't work in full screen mode -->
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-    </style>
-
     <style name="AppTheme.AlertDialog" parent="Theme.MaterialComponents.Light.Dialog.Alert">
         <item name="colorAccent">@color/colorAccent</item>
     </style>
@@ -50,6 +42,10 @@
     <!-- Image buttons common style-->
     <style name="AppTheme.ImageButton" parent="Widget.AppCompat.ImageButton">
         <item name="android:background">@null</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
     </style>
 
     <!-- Buttons common style -->
@@ -67,18 +63,18 @@
 
     <!-- Edit fields common style-->
     <style name="AppTheme.EditText" parent="Widget.AppCompat.EditText">
+        <item name="android:minHeight">@dimen/default_view_height</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:textColor">@color/colorTextPrimaryLight</item>
         <item name="android:textColorHint">@color/colorTextSecondary</item>
-        <item name="android:layout_margin">8dp</item>
-        <item name="android:padding">8dp</item>
+        <item name="android:padding">16dp</item>
         <item name="android:textCursorDrawable">@drawable/background_edittext_cursor</item>
         <item name="android:fontFamily">sans-serif</item>
     </style>
 
     <style name="AppTheme.TextInput" parent="Widget.Design.TextInputLayout">
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:textColor">@color/colorTextPrimaryLight</item>
         <item name="android:textColorHint">@color/colorTextSecondary</item>
         <item name="android:layout_margin">8dp</item>
         <item name="android:padding">8dp</item>
@@ -99,4 +95,8 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
+    <style name="AppTheme.EditText.Chat" parent="AppTheme.EditText">
+        <item name="android:background">@drawable/background_edittext_message</item>
+        <item name="android:paddingEnd">32dp</item>
+    </style>
 </resources>

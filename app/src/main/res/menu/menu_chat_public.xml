@@ -2,7 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/menu_action_crash"
-        android:title="Test Crash"
+        android:id="@+id/menu_action_settings"
+        android:title="@string/menu_action_settings"
+        android:icon="@drawable/ic_settings_dark_24dp"
         app:showAsAction="always" />
 </menu>

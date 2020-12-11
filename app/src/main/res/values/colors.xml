@@ -3,11 +3,12 @@
     <color name="ic_launcher_background">#1C2E46</color>
 
     <color name="colorPrimary">#1C2E46</color>
-    <color name="colorPrimaryDark">#1C2E46</color>
+    <color name="colorPrimaryDark">#192A3E</color>
     <color name="colorPrimaryLight">#2D5872</color>
     <color name="colorAccent">#12B0BE</color>
 
     <color name="colorTextPrimary">@color/colorPrimary</color>
+    <color name="colorTextPrimaryLight">@color/colorWindowGreyBackground</color>
     <color name="colorTextSecondary">#757575</color>
 
     <color name="colorDivider">#BDBDBD</color>

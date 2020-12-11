@@ -8,4 +8,5 @@
     <dimen name="default_view_height">48dp</dimen>
 
     <dimen name="layout_corner_radius">32dp</dimen>
+    <dimen name="edittext_corner_radius">24dp</dimen>
 </resources>

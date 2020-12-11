@@ -1,5 +1,6 @@
 package com.mobiledevpro.app.ui.mainscreen.view
 
+import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import android.widget.TextView
@@ -48,6 +49,10 @@ class MainActivity : BaseActivity(
                 getColorCompatible(colorResId)
             )
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return super.onOptionsItemSelected(item)
     }
 
 }

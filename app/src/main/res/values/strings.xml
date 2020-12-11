@@ -3,4 +3,10 @@
 
     <string name="app_title_chat_public">Public Chat</string>
     <string name="app_version">v%s</string>
+
+    <string name="menu_action_settings">Settings</string>
+
+
+
+    <string name="hint_chat_message">Let`s chat. Write the message here</string>
 </resources>
