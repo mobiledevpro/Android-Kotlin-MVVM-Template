@@ -138,6 +138,7 @@ ext {
             "jUnit"                   : "junit:junit:$versions.jUnit",
             "espressoCore"            : "androidx.test.espresso:espresso-core:$versions.espressoCore",
             "mockito"                 : "org.mockito:mockito-core:$versions.mockito",
-            "koinTest"                : "org.koin:koin-test:$koinVersion"
+            "koinTest"                : "org.koin:koin-test:$koinVersion",
+            "roomTesting"             : "androidx.room:room-testing:$versions.room",
     ]
 }

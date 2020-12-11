@@ -144,18 +144,8 @@ dependencies {
     api deps.lifecycle
     kapt deps.lifecycleCompiler
 
-    //Firebase
-    api deps.firebaseCore
-    api deps.firebasePerformance
-    api deps.firebaseAnalytics
-    api deps.crashlytics
-
     //memory leak detection in debug
     debugApi deps.leakcanaryDebug
-
-    //Rx
-    api deps.rxAndroid
-    api deps.rxKotlin
 
     //Glide
     api deps.glide
@@ -164,13 +154,13 @@ dependencies {
     //Lottie animation
     api deps.lottie
 
-    api project(":data")
+    api project(":data:local")
 
-    testImplementation deps.jUnit
-    androidTestImplementation deps.jUnitExt
-    androidTestImplementation deps.testRunner
-    androidTestImplementation deps.espressoCore
-    testImplementation deps.mockito
-    testImplementation deps.koinTest
+    testApi deps.jUnit
+    androidTestApi deps.jUnitExt
+    androidTestApi deps.testRunner
+    androidTestApi deps.espressoCore
+    testApi deps.mockito
+    testApi deps.koinTest
 }
 

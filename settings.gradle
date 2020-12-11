@@ -1,3 +1,5 @@
+include ':data:local'
+include ':data:core'
 include ':feature:chat_main'
 include ':common-ui'
-include ':app', ':data', ':data-local'
+include ':app'
