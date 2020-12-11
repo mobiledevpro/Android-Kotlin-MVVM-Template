@@ -7,7 +7,7 @@
     <color name="colorPrimaryLight">#2D5872</color>
     <color name="colorAccent">#12B0BE</color>
 
-    <color name="colorTextPrimary">#212121</color>
+    <color name="colorTextPrimary">@color/colorPrimary</color>
     <color name="colorTextSecondary">#757575</color>
 
     <color name="colorDivider">#BDBDBD</color>

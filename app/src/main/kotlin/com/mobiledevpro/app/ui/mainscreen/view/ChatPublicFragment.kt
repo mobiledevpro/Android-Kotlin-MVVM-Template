@@ -21,11 +21,13 @@ class ChatPublicFragment : BaseFragment<FragmentChatPublicBinding>(
     layoutId = R.layout.fragment_chat_public,
     FragmentSettings(
         statusBarColor = R.color.colorWindowGreyBackground,
-        appBarTitle = R.string.app_title_chat_public
+        appBarColor = R.color.colorWindowGreyBackground,
+        appBarTitle = R.string.app_title_chat_public,
+        appBarTitleColor = R.color.colorTextPrimary
     )
 ) {
 
-     private val viewModel: ChatPublicViewModel by viewModel()
+    private val viewModel: ChatPublicViewModel by viewModel()
 
     override fun onInitDataBinding() {
         viewBinding.model = viewModel

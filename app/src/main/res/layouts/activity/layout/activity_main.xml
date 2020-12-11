@@ -5,9 +5,8 @@
     android:layout_height="match_parent"
     android:animateLayoutChanges="true">
 
-<!--
-    <include layout="@layout/include_base_appbar" />
-    -->
+
+    <include layout="@layout/include_appbar_custom" />
 
     <fragment
         android:id="@+id/fragment_nav_host"

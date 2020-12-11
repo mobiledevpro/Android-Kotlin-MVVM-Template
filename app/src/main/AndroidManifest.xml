@@ -16,6 +16,7 @@
             android:name="com.mobiledevpro.app.ui.mainscreen.view.MainActivity"
             android:configChanges="keyboard|screenSize|screenLayout|keyboardHidden"
             android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
