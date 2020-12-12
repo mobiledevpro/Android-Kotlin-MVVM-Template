@@ -1,12 +1,14 @@
 version: 2.1
 
-config_android: &config_android
+config_docker: &config_docker
   docker:
-    - image: circleci/android:api-29
+    - image: circleci/android:api-30
   working_directory:  ~/code
+
+config_android: &config_env
   environment:
     JAVA_TOOL_OPTIONS: "-Xmx4096m"
-    GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2 -Dkotlin.incremental=false -Dkotlin.compiler.execution.strategy=in-process"
+    GRADLE_OPTS: "-Dorg.gradle.daemon=true -Dorg.gradle.workers.max=2 -Dkotlin.incremental=true -Dkotlin.compiler.execution.strategy=in-process"
     TERM: dumb
 
 update_sdk: &update_sdk
@@ -14,7 +16,7 @@ update_sdk: &update_sdk
     name: Update SDK
     command: |
       yes | sdkmanager --licenses || true
-      sdkmanager "platform-tools" "platforms;android-29"
+      sdkmanager "platform-tools" "platforms;android-30"
 
 restore_cache: &restore_cache
   restore_cache:
@@ -42,11 +44,6 @@ deploy_to_dropbox: &deploy_to_dropbox
     name: Deploy to DropBox
     command: ./ci-deploy-dropbox.sh
 
-deploy_to_testfairy: &deploy_to_testfairy
-  deploy:
-    name: Deploy to TestFairy
-    command: ./ci-deploy-testfairy.sh
-
 cache_docker: &cache_docker
   setup_remote_docker:
     docker_layer_caching: true
@@ -64,8 +61,9 @@ filter_tag_version_only: &filter_tag_version_only
       ignore: /.*/
 
 jobs:
-  run_tests:
-    <<: *config_android
+  job_run_tests:
+    <<: *config_docker
+    <<: *config_env
     steps:
       - <<: *update_sdk
       - checkout
@@ -96,18 +94,18 @@ jobs:
           path: test-results
           destination: reports/
 
-  build_n_deploy_release:
-    <<: *config_android
+  job_build_n_deploy_release:
+    <<: *config_docker
+    <<: *config_env
     steps:
       - checkout
       - run:
           name: Assemble release build
-          command: ./gradlew clean assembleProductionRelease --no-daemon --stacktrace
+          command: ./gradlew clean assembleProductionRelease --stacktrace
       - store_artifacts:
           path: app/build/outputs/apk/
           destination: apks/
       - <<: *deploy_to_dropbox
-      #- <<: *deploy_to_testfairy
 
 
 workflows:
@@ -116,13 +114,17 @@ workflows:
   # run tests on every commits to master
   run-tests-only:
     jobs:
-      - run_tests
+      - job_run_tests
 
   # build release and deploy on tags and not branches
   buid-n-deploy:
     jobs:
-      - build_n_deploy_release:
+      - job_run_tests:
           <<: *filter_tag_version_only
+      - job_build_n_deploy_release:
+          <<: *filter_tag_version_only
+          requires:
+            - job_run_tests
 
 
   # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
