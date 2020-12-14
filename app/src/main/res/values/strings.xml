@@ -9,4 +9,6 @@
 
 
     <string name="hint_chat_message">Let`s chat. Write the message here</string>
+
+    <string name="feature_title_chat_core">Chat core</string>
 </resources>

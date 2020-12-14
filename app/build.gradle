@@ -113,7 +113,7 @@ android {
         unitTests.includeAndroidResources = true
     }
 
-    dynamicFeatures = [':feature:chat_main']
+    dynamicFeatures = [':feature:chat_main', ':feature:chat_core']
 }
 
 dependencies {
