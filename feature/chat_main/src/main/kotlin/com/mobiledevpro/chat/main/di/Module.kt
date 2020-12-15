@@ -17,6 +17,8 @@
  */
 package com.mobiledevpro.chat.main.di
 
+import com.mobiledevpro.chat.main.domain.interactor.ChatPublicInteractor
+import com.mobiledevpro.chat.main.domain.interactor.ImplChatPublicInteractor
 import com.mobiledevpro.chat.main.view.ChatPublicFragment
 import com.mobiledevpro.chat.main.view.ChatPublicViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -34,7 +36,14 @@ val featureChatMainModule = module {
     scope(named<ChatPublicFragment>()) {
         viewModel {
             ChatPublicViewModel(
+                resourcesProvider = get(),
+                interactor = get()
             )
         }
+
+        scoped<ChatPublicInteractor> {
+            ImplChatPublicInteractor()
+        }
+
     }
 }

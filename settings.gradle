@@ -1,3 +1,4 @@
+include ':domain:core'
 include ':feature:chat_core'
 include ':data:local'
 include ':data:core'
