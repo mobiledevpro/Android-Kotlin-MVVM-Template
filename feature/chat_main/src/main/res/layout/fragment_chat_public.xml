@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="model"
             type="com.mobiledevpro.chat.main.view.ChatPublicViewModel" />
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,9 +28,10 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/animationView"
+                android:id="@+id/loading_animation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="@{model.isLoadingAnimationVisible ? View.VISIBLE : View.GONE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -64,6 +68,15 @@
                 android:contentDescription="@null"
                 app:srcCompat="@drawable/ic_send_white_24dp" />
         </FrameLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{model.listMessages.empty ? View.GONE : View.VISIBLE}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            bind:eventHandler="@{model.listEventHandler}"
+            bind:items="@{model.listMessages}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

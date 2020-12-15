@@ -3,3 +3,7 @@ apply from: "$rootDir/common-dynamic-feature.gradle"
 android.defaultConfig {
     applicationId "com.mobiledevpro.chat.main"
 }
+
+dependencies {
+    implementation features.chatCore
+}

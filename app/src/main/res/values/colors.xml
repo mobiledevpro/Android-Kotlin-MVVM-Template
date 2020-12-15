@@ -19,9 +19,14 @@
     <color name="colorBlackTransparent">#70000000</color>
     <color name="colorWhiteTransparent">#b4ffffff</color>
 
+    <color name="colorWhite">#ffffff</color>
+
     <color name="colorButtonActive">@color/colorPrimary</color>
     <color name="colorButtonPressed">@color/colorPrimaryDark</color>
     <color name="colorButtonDisabled">@color/colorPrimaryLight</color>
 
     <color name="colorItemSelected">#BBDEFB</color>
+
+    <color name="colorTextMessageSent">@color/colorWhite</color>
+    <color name="colorTextMessageReceived">@color/colorTextPrimary</color>
 </resources>

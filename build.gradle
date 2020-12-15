@@ -141,4 +141,8 @@ ext {
             "koinTest"                : "org.koin:koin-test:$koinVersion",
             "roomTesting"             : "androidx.room:room-testing:$versions.room",
     ]
+
+    features = [
+            "chatCore": project(":feature:chat_core")
+    ]
 }
