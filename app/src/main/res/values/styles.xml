@@ -99,4 +99,9 @@
         <item name="android:background">@drawable/background_edittext_message</item>
         <item name="android:paddingEnd">32dp</item>
     </style>
+
+    <style name="AppTheme.Message.Chat" parent="AppTheme.TextView">
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">16dp</item>
+    </style>
 </resources>
