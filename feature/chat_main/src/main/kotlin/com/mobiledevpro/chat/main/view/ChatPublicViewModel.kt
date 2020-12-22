@@ -34,6 +34,10 @@ class ChatPublicViewModel(
         }
     }
 
+    init {
+        observeMessagesList()
+    }
+/*
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun onStartView() {
         observeMessagesList()
@@ -43,6 +47,8 @@ class ChatPublicViewModel(
     fun onStopView() {
         clearSubscriptions()
     }
+
+ */
 
     fun isLoadingAnimationVisible(): LiveData<Boolean> {
         val isVisible = MediatorLiveData<Boolean>()

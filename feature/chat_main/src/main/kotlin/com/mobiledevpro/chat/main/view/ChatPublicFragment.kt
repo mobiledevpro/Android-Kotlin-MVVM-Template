@@ -34,15 +34,12 @@ class ChatPublicFragment : BaseFragment<FragmentChatPublicBinding>(
     )
 ) {
 
-    init {
-        loadKoinModules(featureChatMainModule)
-    }
-
     private lateinit var viewModel: ChatPublicViewModel
 
     override fun onInitDataBinding() {
-        viewModel = lifecycleScope.getViewModel(this)
+        loadKoinModules(featureChatMainModule)
 
+        viewModel = lifecycleScope.getViewModel(this)
         viewBinding.model = viewModel
         //add lifecycle observer to viewmodel
         lifecycle.addObserver(viewModel)
