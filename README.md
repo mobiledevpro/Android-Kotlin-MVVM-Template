@@ -7,6 +7,9 @@
 [![API](https://img.shields.io/badge/API-21%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=21)
 [![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
+![github_social_preview](github_social_preview.png)
+
+
 ## Under the hood:
 * [Clean Architecture](https://user-images.githubusercontent.com/5750211/78999938-56aeff80-7b54-11ea-86bf-da4e52a5ccfe.png)
 * [Kotlin](https://developer.android.com/kotlin)
