@@ -1,8 +1,6 @@
 package com.mobiledevpro.chat.main.view
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.*
 import com.mobiledevpro.app.helper.ResourcesProvider
 import com.mobiledevpro.chat.core.view.mapper.toRecyclerView
 import com.mobiledevpro.chat.core.view.recycler.RecyclerItem
@@ -36,8 +34,14 @@ class ChatPublicViewModel(
         }
     }
 
-    init {
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    fun onStartView() {
         observeMessagesList()
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    fun onStopView() {
+        clearSubscriptions()
     }
 
     fun isLoadingAnimationVisible(): LiveData<Boolean> {
