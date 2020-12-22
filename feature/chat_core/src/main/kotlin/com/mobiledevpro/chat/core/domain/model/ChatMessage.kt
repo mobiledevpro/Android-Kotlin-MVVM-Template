@@ -33,6 +33,7 @@ data class ChatMessage(
     val text: String,
     val user: ChatUser
 ) {
-    fun getFormattedTime() = timeSentUtc.getTimeString(TimeFormat.AM_PM)
+    fun getFormattedTime() : String = timeSentUtc.getTimeString(TimeFormat.AM_PM)
 
+    fun getAvatarUrl() : String = user.avatarUrl
 }

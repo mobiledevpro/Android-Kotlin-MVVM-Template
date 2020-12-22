@@ -67,6 +67,9 @@
   **[] $VALUES;
   public *;
 }
+-keep class com.bumptech.glide.load.data.ParcelFileDescriptorRewinder$InternalRewinder {
+  *** rewind();
+}
 
 #keep searchview
 -keep class android.support.v7.widget.SearchView { *; }
