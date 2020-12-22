@@ -4,6 +4,6 @@
     <item
         android:id="@+id/menu_action_settings"
         android:title="@string/menu_action_settings"
-        android:icon="@drawable/ic_settings_dark_24dp"
+        android:icon="@drawable/ic_profile_avatar_dark_24dp"
         app:showAsAction="always" />
 </menu>

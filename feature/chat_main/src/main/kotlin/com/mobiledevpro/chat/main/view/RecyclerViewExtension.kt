@@ -57,6 +57,8 @@ object RecyclerViewExtension {
 
         adapter.setEventHandler(handler)
         adapter.updateData(items.orEmpty())
+
+        this.scrollToPosition(adapter.itemCount - 1)
     }
 
 }

@@ -29,4 +29,5 @@
 
     <color name="colorTextMessageSent">@color/colorWhite</color>
     <color name="colorTextMessageReceived">@color/colorTextPrimary</color>
+    <color name="colorTextMessageTime">#BDBDBD</color>
 </resources>

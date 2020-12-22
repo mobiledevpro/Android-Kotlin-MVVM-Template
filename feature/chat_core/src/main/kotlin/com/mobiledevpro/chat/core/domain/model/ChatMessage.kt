@@ -17,6 +17,10 @@
  */
 package com.mobiledevpro.chat.core.domain.model
 
+import com.mobiledevpro.chat.core.domain.util.TimeFormat
+import com.mobiledevpro.chat.core.domain.util.getTimeString
+
+
 /**
  * Message model
  *
@@ -28,4 +32,8 @@ data class ChatMessage(
     val timeSentUtc: Long, //in ms
     val text: String,
     val user: ChatUser
-)
+) {
+    fun getFormattedTime() : String = timeSentUtc.getTimeString(TimeFormat.AM_PM)
+
+    fun getAvatarUrl() : String = user.avatarUrl
+}

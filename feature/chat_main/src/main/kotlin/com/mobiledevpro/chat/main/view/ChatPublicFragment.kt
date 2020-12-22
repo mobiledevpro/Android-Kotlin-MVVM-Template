@@ -7,6 +7,7 @@ import com.mobiledevpro.chat.main.databinding.FragmentChatPublicBinding
 import com.mobiledevpro.chat.main.di.featureChatMainModule
 import com.mobiledevpro.common.ui.base.BaseFragment
 import com.mobiledevpro.common.ui.base.FragmentSettings
+import com.mobiledevpro.common.ui.extension.observe
 import org.koin.androidx.scope.lifecycleScope
 import org.koin.androidx.viewmodel.scope.getViewModel
 import org.koin.core.context.loadKoinModules
@@ -33,15 +34,12 @@ class ChatPublicFragment : BaseFragment<FragmentChatPublicBinding>(
     )
 ) {
 
-    init {
-        loadKoinModules(featureChatMainModule)
-    }
-
     private lateinit var viewModel: ChatPublicViewModel
 
     override fun onInitDataBinding() {
-        viewModel = lifecycleScope.getViewModel(this)
+        loadKoinModules(featureChatMainModule)
 
+        viewModel = lifecycleScope.getViewModel(this)
         viewBinding.model = viewModel
         //add lifecycle observer to viewmodel
         lifecycle.addObserver(viewModel)
@@ -49,9 +47,9 @@ class ChatPublicFragment : BaseFragment<FragmentChatPublicBinding>(
 
     override fun observeLifecycleEvents() {
 
-        /*observe(viewModel.editUserButton, observer = {
-           // if (it) view?.showEditUserFragment()
-        })*/
+        observe(viewModel.errorMessage, observer = {
+            Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show();
+        })
     }
 
 
