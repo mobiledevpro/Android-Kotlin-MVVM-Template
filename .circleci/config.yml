@@ -101,7 +101,7 @@ jobs:
       - checkout
       - run:
           name: Assemble release build
-          command: ./gradlew clean assembleProductionRelease --stacktrace
+          command: ./gradlew clean bundleRelease --stacktrace
       - store_artifacts:
           path: app/build/outputs/apk/
           destination: apks/
