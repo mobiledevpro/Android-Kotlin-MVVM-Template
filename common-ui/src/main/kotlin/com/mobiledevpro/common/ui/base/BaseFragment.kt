@@ -21,10 +21,12 @@ import android.content.Context
 import android.os.Bundle
 import android.view.*
 import android.view.inputmethod.InputMethodManager
+import androidx.annotation.ColorRes
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import com.mobiledevpro.common.ui.extension.getColorCompatible
 
 abstract class BaseFragment<B : ViewDataBinding>(
     @LayoutRes
@@ -61,6 +63,7 @@ abstract class BaseFragment<B : ViewDataBinding>(
         onInitDataBinding()
         observeLifecycleEvents()
         applyResources()
+        setLightOrDarkStatusBarContent(settings.statusBarColor)
     }
 
     override fun onStop() {
@@ -149,5 +152,24 @@ abstract class BaseFragment<B : ViewDataBinding>(
             }
         }
 
+    }
+
+    private fun setLightOrDarkStatusBarContent(@ColorRes statusBarColor: Int) {
+
+        val rgb: Int = requireContext().getColorCompatible(statusBarColor) // 0xAARRGGBB
+
+        val red: Int = rgb.shr(16) and 0xff
+        val green: Int = rgb.shr(8) and 0xff
+        val blue: Int = rgb.shr(0) and 0xff
+
+        val lum: Double = 0.2126 * red + 0.7152 * green + 0.0722 * blue // per ITU-R BT.709
+
+        val isLight = lum > 128 //0..255 : 0 - darkest, 255 - lightest
+
+        //if lum greater than 128, the status bar color is light, so the content should be dark and vise versa
+        view?.windowInsetsController?.setSystemBarsAppearance(
+            if (isLight) WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS else 0, // value
+            if (isLight) WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS else 0 // mask
+        )
     }
 }
