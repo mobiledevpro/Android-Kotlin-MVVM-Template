@@ -18,11 +18,13 @@ package com.mobiledevpro.common.ui.base
 
 import android.app.Activity
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.ColorRes
 import androidx.annotation.LayoutRes
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -63,17 +65,17 @@ abstract class BaseFragment<B : ViewDataBinding>(
         onInitDataBinding()
         observeLifecycleEvents()
         applyResources()
-        setLightOrDarkStatusBarContent(settings.statusBarColor)
+        setLightOrDarkStatusBarContent(settings.statusBarColor, view)
     }
 
     override fun onStop() {
-        val activity: Activity? = requireActivity()
+        val activity = requireActivity()
 
         //hide keyboard if it was shown
-        val inputManager = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+        val inputManager = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
 
         inputManager?.let {
-            val view = activity?.currentFocus
+            val view = activity.currentFocus
             it.hideSoftInputFromWindow(view?.windowToken, InputMethodManager.RESULT_UNCHANGED_SHOWN)
         }
 
@@ -154,7 +156,7 @@ abstract class BaseFragment<B : ViewDataBinding>(
 
     }
 
-    private fun setLightOrDarkStatusBarContent(@ColorRes statusBarColor: Int) {
+    private fun setLightOrDarkStatusBarContent(@ColorRes statusBarColor: Int, view: View) {
 
         val rgb: Int = requireContext().getColorCompatible(statusBarColor) // 0xAARRGGBB
 
@@ -164,12 +166,24 @@ abstract class BaseFragment<B : ViewDataBinding>(
 
         val lum: Double = 0.2126 * red + 0.7152 * green + 0.0722 * blue // per ITU-R BT.709
 
+        //if lum greater than 128, the status bar color is light, so the content should be dark and vise versa
         val isLight = lum > 128 //0..255 : 0 - darkest, 255 - lightest
 
-        //if lum greater than 128, the status bar color is light, so the content should be dark and vise versa
-        view?.windowInsetsController?.setSystemBarsAppearance(
-            if (isLight) WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS else 0, // value
-            if (isLight) WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS else 0 // mask
-        )
+        //For API 30+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            view.windowInsetsController?.setSystemBarsAppearance(
+                if (isLight) WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS else 0, // value
+                if (isLight) WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS else 0 // mask
+            )
+        }
+        //for API 23+
+        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (isLight) {
+                var flags = view.systemUiVisibility
+                flags = flags or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                view.systemUiVisibility = flags
+            }
+            requireActivity().window.statusBarColor = ContextCompat.getColor(requireActivity(), statusBarColor)
+        }
     }
 }
