@@ -16,7 +16,6 @@
 
 package com.mobiledevpro.common.ui.base
 
-import android.app.Activity
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
@@ -40,7 +39,7 @@ abstract class BaseFragment<B : ViewDataBinding>(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setHasOptionsMenu(settings.optionsMenuId != 0)
+        setHasOptionsMenu(settings.optionsMenuId != 0 || settings.homeIconBackPressEnabled)
     }
 
     /**
@@ -65,7 +64,8 @@ abstract class BaseFragment<B : ViewDataBinding>(
         onInitDataBinding()
         observeLifecycleEvents()
         applyResources()
-        setLightOrDarkStatusBarContent(settings.statusBarColor, view)
+        if (settings.statusBarColor != 0)
+            setLightOrDarkStatusBarContent(settings.statusBarColor, view)
     }
 
     override fun onStop() {
@@ -147,10 +147,12 @@ abstract class BaseFragment<B : ViewDataBinding>(
                 if (settings.appBarTitleColor != 0)
                     setAppBarTitleColor(settings.appBarTitleColor)
 
-                if (settings.homeIconId != 0)
-                //apply home icon
-                    setHomeAsUpIndicatorIcon(settings.homeIconId)
+                //apply window background
+                if (settings.appWindowBackground != 0)
+                    setAppWindowBackground(settings.appWindowBackground)
 
+                //enable or disable home icon (0 - disable)
+                setHomeAsUpIndicatorIcon(settings.homeIconId)
             }
         }
 

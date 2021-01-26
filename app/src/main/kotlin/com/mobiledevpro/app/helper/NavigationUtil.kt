@@ -1,7 +1,7 @@
 package com.mobiledevpro.app.helper
 
-import android.view.View
-import androidx.navigation.findNavController
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.mobiledevpro.app.R
 
 /**
@@ -14,13 +14,13 @@ import com.mobiledevpro.app.R
  * #MobileDevPro
  */
 
-/*
-fun View.showEditUserFragment() {
+
+fun Fragment.showProfileSettingsFragment() {
     this.findNavController()
-            .navigate(R.id.action_to_user_edit)
+        .navigate(R.id.actionShowProfileSettings)
 }
 
-
+/*
 fun View.showViewUserFragment() {
     this.findNavController()
             .navigate(R.id.action_to_user_view)

@@ -3,20 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/fragment_chat_public">
+    app:startDestination="@id/fragmentChatPublic">
 
     <fragment
-        android:id="@+id/fragment_chat_public"
+        android:id="@+id/fragmentChatPublic"
         android:name="com.mobiledevpro.chat.main.view.ChatPublicFragment"
-        tools:layout="@layout/fragment_chat_public"
-        android:label="FragmentChatPublic">
-      <!--  <action
-            android:id="@+id/action_to_user_edit"
-            app:destination="@id/userEditFragment"
+        android:label="FragmentChatPublic"
+        tools:layout="@layout/fragment_chat_public">
+
+        <action
+            android:id="@+id/actionShowProfileSettings"
+            app:destination="@id/fragmentProfileSettings"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
-            -->
+
     </fragment>
+
+    <fragment
+        android:id="@+id/fragmentProfileSettings"
+        android:name="com.mobiledevpro.profile.settings.view.ProfileSettingsFragment"
+        android:label="FragmentProfileSettings"
+        tools:layout="@layout/fragment_profile_settings" />
 </navigation>

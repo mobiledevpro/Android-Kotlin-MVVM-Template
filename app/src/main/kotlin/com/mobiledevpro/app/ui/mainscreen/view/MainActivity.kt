@@ -1,6 +1,5 @@
 package com.mobiledevpro.app.ui.mainscreen.view
 
-import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import android.widget.TextView
@@ -16,7 +15,8 @@ class MainActivity : BaseActivity(
         isAdjustFontScaleToNormal = true,
         windowFlags = listOf(
             //set navigation bar translucent
-            WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION
+            WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
+            WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
         )
     )
 ) {
