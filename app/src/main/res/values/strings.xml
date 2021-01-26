@@ -2,6 +2,7 @@
     <string name="app_name">Chat Template</string>
 
     <string name="app_title_chat_public">Public Chat</string>
+    <string name="app_title_profile">Profile</string>
     <string name="app_version">v%s</string>
 
     <string name="menu_action_settings">Settings</string>
@@ -15,5 +16,6 @@
 
 
     <string name="feature_title_chat_core">Chat core</string>
+    <string name="feature_title_profile_settings">Profile Settings</string>
 
 </resources>

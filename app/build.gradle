@@ -19,9 +19,6 @@ android {
         multiDexEnabled false
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        //custom naming for App Bundle builds
-        archivesBaseName = "${applicationId}-v${versionName}-build${versionCode}"
     }
 
     dexOptions {
@@ -75,6 +72,8 @@ android {
             applicationId defaultConfig.applicationId
             versionCode rootProject.appVersionCode
             versionName rootProject.appVersionName
+            //custom naming for App Bundle builds
+            archivesBaseName = "${applicationId}-v${versionName}-build${versionCode}"
 
             //it allows to use the same flavor in android modules/libraries
             matchingFallbacks = ["production"]
@@ -85,6 +84,8 @@ android {
             applicationId defaultConfig.applicationId + ".dev"
             versionCode rootProject.appVersionCode
             versionName rootProject.appVersionName + "-dev"
+            //custom naming for App Bundle builds
+            archivesBaseName = "${applicationId}-v${versionName}-build${versionCode}"
 
             //it allows to use the same flavor in android modules/libraries
             matchingFallbacks = ["dev"]
@@ -117,7 +118,7 @@ android {
         unitTests.includeAndroidResources = true
     }
 
-    dynamicFeatures = [':feature:chat_main', ':feature:chat_core']
+    dynamicFeatures = [':feature:chat_main', ':feature:chat_core', ':feature:profile_settings']
 }
 
 dependencies {

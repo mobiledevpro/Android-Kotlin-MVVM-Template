@@ -1,9 +1,8 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-
     ext.rootVersions = [
-            "kotlin" : "1.4.20",
+            "kotlin" : "1.4.21",
             "gradle" : "4.1.1",
             "playServices" : "4.3.4",
             "koin" : "2.1.1",

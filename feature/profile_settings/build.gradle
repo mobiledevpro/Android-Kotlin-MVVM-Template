@@ -1,0 +1,6 @@
+apply from: "$rootDir/common-dynamic-feature.gradle"
+
+android.defaultConfig {
+    applicationId "com.mobiledevpro.profile.settings"
+}
+
