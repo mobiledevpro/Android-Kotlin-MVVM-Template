@@ -39,7 +39,7 @@ abstract class BaseFragment<B : ViewDataBinding>(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setHasOptionsMenu(settings.optionsMenuId != 0)
+        setHasOptionsMenu(settings.optionsMenuId != 0 || settings.homeIconBackPressEnabled)
     }
 
     /**
@@ -151,10 +151,8 @@ abstract class BaseFragment<B : ViewDataBinding>(
                 if (settings.appWindowBackground != 0)
                     setAppWindowBackground(settings.appWindowBackground)
 
-                //apply home icon
-                if (settings.homeIconId != 0)
-                    setHomeAsUpIndicatorIcon(settings.homeIconId)
-
+                //enable or disable home icon (0 - disable)
+                setHomeAsUpIndicatorIcon(settings.homeIconId)
             }
         }
 

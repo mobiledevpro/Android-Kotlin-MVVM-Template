@@ -40,7 +40,9 @@ class ProfileSettingsFragment : BaseFragment<FragmentProfileSettingsBinding>(
         appBarColor = RApp.color.colorPrimary,
         appBarTitle = RApp.string.app_title_profile,
         appBarTitleColor = RApp.color.colorWindowGreyBackground,
+        appWindowBackground = RApp.drawable.background_window_light,
         homeIconId = RApp.drawable.ic_back_arrow_light_24dp,
+        homeIconBackPressEnabled = true
     )
 ) {
 
