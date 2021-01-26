@@ -5,7 +5,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.MenuRes
 
 /**
- * Some settings for Frgamment
+ * Some settings for Fragment
  *
  * Created by Dmitri Chernysh on Sep 03, 2020.
  *
@@ -25,5 +25,7 @@ data class FragmentSettings(
     val appBarColor: Int = 0,
     @ColorRes
     val appBarTitleColor: Int = 0,
-    val homeIconBackPressEnabled : Boolean = true
+    @DrawableRes
+    val appWindowBackground: Int = 0,
+    val homeIconBackPressEnabled: Boolean = true
 )

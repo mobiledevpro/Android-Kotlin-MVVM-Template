@@ -147,8 +147,12 @@ abstract class BaseFragment<B : ViewDataBinding>(
                 if (settings.appBarTitleColor != 0)
                     setAppBarTitleColor(settings.appBarTitleColor)
 
-                if (settings.homeIconId != 0)
+                //apply window background
+                if (settings.appWindowBackground != 0)
+                    setAppWindowBackground(settings.appWindowBackground)
+
                 //apply home icon
+                if (settings.homeIconId != 0)
                     setHomeAsUpIndicatorIcon(settings.homeIconId)
 
             }

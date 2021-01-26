@@ -22,10 +22,11 @@ import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.DisplayMetrics
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
@@ -107,11 +108,11 @@ abstract class BaseActivity(
         }
     }
 
-    override fun setStatusBarColor(colorResId: Int) {
+    override fun setStatusBarColor(@ColorRes colorResId: Int) {
         applyStatusBarColor(colorResId)
     }
 
-    override fun setAppBarColor(colorResId: Int) {
+    override fun setAppBarColor(@ColorRes colorResId: Int) {
         actionBar?.apply {
             setBackgroundDrawable(
                 ColorDrawable(
@@ -121,7 +122,7 @@ abstract class BaseActivity(
         }
     }
 
-    override fun setAppBarTitleColor(colorResId: Int) {
+    override fun setAppBarTitleColor(@ColorRes colorResId: Int) {
         actionBar?.also {
             findViewById<Toolbar>(R.id.toolbar)?.apply {
                 this.setTitleTextColor(
@@ -131,7 +132,11 @@ abstract class BaseActivity(
         }
     }
 
-    override fun setHomeAsUpIndicatorIcon(drawable: Int) {
+    override fun setAppWindowBackground(@DrawableRes backgroundResId: Int) {
+        window?.setBackgroundDrawableResource(backgroundResId)
+    }
+
+    override fun setHomeAsUpIndicatorIcon(@DrawableRes drawable: Int) {
         actionBar?.apply {
             if (drawable != 0) {
                 setDisplayHomeAsUpEnabled(true)
