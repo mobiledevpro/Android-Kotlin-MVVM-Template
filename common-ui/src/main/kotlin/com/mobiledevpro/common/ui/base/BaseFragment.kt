@@ -16,7 +16,6 @@
 
 package com.mobiledevpro.common.ui.base
 
-import android.app.Activity
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
@@ -65,7 +64,8 @@ abstract class BaseFragment<B : ViewDataBinding>(
         onInitDataBinding()
         observeLifecycleEvents()
         applyResources()
-        setLightOrDarkStatusBarContent(settings.statusBarColor, view)
+        if (settings.statusBarColor != 0)
+            setLightOrDarkStatusBarContent(settings.statusBarColor, view)
     }
 
     override fun onStop() {
