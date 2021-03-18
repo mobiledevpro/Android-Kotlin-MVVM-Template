@@ -2,14 +2,14 @@
 
 buildscript {
     ext.rootVersions = [
-            "kotlin" : "1.4.21",
-            "gradle" : "4.1.1",
-            "playServices" : "4.3.4",
-            "koin" : "2.1.1",
-            "navigation" : "2.3.2",
-            "firebasePlugin" : [
-                    "crashlytics" : "2.4.1",
-                    "performance" : "1.3.4"
+            "kotlin"        : "1.4.30",
+            "gradle"        : "4.1.1",
+            "playServices"  : "4.3.4",
+            "koin"          : "2.1.1",
+            "navigation"    : '2.3.4',
+            "firebasePlugin": [
+                    "crashlytics": "2.4.1",
+                    "performance": "1.3.4"
             ]
     ]
 
@@ -56,11 +56,11 @@ ext {
     versions = [
             "appcompat"       : "1.2.0",
             "preference"      : "1.1.1",
-            "material"        : "1.2.1",
+            "material"        : '1.3.0',
             "constraintLayout": "2.0.4",
             "coreKtx"         : "1.3.2",
             "commonUi"        : "1.0.0",
-            "lifecycle"       : "2.2.0",
+            "lifecycle"       : '2.3.0',
             "firebase"        : [
                     "core"       : "18.0.0",
                     "performance": "19.0.10",
@@ -72,17 +72,17 @@ ext {
                     "kotlin" : "2.4.0"
             ],
             "room"            : "2.2.4",
-            "glide"           : "4.11.0",
-            "lottie"          : "3.5.0",
+            "glide"           : '4.12.0',
+            "lottie"          : '3.6.1',
             "retrofit"        : "2.3.0",
             "okhttp"          : "4.2.2",
             "jUnitExt"        : "1.1.2",
-            "jUnit"           : "4.13.1",
+            "jUnit"           : '4.13.2',
             "testRunner"      : "1.3.0",
             "espressoCore"    : "3.3.0",
-            "mockito"         : "3.6.28",
-            "leakcanary"      : "2.5",
-            "playCore"        : '1.9.0'
+            "mockito"         : '3.8.0',
+            "leakcanary"      : '2.6',
+            "playCore"        : '1.10.0'
     ]
 
     deps = [
@@ -107,8 +107,10 @@ ext {
             //common
             "commonUI"                : "com.github.mobiledevpro:android-kotlin-mvvm-template:$versions.commonUi",
 
-            // ViewModel and LiveData
-            "lifecycle"               : "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle",
+            //LifeCycle
+            "viewModel"               : "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle",
+            "liveData"                : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle",
+            "saveState"               : "androidx.lifecycle:lifecycle-viewmodel-savedstate:$versions.lifecycle",
             "lifecycleCompiler"       : "androidx.lifecycle:lifecycle-compiler:$versions.lifecycle",
 
             //DI, Koin

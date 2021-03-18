@@ -145,8 +145,10 @@ dependencies {
     api deps.navigationUi
     implementation deps.navigationDynamic
 
-    //Livedata
-    api deps.lifecycle
+    //LiveCycle
+    api deps.viewModel
+    api deps.liveData
+    api deps.saveState
     kapt deps.lifecycleCompiler
 
     //memory leak detection in debug
