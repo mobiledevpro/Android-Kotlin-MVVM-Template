@@ -1,0 +1,45 @@
+apply from: "$rootDir/common-android-library.gradle"
+
+android.defaultConfig.javaCompileOptions {
+    annotationProcessorOptions {
+        arguments = [
+                "room.schemaLocation"  : "$projectDir/schemas".toString(),
+                "room.expandProjection": "true"]
+    }
+}
+
+android.productFlavors{
+    productFlavors {
+        production {
+            buildConfigField "String", "RoomDatabaseName", "\"app_database\""
+            buildConfigField "int", "RoomDatabaseVersion", "1"
+        }
+
+        dev {
+            buildConfigField "String", "RoomDatabaseName", "\"app_demo_database\""
+            buildConfigField "int", "RoomDatabaseVersion", "1"
+        }
+    }
+}
+
+// Adds a Room database exported schema location as test app assets.
+android.sourceSets {
+    main {
+        androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
+    }
+}
+
+dependencies {
+    //Room
+    implementation deps.room
+    implementation deps.roomRx
+    implementation deps.roomKtx
+    kapt deps.roomCompiler
+
+    androidTestImplementation deps.roomTesting
+    testImplementation deps.jUnit
+    androidTestImplementation deps.jUnitExt
+    androidTestImplementation deps.testRunner
+
+    implementation project(":data:data-core")
+}
