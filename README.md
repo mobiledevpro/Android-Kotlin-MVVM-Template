@@ -26,7 +26,7 @@
 * [Leak Canary](https://square.github.io/leakcanary/)
 * [Circle CI | Continuous Integration](https://circleci.com/gh/mobile-dev-pro/AppTemplate)
 
-[![](https://jitpack.io/v/mobiledevpro/android-kotlin-mvvm-template.svg)](https://jitpack.io/#mobiledevpro/android-kotlin-mvvm-template) [Common UI library](https://github.com/mobiledevpro/Android-Kotlin-MVVM-Template/tree/master/common-ui)
+[My own Common-UI library](https://github.com/mobiledevpro/Android-Kotlin-MVVM-Template/tree/master/common-ui)  [![](https://jitpack.io/v/mobiledevpro/android-kotlin-mvvm-template.svg)](https://jitpack.io/#mobiledevpro/android-kotlin-mvvm-template) 
   
     
       
