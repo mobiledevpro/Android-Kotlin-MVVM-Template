@@ -22,6 +22,7 @@ import com.mobiledevpro.common.ui.base.FragmentSettings
 import com.mobiledevpro.profile.settings.R
 import com.mobiledevpro.profile.settings.databinding.FragmentProfileSettingsBinding
 import com.mobiledevpro.profile.settings.di.featureProfileSettingsModule
+import org.koin.androidx.scope.fragmentScope
 import org.koin.core.context.loadKoinModules
 import com.mobiledevpro.app.R as RApp
 
