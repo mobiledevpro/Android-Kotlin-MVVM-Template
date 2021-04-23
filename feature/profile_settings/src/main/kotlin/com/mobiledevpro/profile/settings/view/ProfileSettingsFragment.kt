@@ -22,8 +22,7 @@ import com.mobiledevpro.common.ui.base.FragmentSettings
 import com.mobiledevpro.profile.settings.R
 import com.mobiledevpro.profile.settings.databinding.FragmentProfileSettingsBinding
 import com.mobiledevpro.profile.settings.di.featureProfileSettingsModule
-import org.koin.androidx.scope.lifecycleScope
-import org.koin.androidx.viewmodel.scope.getViewModel
+import org.koin.androidx.scope.fragmentScope
 import org.koin.core.context.loadKoinModules
 import com.mobiledevpro.app.R as RApp
 
@@ -46,14 +45,14 @@ class ProfileSettingsFragment : BaseFragment<FragmentProfileSettingsBinding>(
     )
 ) {
 
-    private lateinit var viewModel: ProfileSettingsViewModel
+    private val viewModel: ProfileSettingsViewModel by lazy { fragmentScope().get() }
+
+    init {
+        loadKoinModules(featureProfileSettingsModule)
+    }
 
     override fun onInitDataBinding() {
-        loadKoinModules(featureProfileSettingsModule)
-
-        viewModel = lifecycleScope.getViewModel(this)
         viewBinding.model = viewModel
-        //add lifecycle observer to viewmodel
         lifecycle.addObserver(viewModel)
     }
 

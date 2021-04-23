@@ -131,6 +131,7 @@ dependencies {
 
     api deps.coreKtx
     api deps.playCore
+    api deps.playCoreKtx
 
     //common UI lib
     productionApi deps.commonUI //<-- use a published library from jitpack.io
@@ -139,11 +140,12 @@ dependencies {
     //DI
     api deps.koinScope
     api deps.koinViewModel
+    api deps.koinFragment
 
     //Navigation
-    api deps.navigationFragment
     api deps.navigationUi
-    implementation deps.navigationDynamic
+    api deps.navigationFragment
+    api deps.navigationDynamic
 
     //LiveCycle
     api deps.viewModel

@@ -14,8 +14,7 @@ import com.mobiledevpro.chat.main.di.featureChatMainModule
 import com.mobiledevpro.common.ui.base.BaseFragment
 import com.mobiledevpro.common.ui.base.FragmentSettings
 import com.mobiledevpro.common.ui.extension.observe
-import org.koin.androidx.scope.lifecycleScope
-import org.koin.androidx.viewmodel.scope.getViewModel
+import org.koin.androidx.scope.fragmentScope
 import org.koin.core.context.loadKoinModules
 import com.mobiledevpro.app.R as RApp
 
@@ -41,14 +40,14 @@ class ChatPublicFragment : BaseFragment<FragmentChatPublicBinding>(
     )
 ) {
 
-    private lateinit var viewModel: ChatPublicViewModel
+    private val viewModel: ChatPublicViewModel by lazy { fragmentScope().get() }
+
+    init {
+        loadKoinModules(featureChatMainModule)
+    }
 
     override fun onInitDataBinding() {
-        loadKoinModules(featureChatMainModule)
-
-        viewModel = lifecycleScope.getViewModel(this)
         viewBinding.model = viewModel
-        //add lifecycle observer to viewmodel
         lifecycle.addObserver(viewModel)
     }
 
