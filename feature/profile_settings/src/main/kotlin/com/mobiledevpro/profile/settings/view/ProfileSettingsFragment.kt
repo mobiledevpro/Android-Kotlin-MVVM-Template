@@ -22,7 +22,6 @@ import com.mobiledevpro.common.ui.base.FragmentSettings
 import com.mobiledevpro.profile.settings.R
 import com.mobiledevpro.profile.settings.databinding.FragmentProfileSettingsBinding
 import com.mobiledevpro.profile.settings.di.featureProfileSettingsModule
-import org.koin.androidx.scope.fragmentScope
 import org.koin.core.context.loadKoinModules
 import com.mobiledevpro.app.R as RApp
 
@@ -41,7 +40,8 @@ class ProfileSettingsFragment : BaseFragment<FragmentProfileSettingsBinding>(
         appBarTitleColor = RApp.color.colorWindowGreyBackground,
         appWindowBackground = RApp.drawable.background_window_light,
         homeIconId = RApp.drawable.ic_back_arrow_light_24dp,
-        homeIconBackPressEnabled = true
+        homeIconBackPressEnabled = true,
+        enterTransition = RApp.transition.slide_right
     )
 ) {
 

@@ -129,6 +129,8 @@ dependencies {
     api deps.preference
     api deps.constraintLayout
 
+    api deps.fragment
+
     api deps.coreKtx
     api deps.playCore
     api deps.playCoreKtx
