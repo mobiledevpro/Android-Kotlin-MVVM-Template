@@ -27,6 +27,7 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.transition.TransitionInflater
 import com.mobiledevpro.common.ui.extension.getColorCompatible
 
 abstract class BaseFragment<B : ViewDataBinding>(
@@ -40,6 +41,14 @@ abstract class BaseFragment<B : ViewDataBinding>(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(settings.optionsMenuId != 0 || settings.homeIconBackPressEnabled)
+
+        if (settings.enterTransition != 0 || settings.exitTransition != 0)
+            TransitionInflater.from(requireContext()).let {
+                if (settings.enterTransition != 0)
+                    enterTransition = it.inflateTransition(settings.enterTransition)
+                if (settings.exitTransition != 0)
+                    exitTransition = it.inflateTransition(settings.exitTransition)
+            }
     }
 
     /**

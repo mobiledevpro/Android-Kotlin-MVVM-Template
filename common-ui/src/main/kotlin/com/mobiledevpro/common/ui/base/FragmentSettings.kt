@@ -3,6 +3,7 @@ package com.mobiledevpro.common.ui.base
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.MenuRes
+import androidx.annotation.TransitionRes
 
 /**
  * Some settings for Fragment
@@ -27,5 +28,9 @@ data class FragmentSettings(
     val appBarTitleColor: Int = 0,
     @DrawableRes
     val appWindowBackground: Int = 0,
-    val homeIconBackPressEnabled: Boolean = true
+    val homeIconBackPressEnabled: Boolean = true,
+    @TransitionRes
+    val enterTransition : Int = 0,
+    @TransitionRes
+    val exitTransition : Int = 0
 )
