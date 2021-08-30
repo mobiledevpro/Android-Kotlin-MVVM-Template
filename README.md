@@ -1,11 +1,15 @@
 # Android | Kotlin | MVVM + Clean Architecture | App Template
 
-[![CircleCI](https://circleci.com/gh/mobiledevpro/Android-Kotlin-MVVM-Template.svg?style=shield)](https://circleci.com/gh/mobiledevpro/Android-Kotlin-MVVM-Template
-)
 [![Kotlin Version](https://img.shields.io/badge/kotlin-1.4.20-blue.svg)](http://kotlinlang.org/)
 [![Gradle](https://img.shields.io/badge/gradle-6.5-blue.svg)](https://lv.binarybabel.org/catalog/gradle/latest)
 [![API](https://img.shields.io/badge/API-21%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=21)
-[![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+
+
+[![CircleCI](https://circleci.com/gh/mobiledevpro/Android-Kotlin-MVVM-Template.svg?style=shield)](https://circleci.com/gh/mobiledevpro/Android-Kotlin-MVVM-Template
+)
+[![CodeFactor](https://www.codefactor.io/repository/github/mobiledevpro/android-kotlin-mvvm-template/badge)](https://www.codefactor.io/repository/github/mobiledevpro/android-kotlin-mvvm-template)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=mobiledevpro_Android-Kotlin-MVVM-Template&metric=alert_status)](https://sonarcloud.io/dashboard?id=mobiledevpro_Android-Kotlin-MVVM-Template)
 
 ![github_social_preview](github_social_preview.png)
 
@@ -30,7 +34,7 @@
     
       
 
-### Authors:
+## Authors:
 
 <a href="https://www.instagram.com/mobiledevpro/" target="_blank">
   <img src="https://s.gravatar.com/avatar/72c649d298a8f0f088fd0850e19b9147?s=400" width="70" align="left">
@@ -61,3 +65,14 @@
 
 
 ![architecture](https://user-images.githubusercontent.com/5750211/78999938-56aeff80-7b54-11ea-86bf-da4e52a5ccfe.png)
+
+## Thanks for support !
+
+**Stargazers**
+
+[![Stargazers repo roster for @mobiledevpro/Android-Kotlin-MVVM-Template](https://reporoster.com/stars/dark/mobiledevpro/Android-Kotlin-MVVM-Template)](https://github.com/mobiledevpro/Android-Kotlin-MVVM-Template/stargazers)
+
+**Forkers**
+
+[![Forkers repo roster for @mobiledevpro/Android-Kotlin-MVVM-Template](https://reporoster.com/forks/dark/mobiledevpro/Android-Kotlin-MVVM-Template)](https://github.com/mobiledevpro/Android-Kotlin-MVVM-Template/network/members)
+
