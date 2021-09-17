@@ -109,16 +109,21 @@ android {
         }
     }
 
-    buildFeatures.dataBinding = true
-    buildFeatures.viewBinding = true
-
     kapt.correctErrorTypes = true
 
     testOptions {
         unitTests.includeAndroidResources = true
     }
 
-    dynamicFeatures = [':feature:chat_main', ':feature:chat_core', ':feature:profile_settings']
+    buildFeatures.dataBinding = true
+    buildFeatures.viewBinding = true
+    buildFeatures.buildConfig = true
+
+    dynamicFeatures = [
+            ':feature:chat_main',
+            ':feature:chat_core',
+            ':feature:profile_settings'
+    ]
 }
 
 dependencies {
@@ -136,20 +141,19 @@ dependencies {
     api deps.playCoreKtx
 
     //common UI lib
-    productionApi deps.commonUI //<-- use a published library from jitpack.io
+    productionApi deps.commonUI //<-- use published library from jitpack.io
     devApi project(":common-ui") //<-- use local module
 
     //DI
-    api deps.koinScope
-    api deps.koinViewModel
-    api deps.koinFragment
+    api deps.koinCore
+    api deps.koinAndroid
 
     //Navigation
     api deps.navigationUi
     api deps.navigationFragment
     api deps.navigationDynamic
 
-    //LiveCycle
+    //Lifecycle
     api deps.viewModel
     api deps.liveData
     api deps.saveState

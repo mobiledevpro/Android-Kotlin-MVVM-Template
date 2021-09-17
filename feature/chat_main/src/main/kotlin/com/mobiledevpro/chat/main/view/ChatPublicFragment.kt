@@ -1,11 +1,13 @@
 package com.mobiledevpro.chat.main.view
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.WindowInsets.Type.ime
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.view.ViewCompat
 import com.mobiledevpro.app.helper.showProfileSettingsFragment
 import com.mobiledevpro.chat.main.R
@@ -14,8 +16,10 @@ import com.mobiledevpro.chat.main.di.featureChatMainModule
 import com.mobiledevpro.common.ui.base.BaseFragment
 import com.mobiledevpro.common.ui.base.FragmentSettings
 import com.mobiledevpro.common.ui.extension.observe
-import org.koin.androidx.scope.fragmentScope
+import org.koin.android.scope.getOrCreateScope
+import org.koin.core.component.KoinScopeComponent
 import org.koin.core.context.loadKoinModules
+import org.koin.core.scope.Scope
 import com.mobiledevpro.app.R as RApp
 
 
@@ -39,9 +43,12 @@ class ChatPublicFragment : BaseFragment<FragmentChatPublicBinding>(
         homeIconBackPressEnabled = false,
         exitTransition = RApp.transition.fade
     )
-) {
+), KoinScopeComponent {
 
-    private val viewModel: ChatPublicViewModel by lazy { fragmentScope().get() }
+    override val scope: Scope by getOrCreateScope()
+
+    private val viewModel: ChatPublicViewModel
+            by lazy(LazyThreadSafetyMode.NONE) { scope.get() }
 
     init {
         loadKoinModules(featureChatMainModule)
@@ -59,31 +66,22 @@ class ChatPublicFragment : BaseFragment<FragmentChatPublicBinding>(
         })
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
-
-            try {
-                //  val imeVisible = insets.isVisible(Type.ime())
-                val imeVisible = insets.toWindowInsets()?.isVisible(ime()) ?: false
-                //  val imeHeight = insets.getInsets(Type.ime()).bottom
-                Log.d(this::class.java.name, "imeVisible: $imeVisible")
-                /* if (imeVisible)
-                 viewBinding.rvMessages.smoothScrollToPosition(
-                 )*/
-            } catch (e: NoClassDefFoundError) {
-
-            }
-            insets
-        }
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+            addImeListener(view)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
         when (item.itemId) {
             android.R.id.home -> {
-                Toast.makeText(requireActivity(), "Chats list. Not implemented yet", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireActivity(),
+                    "Chats list. Not implemented yet",
+                    Toast.LENGTH_SHORT
+                ).show()
                 true
             }
             R.id.menu_action_settings -> {
@@ -93,6 +91,25 @@ class ChatPublicFragment : BaseFragment<FragmentChatPublicBinding>(
             }
             else -> super.onOptionsItemSelected(item)
         }
+
+    @RequiresApi(Build.VERSION_CODES.R)
+    private fun addImeListener(view: View) {
+        ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
+
+            try {
+                val imeVisible = insets.toWindowInsets()?.isVisible(ime()) ?: false
+                //  val imeHeight = insets.getInsets(Type.ime()).bottom
+                Log.d(this::class.java.name, "imeVisible: $imeVisible")
+                if (imeVisible)
+                    viewBinding.rvMessageList.apply {
+                        smoothScrollToPosition(this.adapter?.itemCount?.minus(1) ?: 0)
+                    }
+            } catch (e: NoClassDefFoundError) {
+
+            }
+            insets
+        }
+    }
 
 
 }
