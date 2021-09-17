@@ -1,10 +1,9 @@
 # Android | Kotlin | MVVM + Clean Architecture | App Template
 
-[![Kotlin Version](https://img.shields.io/badge/kotlin-1.4.20-blue.svg?style=for-the-badge)](http://kotlinlang.org/)
-[![Gradle](https://img.shields.io/badge/gradle-6.5-blue.svg?style=for-the-badge)](https://lv.binarybabel.org/catalog/gradle/latest)
+[![Kotlin Version](https://img.shields.io/badge/kotlin-1.5.30-blue.svg?style=for-the-badge)](http://kotlinlang.org/)
+[![Gradle](https://img.shields.io/badge/gradle-6.7.1-blue.svg?style=for-the-badge)](https://lv.binarybabel.org/catalog/gradle/latest)
 [![API](https://img.shields.io/badge/API-21%2B-blue.svg?style=for-the-badge)](https://android-arsenal.com/api?level=21)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg?style=for-the-badge)](http://www.apache.org/licenses/LICENSE-2.0)
-
 
 [![CircleCI](https://circleci.com/gh/mobiledevpro/Android-Kotlin-MVVM-Template.svg?style=shield)](https://circleci.com/gh/mobiledevpro/Android-Kotlin-MVVM-Template
 )
