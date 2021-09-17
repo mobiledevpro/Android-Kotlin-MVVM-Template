@@ -20,7 +20,6 @@ package com.mobiledevpro.profile.settings.di
 import com.mobiledevpro.profile.settings.view.ProfileSettingsFragment
 import com.mobiledevpro.profile.settings.view.ProfileSettingsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 /**
@@ -31,7 +30,7 @@ import org.koin.dsl.module
  */
 
 val featureProfileSettingsModule = module {
-    scope(named<ProfileSettingsFragment>()) {
+    scope<ProfileSettingsFragment> {
         viewModel {
             ProfileSettingsViewModel(
                 // resourcesProvider = get(),

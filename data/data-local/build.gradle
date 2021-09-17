@@ -29,6 +29,8 @@ android.sourceSets {
     }
 }
 
+android.buildFeatures.buildConfig = true
+
 dependencies {
     //Room
     implementation deps.room

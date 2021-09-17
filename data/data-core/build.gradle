@@ -7,10 +7,11 @@ dependencies {
     api deps.rxKotlin
 
     //DI
-    api deps.koinScope
+    api deps.koinCore
+    api deps.koinAndroid
 
     //Firebase
-    api deps.firebaseCore
+    api platform(deps.firebaseBom)
     api deps.firebasePerformance
     api deps.firebaseAnalytics
     api deps.crashlytics

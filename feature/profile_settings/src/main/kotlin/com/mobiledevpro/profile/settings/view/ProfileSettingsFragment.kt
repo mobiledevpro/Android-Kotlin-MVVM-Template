@@ -22,8 +22,10 @@ import com.mobiledevpro.common.ui.base.FragmentSettings
 import com.mobiledevpro.profile.settings.R
 import com.mobiledevpro.profile.settings.databinding.FragmentProfileSettingsBinding
 import com.mobiledevpro.profile.settings.di.featureProfileSettingsModule
-import org.koin.androidx.scope.fragmentScope
+import org.koin.core.component.KoinScopeComponent
+import org.koin.core.component.getOrCreateScope
 import org.koin.core.context.loadKoinModules
+import org.koin.core.scope.Scope
 import com.mobiledevpro.app.R as RApp
 
 /**
@@ -44,9 +46,12 @@ class ProfileSettingsFragment : BaseFragment<FragmentProfileSettingsBinding>(
         homeIconBackPressEnabled = true,
         enterTransition = RApp.transition.slide_right
     )
-) {
+), KoinScopeComponent {
 
-    private val viewModel: ProfileSettingsViewModel by lazy { fragmentScope().get() }
+    override val scope: Scope by getOrCreateScope()
+
+    private val viewModel: ProfileSettingsViewModel
+            by lazy(LazyThreadSafetyMode.NONE) { scope.get() }
 
     init {
         loadKoinModules(featureProfileSettingsModule)

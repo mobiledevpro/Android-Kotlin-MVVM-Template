@@ -22,7 +22,6 @@ import com.mobiledevpro.chat.main.domain.interactor.ImplChatPublicInteractor
 import com.mobiledevpro.chat.main.view.ChatPublicFragment
 import com.mobiledevpro.chat.main.view.ChatPublicViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 /**
@@ -33,7 +32,7 @@ import org.koin.dsl.module
  */
 
 val featureChatMainModule = module {
-    scope(named<ChatPublicFragment>()) {
+    scope<ChatPublicFragment> {
         viewModel {
             ChatPublicViewModel(
                 resourcesProvider = get(),
