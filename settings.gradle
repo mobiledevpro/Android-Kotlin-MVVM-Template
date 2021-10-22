@@ -1,8 +1,0 @@
-include ':feature:profile_settings'
-include ':domain:domain-core'
-include ':feature:chat_core'
-include ':data:data-local'
-include ':data:data-core'
-include ':feature:chat_main'
-include ':common-ui'
-include ':app'

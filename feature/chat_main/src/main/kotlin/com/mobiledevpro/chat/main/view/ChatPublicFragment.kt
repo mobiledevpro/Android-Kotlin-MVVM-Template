@@ -41,7 +41,7 @@ class ChatPublicFragment : BaseFragment<FragmentChatPublicBinding>(
         homeIconId = RApp.drawable.ic_list_dark_24dp,
         optionsMenuId = R.menu.menu_chat_public,
         homeIconBackPressEnabled = false,
-        exitTransition = RApp.transition.fade
+        exitTransition = RApp.transition.slide_left
     )
 ), KoinScopeComponent {
 

@@ -2,7 +2,7 @@
 
 buildscript {
     ext.rootVersions = [
-            "kotlin"        : "1.5.30",
+            "kotlin"        : "1.5.31",
             "gradle"        : "4.2.2",
             "playServices"  : "4.3.10",
             "koin"          : "3.1.2",
@@ -28,7 +28,7 @@ buildscript {
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$rootVersions.navigation"
 
 
-        //uses to publish 'common-ui' module to JitPack only.
+        //it uses to publish 'common-ui' module as library to JitPack.
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }

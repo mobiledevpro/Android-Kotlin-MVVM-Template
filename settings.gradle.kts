@@ -1,0 +1,10 @@
+include(
+    ":app",
+    ":common-ui",
+    ":domain:domain-core",
+    ":data:data-local",
+    ":data:data-core",
+    ":feature:chat_core",
+    ":feature:chat_main",
+    ":feature:profile_settings"
+)

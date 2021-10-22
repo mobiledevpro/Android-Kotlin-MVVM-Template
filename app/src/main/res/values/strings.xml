@@ -9,7 +9,7 @@
 
 
 
-    <string name="hint_chat_message">Let`s chat. Write the message here</string>
+    <string name="hint_chat_message">Let`s chat. Enter your message here</string>
 
 
     <string name="message_trouble_internet_connection">There is a trouble connecting to server. Please, check your internet connection and try again.</string>

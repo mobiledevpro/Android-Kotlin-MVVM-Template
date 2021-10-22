@@ -67,7 +67,7 @@ class ImplChatPublicInteractor(
             val userSome = ChatUser(
                 UUID.randomUUID().toString(),
                 "Fake Name",
-                "https://m.media-amazon.com/images/M/MV5BOThhZTkxMWMtY2UyYS00MTdlLTk1ZmMtZWQ0OWFkZjE2YTA1XkEyXkFqcGdeQXVyMjU0ODI4MzY@._V1_UX172_CR0,0,172,256_AL_.jpg",
+                "https://i.pravatar.cc/128?img=5",
                 false
             )
 
