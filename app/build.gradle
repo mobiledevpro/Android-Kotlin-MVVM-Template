@@ -27,12 +27,16 @@ android {
     }
 
     signingConfigs {
-        //uses for CI
-        config {
-            keyAlias 'here alias value'
-            keyPassword System.getenv("SOME_APP_KEYPWD")
-            storeFile file('here key file name')
-            storePassword System.getenv("SOME_APP_KSTOREPWD")
+        //DON"T forget to add APP_KEYPWD and APP_KSTOREPWD to ENV on CI
+        release {
+            try {
+                keyAlias 'here alias value'
+                keyPassword System.getenv("APP_KEYPWD")
+                storeFile file('here key file name')
+                storePassword System.getenv("APP_KSTOREPWD")
+            } catch (e) {
+                throw new InvalidUserDataException("You should define APP_KSTOREPWD and APP_KEYPWD in the system ENV. " + e)
+            }
         }
     }
 
@@ -61,7 +65,7 @@ android {
             debuggable false
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.config
+            signingConfig signingConfigs.release
         }
     }
 
