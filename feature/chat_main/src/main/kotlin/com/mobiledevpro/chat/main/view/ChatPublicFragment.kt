@@ -9,13 +9,15 @@ import android.view.WindowInsets.Type.ime
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.view.ViewCompat
-import com.mobiledevpro.app.helper.showProfileSettingsFragment
 import com.mobiledevpro.chat.main.R
 import com.mobiledevpro.chat.main.databinding.FragmentChatPublicBinding
 import com.mobiledevpro.chat.main.di.featureChatMainModule
 import com.mobiledevpro.common.ui.base.BaseFragment
 import com.mobiledevpro.common.ui.base.FragmentSettings
 import com.mobiledevpro.common.ui.extension.observe
+import com.mobiledevpro.navigation.NavigateTo
+import com.mobiledevpro.navigation.Navigation
+import com.mobiledevpro.navigation.ext.launch
 import org.koin.android.scope.getOrCreateScope
 import org.koin.core.component.KoinScopeComponent
 import org.koin.core.context.loadKoinModules
@@ -86,7 +88,8 @@ class ChatPublicFragment : BaseFragment<FragmentChatPublicBinding>(
             }
             R.id.menu_action_settings -> {
                 // Toast.makeText(requireActivity(), "Settings. Not implemented yet", Toast.LENGTH_SHORT).show()
-                showProfileSettingsFragment()
+                Navigation(NavigateTo.PROFILE_SETTINGS)
+                    .let(this::launch)
                 true
             }
             else -> super.onOptionsItemSelected(item)

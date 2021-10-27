@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="nav_main" type="id" />
+    <item name="feature_chat_main" type="id" />
+    <item name="feature_profile_settings" type="id" />
+
+</resources>

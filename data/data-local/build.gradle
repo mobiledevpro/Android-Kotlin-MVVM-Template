@@ -22,7 +22,7 @@ android.productFlavors{
     }
 }
 
-// Adds a Room database exported schema location as test app assets.
+// Add Room schemas path to src dirs
 android.sourceSets {
     main {
         androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
