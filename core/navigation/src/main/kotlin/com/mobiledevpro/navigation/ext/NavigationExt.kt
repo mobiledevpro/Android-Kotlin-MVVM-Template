@@ -45,8 +45,6 @@ fun Fragment.launch(navigation: Navigation) {
         when (navigation.to) {
             NavigateTo.BACK ->
                 requireActivity().onBackPressed()
-            else -> {
-            }
         }
 
 }
