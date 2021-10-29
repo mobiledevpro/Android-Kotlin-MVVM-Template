@@ -168,10 +168,12 @@ dependencies {
     //Lottie animation
     api deps.lottie
 
-    //core modules for the app
+    //core modules for the whole app and feature modules
     api core.navigation
     api core.rx
     api core.errors
+    api core.utils
+    api core.database
 
     testImplementation deps.jUnit
     androidTestImplementation deps.jUnitExt

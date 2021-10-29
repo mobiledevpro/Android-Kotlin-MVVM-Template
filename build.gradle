@@ -33,6 +33,25 @@ buildscript {
     }
 }
 
+// Gradle Doctor
+// https://runningcode.github.io/gradle-doctor/
+plugins {
+    id("com.osacky.doctor") version "0.7.3"
+}
+
+// Gradle Doctor all settings here https://runningcode.github.io/gradle-doctor/configuration/
+doctor {
+    disallowMultipleDaemons = true
+    negativeAvoidanceThreshold = 500
+    warnWhenJetifierEnabled = true
+
+    javaHome {
+        ensureJavaHomeIsSet = true
+        ensureJavaHomeMatches = true
+        failOnError.set(true)
+    }
+}
+
 allprojects {
     repositories {
         google()
@@ -168,6 +187,7 @@ ext {
             "navigation": project(":core:navigation"),
             "utils"     : project(":core:utils"),
             "rx"        : project("core:rx"),
-            "errors" : project("core:errors")
+            "errors"    : project("core:errors"),
+            "database"  : project("core:database")
     ]
 }
