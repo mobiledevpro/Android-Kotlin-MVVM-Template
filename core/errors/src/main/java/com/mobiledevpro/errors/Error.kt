@@ -15,12 +15,11 @@
  * limitations under the License.
  *
  */
-package com.mobiledevpro.domain.core.mapper
+package com.mobiledevpro.errors
 
 /**
- * Errors (domain layer)
+ * Errors for the whole project
  *
- * Created on Dec 15, 2020.
  *
  */
 class NetworkConnectionThrowable(message: String?) : Throwable(message)

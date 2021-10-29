@@ -4,7 +4,7 @@ include(
     ":core:navigation",
     ":core:utils",
     ":core:rx",
-    ":domain:domain-core",
+    ":core:errors",
     ":data:data-local",
     ":data:data-core",
     ":feature:chat_core",

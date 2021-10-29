@@ -19,7 +19,7 @@ package com.mobiledevpro.app.helper
 
 import android.content.res.Resources
 import com.mobiledevpro.app.R
-import com.mobiledevpro.domain.core.mapper.NetworkConnectionThrowable
+import com.mobiledevpro.errors.NetworkConnectionThrowable
 
 /**
  * Provider for app resources (as example, from strings.xml)

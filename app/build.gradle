@@ -169,10 +169,10 @@ dependencies {
     api deps.lottie
 
     api project(':data:data-local')
-    api project(':domain:domain-core')
 
     api core.navigation
     api core.rx
+    api core.errors
 
     testImplementation deps.jUnit
     androidTestImplementation deps.jUnitExt

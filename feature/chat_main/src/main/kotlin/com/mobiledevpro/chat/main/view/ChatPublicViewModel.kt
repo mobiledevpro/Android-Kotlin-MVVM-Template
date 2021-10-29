@@ -1,13 +1,15 @@
 package com.mobiledevpro.chat.main.view
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import com.mobiledevpro.app.helper.ResourcesProvider
 import com.mobiledevpro.chat.core.view.mapper.toRecyclerView
 import com.mobiledevpro.chat.core.view.recycler.RecyclerItem
 import com.mobiledevpro.chat.core.view.recycler.RecyclerViewHandler
 import com.mobiledevpro.chat.main.domain.interactor.ChatPublicInteractor
 import com.mobiledevpro.common.ui.base.BaseViewModel
-import com.mobiledevpro.domain.core.mapper.RxResult
+import com.mobiledevpro.rx.RxResult
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 
