@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 | Dmitri Chernysh | http://mobile-dev.pro
+ * Copyright 2021 | Dmitri Chernysh | http://mobile-dev.pro
  *
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,20 +15,18 @@
  * limitations under the License.
  *
  */
-package com.mobiledevpro.chat.main.domain.interactor
-
-import com.mobiledevpro.chat.core.domain.model.ChatMessage
-import com.mobiledevpro.rx.RxResult
-import io.reactivex.Observable
+package com.mobiledevpro.rx
 
 /**
- * Interactor uses in Public chat View Model
+ * Class to deliver results to presentation layer
  *
  * Created on Dec 15, 2020.
  *
  */
-interface ChatPublicInteractor {
+sealed class RxResult<T> {
+    data class Success<T>(val data: T) : RxResult<T>()
 
-    fun getMessagesList(userUid : String) : Observable<RxResult<List<ChatMessage>>>
-
+    data class Failure<T>(val throwable: Throwable) : RxResult<T>()
 }
+
+class None

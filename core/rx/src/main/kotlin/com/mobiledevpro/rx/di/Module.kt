@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 | Dmitri Chernysh | http://mobile-dev.pro
+ * Copyright 2021 | Dmitri Chernysh | http://mobile-dev.pro
  *
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,20 +15,24 @@
  * limitations under the License.
  *
  */
-package com.mobiledevpro.chat.main.domain.interactor
+package com.mobiledevpro.rx.di
 
-import com.mobiledevpro.chat.core.domain.model.ChatMessage
-import com.mobiledevpro.rx.RxResult
-import io.reactivex.Observable
+import com.mobiledevpro.rx.executor.*
+import org.koin.core.qualifier.named
+import org.koin.dsl.module
 
-/**
- * Interactor uses in Public chat View Model
- *
- * Created on Dec 15, 2020.
- *
- */
-interface ChatPublicInteractor {
 
-    fun getMessagesList(userUid : String) : Observable<RxResult<List<ChatMessage>>>
+val coreRxModule = module {
+    single<PostExecutionThread>(named(Execution.THREAD_MAIN)) {
+        UiMainThread()
+    }
 
+    single<PostExecutionThread>(named(Execution.THREAD_IO)) {
+        IOThreadPost()
+    }
+
+
+    single<ExecutionThread>(named(Execution.THREAD_IO)) {
+        IOThread()
+    }
 }

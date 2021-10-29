@@ -19,8 +19,8 @@ package com.mobiledevpro.chat.main.domain.interactor
 
 import com.mobiledevpro.chat.core.domain.model.ChatMessage
 import com.mobiledevpro.chat.core.domain.model.ChatUser
-import com.mobiledevpro.domain.core.mapper.RxResult
-import com.mobiledevpro.domain.core.mapper.toViewResult
+import com.mobiledevpro.rx.RxResult
+import com.mobiledevpro.rx.toViewResult
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

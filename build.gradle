@@ -163,4 +163,11 @@ ext {
     features = [
             "chatCore": project(":feature:chat_core")
     ]
+
+    core = [
+            "navigation": project(":core:navigation"),
+            "utils"     : project(":core:utils"),
+            "rx"        : project("core:rx"),
+            "errors" : project("core:errors")
+    ]
 }

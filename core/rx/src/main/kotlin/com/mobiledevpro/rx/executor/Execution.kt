@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 | Dmitri Chernysh | http://mobile-dev.pro
+ * Copyright 2021 | Dmitri Chernysh | http://mobile-dev.pro
  *
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,20 +15,10 @@
  * limitations under the License.
  *
  */
-package com.mobiledevpro.chat.main.domain.interactor
+package com.mobiledevpro.rx.executor
 
-import com.mobiledevpro.chat.core.domain.model.ChatMessage
-import com.mobiledevpro.rx.RxResult
-import io.reactivex.Observable
 
-/**
- * Interactor uses in Public chat View Model
- *
- * Created on Dec 15, 2020.
- *
- */
-interface ChatPublicInteractor {
-
-    fun getMessagesList(userUid : String) : Observable<RxResult<List<ChatMessage>>>
-
+enum class Execution {
+    THREAD_MAIN,
+    THREAD_IO
 }

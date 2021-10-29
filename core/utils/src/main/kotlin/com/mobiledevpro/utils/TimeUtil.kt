@@ -15,20 +15,34 @@
  * limitations under the License.
  *
  */
-package com.mobiledevpro.chat.main.domain.interactor
+package com.mobiledevpro.utils
 
-import com.mobiledevpro.chat.core.domain.model.ChatMessage
-import com.mobiledevpro.rx.RxResult
-import io.reactivex.Observable
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
- * Interactor uses in Public chat View Model
+ * Util class to format date and time
  *
- * Created on Dec 15, 2020.
+ * Created on Dec 22, 2020.
  *
  */
-interface ChatPublicInteractor {
 
-    fun getMessagesList(userUid : String) : Observable<RxResult<List<ChatMessage>>>
+enum class TimeFormat {
+    AM_PM
+}
 
+fun Long.getTimeString(format: TimeFormat): String {
+    val date = Date(this)
+
+    return when (format) {
+        TimeFormat.AM_PM ->
+            SimpleDateFormat(TimePattern.amPm, Locale.getDefault()).apply {
+                timeZone = Calendar.getInstance().timeZone
+            }.format(date)
+
+    }
+}
+
+private object TimePattern {
+    const val amPm = "h:mm a"
 }

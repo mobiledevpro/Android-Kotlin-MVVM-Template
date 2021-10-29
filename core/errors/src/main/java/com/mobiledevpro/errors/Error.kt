@@ -15,20 +15,13 @@
  * limitations under the License.
  *
  */
-package com.mobiledevpro.chat.main.domain.interactor
-
-import com.mobiledevpro.chat.core.domain.model.ChatMessage
-import com.mobiledevpro.rx.RxResult
-import io.reactivex.Observable
+package com.mobiledevpro.errors
 
 /**
- * Interactor uses in Public chat View Model
+ * Errors for the whole project
  *
- * Created on Dec 15, 2020.
  *
  */
-interface ChatPublicInteractor {
+class NetworkConnectionThrowable(message: String?) : Throwable(message)
 
-    fun getMessagesList(userUid : String) : Observable<RxResult<List<ChatMessage>>>
-
-}
+class NetworkThrowable(message: String?) : Throwable(message)
