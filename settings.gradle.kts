@@ -3,6 +3,7 @@ include(
     ":common-ui",
     ":core:navigation",
     ":core:utils",
+    ":core:rx",
     ":domain:domain-core",
     ":data:data-local",
     ":data:data-core",

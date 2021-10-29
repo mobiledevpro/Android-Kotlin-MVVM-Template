@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 | Dmitri Chernysh | http://mobile-dev.pro
+ * Copyright 2021 | Dmitri Chernysh | http://mobile-dev.pro
  *
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,18 +15,24 @@
  * limitations under the License.
  *
  */
-package com.mobiledevpro.domain.core.mapper
+package com.mobiledevpro.rx.di
 
-/**
- * Class to deliver results to presentation layer
- *
- * Created on Dec 15, 2020.
- *
- */
-sealed class RxResult<T> {
-    data class Success<T>(val data: T) : RxResult<T>()
+import com.mobiledevpro.rx.executor.*
+import org.koin.core.qualifier.named
+import org.koin.dsl.module
 
-    data class Failure<T>(val throwable: Throwable) : RxResult<T>()
+
+val coreRxModule = module {
+    single<PostExecutionThread>(named(Execution.THREAD_MAIN)) {
+        UiMainThread()
+    }
+
+    single<PostExecutionThread>(named(Execution.THREAD_IO)) {
+        IOThreadPost()
+    }
+
+
+    single<ExecutionThread>(named(Execution.THREAD_IO)) {
+        IOThread()
+    }
 }
-
-class None

@@ -166,6 +166,7 @@ ext {
 
     core = [
             "navigation": project(":core:navigation"),
-            "utils"     : project(":core:utils")
+            "utils"     : project(":core:utils"),
+            "rx"        : project("core:rx")
     ]
 }
