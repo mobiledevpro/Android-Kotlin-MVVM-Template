@@ -5,8 +5,7 @@ include(
     ":core:utils",
     ":core:rx",
     ":core:errors",
-    ":data:data-local",
-    ":data:data-core",
+    ":core:database",
     ":feature:chat_core",
     ":feature:chat_main",
     ":feature:profile_settings"

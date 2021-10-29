@@ -168,8 +168,7 @@ dependencies {
     //Lottie animation
     api deps.lottie
 
-    api project(':data:data-local')
-
+    //core modules for the app
     api core.navigation
     api core.rx
     api core.errors

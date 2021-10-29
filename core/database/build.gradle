@@ -1,0 +1,47 @@
+apply from: "$rootDir/common-android-library.gradle"
+
+android.defaultConfig.javaCompileOptions {
+    annotationProcessorOptions {
+        arguments = [
+                "room.schemaLocation"  : "$projectDir/schemas".toString(),
+                "room.expandProjection": "true"]
+    }
+}
+
+android.productFlavors{
+    productFlavors {
+        production {
+            buildConfigField "String", "DB_NAME", "\"app_database\""
+            buildConfigField "int", "DB_VERSION", "1"
+        }
+
+        dev {
+            buildConfigField "String", "DB_NAME", "\"app_database_demo\""
+            buildConfigField "int", "DB_VERSION", "1"
+        }
+    }
+}
+
+// Add Room schemas path to src dirs
+android.sourceSets {
+    main {
+        androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
+    }
+}
+
+dependencies {
+    //Koin
+    implementation deps.koinCore
+    implementation deps.koinAndroid
+
+    //Room
+    implementation deps.room
+    implementation deps.roomRx
+    implementation deps.roomKtx
+    kapt deps.roomCompiler
+
+    androidTestImplementation deps.roomTesting
+    testImplementation deps.jUnit
+    androidTestImplementation deps.jUnitExt
+    androidTestImplementation deps.testRunner
+}
