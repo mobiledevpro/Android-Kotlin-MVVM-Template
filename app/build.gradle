@@ -171,7 +171,7 @@ dependencies {
     api project(':data:data-local')
     api project(':domain:domain-core')
 
-    api project(":core:navigation")
+    api core.navigation
 
     testImplementation deps.jUnit
     androidTestImplementation deps.jUnitExt

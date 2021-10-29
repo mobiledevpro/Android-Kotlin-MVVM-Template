@@ -15,7 +15,7 @@
  * limitations under the License.
  *
  */
-package com.mobiledevpro.chat.core.domain.util
+package com.mobiledevpro.utils
 
 import java.text.SimpleDateFormat
 import java.util.*
@@ -31,22 +31,18 @@ enum class TimeFormat {
     AM_PM
 }
 
-private object TimePattern {
-    const val amPm = "h:mm a"
-}
-
 fun Long.getTimeString(format: TimeFormat): String {
     val date = Date(this)
-    var formatter: SimpleDateFormat
 
     return when (format) {
-        TimeFormat.AM_PM -> {
-            formatter = SimpleDateFormat(TimePattern.amPm, Locale.getDefault()).apply {
+        TimeFormat.AM_PM ->
+            SimpleDateFormat(TimePattern.amPm, Locale.getDefault()).apply {
                 timeZone = Calendar.getInstance().timeZone
-            }
-            formatter.format(date)
+            }.format(date)
 
-        }
-        else -> ""
     }
+}
+
+private object TimePattern {
+    const val amPm = "h:mm a"
 }

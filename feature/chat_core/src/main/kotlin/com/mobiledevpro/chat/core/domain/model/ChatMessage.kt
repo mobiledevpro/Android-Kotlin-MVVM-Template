@@ -17,8 +17,8 @@
  */
 package com.mobiledevpro.chat.core.domain.model
 
-import com.mobiledevpro.chat.core.domain.util.TimeFormat
-import com.mobiledevpro.chat.core.domain.util.getTimeString
+import com.mobiledevpro.utils.TimeFormat
+import com.mobiledevpro.utils.getTimeString
 
 
 /**

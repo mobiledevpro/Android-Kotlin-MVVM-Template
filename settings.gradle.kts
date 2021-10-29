@@ -2,6 +2,7 @@ include(
     ":app",
     ":common-ui",
     ":core:navigation",
+    ":core:utils",
     ":domain:domain-core",
     ":data:data-local",
     ":data:data-core",
