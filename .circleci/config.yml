@@ -7,7 +7,7 @@ config_docker: &config_docker
 
 config_android: &config_env
   environment:
-    JAVA_TOOL_OPTIONS: "-Xmx4096m"
+    JAVA_TOOL_OPTIONS: "-Xmx4096m -XX:+UseParallelGC"
     GRADLE_OPTS: "-Dorg.gradle.daemon=true -Dorg.gradle.workers.max=2 -Dkotlin.incremental=true -Dkotlin.compiler.execution.strategy=in-process"
     TERM: dumb
 
