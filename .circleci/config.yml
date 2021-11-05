@@ -2,7 +2,7 @@ version: 2.1
 
 config_docker: &config_docker
   docker:
-    - image: circleci/android:api-30
+    - image: cimg/android:2021.10.2
   working_directory:  ~/code
 
 config_android: &config_env
