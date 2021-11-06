@@ -16,15 +16,45 @@
         android:layout_height="match_parent"
         android:background="@color/colorPrimary">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_avatar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <FrameLayout
+            android:id="@+id/layout_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/background_layout_top_rounding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guideline_avatar"
+            app:layout_constraintVertical_bias="1" />
+
+        <FrameLayout
+            android:id="@+id/layout_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_profile_avatar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline_avatar"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline_avatar" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Test text"
+            android:textColor="@color/colorWindowGreyBackground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textColor="@color/colorWindowGreyBackground" />
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

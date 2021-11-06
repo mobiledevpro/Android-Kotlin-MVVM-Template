@@ -17,10 +17,14 @@
  */
 package com.mobiledevpro.chat.core.view.extension
 
+import android.annotation.SuppressLint
+import android.net.Uri
+import android.util.Log
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.mobiledevpro.utils.LOG_TAG_DEBUG
 
 /**
  * Extension
@@ -36,6 +40,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
  */
 object ImageViewExtension {
 
+    @SuppressLint("CheckResult")
     @BindingAdapter(
         value = [
             "bind:imageUrl",
@@ -44,17 +49,25 @@ object ImageViewExtension {
         requireAll = false
     )
     @JvmStatic
-    fun ImageView.setImageUrl(imageUrl: String, isCircle: Boolean?) {
+    fun ImageView.setImageUrl(imageUri: Uri?, isCircle: Boolean? = true) {
+        Glide.with(context)
+            .clear(this)
 
-        if (imageUrl.isEmpty()) return
+        imageUri ?: return
+
+        Log.d(LOG_TAG_DEBUG, "setImageUrl: $imageUri")
+        Log.d(LOG_TAG_DEBUG, "isCircle: $isCircle")
 
         Glide.with(context)
-            .load(imageUrl)
+            .load(imageUri)
             .centerCrop()
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
             .apply {
-                if (isCircle != false)
-                    circleCrop()
+                isCircle?.let {
+                    Log.d(LOG_TAG_DEBUG, "isCircle: $it")
+                    if (it)
+                        this.circleCrop()
+                }
             }
             .into(this)
     }
