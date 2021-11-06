@@ -168,7 +168,13 @@ dependencies {
     //Lottie animation
     api deps.lottie
 
-    //core modules for the whole app and feature modules
+    //Firebase
+    api platform(deps.firebaseBom)
+    api deps.firebasePerformance
+    api deps.crashlytics
+    api deps.firebaseAnalytics
+
+    //core modules for the whole app including feature modules
     api core.navigation
     api core.rx
     api core.errors
