@@ -69,7 +69,7 @@ jobs:
       - <<: *update_sdk
       - checkout
       # Docker caching is not available in free plans
-      #- <<: *cache_docker
+      - <<: *cache_docker
       - <<: *restore_cache
       - <<: *fix_permissions
       - <<: *update_dependencies
