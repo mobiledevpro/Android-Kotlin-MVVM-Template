@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme.EditText.Login" parent="AppTheme.EditText">
+        <item name="android:background">@drawable/background_edittext_login</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+</resources>

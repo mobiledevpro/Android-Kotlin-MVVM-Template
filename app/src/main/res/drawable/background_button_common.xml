@@ -3,21 +3,21 @@
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
             <solid android:color="@color/colorButtonPressed" />
-            <corners android:radius="2dp" />
+            <corners android:radius="@dimen/button_corner_radius" />
         </shape>
     </item>
 
     <item android:state_enabled="false">
         <shape android:shape="rectangle">
             <solid android:color="@color/colorButtonDisabled" />
-            <corners android:radius="2dp" />
+            <corners android:radius="@dimen/button_corner_radius" />
         </shape>
     </item>
 
     <item>
         <shape android:shape="rectangle">
             <solid android:color="@color/colorButtonActive" />
-            <corners android:radius="2dp" />
+            <corners android:radius="@dimen/button_corner_radius" />
         </shape>
     </item>
 

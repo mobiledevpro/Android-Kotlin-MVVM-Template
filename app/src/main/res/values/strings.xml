@@ -8,8 +8,15 @@
     <string name="menu_action_settings">Settings</string>
 
 
-
     <string name="hint_chat_message">Let`s chat. Enter your message here</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_sign_in_with_google">Sign In with Google</string>
+
+    <string name="button_sign_in">Sign In</string>
+
+
+    <string name="label_or">or</string>
 
 
     <string name="message_trouble_internet_connection">There is a trouble connecting to server. Please, check your internet connection and try again.</string>

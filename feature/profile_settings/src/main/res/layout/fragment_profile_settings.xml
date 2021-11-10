@@ -48,14 +48,91 @@
 
 
         <TextView
+            android:id="@+id/tv_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Content here"
+            android:text="Anonymous"
             android:textColor="@color/colorPrimary"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/layout_avatar" />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_login"
+            style="@style/AppTheme.EditText.Login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:autofillHints="@null"
+            android:hint="@string/hint_email"
+            android:inputType="text"
+            android:lines="1"
+            android:maxLines="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_nickname"
+            app:layout_constraintWidth_percent="0.7" />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_pass"
+            style="@style/AppTheme.EditText.Login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:autofillHints="@null"
+            android:hint="@string/hint_password"
+            android:inputType="text"
+            android:lines="1"
+            android:maxLines="1"
+            app:layout_constraintEnd_toEndOf="@+id/edt_login"
+            app:layout_constraintStart_toStartOf="@+id/edt_login"
+            app:layout_constraintTop_toBottomOf="@+id/edt_login" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_sign_in"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/button_sign_in"
+            app:layout_constraintEnd_toEndOf="@+id/edt_login"
+            app:layout_constraintStart_toStartOf="@+id/edt_login"
+            app:layout_constraintTop_toBottomOf="@+id/edt_pass" />
+
+        <TextView
+            android:id="@+id/tv_or"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/activity_vertical_margin"
+            android:text="@string/label_or"
+            android:textColor="@color/colorTextSecondary"
+            app:layout_constraintEnd_toEndOf="@+id/btn_sign_in"
+            app:layout_constraintStart_toStartOf="@+id/btn_sign_in"
+            app:layout_constraintTop_toBottomOf="@+id/btn_sign_in" />
+
+        <ImageButton
+            android:id="@+id/btn_google_sign_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_or"
+            app:layout_constraintStart_toStartOf="@+id/btn_sign_in"
+            app:layout_constraintEnd_toStartOf="@+id/btn_facebook_sign_in"
+            app:srcCompat="@drawable/ic_google_circle_white_56dp"
+            android:contentDescription="@string/hint_sign_in_with_google" />
+
+
+        <ImageButton
+            android:id="@+id/btn_facebook_sign_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_or"
+            app:layout_constraintStart_toEndOf="@+id/btn_google_sign_in"
+            app:layout_constraintEnd_toEndOf="@id/btn_sign_in"
+            app:srcCompat="@drawable/ic_facebook_circle_white_56dp"
+            android:contentDescription="@string/hint_sign_in_with_google" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
