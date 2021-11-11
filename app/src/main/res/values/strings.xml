@@ -21,7 +21,6 @@
 
     <string name="message_trouble_internet_connection">There is a trouble connecting to server. Please, check your internet connection and try again.</string>
 
-
     <string name="feature_title_chat_core">Chat core</string>
     <string name="feature_title_profile_settings">Profile Settings</string>
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -53,7 +54,7 @@
             android:layout_height="wrap_content"
             android:text="Anonymous"
             android:textColor="@color/colorPrimary"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -117,22 +118,34 @@
             android:id="@+id/btn_google_sign_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/tv_or"
-            app:layout_constraintStart_toStartOf="@+id/btn_sign_in"
+            android:contentDescription="@string/hint_sign_in_with_google"
             app:layout_constraintEnd_toStartOf="@+id/btn_facebook_sign_in"
-            app:srcCompat="@drawable/ic_google_circle_white_56dp"
-            android:contentDescription="@string/hint_sign_in_with_google" />
+            app:layout_constraintStart_toStartOf="@+id/btn_sign_in"
+            app:layout_constraintTop_toBottomOf="@+id/tv_or"
+            app:srcCompat="@drawable/ic_google_circle_white_56dp" />
 
 
         <ImageButton
             android:id="@+id/btn_facebook_sign_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/tv_or"
-            app:layout_constraintStart_toEndOf="@+id/btn_google_sign_in"
+            android:contentDescription="@string/hint_sign_in_with_google"
             app:layout_constraintEnd_toEndOf="@id/btn_sign_in"
-            app:srcCompat="@drawable/ic_facebook_circle_white_56dp"
-            android:contentDescription="@string/hint_sign_in_with_google" />
+            app:layout_constraintStart_toEndOf="@+id/btn_google_sign_in"
+            app:layout_constraintTop_toBottomOf="@+id/tv_or"
+            app:srcCompat="@drawable/ic_facebook_circle_white_56dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@{model.appVersion}"
+            android:textColor="@color/colorStateDisabled"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="v1.0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -18,8 +18,13 @@
 package com.mobiledevpro.profile.settings.view
 
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.OnLifecycleEvent
+import com.mobiledevpro.app.BuildConfig
+import com.mobiledevpro.app.helper.ResourcesProvider
 import com.mobiledevpro.common.ui.base.BaseViewModel
+import com.mobiledevpro.app.R as RApp
 
 /**
  * View model for Profile Settings screen
@@ -28,8 +33,16 @@ import com.mobiledevpro.common.ui.base.BaseViewModel
  *
  */
 
-class ProfileSettingsViewModel : BaseViewModel() {
+class ProfileSettingsViewModel(
+    private val resourcesProvider: ResourcesProvider
+) : BaseViewModel() {
 
+    private val _appVersion = MutableLiveData<String>()
+    val appVersion: LiveData<String> = _appVersion
+
+    init {
+        initAppVersion()
+    }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun onStartView() {
@@ -39,5 +52,10 @@ class ProfileSettingsViewModel : BaseViewModel() {
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     fun onStopView() {
         //do something on stop view if it's needed
+    }
+
+    private fun initAppVersion() {
+        resourcesProvider.getFormattedString(RApp.string.app_version, BuildConfig.VERSION_NAME)
+            .let(_appVersion::postValue)
     }
 }
