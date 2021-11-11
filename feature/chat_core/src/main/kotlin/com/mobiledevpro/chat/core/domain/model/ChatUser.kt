@@ -17,6 +17,8 @@
  */
 package com.mobiledevpro.chat.core.domain.model
 
+import android.net.Uri
+
 /**
  * User model
  *
@@ -26,6 +28,6 @@ package com.mobiledevpro.chat.core.domain.model
 data class ChatUser(
     val uid: String,
     val name: String,
-    val avatarUrl: String,
+    val avatarUrl: Uri?,
     val isItYou: Boolean
 )

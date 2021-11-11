@@ -42,7 +42,7 @@
 
     <!-- Image buttons common style-->
     <style name="AppTheme.ImageButton" parent="Widget.AppCompat.ImageButton">
-        <item name="android:background">@null</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
         <item name="android:paddingTop">8dp</item>
         <item name="android:paddingBottom">8dp</item>
         <item name="android:paddingStart">4dp</item>
@@ -58,8 +58,8 @@
         <item name="android:textSize">16sp</item>
         <item name="android:background">@drawable/background_button_common</item>
         <item name="android:singleLine">true</item>
-        <item name="android:minWidth">144dp</item>
         <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
     <!-- Edit fields common style-->

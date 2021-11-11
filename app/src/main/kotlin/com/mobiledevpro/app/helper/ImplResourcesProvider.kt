@@ -43,4 +43,7 @@ class ImplResourcesProvider(
 
     override fun getStringMessage(resId: Int): String =
         resources.getString(resId)
+
+    override fun getFormattedString(resId: Int, vararg args: Any): String =
+        resources.getString(resId, *args)
 }

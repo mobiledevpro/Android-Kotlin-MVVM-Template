@@ -17,6 +17,7 @@
  */
 package com.mobiledevpro.chat.main.domain.interactor
 
+import androidx.core.net.toUri
 import com.mobiledevpro.chat.core.domain.model.ChatMessage
 import com.mobiledevpro.chat.core.domain.model.ChatUser
 import com.mobiledevpro.rx.RxResult
@@ -67,14 +68,14 @@ class ImplChatPublicInteractor(
             val userSome = ChatUser(
                 UUID.randomUUID().toString(),
                 "Fake Name",
-                "https://i.pravatar.cc/128?img=5",
+                "https://i.pravatar.cc/128?img=5".toUri(),
                 false
             )
 
             val userYou = ChatUser(
                 UUID.randomUUID().toString(),
                 "Fake Name",
-                "",
+                null,
                 true
             )
 

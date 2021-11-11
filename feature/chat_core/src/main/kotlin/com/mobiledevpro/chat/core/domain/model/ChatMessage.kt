@@ -17,6 +17,7 @@
  */
 package com.mobiledevpro.chat.core.domain.model
 
+import android.net.Uri
 import com.mobiledevpro.utils.TimeFormat
 import com.mobiledevpro.utils.getTimeString
 
@@ -33,7 +34,9 @@ data class ChatMessage(
     val text: String,
     val user: ChatUser
 ) {
-    fun getFormattedTime() : String = timeSentUtc.getTimeString(TimeFormat.AM_PM)
+    fun getFormattedTime(): String = timeSentUtc.getTimeString(TimeFormat.AM_PM)
 
-    fun getAvatarUrl() : String = user.avatarUrl
+    fun getAvatarUrl(): Uri? = user.avatarUrl
+
+    fun isAvatarCircled() = true
 }

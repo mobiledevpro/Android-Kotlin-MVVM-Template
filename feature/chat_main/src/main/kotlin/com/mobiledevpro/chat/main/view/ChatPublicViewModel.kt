@@ -72,12 +72,13 @@ class ChatPublicViewModel(
         interactor.getMessagesList("[some user id]")
             .subscribeBy {
                 when (it) {
-                    is RxResult.Success -> {
-                        _listMessages.value = it.data.toRecyclerView()
-                    }
-                    is RxResult.Failure -> {
-                        _errorMessage.value = resourcesProvider.getErrorMessage(it.throwable)
-                    }
+                    is RxResult.Success ->
+                        it.data.toRecyclerView()
+                            .let(_listMessages::postValue)
+
+                    is RxResult.Failure ->
+                        resourcesProvider.getErrorMessage(it.throwable)
+                            .let(_errorMessage::postValue)
                 }
             }
             .addTo(subscriptions)

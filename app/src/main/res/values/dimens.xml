@@ -10,4 +10,5 @@
     <dimen name="layout_corner_radius">32dp</dimen>
     <dimen name="edittext_corner_radius">24dp</dimen>
     <dimen name="message_corner_radius">24dp</dimen>
+    <dimen name="button_corner_radius">24dp</dimen>
 </resources>

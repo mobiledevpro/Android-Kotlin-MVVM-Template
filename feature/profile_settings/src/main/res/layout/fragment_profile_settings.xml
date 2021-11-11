@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -16,15 +17,136 @@
         android:layout_height="match_parent"
         android:background="@color/colorPrimary">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Test text"
+        <View
+            android:id="@+id/view_avatar_middle_line"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/layout_avatar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/layout_avatar" />
+
+        <FrameLayout
+            android:id="@+id/layout_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/background_layout_top_rounding"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textColor="@color/colorWindowGreyBackground" />
+            app:layout_constraintTop_toBottomOf="@+id/view_avatar_middle_line" />
+
+        <FrameLayout
+            android:id="@+id/layout_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@drawable/background_profile_avatar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tv_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Anonymous"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_avatar" />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_login"
+            style="@style/AppTheme.EditText.Login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:autofillHints="@null"
+            android:hint="@string/hint_email"
+            android:inputType="text"
+            android:lines="1"
+            android:maxLines="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_nickname"
+            app:layout_constraintWidth_percent="0.7" />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_pass"
+            style="@style/AppTheme.EditText.Login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:autofillHints="@null"
+            android:hint="@string/hint_password"
+            android:inputType="text"
+            android:lines="1"
+            android:maxLines="1"
+            app:layout_constraintEnd_toEndOf="@+id/edt_login"
+            app:layout_constraintStart_toStartOf="@+id/edt_login"
+            app:layout_constraintTop_toBottomOf="@+id/edt_login" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_sign_in"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/button_sign_in"
+            app:layout_constraintEnd_toEndOf="@+id/edt_login"
+            app:layout_constraintStart_toStartOf="@+id/edt_login"
+            app:layout_constraintTop_toBottomOf="@+id/edt_pass" />
+
+        <TextView
+            android:id="@+id/tv_or"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/activity_vertical_margin"
+            android:text="@string/label_or"
+            android:textColor="@color/colorTextSecondary"
+            app:layout_constraintEnd_toEndOf="@+id/btn_sign_in"
+            app:layout_constraintStart_toStartOf="@+id/btn_sign_in"
+            app:layout_constraintTop_toBottomOf="@+id/btn_sign_in" />
+
+        <ImageButton
+            android:id="@+id/btn_google_sign_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/hint_sign_in_with_google"
+            app:layout_constraintEnd_toStartOf="@+id/btn_facebook_sign_in"
+            app:layout_constraintStart_toStartOf="@+id/btn_sign_in"
+            app:layout_constraintTop_toBottomOf="@+id/tv_or"
+            app:srcCompat="@drawable/ic_google_circle_white_56dp" />
+
+
+        <ImageButton
+            android:id="@+id/btn_facebook_sign_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/hint_sign_in_with_google"
+            app:layout_constraintEnd_toEndOf="@id/btn_sign_in"
+            app:layout_constraintStart_toEndOf="@+id/btn_google_sign_in"
+            app:layout_constraintTop_toBottomOf="@+id/tv_or"
+            app:srcCompat="@drawable/ic_facebook_circle_white_56dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@{model.appVersion}"
+            android:textColor="@color/colorStateDisabled"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="v1.0.0" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

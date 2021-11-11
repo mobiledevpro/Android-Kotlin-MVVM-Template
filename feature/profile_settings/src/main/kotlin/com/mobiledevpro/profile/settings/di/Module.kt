@@ -33,7 +33,7 @@ val featureProfileSettingsModule = module {
     scope<ProfileSettingsFragment> {
         viewModel {
             ProfileSettingsViewModel(
-                // resourcesProvider = get(),
+                resourcesProvider = get()
                 // interactor = get()
             )
         }
