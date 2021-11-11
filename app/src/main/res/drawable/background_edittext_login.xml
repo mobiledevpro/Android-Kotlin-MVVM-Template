@@ -17,8 +17,4 @@
         </shape>
     </item>
 
-    <!--
-      <item android:drawable="?attr/selectableItemBackground" />
-      -->
-
 </selector>
