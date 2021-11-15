@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.mobiledevpro.app.ui.mainscreen.view.MainActivity"
+    android:theme="@style/AppTheme.NoActionBar">
 
     <data>
 
@@ -12,10 +14,12 @@
         <import type="android.view.View" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/layout_profile"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        app:layoutDescription="@xml/scene_fragment_profile_settings">
 
         <View
             android:id="@+id/view_avatar_middle_line"
@@ -52,7 +56,7 @@
             android:id="@+id/tv_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Anonymous"
+            android:text="@string/label_anonymous"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -136,17 +140,20 @@
             app:srcCompat="@drawable/ic_facebook_circle_white_56dp" />
 
         <TextView
+            android:id="@+id/tv_version_name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:layout_height="0dp"
             android:padding="8dp"
             android:text="@{model.appVersion}"
-            android:textColor="@color/colorStateDisabled"
+            android:textColor="@color/colorTextSecondary"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_google_sign_in"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="v1.0.0" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 
 </layout>
