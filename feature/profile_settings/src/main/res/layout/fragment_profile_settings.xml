@@ -21,7 +21,7 @@
         android:layout_height="match_parent"
         android:background="@color/colorPrimary"
         app:layoutDescription="@xml/scene_fragment_profile_settings"
-        motion:motionDebug="SHOW_PATH">
+        motion:motionDebug="NO_DEBUG">
 
         <View
             android:id="@+id/view_avatar_middle_line"

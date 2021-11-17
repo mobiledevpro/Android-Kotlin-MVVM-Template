@@ -39,7 +39,7 @@ class ChatPublicFragment : BaseFragment<FragmentChatPublicBinding>(
         appBarColor = RApp.color.colorWindowGreyBackground,
         appBarTitle = RApp.string.app_title_chat_public,
         appBarTitleColor = RApp.color.colorTextPrimary,
-        appWindowBackground = RApp.drawable.background_window_dark,
+        appWindowBackground = RApp.drawable.background_window_dark_solid,
         homeIconId = RApp.drawable.ic_list_dark_24dp,
         optionsMenuId = R.menu.menu_chat_public,
         homeIconBackPressEnabled = false,

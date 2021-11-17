@@ -51,7 +51,7 @@ class ProfileSettingsFragment : BaseFragment<FragmentProfileSettingsBinding>(
         appBarColor = RApp.color.colorPrimary,
         appBarTitle = 0,
         appBarTitleColor = RApp.color.colorWindowGreyBackground,
-        appWindowBackground = RApp.drawable.background_window_light,
+        appWindowBackground = RApp.drawable.background_window_light_solid,
         homeIconId = RApp.drawable.ic_back_arrow_light_24dp,
         homeIconBackPressEnabled = true,
         enterTransition = RApp.transition.slide_right
