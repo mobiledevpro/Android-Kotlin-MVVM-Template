@@ -50,19 +50,17 @@ class ImplChatPublicInteractor(
 
             val list = ArrayList<ChatMessage>()
 
-           /* val pause: () -> Unit = {
+            val pause: (Long) -> Unit = {
                 try {
-                    Thread.sleep(2000)
+                    Thread.sleep(it)
                 } catch (e: InterruptedException) {
 
                 }
-            }*/
+            }
 
-            // pause()
+            pause(2000)
 
-            if (emitter.isDisposed)
-                return@create
-            else
+            if (!emitter.isDisposed)
                 emitter.onNext(list)
 
             val userSome = ChatUser(
@@ -87,11 +85,9 @@ class ImplChatPublicInteractor(
             )
             list.add(chatMessage)
 
-            //  pause()
+            pause(100)
 
-            if (emitter.isDisposed)
-                return@create
-            else
+            if (!emitter.isDisposed)
                 emitter.onNext(list)
 
 
@@ -103,12 +99,12 @@ class ImplChatPublicInteractor(
             )
             list.add(chatMessage)
 
-            //  pause()
+            pause(100)
 
-            if (emitter.isDisposed)
-                return@create
-            else
+
+            if (!emitter.isDisposed)
                 emitter.onNext(list)
+
 
             chatMessage = ChatMessage(
                 UUID.randomUUID().toString(),
@@ -118,11 +114,10 @@ class ImplChatPublicInteractor(
             )
             list.add(chatMessage)
 
-            //  pause()
+            pause(100)
 
-            if (emitter.isDisposed)
-                return@create
-            else
+
+            if (!emitter.isDisposed)
                 emitter.onNext(list)
 
             chatMessage = ChatMessage(
@@ -133,12 +128,12 @@ class ImplChatPublicInteractor(
             )
             list.add(chatMessage)
 
-            // pause()
+            pause(100)
 
-            if (emitter.isDisposed)
-                return@create
-            else
+
+            if (!emitter.isDisposed)
                 emitter.onNext(list)
+
 
             chatMessage = ChatMessage(
                 UUID.randomUUID().toString(),
@@ -148,12 +143,11 @@ class ImplChatPublicInteractor(
             )
             list.add(chatMessage)
 
-            // pause()
+            pause(100)
 
-            if (emitter.isDisposed)
-                return@create
-            else
+            if (!emitter.isDisposed)
                 emitter.onNext(list)
+
 
             chatMessage = ChatMessage(
                 UUID.randomUUID().toString(),
@@ -163,11 +157,12 @@ class ImplChatPublicInteractor(
             )
             list.add(chatMessage)
 
-            //  pause()
+            pause(100)
 
-            if (emitter.isDisposed)
-                return@create
-            else
+            if (!emitter.isDisposed) {
                 emitter.onNext(list)
+                emitter.onComplete()
+            }
+
         }
 }
