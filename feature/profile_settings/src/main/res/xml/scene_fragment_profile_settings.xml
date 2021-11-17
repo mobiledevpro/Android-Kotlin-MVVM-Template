@@ -136,6 +136,55 @@
 
         </KeyFrameSet>
 
+        <KeyFrameSet>
+
+            <KeyAttribute
+                android:scaleX="0.5"
+                android:scaleY="0.5"
+                motion:framePosition="50"
+                motion:motionTarget="@id/btn_google_sign_in" />
+
+            <KeyAttribute
+                android:scaleX="0"
+                android:scaleY="0"
+                motion:framePosition="100"
+                motion:motionTarget="@id/btn_google_sign_in" />
+
+        </KeyFrameSet>
+
+        <KeyFrameSet>
+
+            <KeyAttribute
+                android:scaleX="0.5"
+                android:scaleY="0.5"
+                motion:framePosition="50"
+                motion:motionTarget="@id/btn_facebook_sign_in" />
+
+            <KeyAttribute
+                android:scaleX="0"
+                android:scaleY="0"
+                motion:framePosition="100"
+                motion:motionTarget="@id/btn_facebook_sign_in" />
+
+        </KeyFrameSet>
+
+        <KeyFrameSet>
+
+            <KeyAttribute
+                android:scaleX="0.5"
+                android:scaleY="0.5"
+                motion:framePosition="50"
+                motion:motionTarget="@id/tv_or" />
+
+            <KeyAttribute
+                android:scaleX="0"
+                android:scaleY="0"
+                motion:framePosition="100"
+                motion:motionTarget="@id/tv_or" />
+
+        </KeyFrameSet>
+
+
     </Transition>
 
 </MotionScene>
