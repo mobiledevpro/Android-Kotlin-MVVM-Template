@@ -97,7 +97,7 @@ class ChatPublicFragment : BaseFragment<FragmentChatPublicBinding>(
 
     @RequiresApi(Build.VERSION_CODES.R)
     private fun addImeListener(view: View) {
-        ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(view) { _, insets ->
 
             try {
                 val imeVisible = insets.toWindowInsets()?.isVisible(ime()) ?: false

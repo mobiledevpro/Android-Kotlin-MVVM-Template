@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:motion="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.mobiledevpro.app.ui.mainscreen.view.MainActivity"
-    android:theme="@style/AppTheme.NoActionBar">
+    android:theme="@style/AppTheme.NoActionBar"
+    tools:context="com.mobiledevpro.app.ui.mainscreen.view.MainActivity">
 
     <data>
 
@@ -19,7 +20,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary"
-        app:layoutDescription="@xml/scene_fragment_profile_settings">
+        app:layoutDescription="@xml/scene_fragment_profile_settings"
+        motion:motionDebug="SHOW_PATH">
 
         <View
             android:id="@+id/view_avatar_middle_line"
@@ -45,7 +47,6 @@
             android:id="@+id/layout_avatar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:background="@drawable/background_profile_avatar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,6 +65,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_avatar" />
 
+        <TextView
+            android:id="@+id/tv_toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0"
+            android:text="@string/label_sign_in"
+            android:textColor="@color/colorWindowGreyBackground"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_avatar" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_login"
@@ -90,7 +103,7 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:autofillHints="@null"
             android:hint="@string/hint_password"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:lines="1"
             android:maxLines="1"
             app:layout_constraintEnd_toEndOf="@+id/edt_login"
@@ -111,7 +124,7 @@
             android:id="@+id/tv_or"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:text="@string/label_or"
             android:textColor="@color/colorTextSecondary"
             app:layout_constraintEnd_toEndOf="@+id/btn_sign_in"
@@ -142,16 +155,16 @@
         <TextView
             android:id="@+id/tv_version_name"
             android:layout_width="wrap_content"
-            android:gravity="bottom"
             android:layout_height="0dp"
+            android:gravity="bottom"
             android:padding="8dp"
             android:text="@{model.appVersion}"
             android:textColor="@color/colorTextSecondary"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_google_sign_in"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_google_sign_in"
             tools:text="v1.0.0" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>

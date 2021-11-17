@@ -17,11 +17,21 @@
  */
 package com.mobiledevpro.profile.settings.view
 
+import android.graphics.Rect
+import android.os.Build
+import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.view.WindowInsets
+import androidx.annotation.RequiresApi
+import androidx.core.view.ViewCompat
 import com.mobiledevpro.common.ui.base.BaseFragment
 import com.mobiledevpro.common.ui.base.FragmentSettings
 import com.mobiledevpro.profile.settings.R
 import com.mobiledevpro.profile.settings.databinding.FragmentProfileSettingsBinding
 import com.mobiledevpro.profile.settings.di.featureProfileSettingsModule
+import com.mobiledevpro.utils.LOG_TAG_DEBUG
+import com.mobiledevpro.utils.LOG_TAG_ERROR
 import org.koin.core.component.KoinScopeComponent
 import org.koin.core.component.getOrCreateScope
 import org.koin.core.context.loadKoinModules
@@ -62,6 +72,18 @@ class ProfileSettingsFragment : BaseFragment<FragmentProfileSettingsBinding>(
         lifecycle.addObserver(viewModel)
     }
 
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        //Listen for a soft keyboard visibility change
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+            addKeyboardListener(view)
+        else
+            addKeyboardListenerCompat(view)
+
+    }
+
     override fun observeLifecycleEvents() {
         /*  observe(viewModel.appbarTitle, observer = { title ->
               (requireActivity() is BaseActivityInterface).apply {
@@ -83,4 +105,52 @@ class ProfileSettingsFragment : BaseFragment<FragmentProfileSettingsBinding>(
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.R)
+    private fun addKeyboardListener(view: View) {
+        ViewCompat.setOnApplyWindowInsetsListener(view) { _, insets ->
+            try {
+                val imeVisible =
+                    insets.toWindowInsets()?.isVisible(WindowInsets.Type.ime()) ?: false
+                //  val imeHeight = insets.getInsets(Type.ime()).bottom
+                Log.d(this::class.java.name, "imeVisible: $imeVisible")
+                viewBinding.layoutProfile.apply {
+                    if (imeVisible) transitionToEnd()
+                    else transitionToStart()
+                }
+            } catch (e: NoClassDefFoundError) {
+                Log.e(LOG_TAG_ERROR, "addKeyboardListener: ${e.localizedMessage}", e)
+            }
+            insets
+        }
+    }
+
+    /**
+     * NOTE: This only works when android:windowSoftInputMode is set to adjustResize in the manifest for an Activity
+     */
+    private fun addKeyboardListenerCompat(view: View) {
+        view.viewTreeObserver.addOnGlobalLayoutListener {
+
+            val rect = Rect()
+            view.getWindowVisibleDisplayFrame(rect)
+
+            val rootHeight = view.rootView.height
+            val visibleHeight = rect.height()
+
+            Log.d(LOG_TAG_DEBUG, "addKeyboardListenerOld: rootView.height  = $rootHeight")
+            Log.d(LOG_TAG_DEBUG, "addKeyboardListenerOld: visible.height  = $visibleHeight")
+            val heightDiff: Int = rootHeight - visibleHeight
+
+            val keyboardVisible: Boolean = heightDiff > 500
+
+            Log.d(
+                LOG_TAG_DEBUG,
+                "addKeyboardListenerOld: heightDiff = $heightDiff"
+            )
+
+            viewBinding.layoutProfile.apply {
+                if (keyboardVisible) transitionToEnd()
+                else transitionToStart()
+            }
+        }
+    }
 }

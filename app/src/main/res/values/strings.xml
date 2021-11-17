@@ -18,6 +18,7 @@
 
     <string name="label_or">or</string>
     <string name="label_anonymous">Anonymous</string>
+    <string name="label_sign_in">Sign In</string>
 
 
     <string name="message_trouble_internet_connection">There is a trouble connecting to server. Please, check your internet connection and try again.</string>

@@ -8,11 +8,46 @@
             android:id="@+id/layout_avatar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:background="@drawable/background_profile_avatar"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@+id/view_avatar_middle_line"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:visibility="invisible"
+            motion:layout_constraintBottom_toBottomOf="@+id/layout_avatar"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="@+id/layout_avatar" />
+
+        <Constraint
+            android:id="@+id/tv_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/layout_avatar" />
+
+        <Constraint
+            android:id="@+id/tv_toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/layout_avatar" />
+
+        <Constraint
+            android:id="@+id/btn_sign_in"
+            android:layout_marginTop="32dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintEnd_toEndOf="@+id/edt_login"
+            motion:layout_constraintStart_toStartOf="@+id/edt_login"
+            motion:layout_constraintTop_toBottomOf="@+id/edt_pass" />
+
 
     </ConstraintSet>
 
@@ -21,10 +56,44 @@
             android:id="@+id/layout_avatar"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:background="@drawable/background_profile_avatar"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@+id/view_avatar_middle_line"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:visibility="invisible"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/layout_avatar" />
+
+        <Constraint
+            android:id="@+id/tv_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@+id/layout_avatar"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="@+id/layout_avatar" />
+
+        <Constraint
+            android:id="@+id/tv_toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@+id/layout_avatar"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="@+id/layout_avatar" />
+
+        <Constraint
+            android:id="@+id/btn_sign_in"
+            android:layout_marginTop="16dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintEnd_toEndOf="@+id/edt_login"
+            motion:layout_constraintStart_toStartOf="@+id/edt_login"
+            motion:layout_constraintTop_toBottomOf="@+id/edt_pass" />
 
     </ConstraintSet>
 
@@ -32,12 +101,40 @@
     <Transition
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@+id/start"
-        motion:duration="1000">
+        motion:duration="400"
+        motion:motionInterpolator="cubic(0.5,0.5,0,1)">
 
-        <OnSwipe
-            motion:touchAnchorId="@+id/layout_profile"
-            motion:touchAnchorSide="bottom"
-            motion:dragDirection="dragUp" />
+        <KeyFrameSet>
+            <KeyAttribute
+                android:alpha="1"
+                android:scaleX="0.5"
+                android:scaleY="0.5"
+                motion:framePosition="25"
+                motion:motionTarget="@id/tv_nickname" />
+
+            <KeyAttribute
+                android:alpha="0"
+                android:scaleX="0"
+                android:scaleY="0"
+                motion:framePosition="50"
+                motion:motionTarget="@id/tv_nickname" />
+
+            <KeyAttribute
+                android:alpha="0"
+                android:scaleX="0"
+                android:scaleY="0"
+                motion:framePosition="50"
+                motion:motionTarget="@id/tv_toolbar_title" />
+
+            <KeyAttribute
+                android:alpha="1"
+                android:scaleX="0.5"
+                android:scaleY="0.5"
+                motion:framePosition="75"
+                motion:motionTarget="@id/tv_toolbar_title" />
+
+
+        </KeyFrameSet>
 
     </Transition>
 

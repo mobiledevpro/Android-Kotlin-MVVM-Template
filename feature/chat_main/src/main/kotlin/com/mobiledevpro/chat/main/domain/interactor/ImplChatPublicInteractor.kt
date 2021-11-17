@@ -50,15 +50,15 @@ class ImplChatPublicInteractor(
 
             val list = ArrayList<ChatMessage>()
 
-            val pause: () -> Unit = {
+           /* val pause: () -> Unit = {
                 try {
                     Thread.sleep(2000)
                 } catch (e: InterruptedException) {
 
                 }
-            }
+            }*/
 
-            pause()
+            // pause()
 
             if (emitter.isDisposed)
                 return@create
@@ -87,7 +87,7 @@ class ImplChatPublicInteractor(
             )
             list.add(chatMessage)
 
-            pause()
+            //  pause()
 
             if (emitter.isDisposed)
                 return@create
@@ -103,7 +103,7 @@ class ImplChatPublicInteractor(
             )
             list.add(chatMessage)
 
-            pause()
+            //  pause()
 
             if (emitter.isDisposed)
                 return@create
@@ -118,7 +118,7 @@ class ImplChatPublicInteractor(
             )
             list.add(chatMessage)
 
-            pause()
+            //  pause()
 
             if (emitter.isDisposed)
                 return@create
@@ -133,7 +133,7 @@ class ImplChatPublicInteractor(
             )
             list.add(chatMessage)
 
-            pause()
+            // pause()
 
             if (emitter.isDisposed)
                 return@create
@@ -148,7 +148,7 @@ class ImplChatPublicInteractor(
             )
             list.add(chatMessage)
 
-            pause()
+            // pause()
 
             if (emitter.isDisposed)
                 return@create
@@ -163,7 +163,7 @@ class ImplChatPublicInteractor(
             )
             list.add(chatMessage)
 
-            pause()
+            //  pause()
 
             if (emitter.isDisposed)
                 return@create
