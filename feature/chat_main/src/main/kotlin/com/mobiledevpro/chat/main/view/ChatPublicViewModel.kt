@@ -73,12 +73,15 @@ class ChatPublicViewModel(
             .subscribeBy {
                 when (it) {
                     is RxResult.Success ->
-                        it.data.toRecyclerView()
-                            .let(_listMessages::postValue)
+                        it.data.let { list ->
+                            list.toRecyclerView()
+                                .let(_listMessages::postValue)
+                        }
 
-                    is RxResult.Failure ->
-                        resourcesProvider.getErrorMessage(it.throwable)
+                    is RxResult.Failure -> it.throwable.let { error ->
+                        resourcesProvider.getErrorMessage(error)
                             .let(_errorMessage::postValue)
+                    }
                 }
             }
             .addTo(subscriptions)

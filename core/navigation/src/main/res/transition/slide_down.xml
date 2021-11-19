@@ -1,0 +1,14 @@
+<transitionSet xmlns:android="http://schemas.android.com/apk/res/android"
+    android:transitionOrdering="together">
+
+    <fade
+        android:duration="@android:integer/config_mediumAnimTime"
+        android:interpolator="@android:interpolator/accelerate_cubic"
+        android:fadingMode="fade_in_out" />
+
+    <slide
+        android:duration="@android:integer/config_mediumAnimTime"
+        android:interpolator="@android:interpolator/fast_out_slow_in"
+        android:slideEdge="top" />
+
+</transitionSet>

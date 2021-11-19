@@ -37,6 +37,7 @@ import org.koin.core.component.getOrCreateScope
 import org.koin.core.context.loadKoinModules
 import org.koin.core.scope.Scope
 import com.mobiledevpro.app.R as RApp
+import com.mobiledevpro.navigation.R as RNav
 
 /**
  * Profile Settings screen
@@ -54,7 +55,7 @@ class ProfileSettingsFragment : BaseFragment<FragmentProfileSettingsBinding>(
         appWindowBackground = RApp.drawable.background_window_light_solid,
         homeIconId = RApp.drawable.ic_back_arrow_light_24dp,
         homeIconBackPressEnabled = true,
-        enterTransition = RApp.transition.slide_right
+        enterTransition = RNav.transition.slide_down
     )
 ), KoinScopeComponent {
 
