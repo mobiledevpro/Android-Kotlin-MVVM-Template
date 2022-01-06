@@ -43,10 +43,10 @@
 
 **Dmitriy Chernysh**
 
-  [![Web Page](https://img.shields.io/badge/-4285F4?label=www.mobile-dev.pro&logo=googlechrome&style=for-the-badge&logoColor=white)](https://www.mobile-dev.pro/)
+  [![Web Page](https://img.shields.io/badge/-4285F4?label=www.mobile-dev.pro&logo=googlechrome&style=for-the-badge&logoColor=white)](http://www.mobile-dev.pro/)
   [![Linkedin](https://img.shields.io/badge/-linkedin-0A66C2?logo=linkedin&style=for-the-badge&logoColor=white)](https://www.linkedin.com/in/dmitriychernysh/)
   [![Instagram](https://img.shields.io/badge/-instagram-E4405F?&logo=instagram&message=instagram&style=for-the-badge&logoColor=white)](https://www.instagram.com/mobiledevpro/)
-  [![Twitter](https://img.shields.io/badge/-twitter-1DA1F2?logo=twitter&style=for-the-badge&message=twitter&logoColor=white)](https://www.linkedin.com/in/dmitriychernysh/)
+  [![Twitter](https://img.shields.io/badge/-twitter-1DA1F2?logo=twitter&style=for-the-badge&message=twitter&logoColor=white)](https://twitter.com/mobiledev_pro)
   
   [![Upwork](https://img.shields.io/badge/-upwork-brightgreen?logo=upwork&message=Upwork&label=hire+me+on&style=for-the-badge&logoColor=white)](https://www.upwork.com/freelancers/~01fb21586ed544f07b)
 
