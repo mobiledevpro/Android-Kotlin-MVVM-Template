@@ -2,15 +2,16 @@
 
 buildscript {
     ext.rootVersions = [
-            "kotlin"        : "1.5.31",
-            "gradle"        : "4.2.2",
-            "playServices"  : "4.3.10",
-            "koin"          : "3.1.2",
-            "navigation"    : '2.3.5',
+            "kotlin"        : "1.6.10",
+            "gradle"        : "7.2.2",
+            "playServices"  : "4.3.13",
+            "koin"          : "3.2.0",
+            "navigation"    : '2.5.1',
             "firebasePlugin": [
-                    "crashlytics": "2.7.1",
-                    "performance": "1.4.0"
-            ]
+                    "crashlytics": "2.9.1",
+                    "performance": "1.4.1"
+            ],
+            "r8"            : "3.3.75"
     ]
 
     repositories {
@@ -26,6 +27,7 @@ buildscript {
         classpath "com.google.firebase:perf-plugin:$rootVersions.firebasePlugin.performance"
         classpath "io.insert-koin:koin-gradle-plugin:$rootVersions.koin"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$rootVersions.navigation"
+        classpath "com.android.tools:r8:$rootVersions.r8"
 
 
         //it uses to publish 'common-ui' module as library to JitPack.
@@ -36,7 +38,7 @@ buildscript {
 // Gradle Doctor
 // https://runningcode.github.io/gradle-doctor/
 plugins {
-    id("com.osacky.doctor") version "0.7.3"
+    id("com.osacky.doctor") version "0.8.1"
 }
 
 // Gradle Doctor all settings here https://runningcode.github.io/gradle-doctor/configuration/
@@ -68,9 +70,9 @@ ext {
     appVersionName = "1.0.0"
     appVersionCode = 1
 
-    compileSdkVersion = 30
+    compileSdkVersion = 33
     minSdkVersion = 21
-    targetSdkVersion = 30
+    targetSdkVersion = 33
 
     versions = [
             "appcompat"       : '1.3.1',

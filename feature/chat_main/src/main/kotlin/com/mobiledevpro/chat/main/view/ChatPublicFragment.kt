@@ -23,6 +23,7 @@ import org.koin.core.component.KoinScopeComponent
 import org.koin.core.context.loadKoinModules
 import org.koin.core.scope.Scope
 import com.mobiledevpro.app.R as RApp
+import com.mobiledevpro.navigation.R as RNav
 
 
 /**
@@ -43,7 +44,7 @@ class ChatPublicFragment : BaseFragment<FragmentChatPublicBinding>(
         homeIconId = RApp.drawable.ic_list_dark_24dp,
         optionsMenuId = R.menu.menu_chat_public,
         homeIconBackPressEnabled = false,
-        exitTransition = RApp.transition.slide_left
+        exitTransition = RNav.transition.slide_left
     )
 ), KoinScopeComponent {
 

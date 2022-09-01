@@ -1,6 +1,6 @@
 apply from: "$rootDir/common-android-library.gradle"
 
-apply plugin: 'com.github.dcendents.android-maven'
+//apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.mobiledevpro.android-kotlin-mvvm-template'
 version = rootProject.versions.commonUi
 //read more about publishing to JitPack.io https://github.com/jitpack-io/multi-flavor-lib-demo
@@ -28,7 +28,7 @@ dependencies {
     implementation deps.activity
     implementation deps.fragment
 
-    //LiveCycle
+    //Lifecycle
     implementation deps.viewModel
     implementation deps.liveData
     kapt deps.lifecycleCompiler
