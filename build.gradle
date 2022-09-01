@@ -2,10 +2,10 @@
 
 buildscript {
     ext.rootVersions = [
-            "kotlin"        : "1.5.31",
+            "kotlin"        : "1.6.0",
             "gradle"        : "4.2.2",
             "playServices"  : "4.3.10",
-            "koin"          : "3.1.2",
+            "koin"          : "3.1.4",
             "navigation"    : '2.3.5',
             "firebasePlugin": [
                     "crashlytics": "2.7.1",
@@ -144,8 +144,7 @@ ext {
             "koinCore"                : "io.insert-koin:koin-core:$rootVersions.koin",
             //Koin main features for Android (Scope,ViewModel ...)
             "koinAndroid"             : "io.insert-koin:koin-android:$rootVersions.koin",
-            //Koin Java Compatibility
-            "koinCompat"              : "io.insert-koin:koin-android-compat:$rootVersions.koin",
+            "koinNavigation"          : "io.insert-koin:koin-androidx-navigation:$rootVersions.koin",
 
             //Rx
             "rxAndroid"               : "io.reactivex.rxjava2:rxandroid:$versions.rx.android",

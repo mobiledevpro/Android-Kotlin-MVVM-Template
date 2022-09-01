@@ -25,6 +25,8 @@ import android.view.View
 import android.view.WindowInsets
 import androidx.annotation.RequiresApi
 import androidx.core.view.ViewCompat
+import androidx.lifecycle.lifecycleScope
+import com.mobiledevpro.app.ui.mainscreen.view.AppbarAnimation
 import com.mobiledevpro.common.ui.base.BaseFragment
 import com.mobiledevpro.common.ui.base.FragmentSettings
 import com.mobiledevpro.profile.settings.R
@@ -32,6 +34,10 @@ import com.mobiledevpro.profile.settings.databinding.FragmentProfileSettingsBind
 import com.mobiledevpro.profile.settings.di.featureProfileSettingsModule
 import com.mobiledevpro.utils.LOG_TAG_DEBUG
 import com.mobiledevpro.utils.LOG_TAG_ERROR
+import org.koin.android.ext.android.inject
+import org.koin.android.scope.AndroidScopeComponent
+import org.koin.android.scope.getOrCreateScope
+import org.koin.androidx.scope.fragmentScope
 import org.koin.core.component.KoinScopeComponent
 import org.koin.core.component.getOrCreateScope
 import org.koin.core.context.loadKoinModules
@@ -57,12 +63,11 @@ class ProfileSettingsFragment : BaseFragment<FragmentProfileSettingsBinding>(
         homeIconBackPressEnabled = true,
         enterTransition = RNav.transition.slide_down
     )
-), KoinScopeComponent {
+), AndroidScopeComponent {
 
-    override val scope: Scope by getOrCreateScope()
+    override val scope: Scope by fragmentScope()
 
-    private val viewModel: ProfileSettingsViewModel
-            by lazy(LazyThreadSafetyMode.NONE) { scope.get() }
+    private val viewModel: ProfileSettingsViewModel by inject(mode = LazyThreadSafetyMode.NONE)
 
     init {
         loadKoinModules(featureProfileSettingsModule)
@@ -77,12 +82,19 @@ class ProfileSettingsFragment : BaseFragment<FragmentProfileSettingsBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        expandAppbar()
+
         //Listen for a soft keyboard visibility change
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
             addKeyboardListener(view)
         else
             addKeyboardListenerCompat(view)
 
+    }
+
+    override fun onStop() {
+        collapseAppbar()
+        super.onStop()
     }
 
     override fun observeLifecycleEvents() {
@@ -115,8 +127,8 @@ class ProfileSettingsFragment : BaseFragment<FragmentProfileSettingsBinding>(
                 //  val imeHeight = insets.getInsets(Type.ime()).bottom
                 Log.d(this::class.java.name, "imeVisible: $imeVisible")
                 viewBinding.layoutProfile.apply {
-                    if (imeVisible) transitionToEnd()
-                    else transitionToStart()
+                    /* if (imeVisible) transitionToEnd()
+                     else transitionToStart()*/
                 }
             } catch (e: NoClassDefFoundError) {
                 Log.e(LOG_TAG_ERROR, "addKeyboardListener: ${e.localizedMessage}", e)
@@ -149,9 +161,19 @@ class ProfileSettingsFragment : BaseFragment<FragmentProfileSettingsBinding>(
             )
 
             viewBinding.layoutProfile.apply {
-                if (keyboardVisible) transitionToEnd()
-                else transitionToStart()
+                if (keyboardVisible) collapseAppbar()
+                else expandAppbar()
             }
         }
+    }
+
+    private fun expandAppbar() {
+        (requireActivity() as AppbarAnimation).onAppbarExpand()
+
+    }
+
+    private fun collapseAppbar() {
+        Log.d("TEST", "collapseAppbar")
+        (requireActivity() as AppbarAnimation).onAppbarCollapse()
     }
 }

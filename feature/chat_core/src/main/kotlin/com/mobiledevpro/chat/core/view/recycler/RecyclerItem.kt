@@ -35,7 +35,9 @@ data class RecyclerItem(
 ) {
     fun bind(binding: ViewDataBinding, handler: RecyclerViewHandler?) {
         binding.setVariable(variableId, data)
-        if (handler != null)
-            binding.setVariable(BR.handler, handler)
+        handler?.let {
+            binding.setVariable(BR.handler, it)
+        }
+
     }
 }

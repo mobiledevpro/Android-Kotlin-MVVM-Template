@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/expand">
+
+        <Constraint
+            android:id="@+id/layout_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_profile_avatar"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+        <Constraint
+            android:id="@+id/view_avatar_middle_line"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:visibility="invisible"
+            motion:layout_constraintBottom_toBottomOf="@+id/layout_avatar"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="@+id/layout_avatar" />
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/collapse">
+
+        <Constraint
+            android:id="@+id/layout_avatar"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/background_profile_avatar"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="@+id/toolbar"
+            motion:layout_constraintBottom_toBottomOf="@+id/toolbar"/>
+
+        <Constraint
+            android:id="@+id/view_avatar_middle_line"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:visibility="invisible"
+            motion:layout_constraintBottom_toBottomOf="@+id/toolbar"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
+
+    </ConstraintSet>
+
+    <Transition
+        motion:constraintSetEnd="@id/expand"
+        motion:constraintSetStart="@id/collapse"
+        motion:duration="400"
+        motion:motionInterpolator="cubic(0.25,0.1,0.25,1)">
+
+    </Transition>
+</MotionScene>

@@ -9,16 +9,18 @@ import android.view.WindowInsets.Type.ime
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.view.ViewCompat
+import com.mobiledevpro.app.ui.mainscreen.view.AppbarAnimation
 import com.mobiledevpro.chat.main.R
 import com.mobiledevpro.chat.main.databinding.FragmentChatPublicBinding
 import com.mobiledevpro.chat.main.di.featureChatMainModule
 import com.mobiledevpro.common.ui.base.BaseFragment
 import com.mobiledevpro.common.ui.base.FragmentSettings
 import com.mobiledevpro.common.ui.extension.observe
-import com.mobiledevpro.navigation.NavigateTo
-import com.mobiledevpro.navigation.Navigation
-import com.mobiledevpro.navigation.ext.launch
+import org.koin.android.ext.android.inject
+import org.koin.android.scope.AndroidScopeComponent
 import org.koin.android.scope.getOrCreateScope
+import org.koin.androidx.scope.currentScope
+import org.koin.androidx.scope.fragmentScope
 import org.koin.core.component.KoinScopeComponent
 import org.koin.core.context.loadKoinModules
 import org.koin.core.scope.Scope
@@ -36,7 +38,7 @@ import com.mobiledevpro.navigation.R as RNav
 class ChatPublicFragment : BaseFragment<FragmentChatPublicBinding>(
     layoutId = R.layout.fragment_chat_public,
     FragmentSettings(
-        statusBarColor = RApp.color.colorWindowGreyBackground,
+        statusBarColor = RApp.color.colorBlackTransparent,//RApp.color.colorWindowGreyBackground,
         appBarColor = RApp.color.colorWindowGreyBackground,
         appBarTitle = RApp.string.app_title_chat_public,
         appBarTitleColor = RApp.color.colorTextPrimary,
@@ -46,12 +48,11 @@ class ChatPublicFragment : BaseFragment<FragmentChatPublicBinding>(
         homeIconBackPressEnabled = false,
         exitTransition = RNav.transition.fade
     )
-), KoinScopeComponent {
+), AndroidScopeComponent {
 
-    override val scope: Scope by getOrCreateScope()
+    override val scope: Scope by fragmentScope()
 
-    private val viewModel: ChatPublicViewModel
-            by lazy(LazyThreadSafetyMode.NONE) { scope.get() }
+    private val viewModel: ChatPublicViewModel by inject(mode = LazyThreadSafetyMode.NONE)
 
     init {
         loadKoinModules(featureChatMainModule)
@@ -87,11 +88,16 @@ class ChatPublicFragment : BaseFragment<FragmentChatPublicBinding>(
                 ).show()
                 true
             }
-            R.id.menu_action_settings -> {
+            RNav.id.menu_action_settings -> {
                 // Toast.makeText(requireActivity(), "Settings. Not implemented yet", Toast.LENGTH_SHORT).show()
-                Navigation(NavigateTo.PROFILE_SETTINGS)
+              /*  Navigation(NavigateTo.PROFILE_SETTINGS)
                     .let(this::launch)
+
+               */
+
+                (requireActivity() as AppbarAnimation).onAppbarExpand()
                 true
+
             }
             else -> super.onOptionsItemSelected(item)
         }

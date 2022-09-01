@@ -17,8 +17,12 @@
  */
 package com.mobiledevpro.navigation.ext
 
+import android.app.Activity
+import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
 import androidx.navigation.NavOptions
+import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.mobiledevpro.navigation.NavigateTo
 import com.mobiledevpro.navigation.Navigation
@@ -26,25 +30,37 @@ import com.mobiledevpro.navigation.R
 
 
 fun Fragment.launch(navigation: Navigation) {
+    if (navigation.to == NavigateTo.BACK) {
+        requireActivity().onBackPressed()
+        return
+    }
+
+    findNavController().launch(navigation)
+}
+
+fun Activity.launch(@IdRes navHostViewId: Int, navigation: Navigation) {
+    if (navigation.to == NavigateTo.BACK) {
+        onBackPressed()
+        return
+    }
+
+    findNavController(this, navHostViewId)
+        .launch(navigation)
+}
+
+private fun NavController.launch(navigation: Navigation) {
     val commonNavOptionsBuilder = NavOptions.Builder()
 
     val navResId = when (navigation.to) {
         NavigateTo.CHAT_MAIN -> R.id.actionNavToChatMain
         NavigateTo.PROFILE_SETTINGS -> R.id.actionNavToProfileSettings
-        else -> 0
+        else -> throw RuntimeException("Navigation not found. Please check NavigationExt")
     }
 
     if (navResId > 0)
-        findNavController()
-            .navigate(
-                navResId,
-                navigation.extras,
-                commonNavOptionsBuilder.build()
-            )
-    else
-        when (navigation.to) {
-            NavigateTo.BACK ->
-                requireActivity().onBackPressed()
-        }
-
+        navigate(
+            navResId,
+            navigation.extras,
+            commonNavOptionsBuilder.build()
+        )
 }

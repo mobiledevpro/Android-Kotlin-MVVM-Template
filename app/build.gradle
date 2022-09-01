@@ -149,8 +149,9 @@ dependencies {
     devApi project(":common-ui") //<-- use local module
 
     //DI
-    api deps.koinCore
+   // api deps.koinCore
     api deps.koinAndroid
+    api deps.koinNavigation
 
     //Lifecycle
     api deps.viewModel

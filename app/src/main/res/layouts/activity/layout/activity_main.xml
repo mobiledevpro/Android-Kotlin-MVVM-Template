@@ -5,8 +5,92 @@
     android:layout_height="match_parent"
     android:animateLayoutChanges="false">
 
+    <!--
+        <include layout="@layout/include_appbar_custom" />
+        -->
 
-    <include layout="@layout/include_appbar_custom" />
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/appbar_motion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutDescription="@xml/include_appbar_custom_scene">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:minHeight="?attr/actionBarSize"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_nickname"
+                app:popupTheme="@style/CommonAppTheme.PopupOverlay"
+                app:titleTextAppearance="@style/CommonAppTheme.ToolbarTitle" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/toolbar_title"
+                style="@style/AppTheme.ToolbarTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/toolbar" />
+
+            <View
+                android:id="@+id/view_avatar_middle_line"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/layout_avatar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/layout_avatar" />
+
+            <FrameLayout
+                android:id="@+id/layout_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/background_layout_top_rounding"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_avatar_middle_line" />
+
+            <FrameLayout
+                android:id="@+id/layout_avatar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_profile_avatar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+            <!--
+            <TextView
+                android:id="@+id/tv_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_anonymous"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_avatar" />
+            -->
+
+        </androidx.constraintlayout.motion.widget.MotionLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_nav_host"
