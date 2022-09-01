@@ -132,7 +132,7 @@ workflows:
       - job_run_tests
 
   # build release and deploy on tags and not branches
-  buid-n-deploy:
+  build-n-deploy:
     jobs:
       - job_run_tests:
           <<: *filter_tag_version_only
