@@ -33,7 +33,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
-import androidx.core.view.updatePadding
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import com.mobiledevpro.common.ui.R
 import com.mobiledevpro.common.ui.extension.applyStatusBarColor
 import com.mobiledevpro.common.ui.extension.dpToPx
@@ -150,14 +151,23 @@ abstract class BaseActivity(
      * Use Window Insets to apply system paddings to this activity
      */
     private fun applyWindowInsets(view: View) {
-        ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
-            v.updatePadding(
-                left = insets.systemWindowInsetLeft,
-                top = insets.systemWindowInsetTop,
-                right = insets.systemWindowInsetRight,
-                bottom = insets.systemWindowInsetBottom
-            )
-            insets
+        ViewCompat.setOnApplyWindowInsetsListener(view) { v, windowInsets ->
+
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            // Apply the insets as a margin to the view. Here the system is setting
+            // only the bottom, left, and right dimensions, but apply whichever insets are
+            // appropriate to your layout. You can also update the view padding
+            // if that's more appropriate.
+            view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                leftMargin = insets.left
+                bottomMargin = insets.bottom
+                rightMargin = insets.right
+                topMargin = insets.top
+            }
+
+            // Return CONSUMED if you don't want want the window insets to keep being
+            // passed down to descendant views.
+            WindowInsetsCompat.CONSUMED
         }
     }
 
