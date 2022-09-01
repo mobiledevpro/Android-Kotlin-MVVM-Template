@@ -17,7 +17,7 @@
 
 
 ## Under the hood:
-* [Clean Architecture](https://user-images.githubusercontent.com/5750211/78999938-56aeff80-7b54-11ea-86bf-da4e52a5ccfe.png)
+* [Clean Architecture with modularization](https://miro.com/app/board/uXjVOiQ2q3g=/?share_link_id=361857812650)
 * [Kotlin](https://developer.android.com/kotlin)
 * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
 * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
