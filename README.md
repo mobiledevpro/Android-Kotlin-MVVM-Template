@@ -1,4 +1,4 @@
-# Android App Template | Kotlin | MVVM + Clean Architecture | Dynamic Feature modules
+# Android App Template | Kotlin | MVVM + Clean Architecture | Dynamic Feature modules | Android 13 support
 
 [![Kotlin Version](https://img.shields.io/badge/kotlin-1.6.10-blue.svg?style=for-the-badge)](http://kotlinlang.org/)
 [![Gradle](https://img.shields.io/badge/gradle-7.5.1-blue.svg?style=for-the-badge)](https://lv.binarybabel.org/catalog/gradle/latest)
@@ -31,10 +31,7 @@
 * [Firebase Crashlytics](https://firebase.google.com/docs/crashlytics)
 * [Leak Canary](https://square.github.io/leakcanary/)
 * [Circle CI | Continuous Integration](https://circleci.com/gh/mobile-dev-pro/AppTemplate)
-* [My own Common-UI library (uses in production projects)](https://github.com/mobiledevpro/Android-Kotlin-MVVM-Template/tree/master/common-ui)  [![](https://jitpack.io/v/mobiledevpro/android-kotlin-mvvm-template.svg)](https://jitpack.io/#mobiledevpro/android-kotlin-mvvm-template) 
-  
-    
-      
+* [My own Common-UI library (uses in production projects)](https://github.com/mobiledevpro/Android-Kotlin-MVVM-Template/tree/master/common-ui)  [![](https://jitpack.io/v/mobiledevpro/android-kotlin-mvvm-template.svg)](https://jitpack.io/#mobiledevpro/android-kotlin-mvvm-template)
 
 ## Authors:
 
@@ -42,20 +39,27 @@
   <img src="https://s.gravatar.com/avatar/72c649d298a8f0f088fd0850e19b9147?s=400" width="70" align="left">
 </a>
 
-**Dmitriy Chernysh**
+**Dmitri Chernysh**
 
-[![Web](https://img.shields.io/badge/-web-grey?logo=appveyor)](http://mobile-dev.pro/)
-[![Instagram](https://img.shields.io/badge/-instagram-grey?logo=instagram)](https://www.instagram.com/mobiledevpro/)
-[![Linkedin](https://img.shields.io/badge/-linkedin-grey?logo=linkedin)](https://www.linkedin.com/in/dmitriychernysh/)
+```diff
+# Software Developer from Ukraine | 7 years of experience in Android Development
+```
 
+[![Instagram](https://img.shields.io/badge/-instagram-E4405F?&logo=instagram&message=instagram&style=for-the-badge&logoColor=white&label=watch+stories+on)](https://www.instagram.com/mobiledevpro/)
+
+[![Linkedin](https://img.shields.io/badge/-linkedin-0A66C2?logo=linkedin&style=for-the-badge&logoColor=white&label=follow+on)](https://www.linkedin.com/in/dmitriychernysh/)
+
+[![Medium](https://img.shields.io/badge/-medium-212121?logo=medium&style=for-the-badge&logoColor=white&label=read+on)](https://medium.com/@mobiledevpro)
+
+[![Upwork](https://img.shields.io/badge/-upwork-brightgreen?logo=upwork&message=Upwork&label=hire+me+on&style=for-the-badge&logoColor=white)](https://www.upwork.com/freelancers/~01fb21586ed544f07b)
 
 ## License:
 
-   Copyright 2020 Dmitriy Chernysh
+Copyright 2020 Dmitriy Chernysh
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
        http://www.apache.org/licenses/LICENSE-2.0
 
