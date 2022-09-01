@@ -35,7 +35,7 @@
 
 ## How to
 
-* [Display content edge-to-edge | System insets] (https://developer.android.com/develop/ui/views/layout/edge-to-edge)
+* [Display content edge-to-edge | System insets](https://developer.android.com/develop/ui/views/layout/edge-to-edge)
 
 ## Authors:
 
