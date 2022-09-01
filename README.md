@@ -33,6 +33,10 @@
 * [Circle CI | Continuous Integration](https://circleci.com/gh/mobile-dev-pro/AppTemplate)
 * [My own Common-UI library (uses in production projects)](https://github.com/mobiledevpro/Android-Kotlin-MVVM-Template/tree/master/common-ui)  [![](https://jitpack.io/v/mobiledevpro/android-kotlin-mvvm-template.svg)](https://jitpack.io/#mobiledevpro/android-kotlin-mvvm-template)
 
+## How to
+
+* [Display content edge-to-edge | System insets] (https://developer.android.com/develop/ui/views/layout/edge-to-edge)
+
 ## Authors:
 
 <a href="https://www.instagram.com/mobiledevpro/" target="_blank">
