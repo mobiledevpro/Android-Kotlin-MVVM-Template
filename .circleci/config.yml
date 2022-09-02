@@ -52,7 +52,7 @@ deploy_to_dropbox: &deploy_to_dropbox
 
 cache_docker: &cache_docker
   setup_remote_docker:
-    docker_layer_caching: false # it costs extra credits
+    docker_layer_caching: true # it costs extra credits
 
 filter_master_only: &filter_master_only
   filters:
