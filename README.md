@@ -17,7 +17,7 @@
 
 
 ## Under the hood:
-* [Clean Architecture with modularization](https://miro.com/app/board/uXjVOiQ2q3g=/?share_link_id=361857812650)
+* [Clean Architecture with modularization (click to view a full scheme)](https://miro.com/app/board/uXjVOiQ2q3g=/?share_link_id=361857812650)
 * [Kotlin](https://developer.android.com/kotlin)
 * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
 * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
@@ -73,8 +73,6 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
-![architecture](./doc/MVVM-Kotlin-Modularization%20-%20Frame.jpg)
 
 ## Thanks for support !
 
