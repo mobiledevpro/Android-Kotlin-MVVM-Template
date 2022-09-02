@@ -3,6 +3,7 @@ version: 2.1
 config_docker: &config_docker
   docker:
     - image: cimg/android:2021.10.2
+  resource_class: large
   working_directory:  ~/code
 
 config_android: &config_env
