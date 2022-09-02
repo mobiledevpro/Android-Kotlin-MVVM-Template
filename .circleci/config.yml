@@ -3,11 +3,12 @@ version: 2.1
 config_docker: &config_docker
   docker:
     - image: cimg/android:2021.10.2
+  resource_class: large
   working_directory:  ~/code
 
 config_android: &config_env
   environment:
-    JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
+    JAVA_HOME: "/usr/lib/jvm/java-11-openjdk-amd64"
     JAVA_TOOL_OPTIONS: "-Xmx4096m -XX:+UseParallelGC"
     GRADLE_OPTS: "-Dorg.gradle.daemon=true -Dorg.gradle.workers.max=2 -Dkotlin.incremental=true -Dkotlin.compiler.execution.strategy=in-process"
     TERM: dumb
@@ -17,7 +18,7 @@ update_sdk: &update_sdk
     name: Update SDK
     command: |
       yes | sdkmanager --licenses || true
-      sdkmanager "platform-tools" "platforms;android-30"
+      sdkmanager "platform-tools" "platforms;android-33"
 
 restore_cache: &restore_cache
   restore_cache:
@@ -40,6 +41,11 @@ update_cache: &update_cache
       - ~/.gradle/wrapper
     key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
 
+decrypt_release_key: &decrypt_release_key
+  deploy:
+    name: Decrypt release key
+    command: ./ci-decrypt-release-key.sh
+
 deploy_to_dropbox: &deploy_to_dropbox
   deploy:
     name: Deploy to DropBox
@@ -47,7 +53,7 @@ deploy_to_dropbox: &deploy_to_dropbox
 
 cache_docker: &cache_docker
   setup_remote_docker:
-    docker_layer_caching: true
+    docker_layer_caching: true # it costs extra credits
 
 filter_master_only: &filter_master_only
   filters:
@@ -99,13 +105,22 @@ jobs:
     <<: *config_docker
     <<: *config_env
     steps:
+      - <<: *update_sdk
       - checkout
+      - <<: *restore_cache
+      - <<: *fix_permissions
+      - <<: *update_dependencies
+      - <<: *update_cache
+      - <<: *decrypt_release_key
       - run:
           name: Assemble release build
           command: ./gradlew clean bundleRelease --stacktrace
       - store_artifacts:
           path: app/build/outputs/apk/
           destination: apks/
+      - run:
+          name: Remove release key
+          command: rm ./app/release.jks
       - <<: *deploy_to_dropbox
 
 
@@ -118,7 +133,7 @@ workflows:
       - job_run_tests
 
   # build release and deploy on tags and not branches
-  buid-n-deploy:
+  build-n-deploy:
     jobs:
       - job_run_tests:
           <<: *filter_tag_version_only

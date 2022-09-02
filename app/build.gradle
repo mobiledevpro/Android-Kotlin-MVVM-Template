@@ -19,11 +19,9 @@ android {
         multiDexEnabled false
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
 
-    dexOptions {
-        maxProcessCount 2
-        javaMaxHeapSize "2g"
+        //custom naming for App Bundle builds
+        archivesBaseName = "${applicationId}-v${versionName}-build${versionCode}"
     }
 
     signingConfigs {
@@ -64,6 +62,7 @@ android {
         release {
             debuggable false
             minifyEnabled true
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
@@ -76,8 +75,6 @@ android {
             applicationId defaultConfig.applicationId
             versionCode rootProject.appVersionCode
             versionName rootProject.appVersionName
-            //custom naming for App Bundle builds
-            archivesBaseName = "${applicationId}-v${versionName}-build${versionCode}"
 
             //it allows to use the same flavor in android modules/libraries
             matchingFallbacks = ["production"]
@@ -88,8 +85,6 @@ android {
             applicationId defaultConfig.applicationId + ".dev"
             versionCode rootProject.appVersionCode
             versionName rootProject.appVersionName + "-dev"
-            //custom naming for App Bundle builds
-            archivesBaseName = "${applicationId}-v${versionName}-build${versionCode}"
 
             //it allows to use the same flavor in android modules/libraries
             matchingFallbacks = ["dev"]
@@ -119,9 +114,11 @@ android {
         unitTests.includeAndroidResources = true
     }
 
-    buildFeatures.dataBinding = true
-    buildFeatures.viewBinding = true
-    buildFeatures.buildConfig = true
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+        buildConfig = true
+    }
 
     dynamicFeatures = [
             ':feature:chat_main',
