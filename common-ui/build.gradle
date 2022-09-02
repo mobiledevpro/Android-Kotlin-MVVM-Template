@@ -1,6 +1,6 @@
 apply from: "$rootDir/common-android-library.gradle"
+apply plugin: 'maven-publish'
 
-//apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.mobiledevpro.android-kotlin-mvvm-template'
 version = rootProject.versions.commonUi
 //read more about publishing to JitPack.io https://github.com/jitpack-io/multi-flavor-lib-demo
