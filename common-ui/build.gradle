@@ -1,7 +1,7 @@
 apply from: "$rootDir/common-android-library.gradle"
 apply plugin: 'maven-publish'
 
-android.namespace = 'com.mobiledevpro.common-ui'
+android.namespace = 'com.mobiledevpro.common.ui'
 
 group = 'com.github.mobiledevpro'
 version = '1.1.2'
@@ -79,13 +79,10 @@ afterEvaluate {
         publications {
             // Creates a Maven publication called "release".
             release(MavenPublication) {
+                from components.productionRelease
                 groupId = 'com.github.mobiledevpro'
                 artifactId = 'android-kotlin-mvvm-template'
                 version = '1.1.2'
-
-                afterEvaluate {
-                    from components.productionRelease
-                }
             }
         }
     }
