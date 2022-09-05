@@ -8,17 +8,15 @@ android.defaultConfig.javaCompileOptions {
     }
 }
 
-android.productFlavors{
-    productFlavors {
-        production {
-            buildConfigField "String", "DB_NAME", "\"app_database\""
-            buildConfigField "int", "DB_VERSION", "1"
-        }
+android.productFlavors {
+    production {
+        buildConfigField "String", "DB_NAME", "\"app_database\""
+        buildConfigField "int", "DB_VERSION", "1"
+    }
 
-        dev {
-            buildConfigField "String", "DB_NAME", "\"app_database_demo\""
-            buildConfigField "int", "DB_VERSION", "1"
-        }
+    dev {
+        buildConfigField "String", "DB_NAME", "\"app_database_demo\""
+        buildConfigField "int", "DB_VERSION", "1"
     }
 }
 

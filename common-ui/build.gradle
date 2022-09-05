@@ -1,23 +1,18 @@
 apply from: "$rootDir/common-android-library.gradle"
 apply plugin: 'maven-publish'
 
-group = 'com.github.mobiledevpro.android-kotlin-mvvm-template'
-version = rootProject.versions.commonUi
+def libraryVersion = '1.1.2'
+def publishingGroupId = 'com.github.mobiledevpro'
+def publishingArtifactId = 'android-kotlin-mvvm-template'
+
+android.namespace = 'com.mobiledevpro.common.ui'
+
+group = publishingGroupId
+version = libraryVersion
+
 //read more about publishing to JitPack.io https://github.com/jitpack-io/multi-flavor-lib-demo
 
-
 android.buildFeatures.dataBinding = true
-
-android.defaultPublishConfig "productionRelease"
-
-task sourcesJar(type: Jar) {
-    classifier = 'sources'
-    from android.sourceSets.main.javaDirectories
-}
-
-artifacts {
-    archives sourcesJar
-}
 
 dependencies {
 
@@ -38,22 +33,23 @@ dependencies {
 
 }
 
+//The following code needed to publishing this library to JitPack.io
+android.publishing {
+    singleVariant('productionRelease') {
+        withSourcesJar()
+    }
+}
 
-if (android.productFlavors.size() > 0) {
-    android.libraryVariants.all { variant ->
-        if (variant.name.toLowerCase().contains("debug")) {
-            return
-        }
-
-        def bundleTask = tasks["bundle${variant.name.capitalize()}Aar"]
-
-        artifacts {
-            archives(bundleTask.archivePath) {
-                classifier variant.flavorName
-                builtBy bundleTask
-                name = project.path
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.productionRelease
+                groupId = publishingGroupId
+                artifactId = publishingArtifactId
+                version = libraryVersion
             }
         }
-
     }
 }
