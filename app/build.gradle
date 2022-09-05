@@ -13,6 +13,9 @@ android {
 
     defaultConfig {
         applicationId "com.mobiledevpro.apptemplate.new"
+        versionName rootProject.appVersionName
+        versionCode rootProject.appVersionCode
+
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         vectorDrawables.useSupportLibrary = true
