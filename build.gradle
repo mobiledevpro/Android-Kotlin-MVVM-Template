@@ -185,7 +185,6 @@ ext {
             "navigation": project(":core:navigation"),
             "utils"     : project(":core:utils"),
             "rx"        : project("core:rx"),
-            "errors"    : project("core:errors"),
             "database"  : project("core:database")
     ]
 }

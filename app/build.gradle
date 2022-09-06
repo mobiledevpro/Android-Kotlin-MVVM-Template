@@ -177,7 +177,6 @@ dependencies {
     //core modules for the whole app including feature modules
     api core.navigation
     api core.rx
-    api core.errors
     api core.utils
     api core.database
 
