@@ -55,85 +55,30 @@ class ImplChatPublicLocalSource : ChatPublicLocalSource {
                 true
             )
 
-            ChatMessageData(
-                UUID.randomUUID().toString(),
-                Date().time,
+            val messages = listOf(
                 "Wuz Up! Lorem Ipsum is simply dummy text of printing",
-                userFirst
-            )
-                .let(messagesList::add)
-                .also {
-                    emit(messagesList)
-                }
-
-            delay(1000)
-
-            Log.d(LOG_TAG_DEBUG, "getFakeMessagesList: Thread : ${Thread.currentThread().name}")
-
-            ChatMessageData(
-                UUID.randomUUID().toString(),
-                Date().time,
                 "How are you? =)",
-                userSecond
-            )
-                .let(messagesList::add)
-                .also {
-                    emit(messagesList)
-                }
-
-            delay(1000)
-
-            ChatMessageData(
-                UUID.randomUUID().toString(),
-                Date().time,
                 "It has survived not only five centuries, but also the leap into electronic typesetting",
-                userFirst
-            )
-                .let(messagesList::add)
-                .also {
-                    emit(messagesList)
-                }
-
-            delay(1000)
-
-            ChatMessageData(
-                UUID.randomUUID().toString(),
-                Date().time,
                 "Contrary to popular belief. is the Lorem Ipsum is not simply then random text",
-                userSecond
-            )
-                .let(messagesList::add)
-                .also {
-                    emit(messagesList)
-                }
-
-            delay(1000)
-
-            //throw RuntimeException("Exception in flow")
-
-            ChatMessageData(
-                UUID.randomUUID().toString(),
-                Date().time,
                 "Hi. I want to see you!",
-                userFirst
+                "Yeah. Me too. Let's go out"
             )
-                .let(messagesList::add)
-                .also {
-                    emit(messagesList)
-                }
 
-            delay(1000)
+            messages.forEachIndexed { index, message ->
 
-            ChatMessageData(
-                UUID.randomUUID().toString(),
-                Date().time,
-                "Yeah. Me too. Let's go out",
-                userSecond
-            )
-                .let(messagesList::add)
-                .also {
-                    emit(messagesList)
-                }
+                ChatMessageData(
+                    UUID.randomUUID().toString(),
+                    Date().time,
+                    message,
+                    if (index % 2 == 0) userFirst else userSecond
+                )
+                    .let(messagesList::add)
+                    .also {
+                        emit(messagesList)
+                    }
+
+                delay(1000)
+            }
 
         }
 }
