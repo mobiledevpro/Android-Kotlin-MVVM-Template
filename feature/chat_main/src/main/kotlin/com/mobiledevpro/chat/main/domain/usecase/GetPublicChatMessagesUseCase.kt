@@ -17,14 +17,15 @@
  */
 package com.mobiledevpro.chat.main.domain.usecase
 
+import android.util.Log
 import com.mobiledevpro.chat.core.data.model.ChatMessageData
 import com.mobiledevpro.chat.core.domain.model.ChatMessage
 import com.mobiledevpro.chat.core.domain.model.ChatUser
 import com.mobiledevpro.chat.core.mapper.toData
 import com.mobiledevpro.chat.core.mapper.toDomain
 import com.mobiledevpro.chat.main.data.repository.ChatPublicRepository
+import com.mobiledevpro.common.ui.coroutines.BaseCoroutinesFLowUseCase
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 
 /**
@@ -34,7 +35,7 @@ import kotlinx.coroutines.flow.*
  *
  */
 class GetPublicChatMessagesUseCase(
-    val defaultDispatcher: CoroutineDispatcher = Dispatchers.Default,
+    defaultDispatcher: CoroutineDispatcher,
     private val repository: ChatPublicRepository
 ) : BaseCoroutinesFLowUseCase<List<ChatMessage>, ChatUser>(defaultDispatcher) {
 
@@ -49,6 +50,7 @@ class GetPublicChatMessagesUseCase(
         //TODO: Add extension : Exception.toCrashlytics()
         //  Crashlytics.log(Log.ERROR, this::class.simpleName, e.localizedMessage)
         //  Crashlytics.logException(Throwable(e.localizedMessage))
+        Log.w("app.debug", "logException: in GetPublicChatMessagesUseCase")
     }
 
 }

@@ -15,7 +15,7 @@
  * limitations under the License.
  *
  */
-package com.mobiledevpro.chat.main.domain.usecase
+package com.mobiledevpro.common.ui.coroutines
 
 import kotlinx.coroutines.CoroutineDispatcher
 

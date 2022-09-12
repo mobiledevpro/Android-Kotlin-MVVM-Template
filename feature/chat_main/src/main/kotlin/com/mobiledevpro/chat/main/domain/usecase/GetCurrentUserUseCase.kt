@@ -17,15 +17,12 @@
  */
 package com.mobiledevpro.chat.main.domain.usecase
 
-import android.util.Log
 import androidx.core.net.toUri
 import com.mobiledevpro.chat.core.domain.model.ChatUser
-import com.mobiledevpro.common.ui.coroutines.resultOf
-import com.mobiledevpro.utils.LOG_TAG_DEBUG
+import com.mobiledevpro.common.ui.coroutines.BaseCoroutinesUseCase
+import com.mobiledevpro.common.ui.coroutines.None
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.withContext
 import java.util.*
 
 /**
@@ -35,28 +32,19 @@ import java.util.*
  *
  */
 class GetCurrentUserUseCase(
-    private val defaultDispatcher: CoroutineDispatcher = Dispatchers.Default
-) {
+    defaultDispatcher: CoroutineDispatcher,
+) : BaseCoroutinesUseCase<ChatUser, None>(defaultDispatcher) {
 
-    suspend fun execute(): Result<ChatUser> = resultOf {
-        withContext(defaultDispatcher) {
+    override suspend fun buildUseCase(params: None?): ChatUser {
 
-            if (defaultDispatcher == Dispatchers.Main)
-                throw RuntimeException("Use case '${this@GetCurrentUserUseCase::class.simpleName}' cannot be executed in $defaultDispatcher")
+        delay(5000)
 
-
-            Log.d(LOG_TAG_DEBUG, "TestUseCase.execute: Thread: ${Thread.currentThread().name}")
-            delay(5000)
-
-            // throw RuntimeException("Test exception")
-
-            ChatUser(
-                UUID.randomUUID().toString(),
-                "Fake Name",
-                "https://i.pravatar.cc/128?img=5".toUri(),
-                false
-            )
-        }
+        return ChatUser(
+            UUID.randomUUID().toString(),
+            "Fake Name",
+            "https://i.pravatar.cc/128?img=5".toUri(),
+            false
+        )
     }
 
 }

@@ -15,39 +15,38 @@
  * limitations under the License.
  *
  */
-package com.mobiledevpro.chat.main.domain.usecase
+package com.mobiledevpro.common.ui.coroutines
 
 import android.util.Log
-import com.mobiledevpro.common.ui.coroutines.resultOf
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 /**
- * Base UseCase for Coroutines Flow result
+ * Base UseCase with Coroutines
  *
  * Created on Sep 12, 2022.
  *
  */
-abstract class BaseCoroutinesFLowUseCase<Results, in Params>(
+abstract class BaseCoroutinesUseCase<Results, in Params>(
     executionDispatcher: CoroutineDispatcher
 ) : BaseUseCase(executionDispatcher) {
 
-    abstract fun buildUseCaseFlow(params: Params? = null): Flow<Results>
+    abstract suspend fun buildUseCase(params: Params? = null): Results
 
-    fun execute(params: Params? = null): Flow<Result<Results>> =
-        try {
-            this.buildUseCaseFlow(params)
-                .flowOn(dispatcher)
-                .map {
-                    resultOf { it }
+    suspend fun execute(params: Params? = null): Result<Results> =
+        withContext(dispatcher) {
+            try {
+                if (dispatcher == Dispatchers.Main)
+                    throw RuntimeException("Use case '${this::class.simpleName}' cannot be executed in $dispatcher")
+
+                resultOf {
+                    this@BaseCoroutinesUseCase.buildUseCase(params)
                 }
-        } catch (e: Exception) {
-            Log.e("app.debug", "${this}.execute: ${e.localizedMessage}", e)
-            logException(e)
-            flowOf(Result.failure(Throwable(e.localizedMessage)))
+            } catch (e: Exception) {
+                logException(e)
+                Result.failure(Throwable(e.localizedMessage))
+            }
         }
 
     override fun logException(e: Exception) {
