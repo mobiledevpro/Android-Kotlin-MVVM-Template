@@ -23,7 +23,6 @@ import com.mobiledevpro.chat.core.domain.model.ChatUser
 import com.mobiledevpro.chat.core.mapper.toData
 import com.mobiledevpro.chat.core.mapper.toDomain
 import com.mobiledevpro.chat.main.data.repository.ChatPublicRepository
-import com.mobiledevpro.common.ui.coroutines.resultOf
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
@@ -35,19 +34,13 @@ import kotlinx.coroutines.flow.*
  *
  */
 class GetPublicChatMessagesUseCase(
-    private val defaultDispatcher: CoroutineDispatcher = Dispatchers.Default,
+    val defaultDispatcher: CoroutineDispatcher = Dispatchers.Default,
     private val repository: ChatPublicRepository
-) {
+) : BaseCoroutinesFLowUseCase<List<ChatMessage>, ChatUser>(defaultDispatcher) {
 
-    fun execute(params: ChatUser? = null): Flow<Result<List<ChatMessage>>> =
+    override fun buildUseCase(params: ChatUser?): Flow<List<ChatMessage>> =
         params?.toData()?.let { user ->
             repository.getMessagesList(user)
-                .flowOn(defaultDispatcher)
                 .map(List<ChatMessageData>::toDomain)
-                .map {
-                    resultOf { it }
-                }
         } ?: throw RuntimeException("Unknown chat user")
-
-
 }
