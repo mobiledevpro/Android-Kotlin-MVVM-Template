@@ -20,7 +20,7 @@ package com.mobiledevpro.chat.core.domain.model
 import android.net.Uri
 
 /**
- * User model
+ * User model (domain layer)
  *
  * Created on Dec 15, 2020.
  *

@@ -82,8 +82,9 @@ ext {
             "activity"        : '1.5.1',
             "constraintLayout": '2.1.4',
             "coreKtx"         : '1.8.0',
-            "commonUi"        : "1.1.1",
+            "commonUi"        : "1.1.2",
             "lifecycle"       : '2.5.1',
+            "coroutines"      : "1.5.2",
             "firebase"        : [
                     "bom": '30.3.2'
             ],
@@ -114,6 +115,10 @@ ext {
             "coreKtx"                 : "androidx.core:core-ktx:$versions.coreKtx",
             "activity"                : "androidx.activity:activity-ktx:$versions.activity",
             "fragment"                : "androidx.fragment:fragment-ktx:$versions.fragment",
+
+            //Coroutines
+            "coroutinesCore"          : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
+            "coroutinesAndroid"       : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines",
 
             //Navigation
             "navigationFragment"      : "androidx.navigation:navigation-fragment-ktx:$rootVersions.navigation",

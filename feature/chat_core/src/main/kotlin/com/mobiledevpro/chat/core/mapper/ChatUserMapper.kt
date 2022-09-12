@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 | Dmitri Chernysh | http://mobile-dev.pro
+ * Copyright 2022 | Dmitri Chernysh | https://mobile-dev.pro
  *
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,19 +15,18 @@
  * limitations under the License.
  *
  */
-package com.mobiledevpro.chat.main.domain.interactor
+package com.mobiledevpro.chat.core.mapper
 
-import com.mobiledevpro.chat.core.domain.model.ChatMessage
-import kotlinx.coroutines.flow.Flow
+import com.mobiledevpro.chat.core.data.model.ChatUserData
+import com.mobiledevpro.chat.core.domain.model.ChatUser
 
-/**
- * Interactor uses in Public chat View Model
- *
- * Created on Dec 15, 2020.
- *
- */
-interface ChatPublicInteractor {
-    suspend fun getMessagesList(): Flow<Result<List<ChatMessage>>>
+fun ChatUserData.toDomain(): ChatUser =
+    ChatUser(
+        uid, name, avatarUrl, isItYou
+    )
 
 
-}
+fun ChatUser.toData(): ChatUserData =
+    ChatUserData(
+        uid, name, avatarUrl, isItYou
+    )
