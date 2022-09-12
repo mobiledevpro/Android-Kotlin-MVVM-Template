@@ -17,7 +17,6 @@
  */
 package com.mobiledevpro.common.ui.coroutines
 
-import android.util.Log
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.flow.Flow
@@ -102,15 +101,7 @@ inline fun <R, T> Result<T>.andThenFlow(transform: (value: T) -> Flow<Result<R>>
     val successResult: T? = getOrNull()
 
     return when {
-        successResult != null ->
-            try {
-                transform(successResult)/*.catch {
-                    Log.e("app.debug", "andThenFlow (1): ${it.localizedMessage}", it)
-                }*/
-            } catch (e: Exception) {
-                Log.e("app.debug", "andThenFlow (3): ${e.localizedMessage}", e)
-                flowOf(Result.failure(Throwable(e.localizedMessage)))
-            }
+        successResult != null -> transform(successResult)
         else -> flowOf(Result.failure(exceptionOrNull() ?: error("Unreachable state")))
     }
 }

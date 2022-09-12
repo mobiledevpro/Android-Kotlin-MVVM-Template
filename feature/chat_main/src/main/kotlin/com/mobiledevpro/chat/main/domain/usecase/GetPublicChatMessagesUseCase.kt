@@ -38,9 +38,17 @@ class GetPublicChatMessagesUseCase(
     private val repository: ChatPublicRepository
 ) : BaseCoroutinesFLowUseCase<List<ChatMessage>, ChatUser>(defaultDispatcher) {
 
-    override fun buildUseCase(params: ChatUser?): Flow<List<ChatMessage>> =
+    override fun buildUseCaseFlow(params: ChatUser?): Flow<List<ChatMessage>> =
         params?.toData()?.let { user ->
             repository.getMessagesList(user)
                 .map(List<ChatMessageData>::toDomain)
         } ?: throw RuntimeException("Unknown chat user")
+
+    override fun logException(e: Exception) {
+        //TODO: Add CrashlyticsUtil to core:utils
+        //TODO: Add extension : Exception.toCrashlytics()
+        //  Crashlytics.log(Log.ERROR, this::class.simpleName, e.localizedMessage)
+        //  Crashlytics.logException(Throwable(e.localizedMessage))
+    }
+
 }

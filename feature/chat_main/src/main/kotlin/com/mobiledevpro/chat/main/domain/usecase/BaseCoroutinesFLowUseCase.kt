@@ -17,9 +17,11 @@
  */
 package com.mobiledevpro.chat.main.domain.usecase
 
+import android.util.Log
 import com.mobiledevpro.common.ui.coroutines.resultOf
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 
@@ -33,12 +35,22 @@ abstract class BaseCoroutinesFLowUseCase<Results, in Params>(
     executionDispatcher: CoroutineDispatcher
 ) : BaseUseCase(executionDispatcher) {
 
-    abstract fun buildUseCase(params: Params? = null): Flow<Results>
+    abstract fun buildUseCaseFlow(params: Params? = null): Flow<Results>
 
     fun execute(params: Params? = null): Flow<Result<Results>> =
-        this.buildUseCase(params)
-            .flowOn(dispatcher)
-            .map {
-                resultOf { it }
-            }
+        try {
+            this.buildUseCaseFlow(params)
+                .flowOn(dispatcher)
+                .map {
+                    resultOf { it }
+                }
+        } catch (e: Exception) {
+            Log.e("app.debug", "${this}.execute: ${e.localizedMessage}", e)
+            logException(e)
+            flowOf(Result.failure(Throwable(e.localizedMessage)))
+        }
+
+    override fun logException(e: Exception) {
+        Log.e(this::class.simpleName, "${this::class.simpleName} : ${e.localizedMessage}")
+    }
 }
