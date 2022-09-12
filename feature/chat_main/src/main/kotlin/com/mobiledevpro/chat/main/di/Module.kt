@@ -17,10 +17,17 @@
  */
 package com.mobiledevpro.chat.main.di
 
+import com.mobiledevpro.chat.main.data.local.ChatPublicLocalSource
+import com.mobiledevpro.chat.main.data.local.ImplChatPublicLocalSource
+import com.mobiledevpro.chat.main.data.repository.ChatPublicRepository
+import com.mobiledevpro.chat.main.data.repository.ImplChatPublicRepository
 import com.mobiledevpro.chat.main.domain.interactor.ChatPublicInteractor
 import com.mobiledevpro.chat.main.domain.interactor.ImplChatPublicInteractor
+import com.mobiledevpro.chat.main.domain.usecase.GetCurrentUserUseCase
+import com.mobiledevpro.chat.main.domain.usecase.GetPublicChatMessagesUseCase
 import com.mobiledevpro.chat.main.view.ChatPublicFragment
 import com.mobiledevpro.chat.main.view.ChatPublicViewModel
+import kotlinx.coroutines.Dispatchers
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -41,8 +48,31 @@ val featureChatMainModule = module {
         }
 
         scoped<ChatPublicInteractor> {
-            ImplChatPublicInteractor()
+            ImplChatPublicInteractor(
+                getPublicChatMessagesUseCase = get(),
+                getCurrentUserUseCase = get()
+            )
         }
 
+        scoped {
+            GetPublicChatMessagesUseCase(
+                defaultDispatcher = Dispatchers.IO,
+                repository = get()
+            )
+        }
+
+        scoped {
+            GetCurrentUserUseCase(Dispatchers.IO)
+        }
+
+        scoped<ChatPublicRepository> {
+            ImplChatPublicRepository(
+                localSource = get()
+            )
+        }
+
+        scoped<ChatPublicLocalSource> {
+            ImplChatPublicLocalSource()
+        }
     }
 }

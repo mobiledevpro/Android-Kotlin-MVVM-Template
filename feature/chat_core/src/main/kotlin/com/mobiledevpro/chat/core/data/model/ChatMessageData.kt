@@ -15,19 +15,18 @@
  * limitations under the License.
  *
  */
-package com.mobiledevpro.chat.main.domain.interactor
+package com.mobiledevpro.chat.core.data.model
 
-import com.mobiledevpro.chat.core.domain.model.ChatMessage
-import kotlinx.coroutines.flow.Flow
 
 /**
- * Interactor uses in Public chat View Model
+ * Data layer
  *
  * Created on Dec 15, 2020.
  *
  */
-interface ChatPublicInteractor {
-    suspend fun getMessagesList(): Flow<Result<List<ChatMessage>>>
-
-
-}
+data class ChatMessageData(
+    val uid: String,
+    val timeSentUtc: Long, //in ms
+    val text: String,
+    val user: ChatUserData
+)

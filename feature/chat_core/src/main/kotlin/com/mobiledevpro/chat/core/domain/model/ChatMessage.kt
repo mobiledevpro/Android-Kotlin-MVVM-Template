@@ -23,7 +23,7 @@ import com.mobiledevpro.utils.getTimeString
 
 
 /**
- * Message model
+ * Domain layer
  *
  * Created on Dec 15, 2020.
  *

@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 | Dmitri Chernysh | http://mobile-dev.pro
+ * Copyright 2022 | Dmitri Chernysh | https://mobile-dev.pro
  *
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,19 +15,18 @@
  * limitations under the License.
  *
  */
-package com.mobiledevpro.chat.main.domain.interactor
+package com.mobiledevpro.chat.main.data.local
 
-import com.mobiledevpro.chat.core.domain.model.ChatMessage
+import com.mobiledevpro.chat.core.data.model.ChatMessageData
+import com.mobiledevpro.chat.core.data.model.ChatUserData
 import kotlinx.coroutines.flow.Flow
 
 /**
- * Interactor uses in Public chat View Model
+ * Local source to get data from database
  *
- * Created on Dec 15, 2020.
+ * Created on Sep 12, 2022.
  *
  */
-interface ChatPublicInteractor {
-    suspend fun getMessagesList(): Flow<Result<List<ChatMessage>>>
-
-
+interface ChatPublicLocalSource {
+    fun getFakeMessagesList(chatUser: ChatUserData): Flow<List<ChatMessageData>>
 }

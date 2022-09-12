@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 | Dmitri Chernysh | http://mobile-dev.pro
+ * Copyright 2022 | Dmitri Chernysh | https://mobile-dev.pro
  *
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,19 +15,20 @@
  * limitations under the License.
  *
  */
-package com.mobiledevpro.chat.main.domain.interactor
+package com.mobiledevpro.common.ui.coroutines
 
-import com.mobiledevpro.chat.core.domain.model.ChatMessage
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.CoroutineDispatcher
 
 /**
- * Interactor uses in Public chat View Model
+ * Base UseCase
  *
- * Created on Dec 15, 2020.
+ * Created on Sep 12, 2022.
  *
  */
-interface ChatPublicInteractor {
-    suspend fun getMessagesList(): Flow<Result<List<ChatMessage>>>
+abstract class BaseUseCase(
+    executionDispatcher: CoroutineDispatcher
+) {
+    protected val dispatcher = executionDispatcher
 
-
+    abstract fun logException(e: Exception)
 }

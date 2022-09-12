@@ -1,9 +1,8 @@
 include(
     ":app",
-    ":common-ui",
+    ":common",
     ":core:navigation",
     ":core:utils",
-    ":core:rx",
     ":core:database",
     ":feature:chat_core",
     ":feature:chat_main",

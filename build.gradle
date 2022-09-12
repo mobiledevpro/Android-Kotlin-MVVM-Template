@@ -30,7 +30,7 @@ buildscript {
         classpath "com.android.tools:r8:$rootVersions.r8"
 
 
-        //it uses to publish 'common-ui' module as library to JitPack.
+        //it uses to publish 'common' module as library to JitPack.
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
@@ -75,15 +75,16 @@ ext {
     targetSdkVersion = 33
 
     versions = [
+            "common"          : "1.1.2",
             "appcompat"       : '1.5.0',
             "preference"      : '1.2.0',
             "material"        : '1.6.1',
             "fragment"        : '1.5.2',
             "activity"        : '1.5.1',
             "constraintLayout": '2.1.4',
-            "coreKtx"         : '1.8.0',
-            "commonUi"        : "1.1.1",
+            "coreKtx"         : '1.9.0',
             "lifecycle"       : '2.5.1',
+            "coroutines"      : "1.5.2",
             "firebase"        : [
                     "bom": '30.3.2'
             ],
@@ -115,6 +116,13 @@ ext {
             "activity"                : "androidx.activity:activity-ktx:$versions.activity",
             "fragment"                : "androidx.fragment:fragment-ktx:$versions.fragment",
 
+            //common
+            "common"                  : "com.github.mobiledevpro:android-kotlin-mvvm-template:$versions.commonUi",
+
+            //Coroutines
+            "coroutinesCore"          : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
+            "coroutinesAndroid"       : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines",
+
             //Navigation
             "navigationFragment"      : "androidx.navigation:navigation-fragment-ktx:$rootVersions.navigation",
             "navigationUi"            : "androidx.navigation:navigation-ui-ktx:$rootVersions.navigation",
@@ -129,9 +137,6 @@ ext {
             "firebasePerformance"     : "com.google.firebase:firebase-perf-ktx",
             "crashlytics"             : "com.google.firebase:firebase-crashlytics-ktx",
             "firebaseAnalytics"       : "com.google.firebase:firebase-analytics-ktx",
-
-            //common
-            "commonUI"                : "com.github.mobiledevpro:android-kotlin-mvvm-template:$versions.commonUi",
 
             //LifeCycle
             "viewModel"               : "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle",
@@ -184,7 +189,6 @@ ext {
     core = [
             "navigation": project(":core:navigation"),
             "utils"     : project(":core:utils"),
-            "rx"        : project("core:rx"),
             "database"  : project("core:database")
     ]
 }
