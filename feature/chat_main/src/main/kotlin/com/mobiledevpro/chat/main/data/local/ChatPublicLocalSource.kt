@@ -15,18 +15,18 @@
  * limitations under the License.
  *
  */
-package com.mobiledevpro.chat.main.data.repository
+package com.mobiledevpro.chat.main.data.local
 
 import com.mobiledevpro.chat.core.data.model.ChatMessageData
 import com.mobiledevpro.chat.core.data.model.ChatUserData
-import com.mobiledevpro.chat.main.data.local.ChatPublicLocalSource
 import kotlinx.coroutines.flow.Flow
 
-
-class ImplChatPublicRepository(
-    private val localSource: ChatPublicLocalSource
-) : ChatPublicRepository {
-
-    override fun getMessagesList(user: ChatUserData): Flow<List<ChatMessageData>> =
-        localSource.getFakeMessagesList(user)
+/**
+ * Local source to get data from database
+ *
+ * Created on Sep 12, 2022.
+ *
+ */
+interface ChatPublicLocalSource {
+    fun getFakeMessagesList(chatUser: ChatUserData): Flow<List<ChatMessageData>>
 }

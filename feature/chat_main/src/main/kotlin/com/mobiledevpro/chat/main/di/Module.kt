@@ -17,6 +17,8 @@
  */
 package com.mobiledevpro.chat.main.di
 
+import com.mobiledevpro.chat.main.data.local.ChatPublicLocalSource
+import com.mobiledevpro.chat.main.data.local.ImplChatPublicLocalSource
 import com.mobiledevpro.chat.main.data.repository.ChatPublicRepository
 import com.mobiledevpro.chat.main.data.repository.ImplChatPublicRepository
 import com.mobiledevpro.chat.main.domain.interactor.ChatPublicInteractor
@@ -65,8 +67,12 @@ val featureChatMainModule = module {
 
         scoped<ChatPublicRepository> {
             ImplChatPublicRepository(
-
+                localSource = get()
             )
+        }
+
+        scoped<ChatPublicLocalSource> {
+            ImplChatPublicLocalSource()
         }
     }
 }
