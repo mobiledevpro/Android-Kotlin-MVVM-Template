@@ -1,6 +1,6 @@
 include(
     ":app",
-    ":common-ui",
+    ":common",
     ":core:navigation",
     ":core:utils",
     ":core:rx",

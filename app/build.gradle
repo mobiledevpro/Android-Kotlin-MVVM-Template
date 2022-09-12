@@ -145,8 +145,9 @@ dependencies {
     api deps.playCoreKtx
 
     //common UI lib
-    productionApi deps.commonUI //<-- use published library from jitpack.io
-    devApi project(":common-ui") //<-- use local module
+    productionApi deps.commonUI
+    devApi project(':common') //<-- use published library from jitpack.io
+    //<-- use local module
 
     //DI
     api deps.koinCore
