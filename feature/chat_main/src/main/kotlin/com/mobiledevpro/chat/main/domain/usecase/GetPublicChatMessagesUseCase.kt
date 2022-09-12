@@ -46,8 +46,8 @@ class GetPublicChatMessagesUseCase(
         } ?: throw RuntimeException("Unknown chat user")
 
     override fun logException(e: Exception) {
-        //TODO: Add CrashlyticsUtil to core:utils
-        //TODO: Add extension : Exception.toCrashlytics()
+        //Add CrashlyticsUtil to core:utils
+        // Add extension : Exception.toCrashlytics()
         //  Crashlytics.log(Log.ERROR, this::class.simpleName, e.localizedMessage)
         //  Crashlytics.logException(Throwable(e.localizedMessage))
         Log.w("app.debug", "logException: in GetPublicChatMessagesUseCase")
