@@ -133,31 +133,21 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    api deps.appcompat
-    api deps.material
+    //published library from jitpack.io
+    productionApi deps.common
+    //local module
+    devApi project(':common')
+
     api deps.preference
     api deps.constraintLayout
-
-    api deps.fragment
 
     api deps.coreKtx
     api deps.playCore
     api deps.playCoreKtx
 
-    //common UI lib
-    productionApi deps.commonUI
-    devApi project(':common') //<-- use published library from jitpack.io
-    //<-- use local module
-
     //DI
     api deps.koinCore
     api deps.koinAndroid
-
-    //Lifecycle
-    api deps.viewModel
-    api deps.liveData
-    api deps.saveState
-    kapt deps.lifecycleCompiler
 
     //memory leak detection in debug
     debugApi deps.leakcanaryDebug
@@ -177,7 +167,6 @@ dependencies {
 
     //core modules for the whole app including feature modules
     api core.navigation
-    api core.rx
     api core.utils
     api core.database
 

@@ -16,16 +16,17 @@ android.buildFeatures.dataBinding = true
 
 dependencies {
 
-    implementation deps.coreKtx
-    implementation deps.appcompat
-    implementation deps.material
+    api deps.coreKtx
+    api deps.appcompat
+    api deps.material
 
-    implementation deps.activity
-    implementation deps.fragment
+    api deps.activity
+    api deps.fragment
 
     //Lifecycle
-    implementation deps.viewModel
-    implementation deps.liveData
+    api deps.viewModel
+    api deps.liveData
+    api deps.saveState
     kapt deps.lifecycleCompiler
 
     //Rx
