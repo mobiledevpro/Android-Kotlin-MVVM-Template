@@ -9,12 +9,14 @@
         <item name="android:windowTranslucentNavigation">true</item>
         <item name="android:windowTranslucentStatus">true</item>
 
+        <!--
         <item name="imageButtonStyle">@style/AppTheme.ImageButton</item>
         <item name="materialButtonStyle">@style/AppTheme.Button</item>
         <item name="android:textViewStyle">@style/AppTheme.TextView</item>
         <item name="editTextStyle">@style/AppTheme.EditText</item>
         <item name="textInputStyle">@style/AppTheme.TextInput</item>
         <item name="actionModeStyle">@style/AppTheme.ActionMode</item>
+        -->
 
     </style>
 

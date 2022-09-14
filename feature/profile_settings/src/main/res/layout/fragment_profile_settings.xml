@@ -101,7 +101,9 @@
             android:text="@string/button_sign_in"
             app:layout_constraintEnd_toEndOf="@+id/edt_login"
             app:layout_constraintStart_toStartOf="@+id/edt_login"
-            app:layout_constraintTop_toBottomOf="@+id/edt_pass" />
+            app:layout_constraintTop_toBottomOf="@+id/edt_pass"
+            app:icon="@drawable/ic_login_24dp"
+            app:iconGravity="textStart" />
 
         <TextView
             android:id="@+id/tv_or"

@@ -5,6 +5,19 @@
         <!-- Default Window background  -->
         <item name="android:windowBackground">@drawable/background_window_dark</item>
 
+        <!--
+        <item name="colorSurface">@color/colorWindowBackground</item>
+        <item name="colorOnSurface">@color/colorTextPrimaryLight</item>
+        -->
+
+        <!-- Default brand colors -->
+        <item name="colorOnPrimary">@color/colorWindowGreyBackground</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryContainer">@color/colorAccent</item>
+        <item name="colorOnPrimaryContainer">@color/colorPrimaryDark</item>
+        <item name="colorOnSurface">@color/colorPrimary</item>
+
+
         <!-- Default colors for System bars -->
         <item name="android:statusBarColor">@color/colorPrimary</item>
         <item name="android:navigationBarColor">@color/colorWindowBackground</item>
@@ -24,14 +37,22 @@
           <item name="colorOnSurface">@color/colorPrimary</item>-->
 
         <!-- Text -->
-        <!-- <item name="android:textColorPrimary">@color/colorTextPrimary</item>
-         <item name="android:textColorSecondary">@color/colorTextSecondary</item> -->
+        <item name="android:textColorPrimary">@color/colorTextPrimary</item>
+        <item name="android:textColorSecondary">@color/colorTextSecondary</item>
 
         <!-- Widget styles -->
         <!--
         <item name="android:textViewStyle">@style/AppTheme.Material.TextView</item>
+        -->
         <item name="materialButtonStyle">@style/AppTheme.Material.Button</item>
+        <!--
         <item name="checkboxStyle">@style/AppTheme.Material.CheckBox</item>
+        -->
+
+        <!-- Dialog styles -->
+        <!--
+        <item name="materialAlertDialogTheme">@style/AppTheme.Material.AlertDialog</item>
+        <item name="bottomSheetDialogTheme">@style/AppTheme.Material.BottomSheet</item>
         -->
 
     </style>
