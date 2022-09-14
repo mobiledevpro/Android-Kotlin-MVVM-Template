@@ -8,3 +8,4 @@ include(
     ":feature:chat_main",
     ":feature:profile_settings"
 )
+include(":core:ui")

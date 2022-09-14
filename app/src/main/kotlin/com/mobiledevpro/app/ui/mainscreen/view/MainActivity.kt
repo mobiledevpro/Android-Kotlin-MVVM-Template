@@ -1,7 +1,6 @@
 package com.mobiledevpro.app.ui.mainscreen.view
 
 import android.view.View
-import android.view.WindowManager
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import com.mobiledevpro.app.R
@@ -12,12 +11,7 @@ import com.mobiledevpro.common.ui.extension.getColorCompatible
 class MainActivity : BaseActivity(
     layoutId = R.layout.activity_main,
     ActivitySettings(
-        isAdjustFontScaleToNormal = true,
-        windowFlags = listOf(
-            //set navigation bar translucent
-            WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
-            WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-        )
+        isAdjustFontScaleToNormal = true
     )
 ) {
 

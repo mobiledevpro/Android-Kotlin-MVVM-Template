@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppTheme.Material.NoActionBar" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Default Window background  -->
+        <item name="android:windowBackground">@drawable/background_window_dark</item>
+
+        <!-- Default colors for System bars -->
+        <item name="android:statusBarColor">@color/colorPrimary</item>
+        <item name="android:navigationBarColor">@color/colorWindowBackground</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="O_MR1">false</item>
+
+        <!-- In case of transparent system bars are needed
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+          -->
+
+        <!-- Primary brand color. -->
+        <!--  <item name="colorPrimary">@color/colorPrimary</item>
+          <item name="colorOnPrimary">@color/colorWindowBackground</item>
+          <item name="colorPrimaryContainer">@color/colorAccent</item>
+          <item name="colorOnPrimaryContainer">@color/colorPrimaryDark</item>
+          <item name="colorOnSurface">@color/colorPrimary</item>-->
+
+        <!-- Text -->
+        <!-- <item name="android:textColorPrimary">@color/colorTextPrimary</item>
+         <item name="android:textColorSecondary">@color/colorTextSecondary</item> -->
+
+        <!-- Widget styles -->
+        <!--
+        <item name="android:textViewStyle">@style/AppTheme.Material.TextView</item>
+        <item name="materialButtonStyle">@style/AppTheme.Material.Button</item>
+        <item name="checkboxStyle">@style/AppTheme.Material.CheckBox</item>
+        -->
+
+    </style>
+
+
+    <style name="AppTheme.Material.Dark" parent="AppTheme.Material.NoActionBar">
+
+
+    </style>
+
+    <style name="AppTheme.Material.Light" parent="AppTheme.Material.NoActionBar">
+
+
+    </style>
+
+
+</resources>

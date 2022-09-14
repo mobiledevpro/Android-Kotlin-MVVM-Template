@@ -26,8 +26,8 @@ import org.koin.core.component.KoinScopeComponent
 import org.koin.core.component.getOrCreateScope
 import org.koin.core.context.loadKoinModules
 import org.koin.core.scope.Scope
-import com.mobiledevpro.app.R as RApp
 import com.mobiledevpro.navigation.R as RNav
+import com.mobiledevpro.ui.R as RApp
 
 /**
  * Profile Settings screen
