@@ -2,6 +2,7 @@ package com.mobiledevpro.app.ui.mainscreen.view
 
 import android.view.View
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import com.mobiledevpro.app.R
 import com.mobiledevpro.common.ui.base.ActivitySettings
@@ -25,6 +26,8 @@ class MainActivity : BaseActivity(
 
     override fun initViews(layoutView: View) {
         //do something: as example, init bottom navigation.
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); //night mode theme is disabled right now
+
     }
 
     override fun setAppBarTitle(titleString: String) {
