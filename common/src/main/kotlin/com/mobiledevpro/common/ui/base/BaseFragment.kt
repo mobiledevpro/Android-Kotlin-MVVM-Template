@@ -113,64 +113,73 @@ abstract class BaseFragment<B : ViewDataBinding>(
 
 
     private fun applyResources() {
-        (requireActivity() is BaseActivityInterface).apply {
-            if (!this) {
-                if (settings.statusBarColor != 0)
-                    throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set StatusBar color")
-                if (settings.appBarColor != 0)
-                    throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set AppBar color")
-                if (settings.appBarTitle as Int != 0 || (settings.appBarTitle as String).isEmpty())
-                    throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set AppBar title")
-                if (settings.appBarSubTitle as Int != 0 || (settings.appBarSubTitle as String).isEmpty())
-                    throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set AppBar sub-title")
-                if (settings.homeIconId != 0)
-                    throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set home indicator icon")
-                if (settings.appBarTitleColor != 0)
-                    throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set AppBar Title color")
-            }
+        val isBaseActivity = requireActivity() is BaseActivityInterface
 
-            (requireActivity() as BaseActivityInterface).apply {
-                //apply title
-                setAppBarTitle(
-                    when (settings.appBarTitle) {
-                        is Int -> if (settings.appBarTitle != 0) resources.getString(settings.appBarTitle) else ""
-                        is String -> settings.appBarTitle.ifEmpty { "" }
-                        else -> ""
-                    }
-                )
+        if (!isBaseActivity) {
+            if (settings.statusBarColor != 0)
+                throw UnsupportedOperationException("Activity must be inherited from 'BaseActivity' to set StatusBar color")
 
-                //apply sub-title
-                setAppBarSubTitle(
-                    when (settings.appBarSubTitle) {
-                        is Int -> if (settings.appBarSubTitle != 0) resources.getString(settings.appBarSubTitle) else ""
-                        is String -> settings.appBarSubTitle.ifEmpty { "" }
-                        else -> ""
-                    }
-                )
+            if (settings.appBarColor != 0)
+                throw UnsupportedOperationException("Activity must be inherited from 'BaseActivity' to set AppBar color")
 
-                //apply color to appbar
-                if (settings.appBarColor != 0)
-                    setAppBarColor(settings.appBarColor)
+            if (settings.navigationBarColor != 0)
+                throw UnsupportedOperationException("Activity must be inherited from 'BaseActivity' to set Navigation Bar color")
 
-                //apply color to status bar
-                if (settings.statusBarColor != 0)
-                    setStatusBarColor(settings.statusBarColor)
+            if (settings.appBarTitle as Int != 0 || (settings.appBarTitle as String).isNotEmpty())
+                throw UnsupportedOperationException("Activity must be inherited from 'BaseActivity' to set AppBar title")
 
-                //apply color to appbar title
-                if (settings.appBarTitleColor != 0)
-                    setAppBarTitleColor(settings.appBarTitleColor)
+            if (settings.appBarSubTitle as Int != 0 || (settings.appBarSubTitle as String).isNotEmpty())
+                throw UnsupportedOperationException("Activity must be inherited from 'BaseActivity' to set AppBar sub-title")
 
-                //apply window background
-                if (settings.appWindowBackground != 0)
-                    setAppWindowBackground(settings.appWindowBackground)
+            if (settings.homeIconId != 0)
+                throw UnsupportedOperationException("Activity must be inherited from 'BaseActivity' to set home indicator icon")
 
-                //apply color to navigation bar
-                if (settings.navigationBarColor != 0)
-                    setNavigationBarColor(settings.navigationBarColor)
+            if (settings.appBarTitleColor != 0)
+                throw UnsupportedOperationException("Activity must be inherited from 'BaseActivity' to set AppBar Title color")
 
-                //enable or disable home icon (0 - disable)
-                setHomeAsUpIndicatorIcon(settings.homeIconId)
-            }
+        }
+
+        (requireActivity() as BaseActivityInterface).apply {
+            //apply title
+            setAppBarTitle(
+                when (settings.appBarTitle) {
+                    is Int -> if (settings.appBarTitle != 0) resources.getString(settings.appBarTitle) else ""
+                    is String -> settings.appBarTitle.ifEmpty { "" }
+                    else -> ""
+                }
+            )
+
+            //apply sub-title
+            setAppBarSubTitle(
+                when (settings.appBarSubTitle) {
+                    is Int -> if (settings.appBarSubTitle != 0) resources.getString(settings.appBarSubTitle) else ""
+                    is String -> settings.appBarSubTitle.ifEmpty { "" }
+                    else -> ""
+                }
+            )
+
+            //apply color to appbar
+            if (settings.appBarColor != 0)
+                setAppBarColor(settings.appBarColor)
+
+            //apply color to status bar
+            if (settings.statusBarColor != 0)
+                setStatusBarColor(settings.statusBarColor)
+
+            //apply color to appbar title
+            if (settings.appBarTitleColor != 0)
+                setAppBarTitleColor(settings.appBarTitleColor)
+
+            //apply window background
+            if (settings.appWindowBackground != 0)
+                setAppWindowBackground(settings.appWindowBackground)
+
+            //apply color to navigation bar
+            if (settings.navigationBarColor != 0)
+                setNavigationBarColor(settings.navigationBarColor)
+
+            //enable or disable home icon (0 - disable)
+            setHomeAsUpIndicatorIcon(settings.homeIconId)
         }
 
     }
