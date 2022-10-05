@@ -3,7 +3,7 @@
 
     <style name="AppTheme.Material.Common" parent="Theme.Material3.Dark.NoActionBar">
         <!-- Default Window background -->
-        <item name="android:windowBackground">@drawable/background_window_dark</item>
+        <item name="android:windowBackground">@drawable/background_window_default</item>
 
         <!-- Default colors for System bars -->
         <item name="android:statusBarColor">@color/colorPrimary</item>
