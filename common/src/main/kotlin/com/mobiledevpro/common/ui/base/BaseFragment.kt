@@ -21,14 +21,13 @@ import android.os.Build
 import android.os.Bundle
 import android.view.*
 import android.view.inputmethod.InputMethodManager
-import androidx.annotation.ColorRes
+import androidx.annotation.AttrRes
 import androidx.annotation.LayoutRes
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.transition.TransitionInflater
-import com.mobiledevpro.common.ui.extension.getColorCompatible
+import com.mobiledevpro.common.ui.extension.getThemeColorCompatible
 
 abstract class BaseFragment<B : ViewDataBinding>(
     @LayoutRes
@@ -81,7 +80,8 @@ abstract class BaseFragment<B : ViewDataBinding>(
         val activity = requireActivity()
 
         //hide keyboard if it was shown
-        val inputManager = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+        val inputManager =
+            activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
 
         inputManager?.let {
             val view = activity.currentFocus
@@ -167,9 +167,9 @@ abstract class BaseFragment<B : ViewDataBinding>(
 
     }
 
-    private fun setLightOrDarkStatusBarContent(@ColorRes statusBarColor: Int, view: View) {
+    private fun setLightOrDarkStatusBarContent(@AttrRes statusBarColor: Int, view: View) {
 
-        val rgb: Int = requireContext().getColorCompatible(statusBarColor) // 0xAARRGGBB
+        val rgb: Int = requireContext().getThemeColorCompatible(statusBarColor) // 0xAARRGGBB
 
         val red: Int = rgb.shr(16) and 0xff
         val green: Int = rgb.shr(8) and 0xff
@@ -181,12 +181,12 @@ abstract class BaseFragment<B : ViewDataBinding>(
         val isLight = lum > 128 //0..255 : 0 - darkest, 255 - lightest
 
         //For API 30+
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
             view.windowInsetsController?.setSystemBarsAppearance(
                 if (isLight) WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS else 0, // value
-                if (isLight) WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS else 0 // mask
+                if (isLight) WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS else WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS // mask
             )
-        }
+
         //for API 23+
         else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (isLight) {
@@ -194,7 +194,8 @@ abstract class BaseFragment<B : ViewDataBinding>(
                 flags = flags or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
                 view.systemUiVisibility = flags
             }
-            requireActivity().window.statusBarColor = ContextCompat.getColor(requireActivity(), statusBarColor)
+            requireActivity().window.statusBarColor = rgb
         }
     }
+
 }

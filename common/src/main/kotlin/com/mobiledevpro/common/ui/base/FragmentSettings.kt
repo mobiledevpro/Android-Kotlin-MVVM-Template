@@ -1,9 +1,6 @@
 package com.mobiledevpro.common.ui.base
 
-import androidx.annotation.ColorRes
-import androidx.annotation.DrawableRes
-import androidx.annotation.MenuRes
-import androidx.annotation.TransitionRes
+import androidx.annotation.*
 
 /**
  * Some settings for Fragment
@@ -20,9 +17,9 @@ data class FragmentSettings(
     val optionsMenuId: Int = 0,
     @DrawableRes
     val homeIconId: Int = 0,
-    @ColorRes
+    @AttrRes
     val statusBarColor: Int = 0,
-    @ColorRes
+    @AttrRes
     val appBarColor: Int = 0,
     @ColorRes
     val appBarTitleColor: Int = 0,

@@ -25,6 +25,7 @@ import android.util.DisplayMetrics
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.annotation.AttrRes
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
@@ -39,6 +40,7 @@ import com.mobiledevpro.common.ui.R
 import com.mobiledevpro.common.ui.extension.applyStatusBarColor
 import com.mobiledevpro.common.ui.extension.dpToPx
 import com.mobiledevpro.common.ui.extension.getColorCompatible
+import com.mobiledevpro.common.ui.extension.getThemeColorCompatible
 
 abstract class BaseActivity(
     @LayoutRes
@@ -109,15 +111,15 @@ abstract class BaseActivity(
         }
     }
 
-    override fun setStatusBarColor(@ColorRes colorResId: Int) {
+    override fun setStatusBarColor(@AttrRes colorResId: Int) {
         applyStatusBarColor(colorResId)
     }
 
-    override fun setAppBarColor(@ColorRes colorResId: Int) {
+    override fun setAppBarColor(@AttrRes colorResId: Int) {
         actionBar?.apply {
             setBackgroundDrawable(
                 ColorDrawable(
-                    getColorCompatible(colorResId)
+                    getThemeColorCompatible(colorResId)
                 )
             )
         }

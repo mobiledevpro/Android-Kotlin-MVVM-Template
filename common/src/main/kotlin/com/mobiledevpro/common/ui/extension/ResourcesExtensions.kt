@@ -38,6 +38,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
+import kotlin.math.roundToInt
 
 
 /**
@@ -195,7 +196,7 @@ fun Context.dpToPx(valueInDp: Float): Float {
  */
 fun Context.pxToDp(valueInPx: Int): Int {
     val displayMetrics = resources.displayMetrics
-    return Math.round(valueInPx / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT))
+    return (valueInPx / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT)).roundToInt()
 }
 
 /**
@@ -204,12 +205,12 @@ fun Context.pxToDp(valueInPx: Int): Int {
  * @param activity   Activity
  * @param colorResId Color Resource Id
  */
-fun Activity.applyStatusBarColor(@ColorRes colorResId: Int) {
+fun Activity.applyStatusBarColor(@AttrRes colorResId: Int) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
         window.apply {
             this.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
             this.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            this.statusBarColor = getColorCompatible(colorResId)
+            this.statusBarColor = getThemeColorCompatible(colorResId)
         }
 }
 

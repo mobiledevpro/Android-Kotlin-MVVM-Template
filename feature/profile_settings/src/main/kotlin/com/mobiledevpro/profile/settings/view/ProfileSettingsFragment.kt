@@ -17,6 +17,9 @@
  */
 package com.mobiledevpro.profile.settings.view
 
+import android.os.Bundle
+import android.util.Log
+import android.view.View
 import com.mobiledevpro.common.ui.base.BaseFragment
 import com.mobiledevpro.common.ui.base.FragmentSettings
 import com.mobiledevpro.profile.settings.R
@@ -28,6 +31,7 @@ import org.koin.core.context.loadKoinModules
 import org.koin.core.scope.Scope
 import com.mobiledevpro.navigation.R as RNav
 import com.mobiledevpro.ui.R as RApp
+import com.mobiledevpro.ui.R as RUi
 
 /**
  * Profile Settings screen
@@ -38,8 +42,8 @@ import com.mobiledevpro.ui.R as RApp
 class ProfileSettingsFragment : BaseFragment<FragmentProfileSettingsBinding>(
     layoutId = R.layout.fragment_profile_settings,
     FragmentSettings(
-        statusBarColor = RApp.color.colorPrimary,
-        appBarColor = RApp.color.colorPrimary,
+        statusBarColor = RUi.attr.themeColorWindowBackgroundDark,
+        appBarColor = RUi.attr.themeColorWindowBackgroundDark,
         appBarTitle = 0,
         appBarTitleColor = RApp.color.colorWindowGreyBackground,
         appWindowBackground = RApp.drawable.background_window_light,
@@ -61,6 +65,11 @@ class ProfileSettingsFragment : BaseFragment<FragmentProfileSettingsBinding>(
     override fun onInitDataBinding() {
         viewBinding.model = viewModel
         lifecycle.addObserver(viewModel)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Log.d(this::class::simpleName.get(), "onViewCreated: ")
     }
 
     override fun observeLifecycleEvents() {

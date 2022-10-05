@@ -16,6 +16,7 @@
 
 package com.mobiledevpro.common.ui.base
 
+import androidx.annotation.AttrRes
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 
@@ -24,9 +25,9 @@ interface BaseActivityInterface {
 
     fun setAppBarSubTitle(subTitleString: String)
 
-    fun setStatusBarColor(@ColorRes colorResId: Int)
+    fun setStatusBarColor(@AttrRes colorResId: Int)
 
-    fun setAppBarColor(@ColorRes colorResId: Int)
+    fun setAppBarColor(@AttrRes colorResId: Int)
 
     fun setAppBarTitleColor(@ColorRes colorResId: Int)
 

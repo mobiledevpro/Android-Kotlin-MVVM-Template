@@ -37,8 +37,8 @@ import com.mobiledevpro.ui.R as RUi
 class ChatPublicFragment : BaseFragment<FragmentChatPublicBinding>(
     layoutId = R.layout.fragment_chat_public,
     FragmentSettings(
-        statusBarColor = RUi.color.colorWindowGreyBackground,
-        appBarColor = RUi.color.colorWindowGreyBackground,
+        statusBarColor = RUi.attr.themeColorWindowBackgroundLight,
+        appBarColor = RUi.attr.themeColorWindowBackgroundLight,
         appBarTitle = RApp.string.app_title_chat_public,
         appBarTitleColor = RUi.color.colorTextPrimary,
         appWindowBackground = RUi.drawable.background_window_dark,
@@ -73,6 +73,8 @@ class ChatPublicFragment : BaseFragment<FragmentChatPublicBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        Log.d(this::class::simpleName.get(), "onViewCreated: ")
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
             addImeListener(view)
