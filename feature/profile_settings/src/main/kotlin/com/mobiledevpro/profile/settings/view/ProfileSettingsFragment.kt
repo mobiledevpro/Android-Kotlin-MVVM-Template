@@ -17,9 +17,6 @@
  */
 package com.mobiledevpro.profile.settings.view
 
-import android.os.Bundle
-import android.util.Log
-import android.view.View
 import com.mobiledevpro.common.ui.base.BaseFragment
 import com.mobiledevpro.common.ui.base.FragmentSettings
 import com.mobiledevpro.profile.settings.R
@@ -46,6 +43,7 @@ class ProfileSettingsFragment : BaseFragment<FragmentProfileSettingsBinding>(
         appBarColor = RUi.attr.themeColorWindowBackgroundDark,
         appBarTitle = 0,
         appBarTitleColor = RApp.color.colorWindowGreyBackground,
+        navigationBarColor = RUi.attr.themeColorWindowBackgroundLight,
         appWindowBackground = RApp.drawable.background_window_light,
         homeIconId = RApp.drawable.ic_back_arrow_light_24dp,
         homeIconBackPressEnabled = true,
@@ -65,11 +63,6 @@ class ProfileSettingsFragment : BaseFragment<FragmentProfileSettingsBinding>(
     override fun onInitDataBinding() {
         viewBinding.model = viewModel
         lifecycle.addObserver(viewModel)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        Log.d(this::class::simpleName.get(), "onViewCreated: ")
     }
 
     override fun observeLifecycleEvents() {

@@ -31,6 +31,8 @@ interface BaseActivityInterface {
 
     fun setAppBarTitleColor(@ColorRes colorResId: Int)
 
+    fun setNavigationBarColor(@AttrRes colorResId: Int)
+
     fun setAppWindowBackground(@DrawableRes backgroundResId: Int)
 
     fun setHomeAsUpIndicatorIcon(@DrawableRes drawable: Int)

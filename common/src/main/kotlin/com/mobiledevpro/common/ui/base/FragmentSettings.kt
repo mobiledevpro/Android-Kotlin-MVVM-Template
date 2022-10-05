@@ -23,11 +23,13 @@ data class FragmentSettings(
     val appBarColor: Int = 0,
     @ColorRes
     val appBarTitleColor: Int = 0,
+    @AttrRes
+    val navigationBarColor: Int = 0,
     @DrawableRes
     val appWindowBackground: Int = 0,
     val homeIconBackPressEnabled: Boolean = true,
     @TransitionRes
-    val enterTransition : Int = 0,
+    val enterTransition: Int = 0,
     @TransitionRes
-    val exitTransition : Int = 0
+    val exitTransition: Int = 0
 )

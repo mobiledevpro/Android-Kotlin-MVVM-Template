@@ -139,6 +139,10 @@ abstract class BaseActivity(
         window?.setBackgroundDrawableResource(backgroundResId)
     }
 
+    override fun setNavigationBarColor(@AttrRes colorResId: Int) {
+        window?.navigationBarColor = getThemeColorCompatible(colorResId)
+    }
+
     override fun setHomeAsUpIndicatorIcon(@DrawableRes drawable: Int) {
         actionBar?.apply {
             if (drawable != 0) {

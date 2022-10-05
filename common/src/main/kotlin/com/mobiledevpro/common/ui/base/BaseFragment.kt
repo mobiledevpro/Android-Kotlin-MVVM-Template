@@ -28,6 +28,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.transition.TransitionInflater
 import com.mobiledevpro.common.ui.extension.getThemeColorCompatible
+import com.mobiledevpro.common.ui.extension.isColorLight
 
 abstract class BaseFragment<B : ViewDataBinding>(
     @LayoutRes
@@ -73,7 +74,10 @@ abstract class BaseFragment<B : ViewDataBinding>(
         observeLifecycleEvents()
         applyResources()
         if (settings.statusBarColor != 0)
-            setLightOrDarkStatusBarContent(settings.statusBarColor, view)
+            setStatusBarContentColor(settings.statusBarColor, view)
+
+        if (settings.navigationBarColor != 0)
+            setNavigationBarContentColor(settings.navigationBarColor, view)
     }
 
     override fun onStop() {
@@ -130,7 +134,7 @@ abstract class BaseFragment<B : ViewDataBinding>(
                 setAppBarTitle(
                     when (settings.appBarTitle) {
                         is Int -> if (settings.appBarTitle != 0) resources.getString(settings.appBarTitle) else ""
-                        is String -> if (settings.appBarTitle.isNotEmpty()) settings.appBarTitle else ""
+                        is String -> settings.appBarTitle.ifEmpty { "" }
                         else -> ""
                     }
                 )
@@ -139,7 +143,7 @@ abstract class BaseFragment<B : ViewDataBinding>(
                 setAppBarSubTitle(
                     when (settings.appBarSubTitle) {
                         is Int -> if (settings.appBarSubTitle != 0) resources.getString(settings.appBarSubTitle) else ""
-                        is String -> if (settings.appBarSubTitle.isNotEmpty()) settings.appBarSubTitle else ""
+                        is String -> settings.appBarSubTitle.ifEmpty { "" }
                         else -> ""
                     }
                 )
@@ -160,6 +164,10 @@ abstract class BaseFragment<B : ViewDataBinding>(
                 if (settings.appWindowBackground != 0)
                     setAppWindowBackground(settings.appWindowBackground)
 
+                //apply color to navigation bar
+                if (settings.navigationBarColor != 0)
+                    setNavigationBarColor(settings.navigationBarColor)
+
                 //enable or disable home icon (0 - disable)
                 setHomeAsUpIndicatorIcon(settings.homeIconId)
             }
@@ -167,18 +175,9 @@ abstract class BaseFragment<B : ViewDataBinding>(
 
     }
 
-    private fun setLightOrDarkStatusBarContent(@AttrRes statusBarColor: Int, view: View) {
-
+    private fun setStatusBarContentColor(@AttrRes statusBarColor: Int, view: View) {
         val rgb: Int = requireContext().getThemeColorCompatible(statusBarColor) // 0xAARRGGBB
-
-        val red: Int = rgb.shr(16) and 0xff
-        val green: Int = rgb.shr(8) and 0xff
-        val blue: Int = rgb.shr(0) and 0xff
-
-        val lum: Double = 0.2126 * red + 0.7152 * green + 0.0722 * blue // per ITU-R BT.709
-
-        //if lum greater than 128, the status bar color is light, so the content should be dark and vise versa
-        val isLight = lum > 128 //0..255 : 0 - darkest, 255 - lightest
+        val isLight = rgb.isColorLight()
 
         //For API 30+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
@@ -195,6 +194,29 @@ abstract class BaseFragment<B : ViewDataBinding>(
                 view.systemUiVisibility = flags
             }
             requireActivity().window.statusBarColor = rgb
+        }
+    }
+
+    private fun setNavigationBarContentColor(@AttrRes navigationBarColor: Int, view: View) {
+        val rgb: Int = requireContext().getThemeColorCompatible(navigationBarColor) // 0xAARRGGBB
+
+        val isLight = rgb.isColorLight()
+
+        //For API 30+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+            view.windowInsetsController?.setSystemBarsAppearance(
+                if (isLight) WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS else 0, // value
+                if (isLight) WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS else WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS // mask
+            )
+
+        //for API 23+
+        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (isLight) {
+                var flags = view.systemUiVisibility
+                flags = flags or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+                view.systemUiVisibility = flags
+            }
+            requireActivity().window.navigationBarColor = rgb
         }
     }
 

@@ -232,3 +232,18 @@ fun Activity.getDisplaySize(): IntArray? {
     val displayHeight = displaySize.y
     return intArrayOf(displayWidth, displayHeight)
 }
+
+/**
+ * Check is certain color (@ColorInt) light or dark
+ *
+ */
+fun Int.isColorLight(): Boolean {
+    val red: Int = this.shr(16) and 0xff
+    val green: Int = this.shr(8) and 0xff
+    val blue: Int = this.shr(0) and 0xff
+
+    val lum: Double = 0.2126 * red + 0.7152 * green + 0.0722 * blue // per ITU-R BT.709
+
+    //if lum greater than 128, the status bar color is light, so the content should be dark and vise versa
+    return lum > 128 //0..255 : 0 - darkest, 255 - lightest
+}
