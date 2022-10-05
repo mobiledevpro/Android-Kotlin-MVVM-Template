@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Image Button common style-->
+    <style name="AppTheme.Material.ImageButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:width">48dp</item>
+        <item name="android:height">48dp</item>
+        <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
+    </style>
+
+</resources>

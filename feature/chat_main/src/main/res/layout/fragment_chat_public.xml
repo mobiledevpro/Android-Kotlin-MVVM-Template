@@ -60,7 +60,7 @@
                 android:inputType="textMultiLine|text" />
 
             <ImageButton
-                style="@style/AppTheme.ImageButton"
+                android:paddingEnd="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|end"

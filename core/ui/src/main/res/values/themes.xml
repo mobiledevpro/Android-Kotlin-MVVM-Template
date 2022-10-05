@@ -11,16 +11,15 @@
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="O_MR1">true</item>
 
-        <!-- In case of transparent system bars are needed
+        <!-- In case if transparent system bars are required
          <item name="android:windowTranslucentNavigation">true</item>
          <item name="android:windowTranslucentStatus">true</item>
         -->
 
         <!-- Widget styles -->
-        <!--
         <item name="android:textViewStyle">@style/AppTheme.Material.TextView</item>
-        -->
         <item name="materialButtonStyle">@style/AppTheme.Material.Button</item>
+        <item name="imageButtonStyle">@style/AppTheme.Material.ImageButton</item>
         <!--
         <item name="checkboxStyle">@style/AppTheme.Material.CheckBox</item>
         -->
@@ -30,6 +29,7 @@
         <item name="materialAlertDialogTheme">@style/AppTheme.Material.AlertDialog</item>
         <item name="bottomSheetDialogTheme">@style/AppTheme.Material.BottomSheet</item>
         -->
+
     </style>
 
     <style name="AppTheme.Material3" parent="AppTheme.Material.Common">
