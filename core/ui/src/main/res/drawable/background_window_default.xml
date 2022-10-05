@@ -2,13 +2,13 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:opacity="opaque">
 
-    <item android:drawable="@color/colorWindowBackground" />
+    <item android:drawable="@color/seed" />
 
     <!-- App logo -->
     <item>
         <bitmap
             android:src="@mipmap/ic_launcher_foreground"
-            android:gravity="center"/>
+            android:gravity="center" />
     </item>
 
 </layer-list>

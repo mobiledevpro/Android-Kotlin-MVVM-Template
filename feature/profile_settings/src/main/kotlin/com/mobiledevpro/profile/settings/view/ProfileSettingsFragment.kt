@@ -26,8 +26,9 @@ import org.koin.core.component.KoinScopeComponent
 import org.koin.core.component.getOrCreateScope
 import org.koin.core.context.loadKoinModules
 import org.koin.core.scope.Scope
-import com.mobiledevpro.app.R as RApp
 import com.mobiledevpro.navigation.R as RNav
+import com.mobiledevpro.ui.R as RApp
+import com.mobiledevpro.ui.R as RUi
 
 /**
  * Profile Settings screen
@@ -38,10 +39,11 @@ import com.mobiledevpro.navigation.R as RNav
 class ProfileSettingsFragment : BaseFragment<FragmentProfileSettingsBinding>(
     layoutId = R.layout.fragment_profile_settings,
     FragmentSettings(
-        statusBarColor = RApp.color.colorPrimary,
-        appBarColor = RApp.color.colorPrimary,
+        statusBarColor = RUi.attr.themeColorWindowBackgroundDark,
+        appBarColor = RUi.attr.themeColorWindowBackgroundDark,
         appBarTitle = 0,
         appBarTitleColor = RApp.color.colorWindowGreyBackground,
+        navigationBarColor = RUi.attr.themeColorWindowBackgroundLight,
         appWindowBackground = RApp.drawable.background_window_light,
         homeIconId = RApp.drawable.ic_back_arrow_light_24dp,
         homeIconBackPressEnabled = true,

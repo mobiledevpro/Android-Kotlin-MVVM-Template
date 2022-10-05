@@ -169,6 +169,7 @@ dependencies {
     api core.navigation
     api core.utils
     api core.database
+    api core.ui
 
     testImplementation deps.jUnit
     androidTestImplementation deps.jUnitExt

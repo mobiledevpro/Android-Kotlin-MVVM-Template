@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme.Material.TextView" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textAppearance">@style/AppTheme.Material.TextView.Appearance</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:padding">4dp</item>
+    </style>
+
+    <style name="AppTheme.Material.TextView.Appearance" parent="TextAppearance.AppCompat.Small" />
+
+    <style name="AppTheme.Message.Chat" parent="AppTheme.Material.TextView">
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <style name="AppTheme.Message.Time" parent="AppTheme.Material.TextView">
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:textColor">@color/colorTextMessageTime</item>
+    </style>
+</resources>

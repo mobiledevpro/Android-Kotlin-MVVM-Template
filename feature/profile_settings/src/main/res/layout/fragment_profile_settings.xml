@@ -67,9 +67,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:autofillHints="@null"
+            android:autofillHints="emailAddress"
             android:hint="@string/hint_email"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:lines="1"
             android:maxLines="1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -84,9 +84,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:autofillHints="@null"
+            android:autofillHints="password"
             android:hint="@string/hint_password"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:lines="1"
             android:maxLines="1"
             app:layout_constraintEnd_toEndOf="@+id/edt_login"
@@ -101,7 +101,9 @@
             android:text="@string/button_sign_in"
             app:layout_constraintEnd_toEndOf="@+id/edt_login"
             app:layout_constraintStart_toStartOf="@+id/edt_login"
-            app:layout_constraintTop_toBottomOf="@+id/edt_pass" />
+            app:layout_constraintTop_toBottomOf="@+id/edt_pass"
+            app:icon="@drawable/ic_login_24dp"
+            app:iconGravity="textStart" />
 
         <TextView
             android:id="@+id/tv_or"

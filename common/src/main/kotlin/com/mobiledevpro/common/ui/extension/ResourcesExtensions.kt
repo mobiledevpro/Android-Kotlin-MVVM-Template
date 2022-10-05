@@ -38,6 +38,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
+import kotlin.math.roundToInt
 
 
 /**
@@ -195,7 +196,7 @@ fun Context.dpToPx(valueInDp: Float): Float {
  */
 fun Context.pxToDp(valueInPx: Int): Int {
     val displayMetrics = resources.displayMetrics
-    return Math.round(valueInPx / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT))
+    return (valueInPx / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT)).roundToInt()
 }
 
 /**
@@ -204,12 +205,12 @@ fun Context.pxToDp(valueInPx: Int): Int {
  * @param activity   Activity
  * @param colorResId Color Resource Id
  */
-fun Activity.applyStatusBarColor(@ColorRes colorResId: Int) {
+fun Activity.applyStatusBarColor(@AttrRes colorResId: Int) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
         window.apply {
             this.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
             this.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            this.statusBarColor = getColorCompatible(colorResId)
+            this.statusBarColor = getThemeColorCompatible(colorResId)
         }
 }
 
@@ -230,4 +231,19 @@ fun Activity.getDisplaySize(): IntArray? {
     val displayWidth = displaySize.x
     val displayHeight = displaySize.y
     return intArrayOf(displayWidth, displayHeight)
+}
+
+/**
+ * Check is certain color (@ColorInt) light or dark
+ *
+ */
+fun Int.isColorLight(): Boolean {
+    val red: Int = this.shr(16) and 0xff
+    val green: Int = this.shr(8) and 0xff
+    val blue: Int = this.shr(0) and 0xff
+
+    val lum: Double = 0.2126 * red + 0.7152 * green + 0.0722 * blue // per ITU-R BT.709
+
+    //if lum greater than 128, the status bar color is light, so the content should be dark and vise versa
+    return lum > 128 //0..255 : 0 - darkest, 255 - lightest
 }

@@ -6,7 +6,7 @@
         android:right="4dp"
         android:top="4dp">
         <shape android:shape="oval">
-            <solid android:color="@color/colorWindowGreyBackground" />
+            <solid android:color="?attr/colorPrimaryContainer" />
             <size
                 android:width="128dp"
                 android:height="128dp" />

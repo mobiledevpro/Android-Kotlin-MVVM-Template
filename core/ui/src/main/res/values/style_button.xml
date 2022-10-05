@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Button common style-->
+    <style name="AppTheme.Material.Button" parent="Widget.Material3.Button">
+        <item name="android:minHeight">56dp</item>
+        <item name="android:insetTop">4dp</item>
+        <item name="android:insetBottom">4dp</item>
+        <item name="shapeAppearanceOverlay">@style/AppTheme.Material.Button.ShapeAppearance</item>
+        <item name="materialThemeOverlay">@style/AppTheme.Material.Button.ThemeOverlay</item>
+    </style>
+
+    <style name="AppTheme.Material.Button.ShapeAppearance" parent="@style/ShapeAppearanceOverlay.Material3.Button">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="AppTheme.Material.Button.ThemeOverlay" parent="">
+        <!-- Text color -->
+        <item name="colorOnContainer">?attr/colorOnPrimary</item>
+        <!-- Background -->
+        <item name="colorContainer">?attr/colorPrimary</item>
+    </style>
+</resources>

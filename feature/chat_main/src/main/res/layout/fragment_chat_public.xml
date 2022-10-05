@@ -14,8 +14,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimary">
+        android:layout_height="match_parent">
 
         <FrameLayout
             android:id="@+id/layout_chat_background"
@@ -61,7 +60,7 @@
                 android:inputType="textMultiLine|text" />
 
             <ImageButton
-                style="@style/AppTheme.ImageButton"
+                android:paddingEnd="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|end"

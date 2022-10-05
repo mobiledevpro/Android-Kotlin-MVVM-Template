@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme.EditText" parent="Widget.AppCompat.EditText">
+        <item name="android:minHeight">@dimen/default_view_height</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorTextPrimaryLight</item>
+        <item name="android:textColorHint">@color/colorTextSecondary</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:textCursorDrawable">@drawable/background_edittext_cursor</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="AppTheme.EditText.Chat" parent="AppTheme.EditText">
+        <item name="android:background">@drawable/background_edittext_message</item>
+        <item name="android:paddingEnd">32dp</item>
+    </style>
+
+    <style name="AppTheme.EditText.Login" parent="AppTheme.EditText">
+        <item name="android:background">@drawable/background_edittext_login</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+</resources>

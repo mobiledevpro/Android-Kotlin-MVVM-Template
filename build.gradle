@@ -189,6 +189,7 @@ ext {
     core = [
             "navigation": project(":core:navigation"),
             "utils"     : project(":core:utils"),
-            "database"  : project("core:database")
+            "database"  : project("core:database"),
+            "ui"        : project("core:ui")
     ]
 }

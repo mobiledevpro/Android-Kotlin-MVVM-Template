@@ -21,14 +21,14 @@ import android.os.Build
 import android.os.Bundle
 import android.view.*
 import android.view.inputmethod.InputMethodManager
-import androidx.annotation.ColorRes
+import androidx.annotation.AttrRes
 import androidx.annotation.LayoutRes
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.transition.TransitionInflater
-import com.mobiledevpro.common.ui.extension.getColorCompatible
+import com.mobiledevpro.common.ui.extension.getThemeColorCompatible
+import com.mobiledevpro.common.ui.extension.isColorLight
 
 abstract class BaseFragment<B : ViewDataBinding>(
     @LayoutRes
@@ -74,14 +74,18 @@ abstract class BaseFragment<B : ViewDataBinding>(
         observeLifecycleEvents()
         applyResources()
         if (settings.statusBarColor != 0)
-            setLightOrDarkStatusBarContent(settings.statusBarColor, view)
+            setStatusBarContentColor(settings.statusBarColor, view)
+
+        if (settings.navigationBarColor != 0)
+            setNavigationBarContentColor(settings.navigationBarColor, view)
     }
 
     override fun onStop() {
         val activity = requireActivity()
 
         //hide keyboard if it was shown
-        val inputManager = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+        val inputManager =
+            activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
 
         inputManager?.let {
             val view = activity.currentFocus
@@ -109,84 +113,88 @@ abstract class BaseFragment<B : ViewDataBinding>(
 
 
     private fun applyResources() {
-        (requireActivity() is BaseActivityInterface).apply {
-            if (!this) {
-                if (settings.statusBarColor != 0)
-                    throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set StatusBar color")
-                if (settings.appBarColor != 0)
-                    throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set AppBar color")
-                if (settings.appBarTitle as Int != 0 || (settings.appBarTitle as String).isEmpty())
-                    throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set AppBar title")
-                if (settings.appBarSubTitle as Int != 0 || (settings.appBarSubTitle as String).isEmpty())
-                    throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set AppBar sub-title")
-                if (settings.homeIconId != 0)
-                    throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set home indicator icon")
-                if (settings.appBarTitleColor != 0)
-                    throw UnsupportedOperationException("Your activity should extends from 'BaseActivity' to set AppBar Title color")
-            }
+        val isBaseActivity = requireActivity() is BaseActivityInterface
 
-            (requireActivity() as BaseActivityInterface).apply {
-                //apply title
-                setAppBarTitle(
-                    when (settings.appBarTitle) {
-                        is Int -> if (settings.appBarTitle != 0) resources.getString(settings.appBarTitle) else ""
-                        is String -> if (settings.appBarTitle.isNotEmpty()) settings.appBarTitle else ""
-                        else -> ""
-                    }
-                )
+        if (!isBaseActivity) {
+            if (settings.statusBarColor != 0)
+                throw UnsupportedOperationException("Activity must be inherited from 'BaseActivity' to set StatusBar color")
 
-                //apply sub-title
-                setAppBarSubTitle(
-                    when (settings.appBarSubTitle) {
-                        is Int -> if (settings.appBarSubTitle != 0) resources.getString(settings.appBarSubTitle) else ""
-                        is String -> if (settings.appBarSubTitle.isNotEmpty()) settings.appBarSubTitle else ""
-                        else -> ""
-                    }
-                )
+            if (settings.appBarColor != 0)
+                throw UnsupportedOperationException("Activity must be inherited from 'BaseActivity' to set AppBar color")
 
-                //apply color to appbar
-                if (settings.appBarColor != 0)
-                    setAppBarColor(settings.appBarColor)
+            if (settings.navigationBarColor != 0)
+                throw UnsupportedOperationException("Activity must be inherited from 'BaseActivity' to set Navigation Bar color")
 
-                //apply color to status bar
-                if (settings.statusBarColor != 0)
-                    setStatusBarColor(settings.statusBarColor)
+            if (settings.appBarTitle as Int != 0 || (settings.appBarTitle as String).isNotEmpty())
+                throw UnsupportedOperationException("Activity must be inherited from 'BaseActivity' to set AppBar title")
 
-                //apply color to appbar title
-                if (settings.appBarTitleColor != 0)
-                    setAppBarTitleColor(settings.appBarTitleColor)
+            if (settings.appBarSubTitle as Int != 0 || (settings.appBarSubTitle as String).isNotEmpty())
+                throw UnsupportedOperationException("Activity must be inherited from 'BaseActivity' to set AppBar sub-title")
 
-                //apply window background
-                if (settings.appWindowBackground != 0)
-                    setAppWindowBackground(settings.appWindowBackground)
+            if (settings.homeIconId != 0)
+                throw UnsupportedOperationException("Activity must be inherited from 'BaseActivity' to set home indicator icon")
 
-                //enable or disable home icon (0 - disable)
-                setHomeAsUpIndicatorIcon(settings.homeIconId)
-            }
+            if (settings.appBarTitleColor != 0)
+                throw UnsupportedOperationException("Activity must be inherited from 'BaseActivity' to set AppBar Title color")
+
+        }
+
+        (requireActivity() as BaseActivityInterface).apply {
+            //apply title
+            setAppBarTitle(
+                when (settings.appBarTitle) {
+                    is Int -> if (settings.appBarTitle != 0) resources.getString(settings.appBarTitle) else ""
+                    is String -> settings.appBarTitle.ifEmpty { "" }
+                    else -> ""
+                }
+            )
+
+            //apply sub-title
+            setAppBarSubTitle(
+                when (settings.appBarSubTitle) {
+                    is Int -> if (settings.appBarSubTitle != 0) resources.getString(settings.appBarSubTitle) else ""
+                    is String -> settings.appBarSubTitle.ifEmpty { "" }
+                    else -> ""
+                }
+            )
+
+            //apply color to appbar
+            if (settings.appBarColor != 0)
+                setAppBarColor(settings.appBarColor)
+
+            //apply color to status bar
+            if (settings.statusBarColor != 0)
+                setStatusBarColor(settings.statusBarColor)
+
+            //apply color to appbar title
+            if (settings.appBarTitleColor != 0)
+                setAppBarTitleColor(settings.appBarTitleColor)
+
+            //apply window background
+            if (settings.appWindowBackground != 0)
+                setAppWindowBackground(settings.appWindowBackground)
+
+            //apply color to navigation bar
+            if (settings.navigationBarColor != 0)
+                setNavigationBarColor(settings.navigationBarColor)
+
+            //enable or disable home icon (0 - disable)
+            setHomeAsUpIndicatorIcon(settings.homeIconId)
         }
 
     }
 
-    private fun setLightOrDarkStatusBarContent(@ColorRes statusBarColor: Int, view: View) {
-
-        val rgb: Int = requireContext().getColorCompatible(statusBarColor) // 0xAARRGGBB
-
-        val red: Int = rgb.shr(16) and 0xff
-        val green: Int = rgb.shr(8) and 0xff
-        val blue: Int = rgb.shr(0) and 0xff
-
-        val lum: Double = 0.2126 * red + 0.7152 * green + 0.0722 * blue // per ITU-R BT.709
-
-        //if lum greater than 128, the status bar color is light, so the content should be dark and vise versa
-        val isLight = lum > 128 //0..255 : 0 - darkest, 255 - lightest
+    private fun setStatusBarContentColor(@AttrRes statusBarColor: Int, view: View) {
+        val rgb: Int = requireContext().getThemeColorCompatible(statusBarColor) // 0xAARRGGBB
+        val isLight = rgb.isColorLight()
 
         //For API 30+
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
             view.windowInsetsController?.setSystemBarsAppearance(
                 if (isLight) WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS else 0, // value
-                if (isLight) WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS else 0 // mask
+                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS // mask
             )
-        }
+
         //for API 23+
         else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (isLight) {
@@ -194,7 +202,31 @@ abstract class BaseFragment<B : ViewDataBinding>(
                 flags = flags or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
                 view.systemUiVisibility = flags
             }
-            requireActivity().window.statusBarColor = ContextCompat.getColor(requireActivity(), statusBarColor)
+            requireActivity().window.statusBarColor = rgb
         }
     }
+
+    private fun setNavigationBarContentColor(@AttrRes navigationBarColor: Int, view: View) {
+        val rgb: Int = requireContext().getThemeColorCompatible(navigationBarColor) // 0xAARRGGBB
+
+        val isLight = rgb.isColorLight()
+
+        //For API 30+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+            view.windowInsetsController?.setSystemBarsAppearance(
+                if (isLight) WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS else 0, // value
+                WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS // mask
+            )
+
+        //for API 23+
+        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (isLight) {
+                var flags = view.systemUiVisibility
+                flags = flags or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+                view.systemUiVisibility = flags
+            }
+            requireActivity().window.navigationBarColor = rgb
+        }
+    }
+
 }

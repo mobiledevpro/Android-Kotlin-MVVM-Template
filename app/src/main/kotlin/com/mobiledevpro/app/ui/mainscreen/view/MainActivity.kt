@@ -1,8 +1,8 @@
 package com.mobiledevpro.app.ui.mainscreen.view
 
 import android.view.View
-import android.view.WindowManager
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import com.mobiledevpro.app.R
 import com.mobiledevpro.common.ui.base.ActivitySettings
@@ -12,12 +12,7 @@ import com.mobiledevpro.common.ui.extension.getColorCompatible
 class MainActivity : BaseActivity(
     layoutId = R.layout.activity_main,
     ActivitySettings(
-        isAdjustFontScaleToNormal = true,
-        windowFlags = listOf(
-            //set navigation bar translucent
-            WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
-            WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-        )
+        isAdjustFontScaleToNormal = true
     )
 ) {
 
@@ -31,6 +26,8 @@ class MainActivity : BaseActivity(
 
     override fun initViews(layoutView: View) {
         //do something: as example, init bottom navigation.
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); //night mode theme is disabled right now
+
     }
 
     override fun setAppBarTitle(titleString: String) {

@@ -15,7 +15,7 @@
         <activity
             android:name="com.mobiledevpro.app.ui.mainscreen.view.MainActivity"
             android:configChanges="keyboard|screenSize|screenLayout|keyboardHidden"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/AppTheme.Material3"
             android:screenOrientation="fullSensor"
             android:windowSoftInputMode="adjustResize"
             android:exported="true">

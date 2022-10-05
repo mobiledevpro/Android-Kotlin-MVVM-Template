@@ -24,6 +24,7 @@ import org.koin.core.context.loadKoinModules
 import org.koin.core.scope.Scope
 import com.mobiledevpro.app.R as RApp
 import com.mobiledevpro.navigation.R as RNav
+import com.mobiledevpro.ui.R as RUi
 
 
 /**
@@ -36,12 +37,13 @@ import com.mobiledevpro.navigation.R as RNav
 class ChatPublicFragment : BaseFragment<FragmentChatPublicBinding>(
     layoutId = R.layout.fragment_chat_public,
     FragmentSettings(
-        statusBarColor = RApp.color.colorWindowGreyBackground,
-        appBarColor = RApp.color.colorWindowGreyBackground,
+        statusBarColor = RUi.attr.themeColorWindowBackgroundLight,
+        appBarColor = RUi.attr.themeColorWindowBackgroundLight,
         appBarTitle = RApp.string.app_title_chat_public,
-        appBarTitleColor = RApp.color.colorTextPrimary,
-        appWindowBackground = RApp.drawable.background_window_dark,
-        homeIconId = RApp.drawable.ic_list_dark_24dp,
+        appBarTitleColor = RUi.color.colorTextPrimary,
+        navigationBarColor = RUi.attr.themeColorWindowBackgroundDark,
+        appWindowBackground = RUi.drawable.background_window_dark,
+        homeIconId = RUi.drawable.ic_list_dark_24dp,
         optionsMenuId = R.menu.menu_chat_public,
         homeIconBackPressEnabled = false,
         exitTransition = RNav.transition.slide_left
