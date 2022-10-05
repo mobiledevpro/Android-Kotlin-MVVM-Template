@@ -183,7 +183,7 @@ abstract class BaseFragment<B : ViewDataBinding>(
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
             view.windowInsetsController?.setSystemBarsAppearance(
                 if (isLight) WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS else 0, // value
-                if (isLight) WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS else WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS // mask
+                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS // mask
             )
 
         //for API 23+
@@ -206,7 +206,7 @@ abstract class BaseFragment<B : ViewDataBinding>(
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
             view.windowInsetsController?.setSystemBarsAppearance(
                 if (isLight) WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS else 0, // value
-                if (isLight) WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS else WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS // mask
+                WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS // mask
             )
 
         //for API 23+
