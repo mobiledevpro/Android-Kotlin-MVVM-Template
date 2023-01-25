@@ -18,9 +18,9 @@
 package com.mobiledevpro.profile.settings.view
 
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.OnLifecycleEvent
 import com.mobiledevpro.app.BuildConfig
 import com.mobiledevpro.app.helper.ResourcesProvider
 import com.mobiledevpro.common.ui.base.BaseViewModel
@@ -44,14 +44,8 @@ class ProfileSettingsViewModel(
         initAppVersion()
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_START)
-    fun onStartView() {
-        //do something on start view if it's needed
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-    fun onStopView() {
-        //do something on stop view if it's needed
+    override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
+        //ignore
     }
 
     private fun initAppVersion() {

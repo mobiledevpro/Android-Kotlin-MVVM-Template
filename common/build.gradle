@@ -1,7 +1,7 @@
 apply from: "$rootDir/common-android-library.gradle"
 apply plugin: 'maven-publish'
 
-def libraryVersion = '1.1.2'
+def libraryVersion = '1.1.3'
 def publishingGroupId = 'com.github.mobiledevpro'
 def publishingArtifactId = 'android-kotlin-mvvm-template'
 
