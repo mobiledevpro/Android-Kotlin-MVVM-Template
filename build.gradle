@@ -117,7 +117,7 @@ ext {
             "fragment"                : "androidx.fragment:fragment-ktx:$versions.fragment",
 
             //common
-            "common"                  : "com.github.mobiledevpro:android-kotlin-mvvm-template:$versions.commonUi",
+            "common"                  : "com.github.mobiledevpro:android-kotlin-mvvm-template:$versions.common",
 
             //Coroutines
             "coroutinesCore"          : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
