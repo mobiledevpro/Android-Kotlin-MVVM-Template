@@ -45,18 +45,19 @@
 
 **Dmitri Chernysh**
 
-```diff
-# Software Developer from Ukraine | 7 years of experience in Android Development
-```
+> ⚡️ I`m a Software Engineer from Ukraine with over 10 years of experience in software development and a Top-Rated freelance Developer on Upwork since 2016.
+> 
+> ⚡️ Last 7 years I'm dealing mostly with Android Development and have been building modern [native] apps for devices running on Android OS from version 6 <sup>Marshmallow</sup> to 13 <sup>Tiramisu</sup> . It covers about ~96.2% of all android devices nowdays.
+>
 
-[![Instagram](https://img.shields.io/badge/-instagram-E4405F?&logo=instagram&message=instagram&style=for-the-badge&logoColor=white&label=watch+stories+on)](https://www.instagram.com/mobiledevpro/)
+   
+[![Instagram](https://img.shields.io/badge/-instagram-E4405F?logo=instagram&label=Behind+the+scenes+of+building+apps&style=for-the-badge&logoColor=white)](https://www.instagram.com/mobiledevpro/)
 
-[![Linkedin](https://img.shields.io/badge/-linkedin-0A66C2?logo=linkedin&style=for-the-badge&logoColor=white&label=follow+on)](https://www.linkedin.com/in/dmitriychernysh/)
+[![Twitter](https://img.shields.io/badge/-twitter-1DA1F2?logo=twitter&style=for-the-badge&label=Compose+UI+related+tweets&logoColor=white)](https://twitter.com/mobiledev_pro)
 
-[![Medium](https://img.shields.io/badge/-medium-212121?logo=medium&style=for-the-badge&logoColor=white&label=read+on)](https://medium.com/@mobiledevpro)
+[![Upwork](https://img.shields.io/badge/-upwork-brightgreen?logo=upwork&message=Upwork&label=Top-Rated+Plus+Dev+on&style=for-the-badge)](https://www.upwork.com/freelancers/~01fb21586ed544f07b)
 
-[![Upwork](https://img.shields.io/badge/-upwork-brightgreen?logo=upwork&message=Upwork&label=hire+me+on&style=for-the-badge&logoColor=white)](https://www.upwork.com/freelancers/~01fb21586ed544f07b)
-
+[![Youtube](https://img.shields.io/badge/-youtube-red?logo=youtube&message=Youtube&label=Watch+on&style=for-the-badge)](https://www.youtube.com/@mobiledevpro)
 
 ## License:
 
