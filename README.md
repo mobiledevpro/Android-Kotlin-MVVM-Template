@@ -76,9 +76,9 @@ limitations under the License.
 
 **Stargazers**
 
-[![Stargazers repo roster for @mobiledevpro/Android-Kotlin-MVVM-Template](https://reporoster.com/stars/mobiledevpro/Android-Kotlin-MVVM-Template)](https://github.com/mobiledevpro/Android-Kotlin-MVVM-Template/stargazers)
+[![Stargazers repo roster for @mobiledevpro/Android-Kotlin-MVVM-Template](http://reporoster.com/stars/dark/mobiledevpro/Android-Kotlin-MVVM-Template)](https://github.com/mobiledevpro/Android-Kotlin-MVVM-Template/stargazers)
 
 **Forkers**
 
-[![Forkers repo roster for @mobiledevpro/Android-Kotlin-MVVM-Template](https://reporoster.com/forks/mobiledevpro/Android-Kotlin-MVVM-Template)](https://github.com/mobiledevpro/Android-Kotlin-MVVM-Template/network/members)
+[![Forkers repo roster for @mobiledevpro/Android-Kotlin-MVVM-Template](http://reporoster.com/forks/dark/mobiledevpro/Android-Kotlin-MVVM-Template)](https://github.com/mobiledevpro/Android-Kotlin-MVVM-Template/network/members)
 
