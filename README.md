@@ -37,28 +37,23 @@
 
 * [Display content edge-to-edge | System insets](https://developer.android.com/develop/ui/views/layout/edge-to-edge)
 
-## Authors:
+##
+## Author:
 
-<a href="https://www.instagram.com/mobiledevpro/" target="_blank">
+<a href="https://github.com/dmitriy-chernysh" target="_blank">
   <img src="https://s.gravatar.com/avatar/72c649d298a8f0f088fd0850e19b9147?s=400" width="70" align="left">
 </a>
 
 **Dmitri Chernysh**
 
-> ⚡️ I`m a Software Engineer from Ukraine with over 10 years of experience in software development and a Top-Rated freelance Developer on Upwork since 2016.
-> 
-> ⚡️ Since 2015 I've been dealing mostly with Android Development and building modern [native] apps for devices running on Android OS from version 6 <sup>Marshmallow</sup> to 13 <sup>Tiramisu</sup>. It covers about ~96.2% of all Android devices nowadays.
->
-   
+[![Youtube](https://img.shields.io/badge/-youtube-red?logo=youtube&message=Youtube&style=for-the-badge&label=Watch+on)](https://www.youtube.com/@mobiledevpro?sub_confirmation=1)
 [![Instagram](https://img.shields.io/badge/-instagram-E4405F?logo=instagram&message=Behind+the+scenes+in+Storiesn&style=for-the-badge&logoColor=white)](https://www.instagram.com/mobiledevpro/)
-[![Youtube](https://img.shields.io/badge/-youtube-red?logo=youtube&message=Youtube&style=for-the-badge)](https://www.youtube.com/@mobiledevpro?sub_confirmation=1)
 [![Twitter](https://img.shields.io/badge/-twitter-1DA1F2?logo=twitter&style=for-the-badge&logoColor=white)](https://twitter.com/mobiledev_pro)
 [![Linkedin](https://img.shields.io/badge/-linkedin-0A66C2?logo=linkedin&style=for-the-badge&logoColor=white)](https://www.linkedin.com/in/dmitriychernysh/)
-[![Upwork](https://img.shields.io/badge/-upwork-brightgreen?logo=upwork&message=Upwork&style=for-the-badge)](https://www.upwork.com/freelancers/~01fb21586ed544f07b?s=996364627857502209)
 
 ## License:
 
-Copyright 2020 Dmitriy Chernysh
+Copyright 2020 Dmitri Chernysh
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
