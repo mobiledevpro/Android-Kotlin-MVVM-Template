@@ -2,11 +2,11 @@
 
 buildscript {
     ext.rootVersions = [
-            "kotlin"        : "1.6.10",
-            "gradle"        : "7.2.2",
+            "kotlin"    : '1.9.10',
+            "gradle"    : '8.4.0-rc02',
             "playServices"  : "4.3.13",
-            "koin"          : '3.3.2',
-            "navigation"    : '2.5.1',
+            "koin"      : '3.5.6',
+            "navigation": '2.7.7',
             "firebasePlugin": [
                     "crashlytics": "2.9.1",
                     "performance": "1.4.1"
@@ -43,7 +43,7 @@ plugins {
 
 // Gradle Doctor all settings here https://runningcode.github.io/gradle-doctor/configuration/
 doctor {
-    disallowMultipleDaemons = true
+    disallowMultipleDaemons = false
     negativeAvoidanceThreshold = 500
     warnWhenJetifierEnabled = true
 
@@ -70,41 +70,39 @@ ext {
     appVersionName = "1.0.0"
     appVersionCode = 1
 
-    compileSdkVersion = 33
+    compileSdkVersion = 34
     minSdkVersion = 23
-    targetSdkVersion = 33
+    targetSdkVersion = 34
 
     versions = [
             "common"          : "1.1.2",
-            "appcompat"       : '1.6.0',
-            "preference"      : '1.2.0',
-            "material"        : '1.7.0',
-            "fragment"        : '1.5.5',
-            "activity"        : '1.6.1',
+            "appcompat"       : '1.6.1',
+            "preference"      : '1.2.1',
+            "material"        : '1.11.0',
+            "fragment"        : '1.6.2',
+            "activity"        : '1.8.2',
             "constraintLayout": '2.1.4',
-            "coreKtx"         : '1.9.0',
-            "lifecycle"       : '2.5.1',
-            "coroutines"      : "1.5.2",
+            "coreKtx"         : '1.12.0',
+            "lifecycle"       : '2.7.0',
+            "coroutines"      : "1.8.0",
             "firebase"        : [
-                    "bom": '31.2.0'
+                    "bom": '32.8.1'
             ],
             "rx"              : [
                     "android": "2.1.1",
                     "kotlin" : "2.4.0"
             ],
-            "room"            : '2.5.0',
-            "glide"           : '4.14.2',
-            "lottie"          : '5.2.0',
-            "retrofit"        : "2.3.0",
-            "okhttp"          : "4.2.2",
+            "room"            : '2.6.1',
+            "glide"           : '4.16.0',
+            "lottie"          : '6.4.0',
+            "retrofit"        : "2.11.0",
+            "okhttp"          : "4.12.0",
             "jUnitExt"        : '1.1.5',
             "jUnit"           : '4.13.2',
             "testRunner"      : '1.5.2',
             "espressoCore"    : '3.5.1',
-            "mockito"         : '5.0.0',
-            "leakcanary"      : '2.10',
-            "playCore"        : '1.10.3',
-            "playCoreKtx"     : '1.8.1'
+            "mockito"         : '5.11.0',
+            "leakcanary"      : '2.13'
     ]
 
     deps = [
@@ -129,8 +127,6 @@ ext {
 
             //Dynamic Feature support
             "navigationDynamic"       : "androidx.navigation:navigation-dynamic-features-fragment:$rootVersions.navigation",
-            "playCore"                : "com.google.android.play:core:$versions.playCore",
-            "playCoreKtx"             : "com.google.android.play:core-ktx:$versions.playCoreKtx",
 
             //Firebase
             "firebaseBom"             : "com.google.firebase:firebase-bom:$versions.firebase.bom",

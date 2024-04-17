@@ -1,5 +1,7 @@
 apply from: "$rootDir/common-android-library.gradle"
 
+android.namespace 'com.mobiledevpro.navigation'
+
 dependencies {
     api deps.activity
     api deps.fragment

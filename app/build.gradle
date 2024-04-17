@@ -9,7 +9,8 @@ plugins {
 }
 
 android {
-    compileSdkVersion rootProject.compileSdkVersion
+    compileSdk rootProject.compileSdkVersion
+    namespace 'com.mobiledevpro.app'
 
     defaultConfig {
         applicationId "com.mobiledevpro.apptemplate.new"
@@ -40,18 +41,20 @@ android {
             }
         }
     }
-
     packagingOptions {
-        exclude 'META-INF/*.kotlin_module'
+        resources {
+            excludes += ['META-INF/*.kotlin_module']
+        }
     }
 
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
     buildTypes {
@@ -142,8 +145,6 @@ dependencies {
     api deps.constraintLayout
 
     api deps.coreKtx
-    api deps.playCore
-    api deps.playCoreKtx
 
     //DI
     api deps.koinCore
